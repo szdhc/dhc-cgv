@@ -1,0 +1,5 @@
+<!--pages/myPoints/myPoints.wxml-->
+<text>pages/myPoints/myPoints.wxml</text>
+<view class="userinfo">
+    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" bindtap='Userinfo' style="background-image: url({{avatarUrl}})"></button>
+    </view>

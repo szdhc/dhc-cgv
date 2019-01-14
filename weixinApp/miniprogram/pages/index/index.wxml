@@ -1,0 +1,28 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+
+  <!-- 首页banner -->
+  <view class="guide">
+    <icon class='iconfont icon-weibiaoti-3'></icon>
+    <text class="headline">{{currProvince}}</text>
+    <text class="headline">{{currCity}}</text>
+    <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:{{Height}}'>
+      <block wx:for="{{ bannerUrls }}" wx:key="{{bannerUrls}}">
+        <swiper-item>
+          <view>
+            <image class="slide-image" src="{{ item.url }}" bindload='imgHeight' mode='widthFix'></image>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- <text class="p">1. 打开云开发控制台</text>
+    <image class="image1" src="../../images/console-entrance.png" mode="aspectFit"></image>
+    <text class="p">2. 切换到 "用户管理" 标签页</text>
+    <text class="p">3. 查看访问小程序的用户列表</text> -->
+    <import src='../../templates/movieList.wxml' />
+    <view wx:for="{{hotMovieList}}" wx:key="{{hotMovieList}}">
+      <template is='hotMovieTemplate' data="{{...item}}" />
+    </view>
+  </view>
+
+</view>

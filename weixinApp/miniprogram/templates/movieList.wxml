@@ -1,0 +1,20 @@
+<template name='hotMovieTemplate'>
+  <view class='containerTemplate'>
+    <!--电影图片-->
+    <view>
+      <image class='movieImage' src="{{ movieImage }}">
+      </image>
+    </view>
+    <!--电影名，特性，导演，主演-->
+    <view class='containerTemplateMiddle'>
+      <text class='movieName'>{{movieName}}</text>
+      <text class='movieShow'>{{movieShow}}</text>
+      <text class='movieDirectorStarring'>{{movieDirectorStarring}}</text>
+    </view>
+    <!--评分、购票/预售-->
+    <view class='containerTemplateRight'>
+      <text class='moiveGrade'>{{moiveGrade}}</text>
+      <button class='movieStatus' >{{movieStatus}}</button>
+    </view>
+  </view>
+</template>

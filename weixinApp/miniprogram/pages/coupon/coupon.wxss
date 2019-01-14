@@ -1,0 +1,100 @@
+/* pages/coupon/coupon.wxss */
+.membershipTop{
+  width: 100%;
+  height: 20%;
+  background-color: rgba(238, 236, 236, 0.671);
+}
+.labelcard{
+  margin-left: 43%;
+  font-size: 80%;
+}
+.membershipinfo{
+  margin-top: 3%;
+  width: 85%;
+}
+.input{
+  border: 2px solid gray;
+  font-size: 75%;
+  width: 70%;
+}
+.btn{
+  color: #FFF;
+  background: #007aff;
+  width: 20%;
+  font-size: 60%;
+ 
+}
+.add{
+ margin-right: 0%;
+  margin-top: -9%;
+}
+.stamp_list{
+	margin:20px auto;
+	width:90%;
+}
+.stamp{
+	height: 125px;
+	margin-bottom: 20px;
+	position: relative;
+	box-sizing:border-box;
+	border-radius:5px;
+}
+.stamp_inner{
+	height: 125px;
+	display:inline-block;
+	vertical-align:top;
+	box-sizing:border-box;
+	position:relative;
+	border-radius:5px;
+	box-shadow:0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.stamp_left{
+	width: 70%;
+	background: #ffffff;
+  padding: 2%;
+  
+}
+.stamp_left .box{
+	position:absolute;
+	right:0;
+	bottom:0;
+	width:78px;
+	height:81px;
+}
+.stamp_right{
+  padding: 2%;
+	width:30%;
+	background: #F8E71C;
+}
+.circle_list{
+	position:absolute;
+	top:5px;
+}
+.circle_list1{
+	left:-5px;
+}
+.circle_list2{
+	right:-5px;
+}
+.circle_list2:after{
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 6px;
+	right: -5px;
+	z-index: 1;
+	background-color: #eee;
+}
+.circle_list>view{
+	background-color:#eee;
+	width:10px;
+	height:10px;
+	border-radius:50%;
+	margin-bottom:5px;
+	box-shadow:0 1px 1px rgba(0,0,0,0.2) inset;
+}
+.stamp_info{
+  display: flex;
+  flex-direction: column; 
+}

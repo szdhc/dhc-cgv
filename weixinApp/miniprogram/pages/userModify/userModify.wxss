@@ -1,0 +1,30 @@
+/* pages/userModify/userModify.wxss */
+@import "/style/iconfont.wxss";
+@import "/pages/userConsole/userConsole.wxss";
+.userinfo {
+  width: 100%;
+  font-size: 80%;
+  background-color: white;
+  margin-top: 2%;
+  display: flex; 
+   flex-direction: row;
+  
+}
+.list{
+  margin-left: 2%;
+  
+}
+.righttest{
+  margin-left: 65%;
+  float:right; 
+  
+}
+  .btn-class{
+font-size:75%;
+  color: #FFF;
+  background: #007aff;
+  width: 60%;
+  bottom: 0;
+  position: fixed;
+  align-items: center;
+}

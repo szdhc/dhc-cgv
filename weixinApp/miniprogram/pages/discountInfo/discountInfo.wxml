@@ -1,0 +1,25 @@
+<!--pages/discountInfo/discountInfo.wxml-->
+ <view class='info'>
+      <text class=''>{{membershipName}}</text>
+      <text class=''>{{membershipShow}}</text>
+      <text class=''>{{membershipLevel}}</text>
+      <text class=''>{{membershipLevelinfo}}</text>
+  </view>
+   <view class='info'>
+      <text class=''>{{membershipName}}</text>
+      <text class=''>{{membershipShow}}</text>
+      <text class=''>{{membershipLevel}}</text>
+      <text class=''>{{membershipLevelinfo}}</text>
+  </view>
+   <view class='info'>
+      <text class=''>{{membershipName}}</text>
+      <text class=''>{{membershipShow}}</text>
+      <text class=''>{{membershipLevel}}</text>
+      <text class=''>{{membershipLevelinfo}}</text>
+  </view>
+   <view class='info'>
+      <text class=''>{{membershipName}}</text>
+      <text class=''>{{membershipShow}}</text>
+      <text class=''>{{membershipLevel}}</text>
+      <text class=''>{{membershipLevelinfo}}</text>
+  </view>

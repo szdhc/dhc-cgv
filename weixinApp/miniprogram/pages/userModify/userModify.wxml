@@ -1,0 +1,57 @@
+<!--pages/userModify/userModify.wxml-->
+<view class='container'>
+  <view class='userinfo'>
+    <text class='list'>昵称</text>
+  </view>
+  <view class='userinfo'>
+    <text class='list'>性别</text>
+    <input type='text'></input>
+
+  </view>
+  <view class='userinfo'>
+    <text class='list'>姓氏</text>
+    <text class='righttest'></text>
+
+  </view>
+  <view class='userinfo'>
+    <text class='list'>生日</text>
+    <text class='righttest'></text>
+
+  </view>
+  <view class='userinfo'>
+    <text class='list'>密码</text>
+    <text class='righttest'></text>
+
+  </view>
+  <view class='userinfo'>
+    <text class='list'>喜欢的电影</text>
+    <text class='righttest'></text>
+
+  </view>
+  <view class='userinfo'>
+    <text class='list'>特效厅</text>
+    <text class='righttest'></text>
+
+  </view>
+  <view class='userinfo'>
+    <text class='list'>纪念日</text>
+    <text class='righttest'></text>
+
+  </view>
+  <view class='userinfo'>
+    <text class='list'>区域</text>
+    <text class='righttest'></text>
+
+  </view>
+  <view class='userinfo'>
+    <text class='list'>婚否</text>
+    <text class='righttest'></text>
+
+  </view>
+  <view class='userinfo'>
+    <text class='list'>子女</text>
+    <text class='righttest'></text>
+
+  </view>
+    <button class='btn-class'>确定</button>
+</view>

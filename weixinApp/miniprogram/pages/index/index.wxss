@@ -1,0 +1,37 @@
+/* pages/index/index.wxss */
+@import "../../style/guide.wxss";
+
+/* 轮播 */
+
+.slide-image {
+  width: 100%;
+}
+
+/* 轮播小点点 */
+
+.swiper-box .wx-swiper-dots.wx-swiper-dots-horizontal {
+  margin-bottom: 2rpx;
+}
+
+.swiper-box .wx-swiper-dot {
+  width: 20rpx;
+  display: inline-flex;
+  height: 5rpx;
+  margin-left: 10rpx;
+  justify-content: space-between;
+}
+
+.swiper-box .wx-swiper-dot::before {
+  content: '';
+  flex-grow: 1;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0rpx;
+}
+
+.swiper-box .wx-swiper-dot-active::before {
+  background: #f33;
+}
+
+.swiper-box .wx-swiper-dot-active {
+  width: 40rpx;
+}

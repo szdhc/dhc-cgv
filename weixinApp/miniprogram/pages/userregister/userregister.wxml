@@ -1,0 +1,6 @@
+<!--pages/userInfo/userInfo.wxml-->
+<view class='webview'>
+  <button class='btnclass footer' >通过微信号登录</button>
+  
+  <button class='btnclass top'>通过手机号登录</button>
+</view>

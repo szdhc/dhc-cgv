@@ -1,0 +1,9 @@
+<!--pages/shop/shop.wxml-->
+<view class="container">
+
+  <!-- 首页banner -->
+  <view class="guide">
+    
+  </view>
+
+</view>

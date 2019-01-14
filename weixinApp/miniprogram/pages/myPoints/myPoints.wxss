@@ -1,0 +1,7 @@
+/* pages/myPoints/myPoints.wxss */
+.userinfo {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: #007aff;
+}

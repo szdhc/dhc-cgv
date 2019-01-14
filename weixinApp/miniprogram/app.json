@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/shop/shop",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/userregister/userregister",
+    "pages/userInfo/userInfo",
+    "pages/userModify/userModify", 
+    "pages/Membership/Membership",
+    "pages/coupon/coupon",
+    "pages/discountCard/discountCard",
+    "pages/discountInfo/discountInfo",
+    "pages/myOrder/myOrder",
+    "pages/myPoints/myPoints"
+    
+
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar":{
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/电影.png",
+        "iconPath": "images/电影.png",
+        "pagePath": "pages/index/index",
+        "text": "电影"
+      },
+      {
+        "selectedIconPath": "images/商城.png",
+        "iconPath": "images/商城.png",
+        "pagePath": "pages/shop/shop",
+        "text": "商城"
+      },
+      {
+        "selectedIconPath": "images/MY CGV.png",
+        "iconPath": "images/MY CGV.png",
+        "pagePath": "pages/userConsole/userConsole",
+        "text": "MY CGV"
+      }
+    ]
+  }
+}

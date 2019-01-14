@@ -1,0 +1,57 @@
+/* pages/Membership/Membership.wxss */
+.membershipTop{
+  width: 100%;
+  height: 20%;
+  background-color: rgba(238, 236, 236, 0.671);
+}
+.membershipinfo{
+  margin-top: 3%;
+  width: 85%;
+}
+.labelcard{
+  margin-left: 43%;
+  font-size: 80%;
+}
+.lebalclass{
+  margin-top: 5%;
+  padding:15% 10% 15% 10%;
+  background-color: white;
+  border-radius:12px;
+  border: 2px dashed gray;
+  width: 63%;
+}
+.btn{
+  color: #FFF;
+  background: #007aff;
+  width: 20%;
+  font-size: 60%;
+ 
+}
+.add{
+ margin-right: 0%;
+  margin-top: -9%;
+}
+.input{
+  border: 2px solid gray;
+  font-size: 75%;
+  width: 70%;
+}
+.info{
+  margin-top: 10%;
+  width: 75%;
+  display: flex;
+  flex-direction: column; 
+  border: 2px solid gray;
+  padding: 5% 5% 5% 5% ;
+  border-radius:12px;
+  font-size: 85%;
+}
+.buy{
+  width: 100%;
+}
+.buycard{
+  margin-top:5%;
+}
+.noneclass{
+  padding-left: 30%;
+}

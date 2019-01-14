@@ -1,0 +1,40 @@
+<!--pages/coupon/coupon.wxml-->
+<view class="container">
+  <view class="membershipTop">
+    <label class='labelcard'>优惠券</label>
+  </view>
+  <view class="membershipinfo">
+    <input type='text' class='input' placeholder='请输入优惠券密码'></input>
+    <button class="btn add" bindtap="">添加</button>
+  </view>
+  <view class="stamp_list">
+    <view class="stamp">
+      <view class="stamp_inner stamp_left">
+      <span class='stamp_info'>123</span>
+      <span class='stamp_info'>123</span>
+      <span class='stamp_info'>123</span>
+      </view>
+      <view class="stamp_inner stamp_right">
+        <span class='stamp_info'>123</span>
+        <span class='stamp_info'>123</span>
+        <span class='stamp_info'>123</span>
+      </view>
+    </view>
+    <view class="stamp">
+      <view class="stamp_inner stamp_left">
+      <span>123</span>
+      </view>
+      <view class="stamp_inner stamp_right">
+        <span>123</span>
+      </view>
+    </view>
+    <view class="stamp">
+      <view class="stamp_inner stamp_left">
+      <span>123</span>
+      </view>
+      <view class="stamp_inner stamp_right">
+        <span>123</span>
+      </view>
+    </view>
+  </view>
+</view>
