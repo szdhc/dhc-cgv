@@ -1,6 +1,17 @@
 /* pages/index/index.wxss */
 @import "../../style/guide.wxss";
 
+/*电影地址*/
+
+.movieAddress {
+  display: flex;
+  flex-direction: row;
+}
+
+.youjiantou{
+  float: right;
+}
+
 /* 轮播 */
 
 .slide-image {
