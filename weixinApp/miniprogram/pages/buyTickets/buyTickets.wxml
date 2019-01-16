@@ -36,4 +36,8 @@
     <image class='img-ellipsis' src="{{ellipsis?'../../images/down.png':'../../images/up.png'}}"></image>
   </view>
 </view>
+
+<view class="buyButton,container">
+<button>购票</button>
+</view>
 </view>
