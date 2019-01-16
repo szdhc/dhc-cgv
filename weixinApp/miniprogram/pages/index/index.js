@@ -207,7 +207,7 @@ Page({
   },
   redirct: function(){
     wx.navigateTo({
-      url: '../buyTickets/buyTickets',
+      url: '../chooseMovie/chooseMovie',
     })
   }
 
