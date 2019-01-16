@@ -55,7 +55,7 @@ Page({
         movieImage: '../../images/201812131426092692802.jpg',
         movieName: '大黄蜂',
         movieShow: '大黄蜂首部个人电影',
-      movieDirectorStarring: '特拉维斯·奈特/迪伦·奥布莱恩; 海莉·斯坦菲尔德;坦菲尔坦菲尔',
+        movieDirectorStarring: '特拉维斯·奈特/迪伦·奥布莱恩; 海莉·斯坦菲尔德;坦菲尔坦菲尔',
         moiveGrade: '9.3分',
         movieStatus: '购票'
       },
@@ -157,10 +157,12 @@ Page({
       type: 'wgs84',
       altitude: true,
       success: function(res) {
-        // success  
-        var latitude = res.latitude
-        var longitude = res.longitude
-        vm.getLocal(latitude, longitude);
+        if (res.errMsg === 'getLocation:ok') {
+          // success  
+          var latitude = res.latitude
+          var longitude = res.longitude
+          vm.getLocal(latitude, longitude);
+        }
       },
       fail: function(res) {
         console.error(error);
@@ -182,10 +184,12 @@ Page({
       },
       success: function(res) {
         console.log(JSON.stringify(res));
-        that.setData({
-          currProvince: res.result.address_component.province,
-          currCity: res.result.address_component.city
-        })
+        if (res.status === 0) {
+          that.setData({
+            currProvince: res.result.address_component.province,
+            currCity: res.result.address_component.city
+          })
+        }
       },
       fail: function(error) {
         console.error(error);
