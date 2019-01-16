@@ -6,13 +6,18 @@ Page({
    */
   data: {
     avatarUrl: '',
-    username: '静待',
-    casArray: ['未完善>', '男', '女'],
-    casIndex: 0,
+    username: '',
+    sex: ['未完善>', '男', '女'],
     birthday: '未完善>',
     memorial: '未完善>',
     cinemasort: ['未完善>', '2D', '3D', '3DMAX'],
-    cinemaindex:0
+    haveChild: ['未完善>', '有', '无'],
+    marry: ['未完善>', '是', '否'],
+    casIndex: 0,
+    cinemaindex:0,
+    childindex:0,
+    marryIndex:0,
+    
   },
 
   /**
@@ -20,8 +25,20 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      avatarUrl: options.avatarUrl
+      avatarUrl: options.avatarUrl,
+      username: options.username,
+      
     });
+    if (options.sex == '男'){
+      this.setData({
+        sex: [options.sex,'女']
+      });
+    } else if (options.sex == '女'){
+      this.setData({
+        sex: [options.sex, '男']
+      });
+    }
+      
   },
 
   /**
@@ -90,6 +107,16 @@ Page({
   bindCinemasort: function (e) {
     this.setData({
       cinemaindex: e.detail.value
+    })
+  },
+  bindMarry: function (e) {
+    this.setData({
+      marryIndex: e.detail.value
+    })
+  },
+  bindHaveChild: function (e) {
+    this.setData({
+      childindex: e.detail.value
     })
   },
 })

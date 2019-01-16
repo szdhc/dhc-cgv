@@ -13,7 +13,7 @@
 
   <!-- 会员卡 -->
   <view class="uploader">
-    <navigator url="../Membership/Membership" open-type="navigate" class="wodelist-text">
+    <navigator url="../Membership/Membership"  hover-class="none" open-type="navigate" class="wodelist-text">
       <icon class='iconfont icon-huiyuanqia'/>
       <text class='wodelist'>会员卡</text>
       <icon class='iconfont icon-youjiantou'/>
@@ -22,7 +22,7 @@
 
   <!-- 优惠券 -->
   <view class="uploader">
-    <navigator url="../coupon/coupon" open-type="navigate" class="wodelist-text">
+    <navigator url="../coupon/coupon"  hover-class="none" open-type="navigate" class="wodelist-text">
       <icon class='iconfont icon-youhuiquan'/>
       <text class='wodelist'>优惠券</text>
       <icon class='iconfont icon-youjiantou'/>
@@ -31,7 +31,7 @@
 
   <!-- 代金券 -->
   <view class="uploader">
-    <navigator url="../discountCard/discountCard" open-type="navigate" class="wodelist-text">
+    <navigator url="../discountCard/discountCard"  hover-class="none" open-type="navigate" class="wodelist-text">
       <icon class='iconfont icon-3dtouchdaijinquanxiangqingliebiao'/>
       <text class='wodelist'>代金券</text>
       <icon class='iconfont icon-youjiantou'/>
@@ -40,7 +40,7 @@
 
   <!-- 我的订单 -->
   <view class="uploader">
-    <navigator url="../myOrder/myOrder" open-type="navigate" class="wodelist-text">
+    <navigator url="../myOrder/myOrder"  hover-class="none" open-type="navigate" class="wodelist-text">
       <icon class='iconfont icon-dingdan'/>
       <text class='wodelist'>我的订单</text>
       <icon class='iconfont icon-youjiantou'/>
@@ -49,7 +49,7 @@
 
   <!-- 想看列表 -->
   <view class="uploader">
-    <navigator url="../addFunction/addFunction" open-type="navigate" class="wodelist-text">
+    <navigator url="../addFunction/addFunction"  hover-class="none" open-type="navigate" class="wodelist-text">
       <icon class='iconfont icon-dianying'/>
       <text class='wodelist'>想看列表</text>
       <icon class='iconfont icon-youjiantou'/>
@@ -58,7 +58,7 @@
 
   <!-- 我的积分 -->
   <view class="uploader">
-    <navigator url="../myPoints/myPoints" open-type="navigate" class="wodelist-text">
+    <navigator url="../myPoints/myPoints"  hover-class="none" open-type="navigate" class="wodelist-text">
       <icon class='iconfont icon-icon'/>
       <text class='wodelist'>我的积分</text>
       <icon class='iconfont icon-youjiantou'/>

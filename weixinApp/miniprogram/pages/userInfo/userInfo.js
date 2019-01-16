@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    avatarUrl: ''
+    avatarUrl: '',
+    username:'静待',
+    sex:'男',
+    level:'VIP11'
   },
 
   /**
@@ -70,7 +73,7 @@ Page({
   userInfoModify() {
     
         wx.navigateTo({
-          url: '../userModify/userModify?avatarUrl=' + this.data.avatarUrl,
+          url: '../userModify/userModify?avatarUrl=' + this.data.avatarUrl +'&username='+this.data.username+'&sex='+this.data.sex,
         })
       }
       

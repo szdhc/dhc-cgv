@@ -7,7 +7,9 @@ Page({
     userInfo: {},
     logged: false,
     takeSession: false,
-    requestResult: ''
+    requestResult: '',
+    username:'',
+    orderUrl:''
   },
 
   onLoad: function () {
@@ -27,7 +29,8 @@ Page({
             success: res => {
               this.setData({
                 avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
+                userInfo: res.userInfo,
+                username:res.userInfo.nickName
               })
             }
           })
@@ -60,7 +63,8 @@ Page({
       this.setData({
         logged: true,
         avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo
+        userInfo: e.detail.userInfo,
+        username: e.detail.userInfo.nickName
       })
     }
   },

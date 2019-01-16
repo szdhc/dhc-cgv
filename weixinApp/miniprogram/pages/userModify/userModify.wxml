@@ -10,9 +10,9 @@
   </view>
   <view class='userinfo'>
     <text class='list'>性别</text>
-    <picker bindchange="bindCasPickerChange" class='righttest' value='{{casIndex}}' range="{{casArray}}">
+    <picker bindchange="bindCasPickerChange" class='righttest' value='{{casIndex}}' range="{{sex}}">
       <view>
-        <text>{{casArray[casIndex]}}</text>
+        <text>{{sex[casIndex]}}</text>
       </view>
     </picker>
   </view>
@@ -64,13 +64,19 @@
   </view>
   <view class='userinfo'>
     <text class='list'>婚否</text>
-    <text class='righttest'>未完善></text>
-
+        <picker bindchange="bindMarry" class='righttest' value='{{marryIndex}}' range="{{marry}}">
+      <view>
+        <text>{{marry[marryIndex]}}</text>
+      </view>
+    </picker>
   </view>
   <view class='userinfo'>
     <text class='list'>子女</text>
-    <text class='righttest'>未完善></text>
-
+    <picker bindchange="bindHaveChild" class='righttest' value='{{childindex}}' range="{{haveChild}}">
+      <view>
+        <text>{{haveChild[childindex]}}</text>
+      </view>
+    </picker>
   </view>
     <button class='btn-class'>确定</button>
 </view>

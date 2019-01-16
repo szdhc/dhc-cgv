@@ -5,7 +5,7 @@
   <view class='textleft'>
     <text  class=''>你现在还没有代金券</text>
   </view>
-  <navigator url="../discountInfo/discountInfo" open-type="navigate" class="wodelist-text">
+  <navigator url="../discountInfo/discountInfo"   hover-class="none" open-type="navigate" class="wodelist-text">
   <view class='lebalclass'  bindtap='discountInfo'>
     <label class='noneclass' >点击领取代金券</label>
   </view>

@@ -4,44 +4,44 @@
 <view bindtap="toOrderDetail" class="orderDetails">
 	<view class="orderListTitle">
 		<view class="userImg"><image src=""></image></view>
-		<text class="userName">静待</text>
-		<text class="orderStatus">交易成功</text>
+		<text class="userName">{{username}}</text>
+		<text class="orderStatus">{{orderStatus}}</text>
 	</view>
 	<view class="orderListDetails">
 		<view class="productImg">
 			<image src=""></image>
 		</view>
 		<view class="productInfo">
-			<view class="productTitle">印度暴徒</view>
-      <view class="productTitle">海王首部个人电影</view>
-			<text class="productPrice">￥68.00</text>
-			<text class="productQuantity">x1</text>
+			<view class="productTitle">{{movieName}}</view>
+      <view class="productTitle">{{movieShow}}</view>
+			<text class="productPrice">￥{{moviePrice}}</text>
+			<text class="productQuantity">x{{movieNum}}</text>
 		</view>
 	</view>
 	<view class="productCount">
-		<view>合计：￥<text>68.00</text></view>
+		<view>合计：￥<text>{{movieCountPrice}}</text></view>
     <button class='orderCancel'>退票</button>
 	</view>
 </view>	
 <view class="orderDetails">
 	<view class="orderListTitle">
 		<view class="userImg"><image src=""></image></view>
-		<text class="userName">静待</text>
-		<text class="orderStatus">交易成功</text>
+		<text class="userName">{{username}}</text>
+		<text class="orderStatus">{{orderStatus}}</text>
 	</view>
 	<view class="orderListDetails">
 		<view class="productImg">
 			<image src=""></image>
 		</view>
 		<view class="productInfo">
-			<view class="productTitle">海 王</view>
-      <view class="productTitle">海王首部个人电影</view>
-			<text class="productPrice">￥70.00</text>
-			<text class="productQuantity">x1</text>
+			<view class="productTitle">{{movieName}}</view>
+      <view class="productTitle">{{movieShow}}</view>
+			<text class="productPrice">￥{{moviePrice}}</text>
+			<text class="productQuantity">x{{movieNum}}</text>
 		</view>
 	</view>
 	<view class="productCount">
-		<view>合计：￥<text>70.00</text></view>
+		<view>合计：￥<text>{{movieCountPrice}}</text></view>
     <button class='orderCancel'>退票</button>
 	</view>
 </view>	
