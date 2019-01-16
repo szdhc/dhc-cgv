@@ -204,6 +204,11 @@ Page({
     this.setData({
       Height: swiperH //设置高度
     })
+  },
+  redirct: function(){
+    wx.navigateTo({
+      url: '../buyTickets/buyTickets',
+    })
   }
 
 })

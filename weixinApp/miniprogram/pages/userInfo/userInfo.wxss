@@ -15,8 +15,8 @@
   
 }
 .righttest{
-  margin-left: 65%;
-  float:right; 
+ margin-left: 75%;
+  margin-top: -5%;
   
 }
 .list-msg{
@@ -33,7 +33,10 @@ font-size:75%;
   position: fixed;
   align-items: center;
   margin-left: 20%;
+  margin-bottom:15%;
 }
 .uploader{
   height: 100rpx;
+  padding-top: 3%;
+  font-size: 80%;
 }

@@ -1,86 +1,30 @@
 <!--pages/shop/shop.wxml-->
 <view class="container">
-  <icon class='iconfont icon-weibiaoti-3'></icon>
-  <text class="headline">{{currProvince}}</text>
-  <text class="headline">{{currCity}}</text>
-  <button class='button1' bindtap='jumpPage'>顾客须知</button>
-  <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:{{Height}}'>
-    <block wx:for="{{ bannerUrls }}" wx:key="{{bannerUrls}}">
-      <swiper-item>
-        <view>
-          <image class="slide-image" src="{{ item.url }}" bindload='imgHeight' mode='widthFix'></image>
-        </view>
-      </swiper-item>
-    </block>
-  </swiper>
-  <view class="right">
-    <view class="uploader">
-      <text class='wodelist-text'>{{topmsg}}</text>
-    </view>
-    <view class="rightunder">
-      <view class="uploader">
-        
-          <!-- <button class='button1' bindtap='jumpPage'>顾客须知</button> -->
-        
-      </view>
-    </view>
-  </view>
+  <!-- 首页banner -->
+  <view class="guide">
+    <div class="movieAddress">
+      <!-- <div class="float:lift">
+        <button class='button1' bindtap='jumpPage'>顾客须知</button>
+      </div> -->
+      <div class="float:left;">
+        <icon class='iconfont icon-weibiaoti-3'>{{movieAddress}}</icon>
+      </div>
+      <div style="float:right;margin-right:2%">
+        <icon class='iconfont icon-youjiantou'></icon>
+      </div>
+    </div>
 
-  <view class="aside">
-    <!-- 特惠套餐 -->
-
-    <view class="uploader">
-      <navigator class="product">
-        <text class='wodelist-text' bindtap='ontap1' style='line-height: 280%;'>特惠套餐</text>
-      </navigator>
+    <!-- <text class="headline">{{currProvince}}</text>
+    <text class="headline">{{currCity}}</text> -->
+    <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:{{Height}}'>
+      <block wx:for="{{ bannerUrls }}" wx:key="{{bannerUrls}}">
+        <swiper-item>
+          <view>
+            <image class="slide-image" src="{{ item.url }}" bindload='imgHeight' mode='widthFix'></image>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <button class='button1' bindtap='jumpPage'>顾客须知</button>
     </view>
-
-    <!-- 电影周边 -->
-    <view class="uploader">
-      <navigator class="product">
-        <text class='wodelist-text' bindtap='ontap2'>电影周边</text>
-      </navigator>
-    </view>
-
-    <!-- 冰激凌 -->
-    <view class="uploader">
-      <navigator class="product">
-        <text class='wodelist-text' bindtap='ontap3'>冰激凌</text>
-      </navigator>
-    </view>
-
-    <!-- 爆米花 -->
-    <view class="uploader">
-      <navigator class="product">
-        <text class='wodelist-text' bindtap='ontap4'>爆米花</text>
-      </navigator>
-    </view>
-
-    <!-- 瓶装饮料 -->
-    <view class="uploader">
-      <navigator class="product">
-        <text class='wodelist-text' bindtap='ontap5'>瓶装饮料</text>
-      </navigator>
-    </view>
-
-    <!-- 现调饮料 -->
-    <view class="uploader">
-      <navigator class="product">
-        <!-- <navigator url="../databaseGuide/databaseGuide" open-type="navigate" 
-  class="wodelist-text"> -->
-        <text class='wodelist-text' bindtap='ontap6'>现调饮料</text>
-        <!-- </navigator> -->
-      </navigator>
-    </view>
-
-    <!-- 小食品 -->
-    <view class="uploader">
-      <navigator class="product">
-        <!-- <navigator url="../databaseGuide/databaseGuide" open-type="navigate" 
-  class="wodelist-text"> -->
-        <text class='wodelist-text' bindtap='ontap7'>小食品</text>
-        <!-- </navigator> -->
-      </navigator>
-    </view>
-  </view>
 </view>

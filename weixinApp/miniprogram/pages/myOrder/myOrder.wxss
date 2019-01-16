@@ -223,6 +223,6 @@
   color: rgba(247, 3, 3, 0.747);
   background: #fff;
   position: fixed;
-  margin-top: -10%;
+  margin-top: 1%;
   align-items: center;
 }

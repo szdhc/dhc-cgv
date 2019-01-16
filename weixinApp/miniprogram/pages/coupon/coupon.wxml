@@ -1,8 +1,5 @@
 <!--pages/coupon/coupon.wxml-->
 <view class="container">
-  <view class="membershipTop">
-    <label class='labelcard'>优惠券</label>
-  </view>
   <view class="membershipinfo">
     <input type='text' class='input' placeholder='请输入优惠券密码'></input>
     <button class="btn add" bindtap="">添加</button>

@@ -20,9 +20,8 @@
 	</view>
 	<view class="productCount">
 		<view>合计：￥<text>68.00</text></view>
-    
+    <button class='orderCancel'>退票</button>
 	</view>
-  <view><button class='orderCancel'>退票</button></view>
 </view>	
 <view class="orderDetails">
 	<view class="orderListTitle">
@@ -43,6 +42,6 @@
 	</view>
 	<view class="productCount">
 		<view>合计：￥<text>70.00</text></view>
+    <button class='orderCancel'>退票</button>
 	</view>
-  <view><button class='orderCancel'>退票</button></view>
 </view>	
