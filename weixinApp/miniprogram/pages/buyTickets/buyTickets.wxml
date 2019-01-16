@@ -1,0 +1,39 @@
+<view class="container">
+<view class="movie">
+<view class="movieTitle">
+  <view>
+    <image class='moiveCss' src="{{moiveImage}}"></image>
+  </view>
+  <view class="instruction">
+    <view class='moiveIn' style='font-size:15px;'>
+    <text>{{moiveName}}</text>
+    </view>
+    <view class='moiveIn'>
+    <text>{{moiveType}}</text>
+    </view>
+    <view class='moiveIn2'>
+    <view>
+    <text>{{moiveLuanage}}</text>
+    </view>
+    <view>
+    <text>{{moiveinstroduction}}</text>
+    </view>
+    </view>
+    <view class='moiveIn'>
+    <text>{{moiveGrade}}</text>
+    </view>
+    <view class='moiveIn' >
+    <text class="red">{{buyticketsmen}}</text>购票/<text class="red">{{seePeople}}</text>想看
+    </view>
+    <view class='moiveIn'>
+    <text>{{moiveAbout}}</text>
+    </view>
+  </view>
+</view>
+  <text class="pay-hint-content {{ellipsis?'ellipsis':'unellipsis'}}" >《情圣2》是由宋晓飞、董旭联合执导，吴秀波、白百何、肖央主演的爱情喜剧电影。该片将于2019年2月5日大年初一全国公映。该片讲述了与男友方远相恋七年，深陷家庭琐事的田心，焦头烂额之际偶遇从天而降的帅气邻居肖遥，在经历了一连串哭笑不得的囧事后，下定决心重新活出潇洒人生的故事</text>
+  <view class='container' bindtap='ellipsis'>
+    <view class="{{ellipsis?'icon-xiajiantou,img-ellipsis':'icon-youjiantou,img-ellipsis'}}"></view>
+    <image class='img-ellipsis' src="{{ellipsis?'../../images/down.png':'../../images/up.png'}}"></image>
+  </view>
+</view>
+</view>
