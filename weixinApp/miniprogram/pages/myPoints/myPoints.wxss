@@ -5,3 +5,99 @@
   flex-direction: row;
   background-color: #007aff;
 }
+.pointtext{
+  color: white;
+  padding: 7% 1% 5% 4%;
+  font-size: 70%;
+}
+.pointnum{
+  color: white;
+  margin-top: 14%;
+  padding-bottom: 4%;
+  margin-left: -23%;
+}
+.pointinfo{
+  width: 100%;
+  font-size: 75%;
+  /* background-color: #dee1e459; */
+  
+}
+.textclass{
+  padding-left:4%;
+}
+.righttext{
+  float: right;
+  padding:3%;
+  margin-right: 6%;
+  
+}
+.rightButton{
+  float: right;
+  width: 11%;
+  background-color: transparent;
+  background-size: cover;
+  margin-right: -19%;
+}
+.rightButton::after {
+  border: none;
+}
+#box{
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid #ddd;
+  height: 0;
+  animation-fill-mode: forwards;
+}
+
+#item_list{
+    background-color: white;
+    width: 20%;
+    float: right;
+    border: 1px solid #ddd;
+    border-radius:5px;
+    text-align: center;
+    margin-top: 1%;
+    margin-right: 1%;
+}
+
+#item_list view{
+    text-align: center;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+@keyframes slidedown{
+    from {
+        height: 0;
+    }
+    to {
+        height: 120rpx;
+    }
+}
+@keyframes slideup{
+    from {
+        height: 120rpx;
+    }
+    to {
+        height: 0;
+    }
+}
+.open{
+    animation: slidedown 1s;
+}
+
+.close{
+    animation: slideup 1s; 
+}
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: block;
+}
+.textCenter{
+  font-size: 55%;
+  text-align: center;
+}
