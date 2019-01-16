@@ -1,0 +1,98 @@
+page {
+  background: #a3961d00;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.userinfo {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: #007aff;
+}
+
+.aside {
+text-align: center;
+position:fixed;
+width:18%;
+top:0;
+bottom:0;
+left: 0;
+background-color:beige;
+margin-top: 68%;
+margin-left: 5%;
+}
+
+.wodelist-text {
+  line-height: 250%;
+  font-size: 70%;
+  color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* .product{
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: none;
+  border-right: none;
+  border-top: none;
+} */
+.right{
+  width: 80%;
+  margin-left: 20%;
+  text-align: center;
+}
+
+/* 轮播 */
+
+.slide-image {
+  width: 100%;
+}
+
+/* 轮播小点点 */
+
+.swiper-box .wx-swiper-dots.wx-swiper-dots-horizontal {
+  margin-bottom: 2rpx;
+}
+
+.swiper-box .wx-swiper-dot {
+  width: 20rpx;
+  display: inline-flex;
+  height: 5rpx;
+  margin-left: 10rpx;
+  justify-content: space-between;
+}
+
+.swiper-box .wx-swiper-dot::before {
+  content: '';
+  flex-grow: 1;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0rpx;
+}
+
+.swiper-box .wx-swiper-dot-active::before {
+  background: #f33;
+}
+
+.swiper-box .wx-swiper-dot-active {
+  width: 40rpx;
+}
+
+.container{
+  width: 90%;
+  margin-left: 5%;
+}
+
+/* 须知按钮 */
+
+.button1{
+  width: 29%;
+  font-size: 60%;
+  background-color: beige;
+  margin-right: 0%;
+  margin-top: -8%;
+}
+
+
