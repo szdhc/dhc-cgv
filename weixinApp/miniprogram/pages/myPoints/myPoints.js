@@ -5,10 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    state: false,
-    first_click: false,
-    select:'',
-    tipsshow: 'block'
+
   },
 
   /**
@@ -65,41 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  toggle: function () {
-    var list_state = this.data.state,
-      first_state = this.data.first_click;
-    if (!first_state) {
-      this.setData({
-        first_click: true
-      });
-    }
-    if (list_state) {
-      this.setData({
-        state: false
-      });
-    } else {
-      this.setData({
-        state: true
-      });
-    }
-  },
-  selectone(){
-    this.setData({
-      select:'111',
-     
-    });
-  
-  },
-  selecttwo() {
-    this.setData({
-      select: '222',
-
-    });
-  },
-  selectthree() {
-    this.setData({
-      select: '333',
-    });
   }
 })

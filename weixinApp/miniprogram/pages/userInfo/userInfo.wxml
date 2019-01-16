@@ -1,24 +1,25 @@
 <!--pages/userInfo/userInfo.wxml-->
 <view class='container'>
 <view class="userinfo">
-    <button open-type="getUserInfo" class="userinfo-avatar"  style="background-image: url({{avatarUrl}})"></button>
+    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" bindtap='Userinfo' style="background-image: url({{avatarUrl}})"></button>
+    
     <view>
       <button class="userinfo-tequan">特权等级V11></button>
     </view>
   </view>
   <view class='uploader'>
     <text class='list'>昵称</text>
-    <view class='righttest'>静待</view>
+    <text class='righttest'></text>
  
   </view>
   <view class='uploader'>
     <text class='list'>性别</text>
-    <view class='righttest'>男</view>
+    <text class='righttest'></text>
  
   </view>
   <view class='uploader'>
-    <view class='list'>等级</view>
-    <view class='righttest'>VIP11</view>
+    <text class='list'>等级</text>
+    <text class='righttest'></text>
  
   </view>
 </view>
