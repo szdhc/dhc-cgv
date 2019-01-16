@@ -59,3 +59,15 @@
 .swiper-box .wx-swiper-dot-active {
   width: 40rpx;
 }
+
+.medium-font-size {
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.regular-font-size {
+  font-size: 22rpx;
+}
+
+
+

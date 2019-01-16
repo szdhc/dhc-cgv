@@ -58,4 +58,22 @@
   margin-top: -78%; 
 }
 
-
+/* 选项卡 */
+.swiper-tab{
+  width: 100%;
+  border-bottom: 1rpx solid #ccc;
+  text-align: center;
+  height: 55rpx;
+  line-height: 48rpx;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+.swiper-tab-item{
+  display: inline-block;
+  width: 23.33%;
+  color:black;
+}
+.active{
+  color:rgb(245, 113, 26);
+  border-bottom: 2rpx solid rgb(245, 113, 26);
+}
