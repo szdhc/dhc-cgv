@@ -5,13 +5,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    avatarUrl:'',
+    username:'静待',
+    casArray: ['未完善>','男', '女'],
+    casIndex:0,
+    birthday: '未完善>',
+    memorial: '未完善>',
+    cinemasort: ['未完善>', '2D', '3DMAX'],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      avatarUrl: options.avatarUrl
+    });
 
   },
 
@@ -62,5 +71,26 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  bindCasPickerChange: function (e) {
+    this.setData({
+      casIndex: e.detail.value
+    })
+
+  },
+  bindViewEvent: function (e) {
+    this.setData({
+      birthday: e.detail.value
+    })
+  },
+  bindmemorialEvent: function (e) {
+    this.setData({
+      memorial: e.detail.value
+    })
+  },
+  bindCinemasort: function (e) {
+    this.setData({
+      cinemasort: e.detail.value
+    })
+  },
 })

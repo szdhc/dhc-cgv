@@ -52,6 +52,16 @@ page {
 .userinfo-nickname::after {
   border: none;
 }
+.userinfo-tequan{
+  margin-top: 5%;
+  font-size:32rpx;
+  background-color: transparent;
+  color: #fff;
+  background-size: cover;
+}
+.userinfo-tequan::after {
+  border: none;
+}
 
 .uploader, .tunnel {
   height: auto;
@@ -155,12 +165,4 @@ page {
   line-height: 210%;
   font-size: 34rpx;
   color: #007aff;
-}
-.userinfo-tequan{
-  margin-top: 5%;
-  font-size:32rpx;
-  background-color: #007aff;
-  color: #fff;
-  background-size: cover;
-  outline: none;
 }

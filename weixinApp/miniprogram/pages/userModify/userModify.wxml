@@ -1,57 +1,77 @@
 <!--pages/userModify/userModify.wxml-->
 <view class='container'>
+  <view class="userinfo">
+    <text class='listimage'>头像</text>
+    <button class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
+  </view>
   <view class='userinfo'>
     <text class='list'>昵称</text>
+    <text class='righttest'>{{username}}</text>
   </view>
   <view class='userinfo'>
     <text class='list'>性别</text>
-    <input type='text'></input>
-
+    <picker bindchange="bindCasPickerChange" class='righttest' value='{{casIndex}}' range="{{casArray}}">
+      <view>
+        <text>{{casArray[casIndex]}}</text>
+      </view>
+    </picker>
   </view>
   <view class='userinfo'>
     <text class='list'>姓氏</text>
-    <text class='righttest'></text>
+    <text class='righttest'>未完善></text>
 
   </view>
   <view class='userinfo'>
     <text class='list'>生日</text>
-    <text class='righttest'></text>
-
+    <picker mode="date" class='righttest' value="{{birthday}}" start="1900-01-01" end="2050-01-01" bindchange="bindViewEvent" data-model="component" data-method="bindSelect" date-mode="date" data-name="date">
+      <view>
+      <text >{{birthday}}</text>
+      </view>
+    </picker>
   </view>
   <view class='userinfo'>
     <text class='list'>密码</text>
-    <text class='righttest'></text>
+    <text class='righttest'>未完善></text>
 
   </view>
   <view class='userinfo'>
     <text class='list'>喜欢的电影</text>
-    <text class='righttest'></text>
+    <text class='righttest1'>未完善></text>
 
   </view>
   <view class='userinfo'>
     <text class='list'>特效厅</text>
-    <text class='righttest'></text>
-
+    <picker bindchange="bindCinemasort" class='righttest' value='{{casIndex}}' range="{{cinemasort}}">
+      <view>
+        <text>{{cinemasort[casIndex]}}</text>
+      </view>
+    </picker>
   </view>
   <view class='userinfo'>
     <text class='list'>纪念日</text>
-    <text class='righttest'></text>
+    <picker mode="date" class='righttest2' value="{{memorial}}" start="1900-01-01" end="2050-01-01" bindchange="bindmemorialEvent" data-model="component" data-method="bindSelect" date-mode="date" data-name="date">
+      <view>
+      <text >{{memorial}}</text>
+      </view>
+    </picker>
 
   </view>
   <view class='userinfo'>
     <text class='list'>区域</text>
-    <text class='righttest'></text>
+    <text class='righttest'>未完善></text>
 
   </view>
   <view class='userinfo'>
     <text class='list'>婚否</text>
-    <text class='righttest'></text>
+    <text class='righttest'>未完善></text>
 
   </view>
   <view class='userinfo'>
     <text class='list'>子女</text>
-    <text class='righttest'></text>
+    <text class='righttest'>未完善></text>
 
   </view>
+  <view class='userinfo'>
     <button class='btn-class'>确定</button>
+  </view>
 </view>
