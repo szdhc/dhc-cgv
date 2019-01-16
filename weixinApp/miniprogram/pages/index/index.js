@@ -6,6 +6,7 @@ Page({
 
   data: {
     openid: '',
+    movieAddress:'苏州平江万达广场店',
     currProvince: '',
     currCity: '',
     bannerUrls: [{

@@ -5,41 +5,26 @@
   width: 100%;
   font-size: 80%;
   background-color: white;
-  margin-top: 1%;
-  padding: 2%;
+  margin-top: 2%;
   display: flex; 
    flex-direction: row;
   
 }
 .list{
-  margin-left: 3%;
+  margin-left: 2%;
   
 }
 .righttest{
   margin-left: 65%;
   float:right; 
+  
 }
-.righttest1{
- margin-left: 53%;
-}
-.righttest2{
- margin-left: 61%;
-}
-.btn-class{
-  font-size:75%;
+  .btn-class{
+font-size:75%;
   color: #FFF;
   background: #007aff;
   width: 60%;
   bottom: 0;
+  position: fixed;
   align-items: center;
-  margin-bottom: 10%;
-  margin-top: 5%;
-}
-.userinfo-avatar{
-  margin-left: 70%;
-
-}
-.listimage{
-  padding-top: 7%;
-  margin-left: 3%;
 }

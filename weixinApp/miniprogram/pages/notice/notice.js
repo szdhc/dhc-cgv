@@ -1,4 +1,4 @@
-// pages/myPoints/myPoints.js
+// pages/notice/notice.js
 Page({
 
   /**

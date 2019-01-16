@@ -3,9 +3,17 @@
 
   <!-- 首页banner -->
   <view class="guide">
-    <icon class='iconfont icon-weibiaoti-3'></icon>
-    <text class="headline">{{currProvince}}</text>
-    <text class="headline">{{currCity}}</text>
+    <div class="movieAddress">
+      <div class="float:left;">
+        <icon class='iconfont icon-weibiaoti-3'>{{movieAddress}}</icon>
+      </div>
+      <div style="float:right;margin-right:2%">
+        <icon class='iconfont icon-youjiantou'></icon>
+      </div>
+    </div>
+
+    <!-- <text class="headline">{{currProvince}}</text>
+    <text class="headline">{{currCity}}</text> -->
     <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:{{Height}}'>
       <block wx:for="{{ bannerUrls }}" wx:key="{{bannerUrls}}">
         <swiper-item>

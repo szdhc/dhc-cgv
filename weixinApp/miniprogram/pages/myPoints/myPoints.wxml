@@ -1,22 +1,5 @@
 <!--pages/myPoints/myPoints.wxml-->
-<view class='container'>
-  <view class="userinfo">
-    <text class='pointtext'>当前拥有积分</text>
-    <text class='pointnum'>10</text>
-  </view>
-  <view class='pointinfo'>
-    <text class='textclass'>积分明细</text>
-    <text class='righttext'>全部</text>
-    <button id="slide" class='rightButton' bindtap="toggle">▼</button>
-    <view id="box" class="{{first_click?'show':'hide'}} {{state?'open':'close'}}">
-      <view id="item_list">
-        <view bindtap='selectone' style="display:{{tipsshow}}">111</view>
-        <view bindtap='selecttwo' style="display:{{tipsshow}}">222</view>
-        <view bindtap='selectthree' style="display:{{tipsshow}}">333</view>
-      </view>
+<text>pages/myPoints/myPoints.wxml</text>
+<view class="userinfo">
+    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" bindtap='Userinfo' style="background-image: url({{avatarUrl}})"></button>
     </view>
-  </view>
-  <view>
-    <text class='textCenter'>仅显示近12个月的记录</text>
-  </view>
-</view>
