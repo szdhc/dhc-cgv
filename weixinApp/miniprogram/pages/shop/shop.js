@@ -4,8 +4,8 @@ Page({
     userInfo: {},
     logged: false,
     takeSession: false,
+    movieAddress: '苏州平江万达广场店',
     requestResult: '',
-    topmsg: '特惠套餐',
     openid: '',
     currProvince: '',
     currCity: '',
@@ -81,9 +81,9 @@ Page({
     });
     // 调用接口
     qqmapsdk.search({
-      keyword: 'CVG影城',
+      keyword: 'CGV影城',
       success: function (res) {
-        console.log('CVG影城:' + res);
+        console.log('CGV影城:' + res);
       },
       fail: function (res) {
         console.log(res);
@@ -151,41 +151,6 @@ Page({
 
   onLoad: function () {
     return;
-  },
-  ontap1() {
-    this.setData({
-      topmsg: '特惠套餐'
-    });
-  },
-  ontap2() {
-    this.setData({
-      topmsg: '电影周边'
-    })
-  },
-  ontap3() {
-    this.setData({
-      topmsg: '冰激凌'
-    })
-  },
-  ontap4() {
-    this.setData({
-      topmsg: '爆米花'
-    })
-  },
-  ontap5() {
-    this.setData({
-      topmsg: '瓶装饮料'
-    })
-  },
-  ontap6() {
-    this.setData({
-      topmsg: '现调饮料'
-    })
-  },
-  ontap7() {
-    this.setData({
-      topmsg: '小食品'
-    })
   },
 
   // 购物须知跳转事件
