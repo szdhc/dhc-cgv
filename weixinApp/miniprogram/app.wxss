@@ -1,5 +1,6 @@
 @import "/templates/movieList.wxss";
 @import "/style/iconfont.wxss";
+@import "/style/common.wxss";
 
 /**app.wxss**/
 .container {
