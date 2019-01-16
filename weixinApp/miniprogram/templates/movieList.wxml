@@ -14,7 +14,7 @@
     <!--评分、购票/预售-->
     <view class='containerTemplateRight'>
       <text class='moiveGrade'>{{moiveGrade}}</text>
-      <button class='movieStatus' >{{movieStatus}}</button>
+      <button class='movieStatus' bindtap='redirct'>{{movieStatus}}</button>
     </view>
   </view>
 </template>
