@@ -4,9 +4,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    moiveName:'big fee',
+    moiveName:'big yellow bee',
     url: 'https://www.71big.com/heqing/zhaojingwang/common/images/banner1.jpg',
     ellipsis : true,
+    moiveGuider:'特拉维斯·奈特',
+    moivePerformer:'海莉·斯坦菲尔德/约翰·塞纳/迪伦·奥布莱恩',
     moiveImage: '../../images/201812131426092692802.jpg',
     moiveType:'DOLBY 3D4DX 3DIMAX 3D3D2D',
     moiveLuanage:'中文 英文',

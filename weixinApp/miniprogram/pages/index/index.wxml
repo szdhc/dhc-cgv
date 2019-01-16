@@ -3,15 +3,14 @@
 
   <!-- 首页banner -->
   <view class="guide">
-    <div class="movieAddress">
-      <div class="float:left;">
-        <icon class='iconfont icon-weibiaoti-3'>{{movieAddress}}</icon>
-      </div>
-      <div style="float:right;margin-right:2%">
-        <icon class='iconfont icon-youjiantou'></icon>
-      </div>
-    </div>
-
+    <view class='flex-wrp-row item'>
+      <view class='item-left flex-wrp-row'>
+        <icon class='iconfont icon-weibiaoti-3 icon-left'>{{movieAddress}}</icon>
+      </view>
+      <view class='item-right flex-wrp-row'>
+        <icon class='iconfont icon-youjiantou icon-right'></icon>
+      </view>
+    </view>
     <!-- <text class="headline">{{currProvince}}</text>
     <text class="headline">{{currCity}}</text> -->
     <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:{{Height}}'>
