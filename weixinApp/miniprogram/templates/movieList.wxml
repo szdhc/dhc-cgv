@@ -1,20 +1,30 @@
 <template name='hotMovieTemplate'>
-  <view class='containerTemplate'>
+  <view class='flex-wrp-row item'>
     <!--电影图片-->
-    <view>
+    <view class='flex-wrp-cloumn'>
       <image class='movieImage' src="{{ movieImage }}">
       </image>
     </view>
     <!--电影名，特性，导演，主演-->
-    <view class='containerTemplateMiddle'>
-      <text class='movieName'>{{movieName}}</text>
-      <text class='movieShow'>{{movieShow}}</text>
-      <text class='movieDirectorStarring'>{{movieDirectorStarring}}</text>
+    <view class='flex-wrp-cloumn content'>
+      <view>
+        <text class='movieName'>{{movieName}}</text>
+      </view>
+      <view>
+        <text class='movieShow'>{{movieShow}}</text>
+      </view>
+      <view>
+        <text class='movieShow'>{{movieDirectorStarring}}</text>
+      </view>
     </view>
     <!--评分、购票/预售-->
-    <view class='containerTemplateRight'>
-      <text class='moiveGrade'>{{moiveGrade}}</text>
-      <button class='movieStatus' bindtap='redirct'>{{movieStatus}}</button>
+    <view class='flex-wrp-cloumn '>
+      <view>
+        <text class='moiveGrade'>{{moiveGrade}}</text>
+      </view>
+      <view>
+        <button class='movieStatus' bindtap='redirct'>{{movieStatus}}</button>
+      </view>
     </view>
   </view>
 </template>

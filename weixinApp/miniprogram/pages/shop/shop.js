@@ -9,6 +9,7 @@ Page({
     openid: '',
     currProvince: '',
     currCity: '',
+    currentTab: 0,
     bannerUrls: [{
       url: 'https://www.71big.com/heqing/zhaojingwang/common/images/banner1.jpg',
       linkUrl: ''
@@ -143,14 +144,10 @@ Page({
     var winWid = wx.getSystemInfoSync().windowWidth; //获取当前屏幕的宽度
     var imgh = e.detail.height; //图片高度
     var imgw = e.detail.width; //图片宽度
-    var swiperH = winWid * imgh / imgw + "px"
+    var swiperH = winWid * imgh / imgw + "px" / 2
     this.setData({
       Height: swiperH //设置高度
     })
-  },
-
-  onLoad: function () {
-    return;
   },
 
   // 购物须知跳转事件
@@ -158,6 +155,27 @@ Page({
     wx.navigateTo({
       url: '/pages/notice/notice',
     })
+  },
+
+  //滑动切换
+  swiperTab: function (e) {
+    var that = this;
+    that.setData({
+      currentTba: e.detail.current
+    });
+  },
+  //点击切换
+  clickTab: function (e) {
+
+    var that = this;
+
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
   }
 
 })

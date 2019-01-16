@@ -18,7 +18,8 @@
     "pages/myOrder/myOrder",
     "pages/myPoints/myPoints",
     "pages/buyTickets/buyTickets",
-    "pages/notice/notice"
+    "pages/notice/notice",
+    "pages/chooseMovie/chooseMovie"
     
 
   ],

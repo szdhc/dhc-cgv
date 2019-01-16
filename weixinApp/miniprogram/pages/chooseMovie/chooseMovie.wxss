@@ -1,0 +1,18 @@
+/* pages/chooseMovie/chooseMovie.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+
+.store{
+  display: flex;
+  margin-top: 0rpx;
+  width: 100%;
+  height: 100rpx;
+}
+
+.storeInstruction{
+  margin-left: 5%;
+  width: 80%;
+  border-right: 2rpx inset rgba(128, 128, 128, 0.397);
+}

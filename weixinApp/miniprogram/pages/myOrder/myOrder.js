@@ -4,7 +4,20 @@ var app = getApp()
 Page({
   data: {
     current: 0,
-    orderlist: []
+    orderlist: [],
+    username:'静待',
+    orderStatus:'交易成功',
+    movieName:'海 王',
+    movieShow:'海王首部个人电影',
+    moviePrice:'45.0',
+    movieNum:'1',
+    movieCountPrice:'45.0'
+  },
+  /**
+ * 生命周期函数--监听页面加载
+ */
+  onLoad: function (options) {
+    
   },
   // onLoad: function () {
   //   var that = this

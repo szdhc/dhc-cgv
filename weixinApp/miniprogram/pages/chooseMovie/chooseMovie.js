@@ -1,25 +1,20 @@
-// pages/userInfo/userInfo.js
+// pages/chooseMovie/chooseMovie.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    avatarUrl: '',
-    username:'静待',
-    sex:'男',
-    level:'VIP11'
+    storeName:'苏州中心CGV影院',
+    movieAddress:'江苏省苏州中心4楼',
+    movieTel:'0512-80911313',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      avatarUrl: options.avatarUrl
-    });
 
-    console.log("touxiang:" + this.data.avatarUrl);
   },
 
   /**
@@ -69,14 +64,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  userInfoModify() {
-    
-        wx.navigateTo({
-          url: '../userModify/userModify?avatarUrl=' + this.data.avatarUrl +'&username='+this.data.username+'&sex='+this.data.sex,
-        })
-      }
-      
-   
-  
+  }
 })

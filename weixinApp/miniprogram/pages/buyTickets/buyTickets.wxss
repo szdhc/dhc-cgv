@@ -9,7 +9,7 @@
   margin-right: 5%;
   margin-top: 10px;
   font-size: 15px;
-  color: rgb(10, 9, 9);
+  color: rgba(10, 9, 9, 0.911);
   display: -webkit-box;
   -webkit-box-orient:vertical;
   text-overflow: ellipsis;
@@ -52,9 +52,10 @@
 
 .movie{
   border:2rpx outset rgba(128, 128, 128, 0.589);
+  border-radius:1%;
   margin-left: 2%;
   margin-right: 2%;
-  margin-top: 200rpx;
+  margin-top: 0rpx;
 }
 
 .moiveIn{
@@ -68,4 +69,33 @@
 
 .red{
 color:red;
+}
+
+.buyButton{
+  position: fixed;
+  height: 94rpx;
+  width: 98%;
+  bottom: 6rpx;
+}
+
+.button{
+  background-color: red;
+  color:white;
+  border-radius:5px;
+  width: 100%;
+}
+
+.performer{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 20rpx;
+  font-size: 15px;
+  color: rgb(10, 9, 9);
+}
+
+.show{
+  margin-top: 20rpx;
+  margin-left: 2%;
+  margin-right: 2%;
+  width: 100%;
 }

@@ -10,11 +10,11 @@
 }
 .imageclass{
   padding-left: 34%;
-  margin-top: 15%;
+  margin-top: 45%;
   display: flex;    /*设置显示样式**/
   justify-content: center; /**内容居中*/
-  width: 131px;
-  height: 100px;
+  width: 262rpx;
+  height: 200rpx;
   
 }
 .textleft{
@@ -27,13 +27,13 @@
   margin-top: 5%;
   padding:10% 5% 10% 5%;
   background-color: white;
-  border-radius:12px;
-  border: 1px dashed rgb(78, 78, 78);
+  border-radius:24rpx;
+  border: 2rpx dashed rgb(78, 78, 78);
   width: 60%;
 
   margin-left: 15%;
 }
 .noneclass{
-  padding-left: 27%;
+  padding-left: 28%;
   font-size: 75%;
 }

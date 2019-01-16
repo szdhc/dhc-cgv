@@ -1,15 +1,28 @@
-/* pages/index/index.wxss */
-@import "../../style/guide.wxss";
-
-/*电影地址*/
-
-.movieAddress {
+/* 水平显示 */
+ 
+.flex-wrp-row {
   display: flex;
   flex-direction: row;
 }
 
-.youjiantou{
-  float: right;
+.flex-wrp-cloumn{
+  display: flex;
+  flex-direction: column;
+}
+ 
+.item {
+  padding: 20rpx;
+  position: relative;
+}
+ 
+.item-left {
+   flex: 1; /* 重要 */
+   align-items:center;
+}
+ 
+.item-right {
+  position: relative;
+  align-items:center;
 }
 
 /* 轮播 */
@@ -47,33 +60,14 @@
   width: 40rpx;
 }
 
-
-/* 须知按钮 */
-
-.button1{
-  width: 26%;
-  font-size: 55%;
-  background-color: beige;
-  margin-right: 0%;
-  margin-top: -78%; 
-}
-
-/* 选项卡 */
-.swiper-tab{
-  width: 100%;
-  border-bottom: 1rpx solid #ccc;
-  text-align: center;
-  height: 55rpx;
-  line-height: 48rpx;
+.medium-font-size {
   font-weight: bold;
   font-size: 28rpx;
 }
-.swiper-tab-item{
-  display: inline-block;
-  width: 23.33%;
-  color:black;
+
+.regular-font-size {
+  font-size: 22rpx;
 }
-.active{
-  color:rgb(245, 113, 26);
-  border-bottom: 2rpx solid rgb(245, 113, 26);
-}
+
+
+
