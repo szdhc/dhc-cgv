@@ -1,45 +1,37 @@
-.containerTemplate{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.containerTemplateMiddle{
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  margin-left: 2%;
-}
-
-.containerTemplateRight{
-  display: flex;
-  flex-direction: column;
-  width: 15%;
-}
-
 .movieImage{
-  width: 39px;
-  height: 54px;
+  width: 110rpx;
+  height: 160rpx;
 }
+
+.content{
+  margin-left:5%;
+  /* overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;  */
+}
+
 .movieName{
   font-weight:bold;
-  font-size: 60%;
+  font-size: 28rpx;
 }
+
 .movieShow{
-  font-size: 55%;
+  font-size: 22rpx;
+  color: rgba(68, 63, 63, 0.87);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
 }
-.movieDirectorStarring{
-  font-size: 52%;
-}
+
 .moiveGrade{
   color: burlywood;
-  font-size: 49%;
+  font-size: 28rpx;
 }
 .movieStatus{
-  font-size:50%;
+  font-size:22rpx;
   color: #FFF;
-  background: bisque;
-  border-radius: 40%;
-  width: 95%;
+  background: rgb(224, 166, 94);
+  border-radius: 20rpx
 }
 /*使用 button::after{ border: none; } 来去除边框*/
 .movieStatus::after{

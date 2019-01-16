@@ -1,11 +1,31 @@
 /* pages/index/index.wxss */
 @import "../../style/guide.wxss";
 
-/*电影地址*/
-
-.movieAddress {
+/* 水平显示 */
+ 
+.flex-wrp-row {
   display: flex;
   flex-direction: row;
+}
+
+.flex-wrp-cloumn{
+  display: flex;
+  flex-direction: column;
+}
+ 
+.item {
+  padding: 20rpx;
+  position: relative;
+}
+ 
+.item-left {
+   flex: 1; /* 重要 */
+   align-items:center;
+}
+ 
+.item-right {
+  position: relative;
+  align-items:center;
 }
 
 .youjiantou{

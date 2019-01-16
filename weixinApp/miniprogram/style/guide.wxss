@@ -55,7 +55,7 @@ page {
 
 .guide {
   width: 100%;
-  padding: 40rpx;
+  /* padding: 40rpx; */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
