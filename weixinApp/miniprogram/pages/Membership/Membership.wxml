@@ -1,8 +1,5 @@
 <!--pages/Membership/Membership.wxml-->
 <view class="container">
-<view class="membershipTop">   
-  <label class='labelcard'>会员卡</label>
-</view>
   <view class="membershipinfo">   
       <input type='text' class='input' placeholder='请输入会员卡信息'></input>
       <button class="btn add" bindtap="">添加</button>

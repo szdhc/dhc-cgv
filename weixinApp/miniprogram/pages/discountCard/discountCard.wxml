@@ -1,16 +1,13 @@
 <!--pages/discountCard/discountCard.wxml-->
-<view class="discountTop">
-    <label class='labelcard'>代金券</label>
-  </view>
   <view class="discountTop">
     <image class="imageclass" src='../../images/emptyMembershipCard.png'></image>
   </view>
   <view class='textleft'>
     <text  class=''>你现在还没有代金券</text>
   </view>
-  <view class='lebalclass' bindtap='discountInfo'>
   <navigator url="../discountInfo/discountInfo" open-type="navigate" class="wodelist-text">
-    <label class='noneclass'>点击领取代金券</label>
-  </navigator>
+  <view class='lebalclass'  bindtap='discountInfo'>
+    <label class='noneclass' >点击领取代金券</label>
   </view>
+  </navigator>
   

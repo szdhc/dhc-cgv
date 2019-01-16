@@ -9,13 +9,18 @@
   font-size: 80%;
 }
 .imageclass{
-  padding-left: 13%;
+  padding-left: 34%;
   margin-top: 15%;
+  display: flex;    /*设置显示样式**/
+  justify-content: center; /**内容居中*/
+  width: 131px;
+  height: 100px;
   
 }
 .textleft{
-  padding-left: 30%;
+  padding-left: 34%;
   font-size: 75%;
+  margin-top: 2%;
   color:  rgb(177, 177, 177);
 }
 .lebalclass{
