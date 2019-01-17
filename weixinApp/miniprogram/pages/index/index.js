@@ -51,6 +51,7 @@ Page({
         duration: e.detail.value
       })
     },
+
     hotMovieList: [{
         movieImage: '../../images/201812131426092692802.jpg',
         movieName: '大黄蜂',
@@ -199,6 +200,7 @@ Page({
       }
     });
   },
+
   //轮播高度自适应——获取图片高度
   imgHeight: function(e) {
     var winWid = wx.getSystemInfoSync().windowWidth; //获取当前屏幕的宽度
@@ -209,6 +211,7 @@ Page({
       Height: swiperH //设置高度
     })
   },
+
   redirct: function() {
     wx.navigateTo({
       url: '../chooseMovie/chooseMovie',

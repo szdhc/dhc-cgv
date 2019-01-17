@@ -23,6 +23,7 @@
 
 .moiveGrade {
   color: burlywood;
+  margin-left:30rpx;
 }
 
 .movieStatus {
@@ -30,6 +31,7 @@
   color: #fff;
   background: rgb(224, 166, 94);
   border-radius: 20rpx;
+  top:50rpx;
 }
 
 /*使用 button::after{ border: none; } 来去除边框*/

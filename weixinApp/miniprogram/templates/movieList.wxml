@@ -22,7 +22,7 @@
       <view>
         <text class='medium-font-size moiveGrade'>{{moiveGrade}}</text>
       </view>
-      <view>
+      <view class=''>
         <button class='movieStatus' bindtap='redirct'>{{movieStatus}}</button>
       </view>
     </view>
