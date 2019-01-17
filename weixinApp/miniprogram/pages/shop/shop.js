@@ -54,6 +54,12 @@ Page({
     },
   },
 
+  jumpCusInf: function() {
+    wx.navigateTo({
+      url: '/pages/notice/notice',
+    })
+  },
+
   onLoad: function (options) {
     qqmapsdk = new QQMapWX({
       key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'

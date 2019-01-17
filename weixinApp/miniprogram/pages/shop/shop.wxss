@@ -77,3 +77,30 @@
   color:rgb(245, 113, 26);
   border-bottom: 2rpx solid rgb(245, 113, 26);
 }
+
+.light-size{
+  color:#b2b2b2;
+  font-size:20rpx;
+}
+
+.bg-pg{
+  background: #f8f6f6ec;
+  padding-top: 4rpx;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  padding-bottom: 10rpx;
+  align-items: center;
+  justify-content:center;
+}
+
+
+.btn1 {
+  margin-left: 350rpx;
+}
+
+.btn1Status {
+  font-size: 20rpx;
+  color: #b2b2b2;
+  background: #f8f6f6ec;
+  border-radius: 5rpx;
+}
