@@ -1,29 +1,24 @@
 Page({
+
   data: {
-    avatarUrl: './user-unlogin.png',
-    userInfo: {},
-    logged: false,
-    takeSession: false,
+    // openid: '',
     movieAddress: '苏州平江万达广场店',
-    requestResult: '',
-    openid: '',
     currProvince: '',
     currCity: '',
-    currentTab: 0,
     bannerUrls: [{
-      url: 'https://www.71big.com/heqing/zhaojingwang/common/images/banner1.jpg',
+      url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
       linkUrl: ''
     },
     {
-      url: 'https://www.71big.com/heqing/zhaojingwang/common/images/banner1.jpg',
+      url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=77c8b34af1b44fd990e6e201df49f827&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201403%2F20%2F20140320140243_5MySw.jpeg',
       linkUrl: ''
     },
     {
-      url: 'https://www.71big.com/heqing/zhaojingwang/common/images/banner1.jpg',
+      url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378838&di=e01f784abb225d79416180122bc456e1&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0118cf5837d75ea801219c77f35e67.jpg',
       linkUrl: ''
     },
     {
-      url: 'https://www.71big.com/heqing/zhaojingwang/common/images/banner1.jpg',
+      url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378837&di=6127169e3cc9a444bf43da0906e9a57b&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01ce8b582439aea84a0e282ba855d9.jpg',
       linkUrl: ''
     }
     ],
@@ -54,19 +49,13 @@ Page({
     },
   },
 
-  jumpCusInf: function() {
-    wx.navigateTo({
-      url: '/pages/notice/notice',
-    })
-  },
-
   onLoad: function (options) {
     qqmapsdk = new QQMapWX({
       key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
     });
-    this.setData({
-      openid: getApp().globalData.openid
-    })
+    // this.setData({
+    //   openid: getApp().globalData.openid
+    // })
   },
 
   onShow: function () {
@@ -88,9 +77,9 @@ Page({
     });
     // 调用接口
     qqmapsdk.search({
-      keyword: 'CGV影城',
+      keyword: 'CVG影城',
       success: function (res) {
-        console.log('CGV影城:' + res);
+        console.log('CVG影城:' + res);
       },
       fail: function (res) {
         console.log(res);
@@ -107,10 +96,12 @@ Page({
       type: 'wgs84',
       altitude: true,
       success: function (res) {
-        // success  
-        var latitude = res.latitude
-        var longitude = res.longitude
-        vm.getLocal(latitude, longitude);
+        if (res.errMsg === 'getLocation:ok') {
+          // success  
+          var latitude = res.latitude
+          var longitude = res.longitude
+          vm.getLocal(latitude, longitude);
+        }
       },
       fail: function (res) {
         console.error(error);
@@ -132,10 +123,12 @@ Page({
       },
       success: function (res) {
         console.log(JSON.stringify(res));
-        that.setData({
-          currProvince: res.result.address_component.province,
-          currCity: res.result.address_component.city
-        })
+        if (res.status === 0) {
+          that.setData({
+            currProvince: res.result.address_component.province,
+            currCity: res.result.address_component.city
+          })
+        }
       },
       fail: function (error) {
         console.error(error);
@@ -145,26 +138,27 @@ Page({
       }
     });
   },
+
   //轮播高度自适应——获取图片高度
   imgHeight: function (e) {
     var winWid = wx.getSystemInfoSync().windowWidth; //获取当前屏幕的宽度
     var imgh = e.detail.height; //图片高度
     var imgw = e.detail.width; //图片宽度
-    var swiperH = winWid * imgh / imgw + "px" / 2
+    var swiperH = winWid * imgh / imgw + "px"
     this.setData({
       Height: swiperH //设置高度
     })
   },
 
   // 购物须知跳转事件
-  jumpPage() {
+  jumpCusInf() {
     wx.navigateTo({
       url: '/pages/notice/notice',
     })
   },
 
   //选择影城跳转事件
-  jumpcinema(){
+  jumpcinema() {
     wx.navigateTo({
       url: '/pages/jumpcinema/jumpcinema',
     })

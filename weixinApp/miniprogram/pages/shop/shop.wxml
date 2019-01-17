@@ -2,17 +2,19 @@
 <view class="container">
   <!-- 首页banner -->
   <view class="guide">
-    <div class="movieAddress">
-      <!-- <div class="float:lift">
-        <button class='button1' bindtap='jumpPage'>顾客须知</button>
-      </div> -->
-      <div class="float:left;">
-        <icon class='iconfont icon-weibiaoti-3' bindtap='jumpcinema'>{{movieAddress}}</icon>
-      </div>
-      <div style="float:right;margin-right:2%">
-        <icon class='iconfont icon-youjiantou'></icon>
-      </div>
-    </div>
+    <view class='flex-wrp-row item'>
+      <view class='item-left flex-wrp-row'>
+        <icon class='iconfont icon-weibiaoti-3'>
+          <text> {{movieAddress}}</text>
+        </icon>
+      </view>
+      <view class='item-left flex-wrp-row'>
+        <text class='medium-font-size'></text>
+      </view>
+      <view class='item-right flex-wrp-row'>
+        <icon class='iconfont icon-youjiantou icon-right'></icon>
+      </view>
+    </view>
 
   <view class="swiper-tab">
       <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">卖品</view>
@@ -21,15 +23,8 @@
 
     <!-- <text class="headline">{{currProvince}}</text>
     <text class="headline">{{currCity}}</text> -->
-    <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:{{Height}}'>
-      <block wx:for="{{ bannerUrls }}" wx:key="{{bannerUrls}}">
-        <swiper-item>
-          <view>
-            <image class="slide-image" src="{{ item.url }}" bindload='imgHeight' mode='widthFix'></image>
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
+    <import src='../../templates/banner.wxml' />
+    <template is='bannnerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
     
     <view class="flex-wrp-row bg-pg">
       <view class="flex-wrp-column">
