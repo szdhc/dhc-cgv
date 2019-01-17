@@ -1,0 +1,11 @@
+<template name='bannnerTemplate'>
+  <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:{{Height}}'>
+    <block wx:for="{{ bannerUrls }}" wx:key="{{bannerUrls}}">
+      <swiper-item>
+        <view>
+          <image class="slide-image" src="{{ item.url }}" bindload='imgHeight' mode='widthFix'></image>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</template>

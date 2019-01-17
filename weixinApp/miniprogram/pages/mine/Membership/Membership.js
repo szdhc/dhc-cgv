@@ -5,18 +5,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-      membershipName: '至尊会员',
+      membershipName: '',
       membershipShow: '贵宾座',
       membershipLevel: 'VIP11',
-      membershipLevelinfo: '还差10000经验升级'
+      membershipLevelinfo: '还差10000经验升级',
+      membershipDiscount:'凭此卡订票可享受8.5折优惠',
+      msg:'',
+      mbsshow:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(this.data.membershipName!==null){
-      
+    if(this.data.membershipName==''){
+      this.setData({
+        msg: 'block',
+        mbsshow: 'none'
+      });
+    }else{
+      this.setData({
+        msg: 'none',
+        mbsshow: 'flex'
+      });
     }
   },
 
@@ -68,10 +79,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  // membershipinfo: [{
-  //   membershipName: '至尊会员',
-  //   membershipShow: '贵宾座',
-  //   membershipLevel: 'VIP11',
-  //   membershipLevelinfo: '还差10000经验升级',
-  // }]
+  buycard(){
+    console.log("快去买会员卡吧");
+  }
 })

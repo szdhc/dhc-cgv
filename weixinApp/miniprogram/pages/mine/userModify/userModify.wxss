@@ -44,3 +44,6 @@
   padding-top: 7%;
   margin-left: 3%;
 }
+.region1{
+  margin-left: 65%;
+}

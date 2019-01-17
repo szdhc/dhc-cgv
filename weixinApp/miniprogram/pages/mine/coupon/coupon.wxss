@@ -64,7 +64,8 @@
 .stamp_right{
   padding: 2%;
 	width:30%;
-	background: #F8E71C;
+	/* background: #F8E71C; */
+  background: rgba(4, 101, 212, 0.959);
 }
 .circle_list{
 	position:absolute;
@@ -97,4 +98,33 @@
 .stamp_info{
   display: flex;
   flex-direction: column; 
+}
+.stamp_top{
+  padding-left: 17%;
+  margin-top: 3%;
+  font-size: 90%;
+}
+.stamp_msg{
+  margin-top: 1%;
+  font-size: 60%;
+  padding-left: 17%;
+}
+.stamp_sign{
+  padding: 10%;
+  font-size: 75%;
+  color: red;
+  font-weight: bold;
+  margin-left: 10%;
+  margin-top: 15%;
+}
+.stamp_price{
+  font-weight: bold;
+  color: red;
+  margin-left: 35%;
+  margin-top: -38%;
+}
+.btn_use{
+  width: 58%;
+  background: rgba(243, 30, 30, 0.836);
+  margin-top: 32%;
 }
