@@ -6,21 +6,21 @@
       </image>
     </view>
     <!--电影名，特性，导演，主演-->
-    <view class='flex-wrp-cloumn content'>
+    <view class='flex-wrp-cloumn content margin-left hidden-text'>
       <view>
-        <text class='movieName'>{{movieName}}</text>
+        <text class='medium-font-size'>{{movieName}}</text>
       </view>
       <view>
-        <text class='movieShow'>{{movieShow}}</text>
+        <text class='regular-font-size movieShow'>{{movieShow}}</text>
       </view>
       <view>
-        <text class='movieShow'>{{movieDirectorStarring}}</text>
+        <text class='regular-font-size movieShow'>{{movieDirectorStarring}}</text>
       </view>
     </view>
     <!--评分、购票/预售-->
-    <view class='flex-wrp-cloumn '>
+    <view class='flex-wrp-cloumn margin-left'>
       <view>
-        <text class='moiveGrade'>{{moiveGrade}}</text>
+        <text class='medium-font-size moiveGrade'>{{moiveGrade}}</text>
       </view>
       <view>
         <button class='movieStatus' bindtap='redirct'>{{movieStatus}}</button>

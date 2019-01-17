@@ -1,39 +1,39 @@
-.movieImage{
+.movieImage {
   width: 110rpx;
   height: 160rpx;
 }
 
-.content{
-  margin-left:5%;
-  /* overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;  */
+.margin-left {
+  margin-left: 35rpx;
 }
 
-.movieName{
-  font-weight:bold;
-  font-size: 28rpx;
+.content {
+  width: 430rpx;
 }
 
-.movieShow{
-  font-size: 22rpx;
-  color: rgba(68, 63, 63, 0.87);
+.hidden-text {
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
 }
 
-.moiveGrade{
+.movieShow {
+  color: rgba(68, 63, 63, 0.87);
+}
+
+.moiveGrade {
   color: burlywood;
-  font-size: 28rpx;
 }
-.movieStatus{
-  font-size:22rpx;
-  color: #FFF;
+
+.movieStatus {
+  font-size: 22rpx;
+  color: #fff;
   background: rgb(224, 166, 94);
-  border-radius: 20rpx
+  border-radius: 20rpx;
 }
+
 /*使用 button::after{ border: none; } 来去除边框*/
-.movieStatus::after{
+
+.movieStatus::after {
   border: none;
 }
