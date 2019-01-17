@@ -1,67 +1,96 @@
 <!--userConsole.wxml-->
 <view class="container">
-  <!-- 用户 openid -->
-  <view class="userinfo">
-    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" bindtap='Userinfo' style="background-image: url({{avatarUrl}})"></button>
-    <view>
-      <button class="userinfo-nickname" bindtap="onGetOpenid">未登陆></button>
+  <view class='guide'>
+    <!-- 用户 openid -->
+    <view class="userinfo">
+      <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" bindtap='Userinfo' style="background-image: url({{avatarUrl}})"></button>
+      <text class="userinfo-nickname" bindtap="onGetOpenid">CGV影迷</text>
+      <button class="userinfo-tequan" bindtap="">我的特权</button>
     </view>
-    <view>
-      <button class="userinfo-tequan" bindtap="">特权等级V11></button>
+    <view class='title'>
+    <navigator url="../mine/Membership/Membership" hover-class="none" open-type="navigate" class="wodelist-text">
+    <view class='flex-wrp-row item border' style='background: #fff;'>
+    
+      <view class='item-left flex-wrp-row'>
+        <!-- <icon class='iconfont icon-weibiaoti-3' > -->
+        <icon class='iconfont icon-huiyuanqia' >
+          <text style='padding-left:20rpx'>会员卡</text>
+        </icon>
+      </view>
+      <view class='item-left flex-wrp-row'>
+        <text class='medium-font-size'></text>
+      </view>
+      <view class='item-right flex-wrp-row'>
+        <icon class='iconfont icon-youjiantou icon-right'></icon>
+      </view>
+      
     </view>
-  </view>
-
-  <!-- 会员卡 -->
-  <view class="uploader">
-    <navigator url="../mine/Membership/Membership"  hover-class="none" open-type="navigate" class="wodelist-text">
-      <icon class='iconfont icon-huiyuanqia'/>
-      <text class='wodelist'>会员卡</text>
-      <icon class='iconfont icon-youjiantou'/>
+    </navigator>
+    <navigator url="../mine/coupon/coupon" hover-class="none" open-type="navigate" class="wodelist-text">
+    <view class='flex-wrp-row item border' style='background: #fff;'>
+      <view class='item-left flex-wrp-row'>
+        <!-- <icon class='iconfont icon-weibiaoti-3' > -->
+        <icon class='iconfont icon-youhuiquan' >
+          <text style='padding-left:20rpx'>优惠券</text>
+        </icon>
+      </view>
+      <view class='item-left flex-wrp-row'>
+        <text class='medium-font-size'></text>
+      </view>
+      <view class='item-right flex-wrp-row'>
+        <icon class='iconfont icon-youjiantou icon-right'></icon>
+      </view>
+    </view>
+    </navigator>
+    <navigator url="../mine/discountCard/discountCard" hover-class="none" open-type="navigate" class="wodelist-text">
+    <view class='flex-wrp-row item border' style='background: #fff;'>
+      <view class='item-left flex-wrp-row'>
+        <!-- <icon class='iconfont icon-weibiaoti-3' > -->
+        <icon class='iconfont icon-3dtouchdaijinquanxiangqingliebiao' >
+          <text style='padding-left:20rpx'>代金券</text>
+        </icon>
+      </view>
+      <view class='item-left flex-wrp-row'>
+        <text class='medium-font-size'></text>
+      </view>
+      <view class='item-right flex-wrp-row'>
+        <icon class='iconfont icon-youjiantou icon-right'></icon>
+      </view>
+    </view>
+    </navigator>
+    <navigator url="../mine/myOrder/myOrder" hover-class="none" open-type="navigate" class="wodelist-text">
+    <view class='flex-wrp-row item border' style='background: #fff;'>
+      <view class='item-left flex-wrp-row'>
+        <!-- <icon class='iconfont icon-weibiaoti-3' > -->
+        <icon class='iconfont icon-dingdan' >
+          <text style='padding-left:20rpx'>我的订单</text>
+        </icon>
+      </view>
+      <view class='item-left flex-wrp-row'>
+        <text class='medium-font-size'></text>
+      </view>
+      <view class='item-right flex-wrp-row'>
+        <icon class='iconfont icon-youjiantou icon-right'></icon>
+      </view>
+    </view>
+     </navigator>
+     <navigator url="../mine/myPoints/myPoints" hover-class="none" open-type="navigate" class="wodelist-text">
+    <view class='flex-wrp-row item border' style='background: #fff;'>
+      <view class='item-left flex-wrp-row'>
+        <!-- <icon class='iconfont icon-weibiaoti-3' > -->
+        <icon class='iconfont icon-icon' >
+          <text style='padding-left:20rpx'>我的积分</text>
+        </icon>
+      </view>
+      <view class='item-left flex-wrp-row'>
+        <text class='medium-font-size'></text>
+      </view>
+      <view class='item-right flex-wrp-row'>
+        <icon class='iconfont icon-youjiantou icon-right'></icon>
+      </view>
+    </view>
     </navigator>
   </view>
-
-  <!-- 优惠券 -->
-  <view class="uploader">
-    <navigator url="../mine/coupon/coupon"  hover-class="none" open-type="navigate" class="wodelist-text">
-      <icon class='iconfont icon-youhuiquan'/>
-      <text class='wodelist'>优惠券</text>
-      <icon class='iconfont icon-youjiantou'/>
-    </navigator>
-  </view>
-
-  <!-- 代金券 -->
-  <view class="uploader">
-    <navigator url="../mine/discountCard/discountCard"  hover-class="none" open-type="navigate" class="wodelist-text">
-      <icon class='iconfont icon-3dtouchdaijinquanxiangqingliebiao'/>
-      <text class='wodelist'>代金券</text>
-      <icon class='iconfont icon-youjiantou'/>
-    </navigator>
-  </view>
-
-  <!-- 我的订单 -->
-  <view class="uploader">
-    <navigator url="../mine/myOrder/myOrder"  hover-class="none" open-type="navigate" class="wodelist-text">
-      <icon class='iconfont icon-dingdan'/>
-      <text class='wodelist'>我的订单</text>
-      <icon class='iconfont icon-youjiantou'/>
-    </navigator>
-  </view>
-
-  <!-- 想看列表 -->
-  <view class="uploader">
-    <navigator url="../addFunction/addFunction"  hover-class="none" open-type="navigate" class="wodelist-text">
-      <icon class='iconfont icon-dianying'/>
-      <text class='wodelist'>想看列表</text>
-      <icon class='iconfont icon-youjiantou'/>
-    </navigator>
-  </view>
-
-  <!-- 我的积分 -->
-  <view class="uploader">
-    <navigator url="../mine/myPoints/myPoints"  hover-class="none" open-type="navigate" class="wodelist-text">
-      <icon class='iconfont icon-icon'/>
-      <text class='wodelist'>我的积分</text>
-      <icon class='iconfont icon-youjiantou'/>
-    </navigator>
+ 
   </view>
 </view>

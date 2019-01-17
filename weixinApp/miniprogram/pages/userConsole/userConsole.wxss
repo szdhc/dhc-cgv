@@ -1,5 +1,5 @@
 /**userConsole.wxss**/
-
+@import "../../style/guide.wxss";
 page {
   background: #f6f6f6;
   display: flex;
@@ -11,7 +11,8 @@ page {
   width: 100%;
   display: flex;
   flex-direction: row;
-  background-color: #007aff;
+  background: rgb(224, 166, 94);
+  text-align:right;
 }
 
 .uploader, .tunnel {
@@ -31,10 +32,11 @@ page {
 .userinfo-avatar {
   width: 100rpx;
   height: 100rpx;
-  margin: 20rpx;
+  margin: 50rpx;
   border-radius: 50%;
   background-size: cover;
   background-color: white;
+  margin-top: 80rpx;
 }
 
 .userinfo-avatar:after {
@@ -42,32 +44,37 @@ page {
 }
 
 .userinfo-nickname {
-  margin-top: 9%;
+  font-weight:600;
+  margin-top: 14%;
   font-size: 32rpx;
   color: #fff;
   background-size: cover;
   background-color: transparent;
+  margin-left: -22rpx;
 }
 
 .userinfo-nickname::after {
   border: none;
 }
 .userinfo-tequan{
-  margin-top: 5%;
-  font-size:32rpx;
-  background-color: transparent;
+  margin-top: 12%;
+  font-size:28rpx;
+  background-color: rgba(255, 0, 0, 0.596);
   color: #fff;
   background-size: cover;
+  margin-left: 270rpx;
+  height:70rpx;
+  border-bottom-left-radius:1.5em;
+  border-top-left-radius:1.5em;
 }
 .userinfo-tequan::after {
   border: none;
 }
 
 .uploader, .tunnel {
-  height: auto;
+  height: 90rpx;
   padding: 0 0 0 40rpx;
   flex-direction: column;
-  align-items: flex-start;
   box-sizing: border-box;
 }
 
@@ -162,7 +169,12 @@ page {
 
 .wodelist-text {
   width: 100%;
-  line-height: 210%;
-  font-size: 34rpx;
-  color: #007aff;
+  color: rgb(224, 166, 94);
+}
+.title{
+  margin-top: 18rpx;
+  width: 100%;
+}
+.border{
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }

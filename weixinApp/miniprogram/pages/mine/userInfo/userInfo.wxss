@@ -11,7 +11,7 @@
   
 }
 .list{
-  
+  border: none;
   
 }
 .righttest{
@@ -20,8 +20,6 @@
   
 }
 .list-msg{
- 
-
 
 }
 .btn-class{
@@ -37,6 +35,5 @@ font-size:75%;
 }
 .uploader{
   height: 100rpx;
-  padding-top: 3%;
   font-size: 80%;
 }
