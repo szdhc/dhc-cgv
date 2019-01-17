@@ -7,6 +7,7 @@
   <view class='userinfo'>
     <text class='list'>昵称</text>
      <text class='righttest'>{{username}}</text>
+     <icon class='iconfont icon-youjiantou icon-right '></icon>
   </view>
   <view class='userinfo'>
     <text class='list'>性别</text>
@@ -18,7 +19,7 @@
   </view>
   <view class='userinfo'>
     <text class='list'>姓氏</text>
-     <text class='righttest'>未完善></text>
+     <text class='righttest'>未完善</text>
   </view>
   <view class='userinfo'>
     <text class='list'>生日</text>
@@ -31,12 +32,12 @@
   </view>
   <view class='userinfo'>
     <text class='list'>密码</text>
-    <text class='righttest'>未完善></text>
+    <text class='righttest'>未完善</text>
 
   </view>
   <view class='userinfo'>
     <text class='list'>喜欢的电影</text>
-    <text class='righttest1'>未完善></text>
+    <text class='righttest1'>未完善</text>
 
   </view>
   <view class='userinfo'>
@@ -59,7 +60,7 @@
   </view>
   <view class='userinfo'>
     <text class='list'>区域</text>
-    <text class='righttest'>未完善></text>
+    <text class='righttest'>未完善</text>
 
   </view>
   <view class='userinfo'>
