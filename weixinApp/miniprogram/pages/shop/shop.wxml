@@ -30,6 +30,15 @@
         </swiper-item>
       </block>
     </swiper>
+    
+    <view class="flex-wrp-row bg-pg">
+      <view class="flex-wrp-column">
+        <text class="light-size">2019年1月16日星期五</text>
+      </view>
+      <view class="btn1 flex-wrp-column">
+        <button class="btn1Status button-hover" bindtap='jumpCusInf'>客户须知</button>
+      </view>
+    </view>
 
     <swiper current="{{currentTab}}" duration="300" bindchange="swiperTab">
       <swiper-item><view>第一屏</view></swiper-item>
