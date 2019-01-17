@@ -1,6 +1,6 @@
 var QQMapWX = require('../../qqmap-wx-jssdk/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
-
+// var bannerJs = require("../../templates/banner.js");
 // pages/index/index.js
 Page({
 
@@ -118,6 +118,7 @@ Page({
     // this.setData({
     //   openid: getApp().globalData.openid
     // })
+    // bannerJs.imgHeight(this);
   },
 
   onShow: function() {

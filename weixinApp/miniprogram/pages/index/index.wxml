@@ -18,17 +18,8 @@
     </view>
     <!-- <text class="headline">{{currProvince}}</text>
     <text class="headline">{{currCity}}</text> -->
-    <!-- <import src='../../templates/banner.wxml' />
-    <template is='bannnerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls}}' /> -->
-    <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:{{Height}}'>
-      <block wx:for="{{ bannerUrls }}" wx:key="{{bannerUrls}}">
-        <swiper-item>
-          <view>
-            <image class="slide-image" src="{{ item.url }}" bindload='imgHeight' mode='widthFix'></image>
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
+    <import src='../../templates/banner.wxml' />
+    <template is='bannnerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
     <!-- <text class="p">1. 打开云开发控制台</text>
     <image class="image1" src="../../images/console-entrance.png" mode="aspectFit"></image>
     <text class="p">2. 切换到 "用户管理" 标签页</text>
