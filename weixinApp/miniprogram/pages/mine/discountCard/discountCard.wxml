@@ -1,6 +1,6 @@
 <!--pages/discountCard/discountCard.wxml-->
   <view class="discountTop">
-    <image class="imageclass" src='../../images/emptyMembershipCard.png'></image>
+    <image class="imageclass" src='../../../images/emptyMembershipCard.png'></image>
   </view>
   <view class='textleft'>
     <text  class=''>你现在还没有代金券</text>

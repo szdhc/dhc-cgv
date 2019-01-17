@@ -17,6 +17,7 @@ Page({
     cinemaindex:0,
     childindex:0,
     marryIndex:0,
+    region: ['广东省', '广州市', '海珠区'],
     
   },
 
@@ -119,4 +120,20 @@ Page({
       childindex: e.detail.value
     })
   },
+  modefySubmit(){
+    // wx.showToast({
+    //   title: '信息已经保存',
+    //   icon: 'success',
+    //   duration: 2000
+    // });
+    wx.navigateTo({
+      url: '../../userConsole/userConsole',
+    })
+  },
+  bindRegionChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      region: e.detail.value
+    })
+  }
 })

@@ -7,9 +7,8 @@
   <view class='userinfo'>
     <text class='list'>昵称</text>
      <text class='righttest'>{{username}}</text>
-     <icon class='iconfont icon-youjiantou icon-right '></icon>
   </view>
-  <view class='userinfo'>
+  <view class='userinfo'> 
     <text class='list'>性别</text>
     <picker bindchange="bindCasPickerChange" class='righttest' value='{{casIndex}}' range="{{sex}}">
       <view>
@@ -60,7 +59,11 @@
   </view>
   <view class='userinfo'>
     <text class='list'>区域</text>
-    <text class='righttest'>未完善</text>
+      <picker mode="region" class='region1' bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <view class="picker">
+      {{region[1]}}
+    </view>
+  </picker>
 
   </view>
   <view class='userinfo'>
@@ -79,5 +82,5 @@
       </view>
     </picker>
   </view>
-    <button class='btn-class'>确定</button>
+    <button class='btn-class' bindtap='modefySubmit'>确定</button>
 </view>

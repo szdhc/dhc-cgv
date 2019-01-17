@@ -6,7 +6,6 @@ Page({
    */
   data: {
     avatarUrl: '',
-    username:'静待',
     sex:'男',
     level:'VIP11'
   },
@@ -16,7 +15,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      avatarUrl: options.avatarUrl
+      avatarUrl: options.avatarUrl,
+      username:options.username
     });
 
     console.log("touxiang:" + this.data.avatarUrl);

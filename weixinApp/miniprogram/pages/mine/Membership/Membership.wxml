@@ -4,19 +4,14 @@
       <input type='text' class='input' placeholder='请输入会员卡信息'></input>
       <button class="btn add" bindtap="">添加</button>
   </view>
-  <view class='lebalclass' id="lebalclass">
+  <view class='lebalclass' style='display:{{msg}}' bindtap='buycard' id="lebalclass">
     <label class='noneclass'>暂无绑定卡</label>
   </view>
-  <view class='info'>
+  <view class='info' style='display:{{mbsshow}}'>
       <text class=''>{{membershipName}}</text>
       <text class=''>{{membershipShow}}</text>
       <text class=''>{{membershipLevel}}</text>
       <text class=''>{{membershipLevelinfo}}</text>
+      <text class=''>{{membershipDiscount}}</text>
   </view>
-  
-
-<view class='buy'>
-  <button class="btn buycard" bindtap="">购买</button>
-  </view>
-  
 </view>
