@@ -1,0 +1,14 @@
+/* pages/jumpcinema/jumpcinema.wxss */
+.top{
+  width: 85%;
+  height: 20%;
+  background-color: rgba(238, 236, 236, 0.671);
+  margin-top: 3%;
+
+}
+
+.input{
+  border: 2px solid gray;
+  font-size: 75%;
+  width: 99%;
+}

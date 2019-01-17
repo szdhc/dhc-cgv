@@ -1,0 +1,12 @@
+<!--pages/jumpcinema/jumpcinema.wxml-->
+<view class="container">
+  <view class='top'>
+    <input type='text' class='input' placeholder='输入影城名查询'></input>
+  </view>
+  <view class='mid'>
+
+  </view>
+  <view class='down'>
+
+  </view>
+</view>

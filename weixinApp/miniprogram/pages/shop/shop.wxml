@@ -7,7 +7,7 @@
         <button class='button1' bindtap='jumpPage'>顾客须知</button>
       </div> -->
       <div class="float:left;">
-        <icon class='iconfont icon-weibiaoti-3'>{{movieAddress}}</icon>
+        <icon class='iconfont icon-weibiaoti-3' bindtap='jumpcinema'>{{movieAddress}}</icon>
       </div>
       <div style="float:right;margin-right:2%">
         <icon class='iconfont icon-youjiantou'></icon>
