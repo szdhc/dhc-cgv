@@ -28,3 +28,38 @@
     </view>
   </view>
 </template>
+
+<template name='showTimeTemplate'>
+  <view class='flex-wrp-row item'>
+    <!--时间-->
+    <view class='flex-wrp-cloumn content'>
+      <view>
+        <text class='movieName'>{{beginTime}}</text>
+      </view>
+      <view>
+        <text class='movieShow'>{{endTime}}</text>
+      </view>
+    </view>
+    <!--地点-->
+    <view class='flex-wrp-cloumn coloum'>
+      <view>
+        <text class='movieName'>{{address}}</text>
+      </view>
+      <view>
+        <text class='movieShow'>{{addressDetial}}</text>
+      </view>
+    </view>
+        <!--价格-->
+    <view class='flex-wrp-cloumn coloum'>
+      <view>
+        <text class='movieName'>{{price}}</text>
+      </view>
+    </view>
+    <!--特惠-->
+    <view class='flex-wrp-cloumn coloum'>
+      <view>
+        <button class='movieStatus' bindtap='redirct'>特惠</button>
+      </view>
+    </view>
+  </view>
+</template>

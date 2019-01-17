@@ -215,7 +215,7 @@ Page({
 
   redirct: function() {
     wx.navigateTo({
-      url: '../chooseMovie/chooseMovie',
+      url: '../index/chooseMovie/chooseMovie',
     })
   }
 

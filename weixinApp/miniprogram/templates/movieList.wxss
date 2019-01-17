@@ -39,3 +39,7 @@
 .movieStatus::after {
   border: none;
 }
+
+.coloum{
+  margin-left: 15%;
+}
