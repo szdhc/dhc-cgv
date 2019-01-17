@@ -19,7 +19,8 @@
     "pages/mine/myPoints/myPoints",
     "pages/buyTickets/buyTickets",
     "pages/notice/notice",
-    "pages/chooseMovie/chooseMovie"
+    "pages/chooseMovie/chooseMovie",
+    "pages/jumpcinema/jumpcinema"
     
 
   ],

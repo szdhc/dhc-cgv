@@ -157,6 +157,13 @@ Page({
     })
   },
 
+  //选择影城跳转事件
+  jumpcinema(){
+    wx.navigateTo({
+      url: '/pages/jumpcinema/jumpcinema',
+    })
+  },
+
   //滑动切换
   swiperTab: function (e) {
     var that = this;
