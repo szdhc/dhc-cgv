@@ -11,14 +11,35 @@ Page({
     tipsshow: 'block',
     show: false,
     selectData: ['全部', '消费', '签到'], //下拉列表的数据
-    index: 0 //选择的下拉列表下标
+    index: 0, //选择的下拉列表下标
+    pointInfo: [],
+    pointInfoIndex: 0
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.setData({
+      pointInfo: [{
+        'a': '2018-1-17',
+        'b': 'APP登录',
+        'c': '+7'
+      }, {
+        'a': '2018-1-18',
+        'b': 'APP登录',
+        'c': '+8'
+      }, {
+        'a': '2019-1-17',
+        'b': '消费',
+        'c': '-8'
+      }, {
+        'a': '2019-1-18',
+        'b': '消费',
+        'c': '-8'
+      }]
+    });
   },
 
   /**
@@ -76,29 +97,58 @@ Page({
     });
   },
 
-  optionTap: function() {
+  optionTap: function(e) {
     let Index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
     this.setData({
       index: Index,
       show: !this.data.show
     });
-  },
+    if (this.data.index == 0) {
+      this.setData({
+        pointInfo: [{
+          'a': '2018-1-17',
+          'b': 'APP登录',
+          'c': '+7'
+        }, {
+          'a': '2018-1-18',
+          'b': 'APP登录',
+          'c': '+8'
+        }, {
+          'a': '2019-1-17',
+          'b': '消费',
+          'c': '-8'
+        }, {
+          'a': '2019-1-18',
+          'b': '消费',
+          'c': '-8'
+        }]
+      });
+    } else if (this.data.index == 1) {
+      this.setData({
+        pointInfo: [{
+          'a': '2019-1-17',
+          'b': '消费',
+          'c': '-8'
+        }, {
+            'a': '2019-1-18',
+            'b': '消费',
+            'c': '-8'
+          }
+        ]
+      });
 
-  toggle: function() {
-    var list_state = this.data.state,
-      first_state = this.data.first_click;
-    if (!first_state) {
+    } else if (this.data.index == 2) {
       this.setData({
-        first_click: true
-      });
-    }
-    if (list_state) {
-      this.setData({
-        state: false
-      });
-    } else {
-      this.setData({
-        state: true
+        pointInfo: [{
+          'a': '2018-1-17',
+          'b': 'APP登录',
+          'c': '+7'
+        }, {
+            'a': '2018-1-18',
+            'b': 'APP登录',
+            'c': '+8'
+          }
+        ]
       });
     }
   }

@@ -5,8 +5,8 @@
   </view>
   <view class='pointinfo'>
     <text class='textclass'>积分明细</text>
-    
-    <!-- <button id="slide" class='rightButton' bindtap="toggle">▼</button> -->
+    <view class='textkong'>
+    </view>
     <view class='select_box'>
       <view class='select' catchtap='selectTap'>
       <text class='righttext'>全部</text>
@@ -17,7 +17,47 @@
       </view>
     </view>
   </view>
-  <view>
+  <!-- <view>
     <text class='textCenter'>仅显示近12个月的记录</text>
+  </view> -->
+  <view class='itemTop'>
+    <text class='textleft'>日期</text>
+    <text class='textmiddle'>操作</text>
+    <text class='textright'>积分变化</text>
   </view>
+  
+  <view class="flex-wrp-row item">
+    <view class='flex-wrp-column content'>
+      <view wx:for='{{pointInfo}}'  wx:key='this' class='msgtext' data-index='{{pointInfoIndex}}'>
+      <text >{{item.a}}</text>
+      </view>
+    </view>
+    <view class='flex-wrp-column content1'>
+      <view wx:for='{{pointInfo}}'  wx:key='this' class='msgtext' data-index='{{pointInfoIndex}}'>
+      <text >{{item.b}}</text>
+      </view>
+    </view>
+    <view class='flex-wrp-column content2'>
+      <view wx:for='{{pointInfo}}'  wx:key='this' class='msgtext' data-index='{{pointInfoIndex}}'>
+      <text >{{item.c}}</text>
+      </view>
+    </view>
+  </view>
+
+
+  <!-- <text wx:for='{{pointInfo}}' class='itemTop' wx:key='this' data-index='{{pointInfoIndex}}'>{{item.a}}{{item.b}}{{item.c}}</text> -->
+  <!-- <view class="flex-wrap-column">
+  <text wx:for='{{pointInfo}}' class='textleft' wx:key='this' data-index='{{pointInfoIndex}}'>{{item.a}}</text>
+  </view>
+  <view class="flex-wrap-column">
+  <text wx:for='{{pointInfo}}' class='textmiddle' wx:key='this' data-index='{{pointInfoIndex}}'>{{item.b}}</text>
+  </view>
+  <view class="flex-wrap-column">
+  <text wx:for='{{pointInfo}}' class='textright' wx:key='this' data-index='{{pointInfoIndex}}'>{{item.c}}</text>
+  </view> -->
+  <!-- <view class='itemTop'>
+    <text class='textleft'>{{pointInfo[0]}}</text>
+    <text class='textmiddle'>{{pointInfo[1]}}</text>
+    <text class='textright'>{{pointInfo[2]}}</text>
+  </view> -->
 </view>

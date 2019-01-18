@@ -1,4 +1,7 @@
 /* pages/myPoints/myPoints.wxss */
+page{
+  background: #f6f6f6;
+}
 .userinfo {
   width: 100%;
   display: flex;
@@ -17,13 +20,14 @@
   margin-left: -23%;
 }
 .pointinfo{
+  background: white;
   width: 100%;
   font-size: 75%;
   /* background-color: #dee1e459; */
   border-bottom: 1px solid #efefef;
   display: flex;
   flex-direction: row;
-  margin-top: 2%;
+  margin-top: 1%;
   
 }
 .textclass{
@@ -108,7 +112,6 @@
 .select_box{
   background: #fff;
   position: relative;
-  margin-left: 64%;
 }
 .select{
   box-sizing: border-box;
@@ -131,8 +134,9 @@
 }
 .option_box{
   position: absolute;
+  z-index: 999;
   top: 80rpx;
-  width: 100%;
+  width: 125%;
   border:1px solid #efefef;
   box-sizing: border-box;
   border-radius: 15rpx;
@@ -147,4 +151,43 @@
   font-size: 30rpx;
   border-bottom: 1px solid #efefef;
   padding: 10rpx;
+}
+.itemTop{
+  margin-top: 20rpx;
+  /* background: #fff; */
+  font-size: 75%;
+  display: flex; 
+  flex-direction: row;
+  width: 100%;
+}
+.textleft{
+  padding-left: 7%;
+}
+.textmiddle{
+  text-align: center;
+  padding-left: 33%;
+}
+.textright{
+  float: right;
+  padding-left: 23%;
+}
+.flex-wrp-row{
+  font-size: 75%;
+  color: rgb(104, 104, 104);
+}
+.content {
+  width: 340rpx;
+  padding-left: 20rpx;
+}
+.content1{
+  width:260rpx;
+}
+.content2{
+  width:150rpx;
+}
+.textkong{
+  width: 60%;
+}
+.msgtext{
+  padding-top: 15rpx;
 }
