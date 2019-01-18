@@ -21,7 +21,8 @@
     "pages/notice/notice",
     "pages/index/chooseMovie/chooseMovie",
     "pages/jumpcinema/jumpcinema",
-    "pages/shop/salething/salething"
+    "pages/shop/salething/salething",
+    "pages/index/chooseMovie/map/map"
     
 
   ],
