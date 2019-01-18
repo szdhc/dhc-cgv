@@ -20,15 +20,17 @@
   width: 100%;
   font-size: 75%;
   /* background-color: #dee1e459; */
+  border-bottom: 1px solid #efefef;
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
   
 }
 .textclass{
+  padding-top: 2%;
   padding-left:4%;
 }
 .righttext{
-  float: right;
-  padding:3%;
-  margin-right: 6%;
   
 }
 .rightButton{
@@ -44,7 +46,7 @@
 #box{
   width: 100%;
   overflow: hidden;
-  border-top: 1px solid #ddd;
+  /* border-top: 1px solid #ddd; */
   height: 0;
   animation-fill-mode: forwards;
 }
@@ -104,22 +106,17 @@
 
 .select_box{
   background: #fff;
-  width: 80%;
-  margin: 30rpx auto;
   position: relative;
+  margin-left: 64%;
 }
 .select{
   box-sizing: border-box;
-  width: 100%;
-  height: 70rpx;
-  border:1px solid #efefef;
-  border-radius: 8rpx;
+  height: 75rpx;
   display: flex;
   align-items: center;
   padding: 0 20rpx;
 }
 .select_text{
-  font-size: 30rpx;
   flex: 1;
 }
 .select_img{
@@ -133,15 +130,15 @@
 }
 .option_box{
   position: absolute;
-  top: 70rpx;
+  top: 80rpx;
   width: 100%;
   border:1px solid #efefef;
   box-sizing: border-box;
-  height: 0;
-  overflow-y: auto;
-  border-top: 0;
+  border-radius: 15rpx;
   background: #fff;
   transition: height 0.3s;
+  text-align: center;
+  overflow-y:hidden;
 }
 .option{
   display: block;
