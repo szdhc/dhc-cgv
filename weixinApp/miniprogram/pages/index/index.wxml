@@ -3,9 +3,19 @@
 
   <!-- 首页banner -->
   <view class="guide">
-
-    <include src="../../templates/chooseCinema.wxml" />
-
+    <view class='flex-wrp-row item'>
+      <view class='item-left flex-wrp-row'>
+        <icon class='iconfont icon-weibiaoti-3'>
+          <text> {{movieAddress}}</text>
+        </icon>
+      </view>
+      <view class='item-left flex-wrp-row'>
+        <text class='medium-font-size'></text>
+      </view>
+      <view class='item-right flex-wrp-row'>
+        <icon class='iconfont icon-youjiantou icon-right'></icon>
+      </view>
+    </view>
     <!-- <text class="headline">{{currProvince}}</text>
     <text class="headline">{{currCity}}</text> -->
     <import src='../../templates/banner.wxml' />

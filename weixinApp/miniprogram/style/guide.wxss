@@ -142,8 +142,3 @@ page {
   margin-right: unset;
 }
 
-.chooseCinema{
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow:ellipsis;
-}

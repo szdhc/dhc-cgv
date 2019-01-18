@@ -5,9 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    storeName: 'CGV影城(苏州中心店)',
-    movieAddress: '江苏省苏州市姑苏区直属镇湖左岸社区北方向',
-    movieTel: '0512-69881886',
+    storeName: '苏州中心CGV影院',
+    movieAddress: '江苏省苏州市苏州园区苏州中心4楼',
+    movieTel: '0512-80911313',
     currentTab: 0,
     hall: [{
         id: 1,
@@ -183,13 +183,9 @@ Page({
   },
 
   map:function(){
-      wx.openLocation({
-        latitude: 31.3152860000,
-        longitude: 120.6780030000,
-        name: "CGV影城(苏州中心店) ",
-        scale: 12,
-        address: '江苏省苏州市姑苏区直属镇湖左岸社区北方向'
-      })
+    wx.navigateTo({
+      url: '../chooseMovie/map/map',
+    })
   },
   gotohere: function (res) {
     console.log(res);
