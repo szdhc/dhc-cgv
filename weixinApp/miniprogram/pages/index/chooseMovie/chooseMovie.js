@@ -183,36 +183,11 @@ Page({
   },
 
   map:function(){
-
+    wx.navigateTo({
+      url: '../chooseMovie/map/map',
+    })
   },
-  gotohere: function (res) {
-    console.log(res);
-    let lat = ''; // 获取点击的markers经纬度
-    let lon = ''; // 获取点击的markers经纬度
-    let name = ''; // 获取点击的markers名称
-    let markerId = res.markerId;// 获取点击的markers  id
-    let markers = res.currentTarget.dataset.markers;// 获取markers列表
-
-    for (let item of markers) {
-      if (item.id === markerId) {
-        lat = item.latitude;
-        lon = item.longitude;
-        name = item.callout.content;
-        wx.openLocation({ // 打开微信内置地图，实现导航功能（在内置地图里面打开地图软件）
-          latitude: lat,
-          longitude: lon,
-          name: name,
-          success: function (res) {
-            console.log(res);
-          },
-          fail: function (res) {
-            console.log(res);
-          }
-        })
-        break;
-      }
-    }
-  },
+ 
 
 
 

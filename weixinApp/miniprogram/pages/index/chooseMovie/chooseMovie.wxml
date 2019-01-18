@@ -44,7 +44,7 @@
     <view class='hall-text'>影厅分类</view>
       <view class='hall'>
         <block wx:for="{{hall}}" wx:key="{{index}}">
-        <button class='movieStatus hall-info {{item.checked?"checked_hall":""}}' data-id='{{item.id}}' bindtap='hallTap'>{{item.name}}</button>
+        <button class='buttonCss hall-info {{item.checked?"checked_hall":""}}' data-id='{{item.id}}' bindtap='hallTap'>{{item.name}}</button>
     </block>
   </view>
   </view>
