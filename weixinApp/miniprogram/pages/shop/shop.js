@@ -1186,6 +1186,13 @@ Page({
   },
 
   // ------------------------goods information------------------------------
+
+  selectFoods: function() {
+    wx.navigateTo({
+      url: '../shop/goods/goods',
+    })
+  },
+
   selectMenu: function (e) {
     var index = e.currentTarget.dataset.itemIndex;
     this.setData({
@@ -1276,12 +1283,13 @@ Page({
   //差几元起送
   payDesc() {
     if (this.data.totalPrice === 0) {
-      return `￥${this.data.minPrice}元起送`;
+      // return `￥${this.data.minPrice}元起送`;
+      return '请选择';
     } else if (this.data.totalPrice < this.data.minPrice) {
       let diff = this.data.minPrice - this.data.totalPrice;
       return '还差' + diff + '元起送';
     } else {
-      return '去结算';
+      return '选好了';
     }
   },
   //結算

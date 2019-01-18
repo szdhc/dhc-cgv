@@ -102,8 +102,8 @@
               </view>
               <view class="num" wx:if="{{totalCount> 0}}">{{totalCount}}</view>
             </view>
-            <view class="price highlight">￥{{totalPrice}}</view>
-            <view class="desc">另需配送费￥{{deliveryPrice}}元</view>
+            <view class="price">￥{{totalPrice}}</view>
+            <!-- <view class="desc">另需配送费￥{{deliveryPrice}}元</view> -->
           </view>
           <view class="gcontent-right" catchtap="pay">
             <view class="pay enough" :class="payClass">
