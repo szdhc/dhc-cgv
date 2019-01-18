@@ -5,47 +5,10 @@
     <button class="btn add" bindtap="">添加</button>
   </view>
   <view class="stamp_list">
-    <view class="stamp">
-      <view class="stamp_inner stamp_left">
-      <span class='stamp_info stamp_top'>暖心季品质联盟红包</span>
-      <li class='stamp_info stamp_msg'>• 2019-1-17至2019-1-24</li>
-      <li class='stamp_info stamp_msg'>• 仅限于品质联盟会场使用</li>
-      <li class='stamp_info stamp_msg'>• 满30元可用</li>
-      <li class='stamp_info stamp_msg'>• 限在线支付可用</li>
-      </view>
-      <view class="stamp_inner stamp_right">
-        <span class='stamp_info stamp_sign'>￥</span>
-        <span class='stamp_info stamp_price'>2.5</span>
-        <button class='stamp_info btn btn_use'>使用</button>
-      </view>
+    <import src='../../../templates/coupon.wxml' />
+    <view wx:for="{{couponList}}" wx:key="{{couponList}}">
+      <template is='couponTemplate' data="{{...item}}" />
     </view>
-    <view class="stamp">
-      <view class="stamp_inner stamp_left">
-      <span class='stamp_info stamp_top'>暖心季品质联盟红包</span>
-      <li class='stamp_info stamp_msg'>• 2019-1-17至2019-1-24</li>
-      <li class='stamp_info stamp_msg'>• 仅限于品质联盟会场使用</li>
-      <li class='stamp_info stamp_msg'>• 满30元可用</li>
-      <li class='stamp_info stamp_msg'>• 限在线支付可用</li>
-      </view>
-      <view class="stamp_inner stamp_right">
-        <span class='stamp_info stamp_sign'>￥</span>
-        <span class='stamp_info stamp_price'>2.5</span>
-        <button class='stamp_info btn btn_use'>使用</button>
-      </view>
-    </view>
-    <view class="stamp">
-      <view class="stamp_inner stamp_left">
-      <span class='stamp_info stamp_top'>暖心季品质联盟红包</span>
-      <li class='stamp_info stamp_msg'>• 2019-1-17至2019-1-24</li>
-      <li class='stamp_info stamp_msg'>• 仅限于品质联盟会场使用</li>
-      <li class='stamp_info stamp_msg'>• 满30元可用</li>
-      <li class='stamp_info stamp_msg'>• 限在线支付可用</li>
-      </view>
-      <view class="stamp_inner stamp_right">
-        <span class='stamp_info stamp_sign'>￥</span>
-        <span class='stamp_info stamp_price'>2.5</span>
-        <button class='stamp_info btn btn_use'>使用</button>
-      </view>
-    </view>
+  
   </view>
 </view>

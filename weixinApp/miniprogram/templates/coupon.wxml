@@ -1,0 +1,16 @@
+<template name='couponTemplate'>
+  <view class="stamp">
+    <view class="stamp_inner stamp_left">
+      <span class='stamp_info stamp_top'>{{title}}</span>
+      <li class='stamp_info stamp_msg'>• {{time}}</li>
+      <li class='stamp_info stamp_msg'>• {{msg_one}}</li>
+      <li class='stamp_info stamp_msg'>• {{msg_two}}</li>
+      <li class='stamp_info stamp_msg'>• {{msg_three}}</li>
+    </view>
+    <view class="stamp_inner stamp_right">
+      <span class='stamp_info stamp_sign'>￥</span>
+      <span class='stamp_info stamp_price'>{{price}}</span>
+      <button class='stamp_info btn btn_use'>{{use}}</button>
+    </view>
+  </view>
+</template>
