@@ -16,28 +16,55 @@
       </view>
     </view>
 
-  <view class="swiper-tab">
-      <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">卖品</view>
-      <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">会员卡</view>
-  </view>
 
-    <!-- <text class="headline">{{currProvince}}</text>
-    <text class="headline">{{currCity}}</text> -->
-    <import src='../../templates/banner.wxml' />
-    <template is='bannnerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
-    
-    <view class="flex-wrp-row bg-pg">
-      <view class="flex-wrp-column">
-        <text class="light-size">2019年1月16日星期五</text>
-      </view>
-      <view class="btn1 flex-wrp-column">
-        <button class="btn1Status button-hover" bindtap='jumpCusInf'>客户须知</button>
-      </view>
-    </view>
 
-    <swiper current="{{currentTab}}" duration="300" bindchange="swiperTab">
-      <swiper-item><view>第一屏</view></swiper-item>
-      <swiper-item><view>第二屏</view></swiper-item>
-    </swiper>      
+<!-------------------------------------------------------------------------------->
+<!--导航条-->
+<view class="navbar">
+    <!-- <view style='line-height:40rpx'>
+        <text class='address'></text>
+        <text class=""></text>
+    </view> -->
+    <view>
+        <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
     </view>
+    <!-- <view bindtap='clickSearch' class='search'>
+        <image class='search_img' src='../../img/search.png'></image>
+    </view> -->
+</view>
+
+<!--卖品-->
+<view hidden="{{currentTab!==0}}">
+    <view class='hotFilm_container'>
+
+        <!-- <text class="headline">{{currProvince}}</text>
+        <text class="headline">{{currCity}}</text> -->
+        <import src='../../templates/banner.wxml' />
+        <template is='bannnerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
+        
+        <view class="flex-wrp-row bg-pg">
+          <view class="flex-wrp-column">
+            <text class="light-size">2019年1月16日星期五</text>
+          </view>
+          <view class="btn1 flex-wrp-column">
+            <button class="btn1Status button-hover" bindtap='jumpCusInf'>客户须知</button>
+          </view>
+        </view>   
+        </view>
+
+        <view><text>dfefef</text></view>
+    </view>
+</view>
+
+<!--会员卡-->
+<view hidden="{{currentTab!==1}}">
+    <view class='hotFilm_container'>
+        <view><text>5534343</text></view>
+    </view>
+</view>
+
+
+<!--------------------------------------------------------------------------------->
+
+
 </view>

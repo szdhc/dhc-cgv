@@ -1,4 +1,4 @@
-// pages/index/chooseMovie/map/map.js
+// pages/shop/salething/salething.js
 Page({
 
   /**
