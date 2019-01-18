@@ -58,7 +58,7 @@
     <!--特惠-->
     <view class='flex-wrp-cloumn coloum'>
       <view>
-        <button class='buttonCss' bindtap='redirct'>特惠</button>
+        <button class='movieStatus' bindtap='redirct'>特惠</button>
       </view>
     </view>
   </view>

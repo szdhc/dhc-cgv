@@ -43,10 +43,3 @@
 .coloum{
   margin-left: 15%;
 }
-
-.buttonCss {
-  font-size: 22rpx;
-  color: #fff;
-  background: rgb(224, 166, 94);
-  border-radius: 20rpx;
-}
