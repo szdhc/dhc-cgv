@@ -100,8 +100,9 @@
     visibility: visible;
 }
 .textCenter{
-  font-size: 55%;
   text-align: center;
+  color:#b2b2b2;
+  font-size:20rpx;
 }
 
 .select_box{
