@@ -183,7 +183,9 @@ Page({
   },
 
   map:function(){
-
+    wx.navigateTo({
+      url: '../chooseMovie/map/map',
+    })
   },
   gotohere: function (res) {
     console.log(res);
