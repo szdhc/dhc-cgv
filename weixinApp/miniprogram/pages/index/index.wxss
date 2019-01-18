@@ -1,2 +1,44 @@
 /* pages/index/index.wxss */
 @import "../../style/guide.wxss";
+.navbar {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-bottom: 1rpx solid #e6e6e6;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .item {
+    line-height: 70rpx;
+    height: 70rpx;
+    padding: 10rpx 25rpx;
+    margin: 0 20rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: #666;
+    font-weight: 600;
+}
+
+.navbar .item.active {
+    color: rgb(224, 166, 94);
+    border-bottom: 5rpx solid rgb(224, 166, 94);
+}
+.playBtn {
+    position: absolute;
+    width: 65rpx;
+    height: 65rpx;
+    left: 38rpx;
+    top: 510rpx;
+}
+.hotFilm_info {
+    margin-top: 6rpx;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 456rpx;
+    justify-content: space-between;
+    color: #666;
+    font-size: 26rpx;
+    height: 130rpx;
+}

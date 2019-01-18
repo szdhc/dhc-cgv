@@ -1,7 +1,8 @@
-var QQMapWX = require('../../qqmap-wx-jssdk/qqmap-wx-jssdk.min.js');
+﻿var QQMapWX = require('../../qqmap-wx-jssdk/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
 // var bannerJs = require("../../templates/banner.js");
 // pages/index/index.js
+var util = require('../../utils/util.js');
 Page({
 
   data: {
@@ -9,6 +10,11 @@ Page({
     movieAddress: '苏州平江万达广场店',
     currProvince: '',
     currCity: '',
+    // --------------------------------------------------------------//
+    navbar: ['热映', '待映'],
+    currentTab: 0,
+    wantFlag: false,
+    // --------------------------------------------------------------//
     bannerUrls: [{
         url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
         linkUrl: ''
@@ -26,6 +32,7 @@ Page({
         linkUrl: ''
       }
     ],
+    hotMovieList: [],
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
@@ -51,66 +58,13 @@ Page({
         duration: e.detail.value
       })
     },
-
-    hotMovieList: [{
-        movieImage: '../../images/201812131426092692802.jpg',
-        movieName: '大黄蜂',
-        movieShow: '大黄蜂首部个人电影',
-        movieDirectorStarring: '特拉维斯·奈特/迪伦·奥布莱恩; 海莉·斯坦菲尔德;坦菲尔坦菲尔',
-        moiveGrade: '9.3分',
-        movieStatus: '购票'
-      },
-      {
-        movieImage: '../../images/201812131426092692802.jpg',
-        movieName: '海 王',
-        movieShow: '海王首部个人电影',
-        movieDirectorStarring: '特拉维斯·奈特/迪伦·奥布莱恩; 海莉·斯坦菲尔德;',
-        moiveGrade: '9.5分',
-        movieStatus: '购票'
-      },
-      {
-        movieImage: '../../images/201812131426092692802.jpg',
-        movieName: '印度暴徒',
-        movieShow: '印度暴徒首部个人电影',
-        movieDirectorStarring: '特拉维斯·奈特/迪伦·奥布莱恩; 海莉·斯坦菲尔德;',
-        moiveGrade: '9.8分',
-        movieStatus: '购票'
-      },
-      {
-        movieImage: '../../images/201812131426092692802.jpg',
-        movieName: '印度暴徒',
-        movieShow: '印度暴徒首部个人电影',
-        movieDirectorStarring: '特拉维斯·奈特/迪伦·奥布莱恩; 海莉·斯坦菲尔德;',
-        moiveGrade: '9.8分',
-        movieStatus: '购票'
-      },
-      {
-        movieImage: '../../images/201812131426092692802.jpg',
-        movieName: '印度暴徒',
-        movieShow: '印度暴徒首部个人电影',
-        movieDirectorStarring: '特拉维斯·奈特/迪伦·奥布莱恩; 海莉·斯坦菲尔德;',
-        moiveGrade: '9.8分',
-        movieStatus: '购票'
-      },
-      {
-        movieImage: '../../images/201812131426092692802.jpg',
-        movieName: '印度暴徒',
-        movieShow: '印度暴徒首部个人电影',
-        movieDirectorStarring: '特拉维斯·奈特/迪伦·奥布莱恩; 海莉·斯坦菲尔德;',
-        moiveGrade: '9.8分',
-        movieStatus: '购票'
-      },
-      {
-        movieImage: '../../images/201812131426092692802.jpg',
-        movieName: '印度暴徒',
-        movieShow: '印度暴徒首部个人电影',
-        movieDirectorStarring: '特拉维斯·奈特/迪伦·奥布莱恩; 海莉·斯坦菲尔德;',
-        moiveGrade: '9.8分',
-        movieStatus: '购票'
-      }
-    ]
   },
-
+   //选项卡切换
+  navbarTap: function (e) {
+    this.setData({
+      currentTab: e.currentTarget.dataset.idx
+    })
+  },
   onLoad: function(options) {
     qqmapsdk = new QQMapWX({
       key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
@@ -119,6 +73,45 @@ Page({
     //   openid: getApp().globalData.openid
     // })
     // bannerJs.imgHeight(this);
+    let types = options.ask || 'in_theaters';
+    this.setData({
+      types,
+    })
+    // 请求热映
+    this.setData({ loader: true })
+    wx.request({
+      url: `https://douban.uieee.com/v2/movie/${this.data.types}&start=${this.data.start}&count=${this.data.count}`,
+      method: "GET",
+      header: {
+        'Content-Type': 'json',
+      },
+      success: ({ data }) => {
+        let arr = [];
+        let movieObj = new Map();
+        for (let i = 0; i < data.subjects.length; i += 2) {
+          movieObj.set('movieImage', data.subjects[i].images['small'])
+          movieObj.set('movieName', data.subjects[i].title)
+          movieObj.set('movieShow', data.subjects[i].title)
+          let directors = '';
+          for (let j = 0; j < data.subjects[0].directors.length;j++){
+            directors = directors + data.subjects[0].directors[j].name
+          }
+          let casts='';
+          for (let k = 0; k < data.subjects[i].casts.length;k++){
+            casts = casts + data.subjects[i].casts[k].name
+          }
+          movieObj.set('movieDirectorStarring', directors + '/' + casts)
+          movieObj.set('moiveGrade', data.subjects[i].rating.average)
+          movieObj.set('movieStatus', '购票')
+          arr.push(JSON.parse(util.MapTOJson(movieObj)))
+        }
+        this.setData({
+          hotMovieList: arr
+        })
+        console.log(arr)
+        // console.log(arr[0][0].images.medium)
+      }
+    })
   },
 
   onShow: function() {
@@ -218,11 +211,11 @@ Page({
       url: '../index/chooseMovie/chooseMovie',
     })
   },
+
   //选择影城跳转事件
   jumpcinema() {
     wx.navigateTo({
       url: '/pages/jumpcinema/jumpcinema',
     })
   }
-
 })

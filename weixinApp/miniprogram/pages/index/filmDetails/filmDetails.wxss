@@ -1,0 +1,346 @@
+page {
+    padding-bottom: 100rpx;
+}
+
+.filmDetails_info {
+    padding: 20rpx;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.filmDetailsImg {
+    margin-right: 25rpx;
+    position: relative;
+    border: 1rpx solid rgba(255, 255, 255, 0.4);
+    width: 234rpx;
+    height: 324rpx;
+}
+
+.filmDetailsImg>image:first-child {
+    width: 234rpx;
+    height: 324rpx;
+}
+
+.playBtn {
+    position: absolute;
+    width: 95rpx;
+    height: 95rpx;
+    left: 70rpx;
+    top: 116rpx;
+}
+
+.film_3D {
+    margin-left: 10rpx;
+    margin-top: 6rpx;
+    font-size: 20rpx;
+    border-radius: 6rpx;
+    color: white;
+    background: rgb(129, 128, 126);
+    transform: scale(0.85);
+    padding: 0 6rpx;
+    margin-bottom: 4rpx;
+}
+
+.eng_name {
+    margin-right: 4rpx;
+    font-size: 26rpx;
+    color: white;
+    width: 420rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.comment_star>image{
+    margin-right: 4rpx;
+}
+.background_block {
+    width: 100%;
+    height: 600rpx;
+    -webkit-filter: blur(15rpx); /* Chrome, Opera */
+    -moz-filter: blur(15rpx);
+    -ms-filter: blur(15rpx);
+    filter: blur(15rpx);
+    position: absolute;
+    top: -10rpx;
+    z-index: -1;
+}
+
+.want_comment {
+    margin-top: 25rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.want_comment>view, .want_comment>navigator {
+    width: 48.3%;
+    height: 65rpx;
+    line-height: 65rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 26rpx;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 8rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1rpx solid rgba(255, 255, 255, 0.2);
+}
+
+.want_comment>view>image {
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 12rpx;
+}
+
+.want_comment>navigator>image {
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 10rpx;
+}
+
+.comment {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.summary {
+    padding: 20rpx;
+    padding-bottom: 10rpx;
+    background: white;
+    line-height: 55rpx;
+    height: 130rpx;
+    overflow: hidden;
+    font-size: 28rpx;
+}
+
+.text_icon_container {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1rpx solid #e6e6e6;
+    padding-bottom: 20rpx;
+}
+
+.text_icon {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.gray {
+    background: #f5f5f5;
+    width: 100%;
+    height: 20rpx;
+    border-bottom: 1rpx solid #e6e6e6;
+}
+
+/*演职人员  */
+
+.actor, .ticket {
+    padding: 20rpx 0;
+    padding-bottom: 30rpx;
+    border-bottom: 1rpx solid #e6e6e6;
+    width: 100%;
+}
+
+.actor>scroll-view {
+    margin-top: 20rpx;
+    overflow-x: auto;
+}
+
+.actor_container {
+    display: inline-block;
+    margin-right: 20rpx;
+}
+
+.actor_container:first-child {
+    margin-left: 20rpx;
+}
+
+.actor_name {
+    font-size: 26rpx;
+    width: 130rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.actor_head {
+    font-size: 30rpx;
+    background: white;
+    margin-left: 20rpx;
+}
+
+.actor_text {
+    display: flex;
+    flex-direction: column;
+    font-size: 24rpx;
+    text-align: center;
+}
+
+.actor_text>text {
+    width: 145rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*票房  */
+
+.ticket {
+    border-bottom: 1rpx solid #e6e6e6;
+}
+
+.ticket>view:last-child {
+    display: flex;
+    justify-content: space-around;
+    padding: 20rpx;
+    padding-bottom: 0;
+}
+
+.ticket>view>view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ticket>view>view>text:first-child {
+    color: #f03d37;
+    font-size: 34rpx;
+}
+
+.ticket>view>view>text:last-child {
+    font-size: 24rpx;
+    color: #666;
+    margin-top: 10rpx;
+}
+
+.video_img>image:first-child, .video_img {
+    width: 320rpx;
+    height: 180rpx;
+    margin: 0 10rpx;
+    display: inline-block;
+}
+
+.video_img>image:last-child {
+    position: absolute;
+    width: 65rpx;
+    height: 65rpx;
+    right: 0;
+    bottom: 10rpx;
+}
+
+.video_img_hover {
+    opacity: 0.8;
+}
+
+.film_img>image, .film_img {
+    width: 230rpx;
+    height: 180rpx;
+    margin: 0 10rpx;
+    display: inline-block;
+}
+
+/*评论  */
+
+.viewer_comment {
+    padding: 20rpx;
+    font-size: 30rpx;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1rpx solid #e6e6e6;
+}
+
+.viewer_comment>navigator {
+    color: #f03d37;
+    border: 1rpx solid #f03d37;
+    border-radius: 40rpx;
+    font-size: 22rpx;
+    padding: 6rpx 16rpx;
+}
+
+.viewer_head {
+    padding: 20rpx;
+    padding-top: 30rpx;
+}
+
+.viewer_head>image {
+    width: 65rpx;
+    height: 65rpx;
+    border-radius: 50%;
+}
+
+.comment_text {
+    display: flex;
+    padding-right: 10rpx;
+}
+
+.viewer_text_right {
+    padding: 20rpx;
+    padding-left: 0rpx;
+    padding-top: 10rpx;
+    width: 100%;
+    border-bottom: 1rpx solid #e6e6e6;
+}
+
+.viewer_name {
+    font-size: 26rpx;
+}
+
+.had_buy {
+    font-size: 18rpx;
+    border: 1rpx solid #3c9fe6;
+    color: #3c9fe6;
+    border-radius: 5rpx;
+    padding: 0rpx 4rpx;
+    margin-left: 8rpx;
+    /* transform: scale(0.9); */
+}
+.comment_content {
+    margin: 50rpx 0 20rpx;
+    font-size: 28rpx;
+    width: 580rpx;
+}
+.comment_time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22rpx;
+    color: #666;
+    align-items: center;
+}
+
+.good {
+    width: 30rpx;
+    height: 30rpx;
+    position: relative;
+    top: 4rpx;
+}
+
+.star {
+    position: absolute;
+    top: 36rpx;
+}
+
+.star>image {
+    width: 24rpx;
+    height: 24rpx;
+    margin: 0 2rpx;
+}
+
+.no_comment {
+    width: 100%;
+    text-align: center;
+    padding: 40rpx 0;
+    font-size: 28rpx;
+}
+
+.buy_ticket {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    color: white;
+    background: #f03d37;
+    font-size: 32rpx;
+}
