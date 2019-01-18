@@ -217,6 +217,12 @@ Page({
     wx.navigateTo({
       url: '../index/chooseMovie/chooseMovie',
     })
+  },
+  //选择影城跳转事件
+  jumpcinema() {
+    wx.navigateTo({
+      url: '/pages/jumpcinema/jumpcinema',
+    })
   }
 
 })

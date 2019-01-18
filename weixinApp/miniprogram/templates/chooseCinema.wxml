@@ -2,7 +2,7 @@
 <view class='flex-wrp-row item'>
   <view class='item-left flex-wrp-row'>
     <icon class='iconfont icon-weibiaoti-3'>
-      <text> {{movieAddress}}</text>
+      <text class='chooseCinema' bindtap='jumpcinema'> {{movieAddress}}</text>
     </icon>
   </view>
   <view class='item-left flex-wrp-row'>
