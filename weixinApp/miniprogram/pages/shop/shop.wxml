@@ -2,22 +2,8 @@
 <view class="container">
   <!-- 首页banner -->
   <view class="guide">
-    <view class='flex-wrp-row item'>
-      <view class='item-left flex-wrp-row'>
-        <icon class='iconfont icon-weibiaoti-3'>
-          <text> {{movieAddress}}</text>
-        </icon>
-      </view>
-      <view class='item-left flex-wrp-row'>
-        <text class='medium-font-size'></text>
-      </view>
-      <view class='item-right flex-wrp-row'>
-        <icon class='iconfont icon-youjiantou icon-right'></icon>
-      </view>
-    </view>
-
-
-
+    <include src="../../templates/chooseCinema.wxml" />
+    
 <!-------------------------------------------------------------------------------->
 <!--导航条-->
 <view class="navbar">

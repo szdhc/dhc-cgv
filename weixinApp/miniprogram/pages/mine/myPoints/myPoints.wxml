@@ -5,19 +5,12 @@
   </view>
   <view class='pointinfo'>
     <text class='textclass'>积分明细</text>
-    <text class='righttext'>全部</text>
-    <button id="slide" class='rightButton' bindtap="toggle">▼</button>
-    <!-- <view id="box" class="{{first_click?'show':'hide'}} {{state?'open':'close'}}">
-      <view id="item_list">
-        <view bindtap='selectone' style="display:{{tipsshow}}">111</view>
-        <view bindtap='selecttwo' style="display:{{tipsshow}}">222</view>
-        <view bindtap='selectthree' style="display:{{tipsshow}}">333</view>
-      </view>
-    </view> -->
+    
+    <!-- <button id="slide" class='rightButton' bindtap="toggle">▼</button> -->
     <view class='select_box'>
       <view class='select' catchtap='selectTap'>
-        <text class='select_text'>{{selectData[index]}}</text>
-        <image class='select_img {{show&&"select_img_rotate"}}' src='/image/gobottom.png'></image>
+      <text class='righttext'>全部</text>
+        <text class='select_text'>▼</text>
       </view>
       <view class='option_box' style='height:{{show?(selectData.length>5?300:selectData.length*60):0}}rpx;'>
         <text class='option' style='{{index==selectData.length-1&&"border:0;"}}' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item}}</text>

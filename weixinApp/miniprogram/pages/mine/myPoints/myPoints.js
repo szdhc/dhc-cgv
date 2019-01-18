@@ -10,7 +10,7 @@ Page({
     select: '',
     tipsshow: 'block',
     show: false,
-    selectData: ['1', '2', '3', '4', '5', '6'], //下拉列表的数据
+    selectData: ['全部', '消费', '签到'], //下拉列表的数据
     index: 0 //选择的下拉列表下标
   },
 
@@ -101,23 +101,5 @@ Page({
         state: true
       });
     }
-  },
-  selectone() {
-    this.setData({
-      select: '111',
-
-    });
-
-  },
-  selecttwo() {
-    this.setData({
-      select: '222',
-
-    });
-  },
-  selectthree() {
-    this.setData({
-      select: '333',
-    });
   }
 })
