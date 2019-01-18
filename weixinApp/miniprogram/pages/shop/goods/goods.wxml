@@ -2,6 +2,15 @@
 
 <view class="container">
   
+  <view class='flex-wrp-cloumn'>
+    <view class='flex-wrp-cloumn-center'>
+      <image class="goodimg" src="{{agood.image}}"></image>
+    </view>
+    <view class='good-name-sy'><text>{{agood.name}}</text></view>
+    <view class='good-desc-sy'><text >{{agood.description}}</text></view>
+    <view><text class='good-price-sy'>促销价: {{agood.price}}元</text><text class='good-oldprice-sy'>{{agood.oldPrice}}元</text></view>
+  </view>
+
 
   <!--shopCart-->
   <view>
