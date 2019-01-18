@@ -5,6 +5,11 @@ Page({
     movieAddress: '苏州平江万达广场店',
     currProvince: '',
     currCity: '',
+    // --------------------------------------------------------------//
+    navbar: ['卖品', '会员卡'],
+    currentTab: 0,
+    wantFlag: false,
+    // --------------------------------------------------------------//
     bannerUrls: [{
       url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
       linkUrl: ''
@@ -48,6 +53,14 @@ Page({
       })
     },
   },
+
+  // ---------------------------------------------//
+  navbarTap: function (e) {
+    this.setData({
+      currentTab: e.currentTarget.dataset.idx
+    })
+  },
+  // ---------------------------------------------//
 
   onLoad: function (options) {
     qqmapsdk = new QQMapWX({

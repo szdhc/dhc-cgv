@@ -20,7 +20,8 @@
     "pages/index/buyTickets/buyTickets",
     "pages/notice/notice",
     "pages/index/chooseMovie/chooseMovie",
-    "pages/jumpcinema/jumpcinema"
+    "pages/jumpcinema/jumpcinema",
+    "pages/shop/salething/salething"
     
 
   ],
