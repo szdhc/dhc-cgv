@@ -1,2 +1,58 @@
 <!--pages/shop/goods/goods.wxml-->
-<text>pages/shop/goods/goods.wxml</text>
+
+<view class="container">
+  
+
+  <!--shopCart-->
+  <view>
+    <view>
+      <view class="shopCart">
+        <view class="gcontent" bindtap="toggleList">
+          <view class="gcontent-left">
+            <view class="logo-wrapper">
+              <view class="logo highlight">
+                <view class="giconfont icon-gouwuche highlight"></view>
+              </view>
+              <view class="num" wx:if="{{totalCount> 0}}">{{totalCount}}</view>
+            </view>
+            <view class="price">￥{{totalPrice}}</view>
+            <!-- <view class="desc">另需配送费￥{{deliveryPrice}}元</view> -->
+          </view>
+          <view class="gcontent-right" catchtap="pay">
+            <view class="pay enough" :class="payClass">
+              {{payDesc}}
+            </view>
+          </view>
+        </view>
+        <view class="shopcart-list" style="display:{{cartShow}}">
+          <view class="list-header">
+            <view class="title">购物车</view>
+            <text class="empty" bindtap="empty">清空</text>
+          </view>
+          <view class="list-content">
+            <view class="shopcart-food" wx:for="{{carArray}}">
+              <text class="name">{{item.name}}</text>
+              <view class="price" >
+                <span>￥{{item.price*item.num}}</span> 
+              </view>
+
+              <!--cartControl-->
+              <view class="cartControl-wrapper" style="bottom:10px;">
+                <view class="cartControl" style="width:80px;">
+                  <view name="fade">
+                    <view class="cart-decrease" style="display:inline-block;" data-item-index="{{item.index}}" data-parentIndex="{{item.parentIndex}}" catchtap="decreaseShopCart">
+                      <view class="inner giconfont icon-jian" style="font-size:24px;color:#00A0DC;"></view>
+                    </view>
+                    <view class="cart-count" style="display:inline-block;width:32px;text-align:center;font-size:14px;">{{item.num}}</view>
+                    <view class=" giconfont icon-jia cart-add " style="font-size:24px;color:#00A0DC; padding:0;" data-item-index="{{item.index}}" data-parentIndex="{{item.parentIndex}}" catchtap="addShopCart"></view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  </view>
