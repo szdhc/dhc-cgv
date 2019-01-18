@@ -4,14 +4,25 @@ var app = getApp()
 Page({
   data: {
     current: 0,
-    orderlist: [],
-    username:'静待',
-    orderStatus:'交易成功',
-    movieName:'海 王',
-    movieShow:'海王首部个人电影',
-    moviePrice:'45.0',
-    movieNum:'1',
-    movieCountPrice:'45.0'
+    
+    orderList:[{
+      username: '静待',
+      orderStatus: '交易成功',
+      movieName: '海 王',
+      movieShow: '海王首部个人电影',
+      moviePrice: '45.0',
+      movieNum: '1',
+      movieCountPrice: '45.0'
+    },
+      {
+        username: '静待',
+        orderStatus: '未付款',
+        movieName: '印度暴徒',
+        movieShow: '印度暴徒首部个人电影',
+        moviePrice: '39.0',
+        movieNum: '1',
+        movieCountPrice: '39.0'
+      }]
   },
   /**
  * 生命周期函数--监听页面加载
@@ -19,35 +30,7 @@ Page({
   onLoad: function (options) {
     
   },
-  // onLoad: function () {
-  //   var that = this
-  //   var login = wx.getStorageSync('login')
-  //   wx.request({
-  //     url: `${app.globalData.API_URL}` + '/order',
-  //     data: {
-  //       id: login.mid
-  //     },
-  //     method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-  //     // header: {}, // 设置请求的 header
-  //     success: function (res) {
-  //       // success
-  //       console.log(res)
-  //       that.setData({
-  //         orderlist: res.data
-  //       })
-  //     },
-  //     fail: function () {
-  //       // fail
-  //     },
-  //     complete: function () {
-  //       // complete
-  //     }
-  //   })
-  // },
-  // payorder: function (e) {
-  //   var orderid = e.target.dataset.id;
-  //   wx.setStorageSync('orderid', orderid)
-  // },
+  
   switchSlider: function (e) {
     this.setData({
       current: e.target.dataset.index

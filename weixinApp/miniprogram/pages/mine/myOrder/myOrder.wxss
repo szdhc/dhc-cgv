@@ -104,37 +104,11 @@
   background: url(../../../images/icon_tkz.png) no-repeat center center;
   background-size: 56rpx 56rpx;
 }
-
-/* .navTopList .ywc .ywc-icon.active{
-	background: url(../../../images/icon_jywc_active.png) no-repeat center center;
-	background-size: 56rpx 56rpx;
-}
-.navTopList .dfk .dfk-icon.active{
-	background: url(../../../images/icon_dfk_active.png) no-repeat center center;
-	background-size: 56rpx 56rpx;
-}
-.navTopList .dfh .dfh-icon.active{
-	background: url(../../../images/icon_dfh_active.png) no-repeat center center;
-	background-size: 56rpx 56rpx;
-}
-.navTopList .dsh .dsh-icon.active{
-	background: url(../../../images/icon_dsh_active.png) no-repeat center center;
-	background-size: 56rpx 56rpx;
-}
-.navTopList .yqx .yqx-icon.active{
-	background: url(../../../images/icon_tkz_active.png) no-repeat center center;
-	background-size: 56rpx 56rpx;
-}
-.navTopList .tkz .tkz-icon.active{
-	background: url(../../../images/icon_tkz_active.png) no-repeat center center;
-	background-size: 56rpx 56rpx;
-} */
-
 /*订单列表*/
 
 .orderDetails {
   background: #fff;
-  border-bottom: 20rpx solid #f3f3f3;
+  border-top: 10rpx solid #f3f3f3;
 }
 
 .orderListTitle {
@@ -222,7 +196,7 @@
   font-size: 70%;
   color: rgba(247, 3, 3, 0.747);
   background: #fff;
-  position: fixed;
-  margin-top: 1%;
+  width: 15%;
+  margin-top: 2%;
   align-items: center;
 }
