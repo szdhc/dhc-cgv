@@ -167,7 +167,7 @@ Page({
         }
       },
       fail: function(res) {
-        console.error(error);
+        console.error(res);
       },
       complete: function(res) {
         console.log(res);
