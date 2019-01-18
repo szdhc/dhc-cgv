@@ -1,4 +1,4 @@
-﻿{
+{
   "pages": [
     "pages/index/index",
     "pages/shop/shop",
@@ -21,8 +21,8 @@
     "pages/notice/notice",
     "pages/index/chooseMovie/chooseMovie",
     "pages/jumpcinema/jumpcinema",
-    "pages/shop/goods/goods"
-    "pages/index/filmDetails/filmDetails",
+    "pages/shop/goods/goods",
+    "pages/index/filmDetails/filmDetails"
 
   ],
   "permission": {
