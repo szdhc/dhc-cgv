@@ -1,3 +1,6 @@
+var QQMapWX = require('../../qqmap-wx-jssdk/qqmap-wx-jssdk.min.js');
+var qqmapsdk
+
 Page({
 
   data: {
