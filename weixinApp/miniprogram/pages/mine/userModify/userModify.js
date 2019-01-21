@@ -23,7 +23,7 @@ Page({
     userSurname:'未完善',
     password:'未完善',
     hiddenmodalmovieput:true,
-    likeMovie:'未完善22'
+    likeMovie:'未完善'
     //可以通过hidden是否掩藏弹出框的属性，来指定那个弹出框  
     
   },
