@@ -2,50 +2,50 @@
 <view class='filmDetails_info'>
     <view style='display:flex;font-size:26rpx;color:rgba(255,255,255,.7);align-items:center'>
         <view class='filmDetailsImg'>
-            <image src="{{hotMovieTemplate.movieImage}}"></image>
-            <image class='playBtn' src='../../images/play.png'></image>
+            <image src="{{filmDetails_info.images.large}}"></image>
+            <image class='playBtn' src='../../../images/play.png'></image>
         </view>
         <view style='display:flex;flex-direction:column;justify-content: space-around;height:300rpx'>
-            <text style='font-size:34rpx;color:white;'>{{filmDetails_info.film_name}}</text>
-            <text class='eng_name'>{{filmDetails_info.film_English_name}}</text>
-            <text wx:if="{{filmType=='coming'}}" style='color:rgb(246,200,68);font-size:34rpx;margin:10rpx 0;'>{{filmDetails_info.film_want}}人想看</text>
+            <text style='font-size:34rpx;color:white;'>{{filmDetails_info.title}}</text>
+            <text class='eng_name'>{{filmDetails_info.original_title}}</text>
+            <text wx:if="{{filmType=='coming'}}" style='color:rgb(246,200,68);font-size:34rpx;margin:10rpx 0;'>{{filmDetails_info.wish_count}}人想看</text>
             <view class='comment_star' wx:if="{{filmType=='hot'}}">
-                <image src='../../images/full_star.png' wx:for='{{ filmDetails_info.film_user_point/2-1 }}' wx:key='s' style='width:32rpx;height:32rpx'></image>
-                <image src='../../images/full_star.png' style='width:32rpx;height:32rpx' wx:if='{{ filmDetails_info.film_user_point%2==0 }}'></image>
-                <image src='../../images/half_star.png' style='width:32rpx;height:32rpx' wx:if='{{ filmDetails_info.film_user_point%2!=0 }}'></image>
-                <text style='color:rgb(246,200,68);font-size:32rpx;line-height:40rpx;'> {{filmDetails_info.film_user_point}} </text>
+                <image src='../../../images/full_star.png' wx:for='{{filmDetails_info.rating.average/2-1 }}' wx:key='s' style='width:32rpx;height:32rpx'></image>
+                <image src='../../../images/full_star.png' style='width:32rpx;height:32rpx' wx:if='{{ filmDetails_info.rating.average%2==0 }}'></image>
+                <image src='../../../images/half_star.png' style='width:32rpx;height:32rpx' wx:if='{{ filmDetails_info.rating.average%2!=0 }}'></image>
+                <text style='color:rgb(246,200,68);font-size:32rpx;line-height:40rpx;'> {{filmDetails_info.rating.average}} </text>
             </view>
             <view>
-                <text>{{filmDetails_info.film_type}}</text>
+                <text>{{filmDetails_info.genres}}</text>
                 <text wx:if="{{filmDetails_info.film_nd!=''}}" class='film_3D'>{{filmDetails_info.film_nd}}</text>
             </view>
-            <text>{{filmDetails_info.film_area}} / {{filmDetails_info.film_duration}}</text>
-            <text>{{filmDetails_info.film_time}}大陆上映</text>
+            <text>中国大陆/ {{filmDetails_info.durations}}</text>
+            <text>{{filmDetails_info.mainland_pubdate}}大陆上映</text>
         </view>
     </view>
     <view class='want_comment'>
-        <view wx:if="{{!wantFlag}}" id="{{filmDetails_info._id}}" bindtap='clickWant'>
-            <image src='../../images/love.png'></image>
+        <view wx:if="{{!wantFlag}}" id="{{filmDetails_info.id}}" bindtap='clickWant'>
+            <image src='../../../images/love.png'></image>
             <text>想看</text>
         </view>
-        <view wx:else bindtap='clickWant' id="{{filmDetails_info._id}}">
-            <image src='../../images/love_red.png'></image>
+        <view wx:else bindtap='clickWant' id="{{filmDetails_info.id}}">
+            <image src='../../../images/love_red.png'></image>
             <text>已想看</text>
         </view>
-        <navigator url="../star/star?id={{filmDetails_info._id}}" hover-class='comment'>
-            <image src='../../images/no_star.png'></image>
+        <navigator url="../star/star?id={{filmDetails_info.id}}" hover-class='comment'>
+            <image src='../../../images/no_star.png'></image>
             <text>评分</text>
         </navigator>
     </view>
 </view>
 <view class='summary' style="height:{{hiddenFlag?'148rpx':'auto'}}">
-    <text>{{filmDetails_info.film_summary}}</text>
+    <text>{{filmDetails_info.summary}}</text>
 </view>
 <view bindtap='display_text' class='text_icon_container'>
-    <image wx:if="{{hiddenFlag}}" class='text_icon' src="../../images/bottom.png"></image>
-    <image wx:else class='text_icon' src="../../images/top.png"></image>
+    <image wx:if="{{hiddenFlag}}" class='text_icon' src="../../../images/bottom.png"></image>
+    <image wx:else class='text_icon' src="../../../images/top.png"></image>
 </view>
-<view class='background_block' style='background:url({{FileIP+filmDetails_info.film_bill[0]}})'></view>
+<view class='background_block' style='background:url({{}})'></view>
 <view class='gray'></view>
 <!--演职人员  -->
 <view class='actor'>
@@ -53,20 +53,20 @@
     <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex;">
         <view class='actor_container'>
             <view style='position:relative'>
-                <image style='width:145rpx;height:188rpx' src="{{FileIP+filmDetails_info.film_dir_img[0]}}"></image>
+                <image style='width:145rpx;height:188rpx' src="{{filmDetails_info.directors[0].avatars.medium}}"></image>
             </view>
             <view class='actor_text' style='display:flex;flex-direction:column;font-size:24rpx;text-align:center'>
-                <text class='actor_name'>{{filmDetails_info.film_director}}</text>
+                <text class='actor_name'>{{filmDetails_info.directors[0].name}}</text>
                 <text style='color:#666'>导演</text>
             </view>
         </view>
-        <view class='actor_container' wx:for="{{filmDetails_info.film_actor}}" wx:key="{{index}}">
+        <view class='actor_container' wx:for="{{filmDetails_info.casts}}" wx:key="{{index}}">
             <view style='position:relative'>
-                <image style='width:145rpx;height:188rpx' src="{{FileIP+filmDetails_info.film_act_img[index]}}"></image>
+                <image style='width:145rpx;height:188rpx' src="{{filmDetails_info.casts[index].avatars.medium}}"></image>
             </view>
             <view class='actor_text'>
-                <text class='actor_name'>{{item}}</text>
-                <text style='color:#666'>{{filmDetails_info.film_role[index]}}</text>
+                <text class='actor_name'>{{filmDetails_info.casts[index].name}}</text>
+                <text style='color:#666'>{{filmDetails_info.casts[index].name_en}}</text>
             </view>
         </view>
     </scroll-view>
@@ -81,11 +81,11 @@
             <text>昨日票房排行</text>
         </view>
         <view>
-            <text>{{filmDetails_info.film_week_ticket}}</text>
+            <text>100000</text>
             <text>首周票房</text>
         </view>
         <view>
-            <text>{{filmDetails_info.film_total_ticket}}</text>
+            <text>100000</text>
             <text>累计票房</text>
         </view>
     </view>
@@ -96,11 +96,11 @@
     <view class='actor_head'>视频和剧照</view>
     <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex;">
         <view class='video_img' style='position:relative' hover-class='video_img_hover'>
-            <image mode="aspectFill" src="{{FileIP+filmDetails_info.film_imgs[0]}}"></image>
-            <image src='../../images/play.png'></image>
+            <image mode="aspectFill" src="{{filmDetails_info.clips[0].small}}"></image>
+            <image src='../../../images/play.png'></image>
         </view>
-        <view wx:for="{{filmDetails_info.film_imgs}}" wx:key="{{index}}" class='film_img' style='display:inline-block' wx:if="{{index!=0}}">
-            <image bindtap="previewImage" mode="aspectFill" src="{{FileIP+item}}" data-src="{{FileIP+item}}"></image>
+        <view wx:for="{{filmDetails_info.clips}}" wx:key="{{index}}" class='film_img' style='display:inline-block' wx:if="{{index!=0}}">
+            <image bindtap="previewImage" mode="aspectFill" src="{{filmDetails_info.clips[index].small}}" data-src="{{filmDetails_info.clips[index].small}}"></image>
         </view>
     </scroll-view>
 </view>
@@ -114,21 +114,21 @@
         </view>
     </view>
     <view>
-        <view wx:if="{{filmDetails_info.film_comment.length}}" wx:key="{{index}}" class='comment_text' wx:for="{{filmDetails_info.film_comment}}">
+        <view wx:if="{{filmDetails_info.popular_comments.length}}" wx:key="{{index}}" class='comment_text' wx:for="{{filmDetails_info.popular_comments}}">
             <view class='viewer_head'>
-                <image wx:if="{{item.head_img}}" src="{{item.head_img}}"></image>
-                <image wx:else src="../../images/default.png"></image>
+                <image wx:if="{{filmDetails_info.popular_comments[index].author}}" src="{{filmDetails_info.popular_comments[index].author.avatar}}"></image>
+                <image wx:else src="../../../images/default.png"></image>
             </view>
             <view class='viewer_text_right'>
                 <view style='position:relative'>
                     <view>
-                        <text class='viewer_name'>{{item.nickname}}</text>
+                        <text class='viewer_name'>{{filmDetails_info.popular_comments[index].author.name}}</text>
                         <text class='had_buy'>购</text>
                     </view>
                     <view class='star'>
-                        <image src='../../images/full_star.png' wx:for='{{ item.point/2-1 }}' wx:key='s'></image>
-                        <image src='../../images/full_star.png' wx:if='{{ item.point%2==0 }}'></image>
-                        <image src='../../images/half_star.png' wx:if='{{ item.point%2!=0 }}'></image>
+                        <image src='../../../images/full_star.png' wx:for='{{ item.point/2-1 }}' wx:key='s'></image>
+                        <image src='../../../images/full_star.png' wx:if='{{ item.point%2==0 }}'></image>
+                        <image src='../../../images/half_star.png' wx:if='{{ item.point%2!=0 }}'></image>
                     </view>
                 </view>
                 <view class='comment_content'>
@@ -137,7 +137,7 @@
                 <view class='comment_time'>
                     <text>{{item.time}}</text>
                     <view>
-                        <image class='good' src="../../images/good.png"></image>
+                        <image class='good' src="../../../images/good.png"></image>
                         <text style='margin-left:4rpx;'>{{item.good_num}}</text>
                     </view>
                 </view>

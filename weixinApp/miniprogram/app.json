@@ -22,7 +22,8 @@
     "pages/index/chooseMovie/chooseMovie",
     "pages/jumpcinema/jumpcinema",
     "pages/shop/goods/goods",
-    "pages/index/filmDetails/filmDetails"
+    "pages/index/filmDetails/filmDetails",
+    "pages/index/star/star"
 
   ],
   "permission": {

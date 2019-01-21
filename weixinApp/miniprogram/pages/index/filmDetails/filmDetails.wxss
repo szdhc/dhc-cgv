@@ -341,6 +341,6 @@ page {
     line-height: 100rpx;
     text-align: center;
     color: white;
-    background: #f03d37;
+    background: rgba(0, 0, 0, 0.5);
     font-size: 32rpx;
 }

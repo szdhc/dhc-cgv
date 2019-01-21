@@ -1,4 +1,4 @@
-﻿var QQMapWX = require('../../qqmap-wx-jssdk/qqmap-wx-jssdk.min.js');
+var QQMapWX = require('../../qqmap-wx-jssdk/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
 // var bannerJs = require("../../templates/banner.js");
 // pages/index/index.js
@@ -88,7 +88,7 @@ Page({
       success: ({ data }) => {
         let arr = [];
         let movieObj = new Map();
-        for (let i = 0; i < data.subjects.length; i += 2) {
+        for (let i = 0; i < data.subjects.length; i++) {
           movieObj.set('movieImage', data.subjects[i].images['small'])
           movieObj.set('movieName', data.subjects[i].title)
           movieObj.set('movieShow', data.subjects[i].title)
@@ -103,11 +103,13 @@ Page({
           movieObj.set('movieDirectorStarring', directors + '/' + casts)
           movieObj.set('moiveGrade', data.subjects[i].rating.average)
           movieObj.set('movieStatus', '购票')
+          movieObj.set('id', data.subjects[i].id)
           arr.push(JSON.parse(util.MapTOJson(movieObj)))
         }
         this.setData({
           hotMovieList: arr
         })
+        console.log(data)
         console.log(arr)
         // console.log(arr[0][0].images.medium)
       }
@@ -217,5 +219,5 @@ Page({
     wx.navigateTo({
       url: '/pages/jumpcinema/jumpcinema',
     })
-  }
+  },
 })

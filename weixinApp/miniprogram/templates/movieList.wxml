@@ -6,16 +6,18 @@
       </image>
     </view>
     <!--电影名，特性，导演，主演-->
-    <view class='flex-wrp-cloumn content margin-left hidden-text'>
-      <view>
-        <text class='medium-font-size'>{{movieName}}</text>
-      </view>
-      <view>
-        <text class='regular-font-size movieShow'>{{movieShow}}</text>
-      </view>
-      <view>
-        <text class='regular-font-size movieShow'>{{movieDirectorStarring}}</text>
-      </view>
+    <view class='flex-wrp-cloumn content margin-left hidden-text' data-moveid="{{id}}">
+      <navigator url="../index/filmDetails/filmDetails?id={{id}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
+        <view>
+          <text class='medium-font-size'>{{movieName}}</text>
+        </view>
+        <view>
+          <text class='regular-font-size movieShow'>{{movieShow}}</text>
+        </view>
+        <view>
+          <text class='regular-font-size movieShow'>{{movieDirectorStarring}}</text>
+        </view>
+      </navigator>
     </view>
     <!--评分、购票/预售-->
     <view class='flex-wrp-cloumn margin-left'>
@@ -49,7 +51,7 @@
         <text class='movieShow'>{{addressDetial}}</text>
       </view>
     </view>
-        <!--价格-->
+    <!--价格-->
     <view class='flex-wrp-cloumn coloum'>
       <view>
         <text class='movieName'>{{price}}</text>
