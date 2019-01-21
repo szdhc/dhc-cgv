@@ -5,15 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    agood: {
-      "parentIndex": 5,
-      "image": "http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750",
-      "name": "袋袋坚果",
-      "description": "袋袋坚果一袋",
-      "price": 10,
-      "oldPrice": "15",
-      "Count": 0
-    },
+    goods: {},
     toView: '0',
     scrollTop: 100,
     foodCounts: 0,
@@ -39,8 +31,8 @@ Page({
 
   //移除商品
   decreaseCart: function (e) {
-    var index = e.currentTarget.dataset.itemIndex;
-    var parentIndex = e.currentTarget.dataset.parentindex;
+    var index = this.data.goods.index;
+    var parentIndex = this.data.goods.parentIndex;;
     this.data.goods.forEach((good) => {
       good.foods.forEach((food) => {
         var num = this.data.goods[parentIndex].foods[index].Count;
@@ -78,17 +70,16 @@ Page({
 
   //添加到购物车
   addCart(e) {
-    var index = e.currentTarget.dataset.itemIndex;
-    var parentIndex = e.currentTarget.dataset.parentindex;
-    this.data.goods[parentIndex].foods[index].Count++;
+    var index = this.data.goods.index;
+    var parentIndex = this.data.goods.parentIndex;
+    this.data.goods.Count++;
     var mark = 'a' + index + 'b' + parentIndex
-    var price = this.data.goods[parentIndex].foods[index].price;
-    var num = this.data.goods[parentIndex].foods[index].Count;
-    var name = this.data.goods[parentIndex].foods[index].name;
+    var price = this.data.goods.price;
+    var num = this.data.goods.Count;
+    var name = this.data.goods.name;
     var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
-    var carArray1 = this.data.carArray.filter(item => item.mark != mark)
-    carArray1.push(obj)
-    console.log(carArray1);
+    var carArray1 = this.data.carArray.filter(item => item.mark != mark);
+    carArray1.push(obj);
     this.setData({
       carArray: carArray1,
       goods: this.data.goods
@@ -190,14 +181,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
       payDesc: this.payDesc()
     });
+ 
+    let modeEncode = wx.getStorageSync("jsonStr");
+    let mode = JSON.parse(modeEncode);
+    this.setData({ goods: mode });    
 
-    qqmapsdk = new QQMapWX({
-      key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
-    });
+    let carArr = wx.getStorageSync("jsonCarA");
+    let carA = JSON.parse(carArr);
+    this.setData({ carArray: carA });      
+
+    this.calTotalPrice();
+    this.setData({
+      payDesc: this.payDesc()
+    })
+
+    // qqmapsdk = new QQMapWX({
+    //   key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
+    // });
     // this.setData({
     //   openid: getApp().globalData.openid
     // })
@@ -229,7 +234,14 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    console.log("goods-----unload!!!!!");
+    wx.removeStorageSync("jsonCarA");
+    wx.setStorageSync("jsonCarA", JSON.stringify(this.data.carArray));  
 
+    var that = this
+    setTimeout(function () {
+      that.setData({ isClose: true })
+    }, 200) 
   },
 
   /**

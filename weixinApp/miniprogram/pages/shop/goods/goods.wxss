@@ -166,7 +166,7 @@
   color: rgb(147, 153, 159);
 }
 
-.cart-add {
+.gcart-add {
   display: inline-block;
   padding: 6px;
   line-height: 24px;
@@ -175,6 +175,14 @@
   color: rgb(0, 160, 220, 0.2);
 }
 
+.good_cart_add {
+  display: inline-block;
+  padding: 4px 6px 6px 6px;
+}
+
+.cartControl-wrapper .cartControl .cart-decrease {
+  display: inline;
+}
 
 
 

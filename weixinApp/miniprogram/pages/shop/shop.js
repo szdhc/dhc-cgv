@@ -8,6 +8,7 @@ Page({
     movieAddress: '苏州平江万达广场店',
     currProvince: '',
     currCity: '',
+    isClose: true,     //判断当前页面是打开还是返回页
     // --------------------------------------------------------------//
     navbar: ['卖品', '会员卡'],
     currentTab: 0,
@@ -71,30 +72,30 @@ Page({
             "sellCount": 229,
             "Count": 0,
             "rating": 100,
-            "info": "一碗皮蛋瘦肉粥，总是我到粥店时的不二之选。香浓软滑，饱腹暖心，皮蛋的Q弹与瘦肉的滑嫩伴着粥香溢于满口，让人喝这样的一碗粥也觉得心满意足",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "很喜欢的粥",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 1,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            // "info": "一碗皮蛋瘦肉粥，总是我到粥店时的不二之选。香浓软滑，饱腹暖心，皮蛋的Q弹与瘦肉的滑嫩伴着粥香溢于满口，让人喝这样的一碗粥也觉得心满意足",
+            // "ratings": [
+            //   {
+            //     "username": "3******c",
+            //     "rateTime": 1469281964000,
+            //     "rateType": 0,
+            //     "text": "很喜欢的粥",
+            //     "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
+            //   },
+            //   {
+            //     "username": "2******3",
+            //     "rateTime": 1469271264000,
+            //     "rateType": 0,
+            //     "text": "",
+            //     "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
+            //   },
+            //   {
+            //     "username": "3******b",
+            //     "rateTime": 1469261964000,
+            //     "rateType": 1,
+            //     "text": "",
+            //     "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
+            //   }
+            // ],
             "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -106,30 +107,83 @@ Page({
             "sellCount": 229,
             "Count": 0,
             "rating": 100,
-            "info": "一碗皮蛋瘦肉粥，总是我到粥店时的不二之选。香浓软滑，饱腹暖心，皮蛋的Q弹与瘦肉的滑嫩伴着粥香溢于满口，让人喝这样的一碗粥也觉得心满意足",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "很喜欢的粥",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 1,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
+            "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
+          },
+          {
+            "name": "袋袋坚果",
+            "price": 10,
+            "oldPrice": "15",
+            "description": "袋袋坚果一袋",
+            "sellCount": 229,
+            "Count": 0,
+            "rating": 100,     
+            "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
+            "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
+          },
+          {
+            "name": "袋袋坚果",
+            "price": 10,
+            "oldPrice": "15",
+            "description": "袋袋坚果一袋",
+            "sellCount": 229,
+            "Count": 0,
+            "rating": 100,           
+            "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
+            "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
+          },
+          {
+            "name": "袋袋坚果",
+            "price": 10,
+            "oldPrice": "15",
+            "description": "袋袋坚果一袋",
+            "sellCount": 229,
+            "Count": 0,
+            "rating": 100,           
+            "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
+            "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
+          },
+          {
+            "name": "袋袋坚果",
+            "price": 10,
+            "oldPrice": "15",
+            "description": "袋袋坚果一袋",
+            "sellCount": 229,
+            "Count": 0,
+            "rating": 100,          
+            "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
+            "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
+          },
+          {
+            "name": "袋袋坚果",
+            "price": 10,
+            "oldPrice": "15",
+            "description": "袋袋坚果一袋",
+            "sellCount": 229,
+            "Count": 0,
+            "rating": 100,          
+            "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
+            "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
+          },
+          {
+            "name": "袋袋坚果",
+            "price": 10,
+            "oldPrice": "15",
+            "description": "袋袋坚果一袋",
+            "sellCount": 229,
+            "Count": 0,
+            "rating": 100,        
+            "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
+            "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
+          },
+          {
+            "name": "袋袋坚果",
+            "price": 10,
+            "oldPrice": "15",
+            "description": "袋袋坚果一袋",
+            "sellCount": 229,
+            "Count": 0,
+            "rating": 100,  
             "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -141,275 +195,6 @@ Page({
             "sellCount": 229,
             "Count": 0,
             "rating": 100,
-            "info": "一碗皮蛋瘦肉粥，总是我到粥店时的不二之选。香浓软滑，饱腹暖心，皮蛋的Q弹与瘦肉的滑嫩伴着粥香溢于满口，让人喝这样的一碗粥也觉得心满意足",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "很喜欢的粥",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 1,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
-            "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
-            "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
-          },
-          {
-            "name": "袋袋坚果",
-            "price": 10,
-            "oldPrice": "15",
-            "description": "袋袋坚果一袋",
-            "sellCount": 229,
-            "Count": 0,
-            "rating": 100,
-            "info": "一碗皮蛋瘦肉粥，总是我到粥店时的不二之选。香浓软滑，饱腹暖心，皮蛋的Q弹与瘦肉的滑嫩伴着粥香溢于满口，让人喝这样的一碗粥也觉得心满意足",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "很喜欢的粥",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 1,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
-            "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
-            "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
-          },
-          {
-            "name": "袋袋坚果",
-            "price": 10,
-            "oldPrice": "15",
-            "description": "袋袋坚果一袋",
-            "sellCount": 229,
-            "Count": 0,
-            "rating": 100,
-            "info": "一碗皮蛋瘦肉粥，总是我到粥店时的不二之选。香浓软滑，饱腹暖心，皮蛋的Q弹与瘦肉的滑嫩伴着粥香溢于满口，让人喝这样的一碗粥也觉得心满意足",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "很喜欢的粥",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 1,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
-            "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
-            "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
-          },
-          {
-            "name": "袋袋坚果",
-            "price": 10,
-            "oldPrice": "15",
-            "description": "袋袋坚果一袋",
-            "sellCount": 229,
-            "Count": 0,
-            "rating": 100,
-            "info": "一碗皮蛋瘦肉粥，总是我到粥店时的不二之选。香浓软滑，饱腹暖心，皮蛋的Q弹与瘦肉的滑嫩伴着粥香溢于满口，让人喝这样的一碗粥也觉得心满意足",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "很喜欢的粥",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 1,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
-            "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
-            "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
-          },
-          {
-            "name": "袋袋坚果",
-            "price": 10,
-            "oldPrice": "15",
-            "description": "袋袋坚果一袋",
-            "sellCount": 229,
-            "Count": 0,
-            "rating": 100,
-            "info": "一碗皮蛋瘦肉粥，总是我到粥店时的不二之选。香浓软滑，饱腹暖心，皮蛋的Q弹与瘦肉的滑嫩伴着粥香溢于满口，让人喝这样的一碗粥也觉得心满意足",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "很喜欢的粥",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 1,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
-            "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
-            "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
-          },
-          {
-            "name": "袋袋坚果",
-            "price": 10,
-            "oldPrice": "15",
-            "description": "袋袋坚果一袋",
-            "sellCount": 229,
-            "Count": 0,
-            "rating": 100,
-            "info": "一碗皮蛋瘦肉粥，总是我到粥店时的不二之选。香浓软滑，饱腹暖心，皮蛋的Q弹与瘦肉的滑嫩伴着粥香溢于满口，让人喝这样的一碗粥也觉得心满意足",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "很喜欢的粥",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 1,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
-            "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
-            "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
-          },
-          {
-            "name": "袋袋坚果",
-            "price": 10,
-            "oldPrice": "15",
-            "description": "袋袋坚果一袋",
-            "sellCount": 229,
-            "Count": 0,
-            "rating": 100,
-            "info": "一碗皮蛋瘦肉粥，总是我到粥店时的不二之选。香浓软滑，饱腹暖心，皮蛋的Q弹与瘦肉的滑嫩伴着粥香溢于满口，让人喝这样的一碗粥也觉得心满意足",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "很喜欢的粥",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 1,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
-            "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
-            "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
-          },
-          {
-            "name": "袋袋坚果",
-            "price": 10,
-            "oldPrice": "15",
-            "description": "袋袋坚果一袋",
-            "sellCount": 229,
-            "Count": 0,
-            "rating": 100,
-            "info": "一碗皮蛋瘦肉粥，总是我到粥店时的不二之选。香浓软滑，饱腹暖心，皮蛋的Q弹与瘦肉的滑嫩伴着粥香溢于满口，让人喝这样的一碗粥也觉得心满意足",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "很喜欢的粥",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 1,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
             "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
           }
@@ -426,17 +211,7 @@ Page({
             "description": "46OZ爆米花*1+220Z可乐*1",
             "sellCount": 17,
             "Count": 0,
-            "rating": 100,
-            "info": "",
-            "ratings": [
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "rating": 100,        
             "icon": "http://fuss10.elemecdn.com/6/72/cb844f0bb60c502c6d5c05e0bddf5jpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/6/72/cb844f0bb60c502c6d5c05e0bddf5jpeg.jpeg?imageView2/1/w/750/h/750"
           }
@@ -453,24 +228,7 @@ Page({
             "description": "",
             "sellCount": 15,
             "Count": 0,
-            "rating": 100,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "还可以",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "rating": 100,   
             "icon": "http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750"
           }
@@ -487,24 +245,7 @@ Page({
             "description": "",
             "sellCount": 43,
             "Count": 0,
-            "rating": 92,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "菜量还可以,味道还可以",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "rating": 100,   
             "icon": "http://fuss10.elemecdn.com/d/2d/b1eb45b305635d9dd04ddf157165fjpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/d/2d/b1eb45b305635d9dd04ddf157165fjpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -515,24 +256,7 @@ Page({
             "description": "",
             "sellCount": 43,
             "Count": 0,
-            "rating": 92,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "菜量还可以,味道还可以",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "rating": 100,     
             "icon": "http://fuss10.elemecdn.com/d/2d/b1eb45b305635d9dd04ddf157165fjpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/d/2d/b1eb45b305635d9dd04ddf157165fjpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -543,24 +267,7 @@ Page({
             "description": "",
             "sellCount": 43,
             "Count": 0,
-            "rating": 92,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "菜量还可以,味道还可以",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "rating": 100,   
             "icon": "http://fuss10.elemecdn.com/d/2d/b1eb45b305635d9dd04ddf157165fjpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/d/2d/b1eb45b305635d9dd04ddf157165fjpeg.jpeg?imageView2/1/w/750/h/750"
           }
@@ -577,31 +284,7 @@ Page({
             "description": "",
             "sellCount": 84,
             "Count": 0,
-            "rating": 100,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "rating": 100,      
             "icon": "http://fuss10.elemecdn.com/9/b5/469d8854f9a3a03797933fd01398bjpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/9/b5/469d8854f9a3a03797933fd01398bjpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -612,31 +295,7 @@ Page({
             "description": "",
             "sellCount": 28,
             "Count": 0,
-            "rating": 100,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "rating": 100,       
             "icon": "http://fuss10.elemecdn.com/6/54/f654985b4e185f06eb07f8fa2b2e8jpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/6/54/f654985b4e185f06eb07f8fa2b2e8jpeg.jpeg?imageView2/1/w/750/h/750"
           }
@@ -652,18 +311,7 @@ Page({
             "oldPrice": "",
             "description": "红豆薏米粥,三鲜干蒸烧卖,拍黄瓜",
             "sellCount": 3,
-            "Count": 0,
-            "rating": 100,
-            "info": "",
-            "ratings": [
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/f/49/27f26ed00c025b2200a9ccbb7e67ejpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/f/49/27f26ed00c025b2200a9ccbb7e67ejpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -673,18 +321,7 @@ Page({
             "oldPrice": "",
             "description": "",
             "sellCount": 12,
-            "Count": 0,
-            "rating": 100,
-            "info": "",
-            "ratings": [
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/8/96/f444a8087f0e940ef264617f9d98ajpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/8/96/f444a8087f0e940ef264617f9d98ajpeg.jpeg?imageView2/1/w/750/h/750"
           }
@@ -700,10 +337,7 @@ Page({
             "oldPrice": "",
             "description": "",
             "sellCount": 1,
-            "Count": 0,
-            "rating": "",
-            "info": "",
-            "ratings": [],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/b/5f/b3b04c259d5ec9fa52e1856ee50dajpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/b/5f/b3b04c259d5ec9fa52e1856ee50dajpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -713,32 +347,7 @@ Page({
             "oldPrice": "",
             "description": "",
             "sellCount": 7,
-            "Count": 0,
-            "rating": 100,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/b/9f/5e6c99c593cf65229225c5661bcdejpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/b/9f/5e6c99c593cf65229225c5661bcdejpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -748,25 +357,7 @@ Page({
             "oldPrice": 10,
             "description": "",
             "sellCount": 15,
-            "Count": 0,
-            "rating": 100,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "还可以",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750"
           }
@@ -782,32 +373,7 @@ Page({
             "oldPrice": "",
             "description": "",
             "sellCount": 188,
-            "Count": 0,
-            "rating": 96,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 1,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/c/6b/29e3d29b0db63d36f7c500bca31d8jpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/c/6b/29e3d29b0db63d36f7c500bca31d8jpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -817,32 +383,7 @@ Page({
             "oldPrice": "",
             "description": "",
             "sellCount": 124,
-            "Count": 0,
-            "rating": 85,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 1,
-                "text": "没啥味道",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 1,
-                "text": "很一般啊",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/f/28/a51e7b18751bcdf871648a23fd3b4jpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/f/28/a51e7b18751bcdf871648a23fd3b4jpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -852,32 +393,7 @@ Page({
             "oldPrice": "",
             "description": "",
             "sellCount": 114,
-            "Count": 0,
-            "rating": 91,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 1,
-                "text": "难吃不推荐",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/d/b9/bcab0e8ad97758e65ae5a62b2664ejpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/d/b9/bcab0e8ad97758e65ae5a62b2664ejpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -887,32 +403,7 @@ Page({
             "oldPrice": "",
             "description": "",
             "sellCount": 101,
-            "Count": 0,
-            "rating": 78,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 1,
-                "text": "不脆,不好吃",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/7/72/9a580c1462ca1e4d3c07e112bc035jpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/7/72/9a580c1462ca1e4d3c07e112bc035jpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -922,32 +413,7 @@ Page({
             "oldPrice": "",
             "description": "",
             "sellCount": 80,
-            "Count": 0,
-            "rating": 93,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/0/05/097a2a59fd2a2292d08067e16380cjpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/0/05/097a2a59fd2a2292d08067e16380cjpeg.jpeg?imageView2/1/w/750/h/750"
           }
@@ -963,31 +429,7 @@ Page({
             "oldPrice": "",
             "description": "咸粥",
             "sellCount": 229,
-            "Count": 0,
-            "rating": 100,
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "很喜欢的粥",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 1,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -997,32 +439,7 @@ Page({
             "oldPrice": "",
             "description": "甜粥",
             "sellCount": 91,
-            "Count": 0,
-            "rating": 100,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/8/a6/453f65f16b1391942af11511b7a90jpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/8/a6/453f65f16b1391942af11511b7a90jpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -1032,32 +449,7 @@ Page({
             "oldPrice": "",
             "description": "甜粥",
             "sellCount": 86,
-            "Count": 0,
-            "rating": 100,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/d/22/260bd78ee6ac6051136c5447fe307jpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/d/22/260bd78ee6ac6051136c5447fe307jpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -1067,32 +459,7 @@ Page({
             "oldPrice": "",
             "description": "",
             "sellCount": 81,
-            "Count": 0,
-            "rating": 91,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/9/b5/469d8854f9a3a03797933fd01398bjpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/9/b5/469d8854f9a3a03797933fd01398bjpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -1102,31 +469,7 @@ Page({
             "oldPrice": "",
             "description": "咸粥",
             "sellCount": 56,
-            "Count": 0,
-            "rating": 100,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": ""
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/e/a3/5317c68dd618929b6ac05804e429ajpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/e/a3/5317c68dd618929b6ac05804e429ajpeg.jpeg?imageView2/1/w/750/h/750"
           },
@@ -1136,32 +479,7 @@ Page({
             "oldPrice": "",
             "description": "咸粥",
             "sellCount": 33,
-            "Count": 0,
-            "rating": 100,
-            "info": "",
-            "ratings": [
-              {
-                "username": "3******c",
-                "rateTime": 1469281964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "2******3",
-                "rateTime": 1469271264000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              },
-              {
-                "username": "3******b",
-                "rateTime": 1469261964000,
-                "rateType": 0,
-                "text": "",
-                "avatar": "http://static.galileo.xiaojukeji.com/static/tms/default_header.png"
-              }
-            ],
+            "Count": 0,            
             "icon": "http://fuss10.elemecdn.com/a/94/7371083792c19df00e546b29e344cjpeg.jpeg?imageView2/1/w/114/h/114",
             "image": "http://fuss10.elemecdn.com/a/94/7371083792c19df00e546b29e344cjpeg.jpeg?imageView2/1/w/750/h/750"
           }
@@ -1187,9 +505,31 @@ Page({
 
   // ------------------------goods information------------------------------
 
-  selectFoods: function() {
+  selectFoods: function(e) {
+
+    var index = e.currentTarget.dataset.itemIndex;
+    var parentIndex = e.currentTarget.dataset.parentindex;
+    var mark = 'a' + index + 'b' + parentIndex;
+
+    var obj = {};
+    obj = this.data.goods[parentIndex].foods[index];
+    obj["index"] = index;
+    obj["parentIndex"] = parentIndex;
+    obj["mark"] = mark;
+
+    // 转成json 字符串
+    let modeStr = JSON.stringify(obj);
+    wx.removeStorageSync("jsonStr");
+    wx.setStorageSync("jsonStr",modeStr);
+    wx.removeStorageSync("jsonCarA");
+    wx.setStorageSync("jsonCarA", JSON.stringify(this.data.carArray));    
+    // url encode
+    // let modeEncode = encodeURIComponent(modeStr);
+    // console.log(modeStr);
+    this.setData({ isClose: false });
     wx.navigateTo({
       url: '../shop/goods/goods',
+      //url: '../shop/goods/goods?jsonStr=' + str,
     })
   },
 
@@ -1250,8 +590,8 @@ Page({
     var num = this.data.goods[parentIndex].foods[index].Count;
     var name = this.data.goods[parentIndex].foods[index].name;
     var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
-    var carArray1 = this.data.carArray.filter(item => item.mark != mark)
-    carArray1.push(obj)
+    var carArray1 = this.data.carArray.filter(item => item.mark != mark);
+    carArray1.push(obj);
     console.log(carArray1);
     this.setData({
       carArray: carArray1,
@@ -1364,44 +704,83 @@ Page({
       payDesc: this.payDesc()
     });
 
-    qqmapsdk = new QQMapWX({
-      key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
-    });
+    // qqmapsdk = new QQMapWX({
+    //   key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
+    // });
     // this.setData({
     //   openid: getApp().globalData.openid
     // })
   },
 
+  /**
+  * 生命周期函数--监听页面卸载
+  */
+  onUnload: function () {
+
+
+  },
+
+  /**
+* 生命周期函数--监听页面隐藏
+*/
+  onHide: function () {
+    if (this.data.isClose) {
+      console.log('重新打开')
+    }
+  },
+
   onShow: function () {
-    let vm = this;
-    this.getLocation();
-    qqmapsdk.getCityList({
-      success: function (res) {
-        console.log(res);
-        console.log('省份数据：', res.result[0]); //打印省份数据
-        console.log('城市数据：', res.result[1]); //打印城市数据
-        console.log('区县数据：', res.result[2]); //打印区县数据
-      },
-      fail: function (error) {
-        console.error(error);
-      },
-      complete: function (res) {
-        console.log(res);
-      }
-    });
-    // 调用接口
-    qqmapsdk.search({
-      keyword: 'CVG影城',
-      success: function (res) {
-        console.log('CVG影城:' + res);
-      },
-      fail: function (res) {
-        console.log(res);
-      },
-      complete: function (res) {
-        console.log(res);
-      }
-    });
+
+    console.log("shops-----------------" + this.data.isClose);
+
+    // 当页面从详细跳转过来时
+    let pages = getCurrentPages();
+    let prevpage = pages[pages.length - 1];
+    if (!this.data.isClose) {
+
+      let carArr = wx.getStorageSync("jsonCarA");
+      let carA = JSON.parse(carArr);
+      this.setData({ carArray: carA });
+
+      this.calTotalPrice();
+      this.setData({
+        payDesc: this.payDesc()
+      })
+    }
+
+
+
+ 
+
+    // let vm = this;
+    // this.getLocation();
+    // qqmapsdk.getCityList({
+    //   success: function (res) {
+    //     console.log(res);
+    //     console.log('省份数据：', res.result[0]); //打印省份数据
+    //     console.log('城市数据：', res.result[1]); //打印城市数据
+    //     console.log('区县数据：', res.result[2]); //打印区县数据
+    //   },
+    //   fail: function (error) {
+    //     console.error(error);
+    //   },
+    //   complete: function (res) {
+    //     console.log(res);
+    //   }
+    // });
+    // // 调用接口
+    // qqmapsdk.search({
+    //   keyword: 'CVG影城',
+    //   success: function (res) {
+    //     console.log('CVG影城:' + res);
+    //   },
+    //   fail: function (res) {
+    //     console.log(res);
+    //   },
+    //   complete: function (res) {
+    //     console.log(res);
+    //   }
+    // });
 
   },
   getLocation: function () {
