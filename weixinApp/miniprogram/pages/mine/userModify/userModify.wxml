@@ -34,7 +34,7 @@
   </view>
   <view class='userinfo'>
     <text class='list'>密码</text>
-    <text class='righttest' bindtap="modalpsd">{{password}}</text>
+    <text class='righttest' bindtap="modalpsd">••••••</text>
     <modal id="modal" hidden="{{hiddenmodalpsdput}}" title="密码" confirm-text="提交" cancel-text="取消"        bindcancel="psdcancel" bindconfirm="psdconfirm">  
       <input type='password' name="password" placeholder="请输入" bindinput='getPassword'  auto-focus/>
   </modal>

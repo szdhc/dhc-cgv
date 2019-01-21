@@ -137,7 +137,6 @@ page{
   z-index: 999;
   top: 80rpx;
   width: 125%;
-  border:1px solid #efefef;
   box-sizing: border-box;
   border-radius: 15rpx;
   background: #fff;
