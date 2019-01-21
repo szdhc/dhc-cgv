@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    chooseCity:'苏州',
+    cinema:'CGV影城苏州中心店'
 
   },
 
@@ -57,10 +59,11 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+//选择城市跳转事件
+  chooseCitys() {
+    wx.navigateTo({
+      url: '/pages/citys/citys',
+    })
+  },
+  
 })

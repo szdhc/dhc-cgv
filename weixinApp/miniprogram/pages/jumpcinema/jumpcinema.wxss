@@ -1,14 +1,15 @@
 /* pages/jumpcinema/jumpcinema.wxss */
-.top{
-  width: 85%;
-  height: 20%;
-  background-color: rgba(238, 236, 236, 0.671);
-  margin-top: 3%;
+@import "../../style/guide.wxss";
 
+.flex-wrp-row.item {
+  background-color: rgba(238, 236, 236, 0.671);
 }
 
-.input{
-  border: 2px solid gray;
-  font-size: 75%;
-  width: 99%;
+.cinema {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.border{
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }

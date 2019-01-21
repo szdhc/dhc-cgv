@@ -23,8 +23,8 @@
     "pages/jumpcinema/jumpcinema",
     "pages/shop/goods/goods",
     "pages/index/filmDetails/filmDetails",
-    "pages/index/star/star"
-
+    "pages/index/star/star",
+    "pages/citys/citys"
   ],
   "permission": {
     "scope.userLocation": {
