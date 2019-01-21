@@ -1,6 +1,6 @@
 <view class='flex-wrp-row item'>
   <view class='item-left flex-wrp-row'>
-    <text class='chooseCinema' bindtap='chooseCitys'> {{chooseCity}}</text>
+    <text class='chooseCinema' bindtap='chooseCitys'> {{begin}}</text>
     <icon class='iconfont icon-xiajiantou icon-right' bindtap='chooseCitys'></icon>
   </view>
   <view class='item-left flex-wrp-row'>
