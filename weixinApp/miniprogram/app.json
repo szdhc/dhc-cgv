@@ -25,7 +25,8 @@
     "pages/index/filmDetails/filmDetails",
     "pages/index/star/star",
     "pages/citys/citys",
-    "pages/index/chooseMovie/hallInstruction/hallInstruction"
+    "pages/index/chooseMovie/hallInstruction/hallInstruction",
+    "pages/index/chooseMovie/seat/seat"
   ],
   "permission": {
     "scope.userLocation": {
