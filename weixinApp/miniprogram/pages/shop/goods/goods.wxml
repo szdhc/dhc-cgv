@@ -1,16 +1,36 @@
 <!--pages/shop/goods/goods.wxml-->
 
-<view class="container">
+<view class="good_container">
   
-  <view class='flex-wrp-cloumn'>
+  <!-- <view class='flex-wrp-cloumn'>
     <view class='flex-wrp-cloumn-center'>
       <image class="goodimg" src="{{agood.image}}"></image>
     </view>
     <view class='good-name-sy'><text>{{agood.name}}</text></view>
     <view class='good-desc-sy'><text >{{agood.description}}</text></view>
     <view><text class='good-price-sy'>促销价: {{agood.price}}元</text><text class='good-oldprice-sy'>{{agood.oldPrice}}元</text></view>
-  </view>
+  </view> -->
+  <image wx:if="{{ agood.image }}" class="good_background" src="{{ agood.image }}"/>
+  <block wx:if="{{ agood.name }}">
+    <view id="order{{parentIndex}}" class="good_meta">
+      <image class="good_poster" src="{{ agood.image }}" mode="aspectFill"/>
+      <text class="good_title">{{ agood.name }}</text>
+      <text class="good_info">{{ agood.description }}</text>
+      <view class="good_p"><text class="good_price">促销价: {{agood.price}}元</text><text class='good-oldprice-sy'>{{agood.oldPrice}}元</text>
+      </view>
+    </view>
+  </block>
 
+  <!--cartControl-->
+  <view class="good_cart_right">
+    <view name="fade" class="">
+      <view class="cart-decrease" wx:if="{{food.Count > 0}}" data-item-index="{{index}}" data-parentIndex="{{parentIndex}}" catchtap="decreaseCart">
+        <view class="inner giconfont icon-jian" style="font-size:24px;color:#00A0DC;"></view>
+      </view>
+      <view class="cart-count" wx:if="{{food.Count > 0 }}">{{food.Count}}</view>
+      <view class=" giconfont icon-jia cart-add " style="color:#00A0DC; " data-item-index="{{index}}" data-parentIndex="{{parentIndex}}" catchtap="addCart"></view>
+    </view>
+  </view>
 
   <!--shopCart-->
   <view>

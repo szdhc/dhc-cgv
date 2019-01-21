@@ -6,11 +6,13 @@ Page({
    */
   data: {
     agood: {
-      "image": "http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/750/h/750",
+      "parentIndex": 5,
+      "image": "http://fuss10.elemecdn.com/e/c6/f348e811772016ae24e968238bcbfjpeg.jpeg?imageView2/1/w/750/h/750",
       "name": "袋袋坚果",
       "description": "袋袋坚果一袋",
       "price": 10,
-      "oldPrice": "15"
+      "oldPrice": "15",
+      "Count": 0
     },
     toView: '0',
     scrollTop: 100,
@@ -26,6 +28,7 @@ Page({
     cartShow: 'none'
   },
 
+  // ------------------------goods information------------------------------
   selectMenu: function (e) {
     var index = e.currentTarget.dataset.itemIndex;
     this.setData({
@@ -181,6 +184,7 @@ Page({
     // }
     return show;
   },
+  // ------------------------goods information end-------------------------------- 
 
   /**
    * 生命周期函数--监听页面加载
