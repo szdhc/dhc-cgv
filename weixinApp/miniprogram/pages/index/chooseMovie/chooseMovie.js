@@ -235,10 +235,16 @@ swipclick: function (e) {
   })
 },
 
-  toInstruction:function(){
-    wx.navigateTo({
-      url: '../chooseMovie/hallInstruction/hallInstruction',
-    })
-  }
+toInstruction:function(){
+   wx.navigateTo({
+    url: '../chooseMovie/hallInstruction/hallInstruction',
+  })
+},
+  
+redirctSeat:function(){
+  wx.navigateTo({
+    url: '../chooseMovie/seat/seat',
+  })
+}
 
 })
