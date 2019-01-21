@@ -1,0 +1,82 @@
+page {
+    background: rgb(245, 245, 245);
+}
+
+.star-image {
+    position: absolute;
+    top: 50rpx;
+    width: 66rpx;
+    height: 66rpx;
+    src: "../../images/no_star.png";
+}
+
+.item {
+    position: absolute;
+    top: 10rpx;
+    width: 33rpx;
+    height: 66rpx;
+}
+
+.block {
+    position: relative;
+    margin-left: 25%;
+    bottom: 20rpx;
+}
+
+#point {
+    text-align: center;
+    margin-top: 40rpx;
+    color: #faaf00;
+}
+
+#point>text:first-child {
+    font-size: 80rpx;
+}
+
+.point>text:last-child {
+    font-size: 30rpx;
+    margin-left: 4rpx;
+}
+
+#score {
+    text-align: center;
+    color: #faaf00;
+    font-size: 28rpx;
+    margin-top: 20rpx;
+}
+
+.textarea {
+    border: 2rpx solid #e6e6e6;
+    margin: 130rpx 40rpx 20rpx;
+    background: white;
+    border-radius: 6rpx;
+    overflow: auto;
+}
+
+.textarea>textarea {
+    padding: 20rpx;
+    font-size: 30rpx;
+    height: 200rpx;
+}
+
+.btn {
+    text-align: center;
+    width: 100%;
+    background: rgb(240, 157, 56);
+    border-radius: 10rpx;
+    border: 1rpx solid rgb(192, 126, 43);
+    height: 86rpx;
+    line-height: 86rpx;
+    color: white;
+    font-size: 32rpx;
+}
+
+.no_click {
+    text-align: center;
+    color: #faaf00;
+    font-size: 28rpx;
+}
+
+.hidden {
+    opacity: 0;
+}

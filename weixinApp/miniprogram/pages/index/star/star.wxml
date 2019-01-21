@@ -1,0 +1,21 @@
+<view id="point" class="{{key==0?'hidden':''}}">
+    <text>{{key*2}}</text>
+    <text>分</text>
+</view>
+<view id="score">{{key==0?'请点击星星评分':scoreText[key*2-1]}}</view>
+
+<view class='block'>
+    <block wx:for="{{stars}}" wx:key="{{index}}">
+        <image class="star-image" style="left: {{item*80}}rpx" src="{{key > item ?(key-item == 0.5?halfSrc:selectedSrc) : normalSrc}}">
+            <view class="item" style="left:0rpx" data-key="{{item+0.5}}" bindtap="selectLeft"></view>
+            <view class="item" style="left:33rpx" data-key="{{item+1}}" bindtap="selectRight"></view>
+        </image>
+    </block>
+</view>
+<view class='textarea'>
+    <textarea type="text" bindinput="bindTextAreaInput" value="{{content}}" readonlyunselectable="on" placeholder="快来说说你的看法吧（6-300个字）" placeholder-style="color: #bfbfbf;font-size:30rpx" maxlength="300" />
+</view>
+<view style='100%;padding:0 40rpx'>
+    <view class='btn' bindtap='submitComment' style="background:{{key==0?'rgb(241, 192, 113)':''}};border-color:{{key==0?'rgb(212,173,109)':''}}">提交</view>
+</view>
+
