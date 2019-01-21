@@ -5,65 +5,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-    chooseCity:'苏州',
-    cinema:'CGV影城苏州中心店'
+    begin: '苏州',
+    cinema: 'CGV影城苏州中心店'
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  // formSubmit: function(e) {
+  //   // console.log('form发生了submit事件，携带数据为：', e.detail.value) 
+  //   wx.navigateTo({
+  //     url: '../trains/trains?beginCity=' + e.detail.value.beginCity,
+  //   })
+  // },
+  // formReset: function() {
+  //   console.log('form发生了reset事件')
+  // },
+  // bindDateChange: function(e) {
+  //   this.setData({
+  //     date: e.detail.value
+  //   })
+  // },
 
-  },
+  // onPullDownRefresh: function() {
+  //   wx.stopPullDownRefresh();
+  // },
+  // bindBeginCityView: function() {
+  //   wx.navigateTo({
+  //     url: '../citys/citys?cityType=begin',
+  //   })
+  // },
+  // onShow: function() {
+  //   this.setData({
+  //     begin: app.globalData.trainBeginCity
+  //   })
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  // },
 
-  },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-//选择城市跳转事件
+  //选择城市跳转事件
   chooseCitys() {
     wx.navigateTo({
       url: '/pages/citys/citys',
     })
   },
-  
+
 })
