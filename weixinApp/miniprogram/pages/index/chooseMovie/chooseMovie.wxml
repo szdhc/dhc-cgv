@@ -4,8 +4,13 @@
   <!-- 显示加载当前购票影城的信息，地址、影城名称、联系电话 -->
   <view class="store">
     <view class="storeInstruction">
-      <view>
-        <text class='hallName'>{{storeName}}</text>
+      <!-- 影城详情 -->
+      <!-- 介绍影城的详细信息 -->
+      <view class='instruction'>
+        <view>
+          <text class='hallName'>{{storeName}}</text>
+        </view>
+        <view class='iconfont icon-weibiaoti-3' bindtap='toInstruction'></view>
       </view>
       <view>
         <text class='hallInstruction'>{{movieAddress}}</text>
@@ -21,8 +26,6 @@
     </view>
   </view>
 
-  <!-- 影城详情 -->
-  <!-- 介绍影城的详细信息 -->
 
   <!-- 购票banner -->
   <!-- 购票banner,1张图片广告位，点击可跳转到url页面(（支持不推送广告，隐藏banner栏) -->
@@ -30,13 +33,24 @@
 
   <!-- 影院影片选择 -->
   <!-- 使用影片封面图片显示轴，左右滑动可切换影片的片名、片长、类型、评分、场次订票列表 -->
-  <scroll-view scroll-x class="scroll-header">
-    <block wx:for="{{movieList}}" wx:key="{{item}}">
-      <view class="{{item.movieBoxCls}}" data-index='{{index}}' bindtap='previewImg'>
-        <image src="{{item.url}}" class="{{item.movieImageCls}}"></image>
-      </view>
+  <view class="swiperview">
+  <swiper  class="swiper-block"  previous-margin="250rpx" next-margin="270rpx" current="0" bindchange="swiperChange" current='{{swiperCurrent}}'>
+    <block wx:for="{{movieList}}" wx:key="{{movieList}}" wx:index="{{index}}">
+        <swiper-item class="swiper-item">
+          <image mode="aspectFill" src="{{item.url}}" class="slide-image {{swiperIndex == index ? 'active_img' : ''}}" data-index='{{index}}' bindtap='swipclick'/>
+        </swiper-item>
     </block>
-  </scroll-view>
+</swiper>
+<image src="{{imgUrl}}" style="width:100%;height:280rpx;" class="backImg"></image>
+</view>
+<view class='movieInstruction container'>
+  <view>
+    <text class="hallInstruction">{{name}}</text>
+  </view>
+    <view class='hallInstruction'>
+    <text>{{time}}-{{type}}-{{grade}}</text>
+  </view>
+</view>
 
   <!-- 影厅分类筛选 -->
   <!-- 影厅分类显示（根据当前影片已有的影厅），默认显示所有已排期的当前影院影厅，支持筛选后分类显示影厅信息 -->

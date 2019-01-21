@@ -9,6 +9,13 @@ Page({
     movieAddress: '江苏省苏州市姑苏区直属镇湖左岸社区北方向',
     movieTel: '0512-69881886',
     currentTab: 0,
+    swiperIndex:0,
+    swiperCurrent:0,
+    name: '',
+    time: '',
+    grade: '',
+    type: '',
+    imgUrl:'',
     hall: [{
         id: 1,
         name: '全部'
@@ -25,27 +32,31 @@ Page({
     date: ['今天 01-16', '明天 01-17', '后天 01-18', '周五 01-19', '周六 01-20', '周日 01-21'],
     movieList: [{
         url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
-        movieImageCls: 'selectedMovieImage',
-        movieBoxCls: 'selectedMovieBox',
-        selected: true
+        name:'大黄蜂',
+        time:'119分钟',
+        grade:'9.3分',
+        type:'动作/冒险/科幻',
       },
       {
         url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=77c8b34af1b44fd990e6e201df49f827&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201403%2F20%2F20140320140243_5MySw.jpeg',
-        movieImageCls: 'movieImage',
-        movieBoxCls: 'movieBox',
-        selected: false
+        name: '海王',
+        time: '119分钟',
+        grade: '9.3分',
+        type: '动作/冒险/科幻',
       },
       {
         url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378838&di=e01f784abb225d79416180122bc456e1&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0118cf5837d75ea801219c77f35e67.jpg',
-        movieImageCls: 'movieImage',
-        movieBoxCls: 'movieBox',
-        selected: false
+        name: '印度暴徒',
+        time: '119分钟',
+        grade: '9.3分',
+        type: '动作/冒险/科幻',
       },
       {
         url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378837&di=6127169e3cc9a444bf43da0906e9a57b&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01ce8b582439aea84a0e282ba855d9.jpg',
-        movieImageCls: 'movieImage',
-        movieBoxCls: 'movieBox',
-        selected: false
+        name: '情圣2',
+        time: '119分钟',
+        grade: '9.3分',
+        type: '动作/冒险/科幻',
       }
     ],
 
@@ -81,6 +92,11 @@ Page({
   onLoad: function(options) {
     this.data.hall[0].checked = true;
     this.setData({
+      name: this.data.movieList[0].name,
+      time: this.data.movieList[0].time,
+      grade: this.data.movieList[0].grade,
+      type: this.data.movieList[0].type,
+      imgUrl: this.data.movieList[0].url,
       hall: this.data.hall,
     })
   },
@@ -191,35 +207,38 @@ Page({
         address: '江苏省苏州市姑苏区直属镇湖左岸社区北方向'
       })
   },
-  gotohere: function (res) {
-    console.log(res);
-    let lat = ''; // 获取点击的markers经纬度
-    let lon = ''; // 获取点击的markers经纬度
-    let name = ''; // 获取点击的markers名称
-    let markerId = res.markerId;// 获取点击的markers  id
-    let markers = res.currentTarget.dataset.markers;// 获取markers列表
 
-    for (let item of markers) {
-      if (item.id === markerId) {
-        lat = item.latitude;
-        lon = item.longitude;
-        name = item.callout.content;
-        wx.openLocation({ // 打开微信内置地图，实现导航功能（在内置地图里面打开地图软件）
-          latitude: lat,
-          longitude: lon,
-          name: name,
-          success: function (res) {
-            console.log(res);
-          },
-          fail: function (res) {
-            console.log(res);
-          }
-        })
-        break;
-      }
-    }
-  },
+  //轮播滑动时，获取当前的轮播id
+swiperChange(e) {
+  const that = this;
+  that.setData({
+    name: this.data.movieList[e.detail.current].name,
+    time: this.data.movieList[e.detail.current].time,
+    grade: this.data.movieList[e.detail.current].grade,
+    type: this.data.movieList[e.detail.current].type,
+    imgUrl: this.data.movieList[e.detail.current].url,
+    swiperIndex: e.detail.current,
+  })
+},
 
+//点击图片触发事件
+swipclick: function (e) {
+  const that = this;
+  that.setData({
+    name: this.data.movieList[e.currentTarget.dataset.index].name,
+    time: this.data.movieList[e.currentTarget.dataset.index].time,
+    grade: this.data.movieList[e.currentTarget.dataset.index].grade,
+    type: this.data.movieList[e.currentTarget.dataset.index].type,
+    imgUrl: this.data.movieList[e.currentTarget.dataset.index].url,
+    swiperIndex: e.currentTarget.dataset.index,
+    swiperCurrent: e.currentTarget.dataset.index,
+  })
+},
 
+  toInstruction:function(){
+    wx.navigateTo({
+      url: '../chooseMovie/hallInstruction/hallInstruction',
+    })
+  }
 
 })

@@ -115,3 +115,56 @@ page{
 .show-time{
 width: 100%;
 }
+
+.swiper-block{
+  height: 280rpx;
+  width: 100%;
+  margin-top: 50rpx;
+}
+
+.swiper-item{
+  height:220rpx;
+  width: 220rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow:unset;
+}
+
+.slide-image{
+  height:260rpx;
+  width: 180rpx;
+  border-radius: 9rpx;
+  box-shadow: 0px 0px 30rpx rgba(0, 0,0,.2); 
+  margin: 0rpx 30rpx;
+  z-index: 1;  
+}
+
+.active_img{
+  transform: scale(1.2);
+  transition:all .2s ease-in 0s;
+  z-index: 20; 
+}
+
+.backImg{
+  position: absolute;
+  top: 160rpx;
+  bottom:70rpx;
+  right: 0;
+  z-index: -10;
+  filter: blur(3px);
+}
+
+.swiperview{
+  width: 100%;
+  height: 280rpx;
+}
+
+.movieInstruction{
+  margin-top: 60rpx;
+}
+
+.instruction{
+  display: flex;
+}

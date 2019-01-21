@@ -24,7 +24,8 @@
     "pages/shop/goods/goods",
     "pages/index/filmDetails/filmDetails",
     "pages/index/star/star",
-    "pages/citys/citys"
+    "pages/citys/citys",
+    "pages/index/chooseMovie/hallInstruction/hallInstruction"
   ],
   "permission": {
     "scope.userLocation": {
