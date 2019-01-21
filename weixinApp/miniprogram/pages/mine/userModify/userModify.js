@@ -23,7 +23,7 @@ Page({
     userSurname:'未完善',
     password:'未完善',
     hiddenmodalmovieput:true,
-    likeMovie:'未完善'
+    likeMovie:'未完善22'
     //可以通过hidden是否掩藏弹出框的属性，来指定那个弹出框  
     
   },
@@ -171,6 +171,11 @@ Page({
     this.setData({
       userSurname: e.detail.value
     })
+    if (this.data.userSurname == '') {
+      this.setData({
+        userSurname: '未完善'
+      })
+    }
   },
   modalpsd: function(){
     this.setData({
@@ -197,6 +202,11 @@ Page({
     this.setData({
       password: e.detail.value
     })
+    if (this.data.password == '') {
+      this.setData({
+        password: '未完善'
+      })
+    }
   },
 
 
@@ -228,5 +238,10 @@ Page({
     this.setData({
       likeMovie: e.detail.value
     })
+    if(this.data.likeMovie==''){
+      this.setData({
+        likeMovie: '未完善'
+      })
+    }
   }
 })
