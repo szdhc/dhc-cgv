@@ -22,7 +22,7 @@
       <view>合计：￥
         <text>{{movieCountPrice}}</text>
       </view>
-      <button class='orderCancel'>退票</button>
+      <button class='orderCancel' bindtap='showTip'>退票</button>
     </view>
   </view>
 </template>

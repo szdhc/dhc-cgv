@@ -2,7 +2,7 @@
   <view bindtap="allOrderPage" class="allOrder">
     <text class="allOrder-left">全部订单</text>
   </view>
-    <import src='../../../templates/orderList.wxml' />
+    <import src='../../../templates/orderList/orderList.wxml' />
     <view wx:for="{{orderList}}" wx:key="{{orderList}}">
       <template is='orderTemplate' data="{{...item}}" />
     </view>

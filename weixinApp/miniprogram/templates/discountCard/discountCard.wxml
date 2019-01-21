@@ -1,0 +1,8 @@
+<template name='discountTemplate'>
+  <view class='info' style='display:{{mbsshow}}'>
+    <text class=''>{{discountName}}</text>
+    <text class=''>{{discountShow}}</text>
+    <text class=''>{{discountLevel}}</text>
+    <text class=''>{{discountTime}}</text>
+  </view>
+</template>

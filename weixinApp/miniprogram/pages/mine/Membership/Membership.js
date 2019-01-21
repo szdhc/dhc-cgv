@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      membershipName: '',
+      membershipName: '静待',
       membershipShow: '贵宾座',
       membershipLevel: 'VIP11',
       membershipLevelinfo: '还差10000经验升级',
@@ -80,6 +80,9 @@ Page({
 
   },
   buycard(){
+    wx.navigateTo({
+      url: '../coupon/coupon',
+    })
     console.log("快去买会员卡吧");
   }
 })

@@ -1,13 +1,20 @@
 <!--pages/discountCard/discountCard.wxml-->
-  <view class="discountTop">
-    <image class="imageclass" src='../../../images/emptyMembershipCard.png'></image>
+<view class='container'>
+  <view class='bodytext'>
+    <import src='../../../templates/discountCard/discountCard.wxml' />
+    <view wx:for="{{discountInfo}}" wx:key="{{discountInfo}}">
+      <template is='discountTemplate' data="{{...item}}" />
+    </view>
+    <view class="discountTop" style='display:{{msg}}'>
+      <image class="imageclass" src='../../../images/emptyMembershipCard.png'></image>
+    </view>
+    <view class='textleft' style='display:{{msg}}'>
+      <text class=''>你现在还没有代金券</text>
+    </view>
   </view>
-  <view class='textleft'>
-    <text  class=''>你现在还没有代金券</text>
-  </view>
-  <navigator url="../discountInfo/discountInfo"   hover-class="none" open-type="navigate" class="wodelist-text">
-  <view class='lebalclass'  bindtap='discountInfo'>
-    <label class='noneclass' >点击领取代金券</label>
-  </view>
+  <navigator url="../discountInfo/discountInfo" hover-class="none" open-type="navigate" class="wodelist-text">
+    <view class='lebalclass' bindtap='discountInfo'>
+      <label class='noneclass'>点击领取代金券</label>
+    </view>
   </navigator>
-  
+</view>

@@ -41,6 +41,23 @@ Page({
       current: e.detail.current
     })
   },
+  showTip: function(){
+    wx.showModal({
+      title: '退票提示',
+      content: '是否进行退票',
+      confirmText:'确定',
+      cancelText:'取消',
+      success: function(res){
+        if(res.confirm){
+          wx.navigateTo({
+            url: '../../index/text/text',
+          })
+        }
+        if(res.cancel){
+        }
+      }
+    })
+  }
   // delorder: function (e) {
   //   wx.showToast({
   //     title: '正在取消订单，请稍候...',

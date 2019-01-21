@@ -18,7 +18,10 @@
   </view>
   <view class='userinfo'>
     <text class='list'>姓氏</text>
-     <text class='righttest'>未完善</text>
+     <text class='righttest' bindtap="modalinput" value="">{{userSurname}}</text>
+     <modal id="modal" hidden="{{hiddenmodalput}}" title="姓氏" confirm-text="提交" cancel-text="取消"        bindcancel="cancel" bindconfirm="confirm">  
+      <input type='text' name="userSurname" placeholder="请输入" bindinput='getUserSurname'  auto-focus/>
+  </modal>
   </view>
   <view class='userinfo'>
     <text class='list'>生日</text>
@@ -31,12 +34,18 @@
   </view>
   <view class='userinfo'>
     <text class='list'>密码</text>
-    <text class='righttest'>未完善</text>
+    <text class='righttest' bindtap="modalpsd">{{password}}</text>
+    <modal id="modal" hidden="{{hiddenmodalpsdput}}" title="密码" confirm-text="提交" cancel-text="取消"        bindcancel="psdcancel" bindconfirm="psdconfirm">  
+      <input type='password' name="password" placeholder="请输入" bindinput='getPassword'  auto-focus/>
+  </modal>
 
   </view>
   <view class='userinfo'>
     <text class='list'>喜欢的电影</text>
-    <text class='righttest1'>未完善</text>
+    <text class='righttest1' bindtap='modalmovie'>{{likeMovie}}</text>
+    <modal id="modal" hidden="{{hiddenmodalmovieput}}" title="喜欢的电影" confirm-text="提交" cancel-text="取消"        bindcancel="moviecancel" bindconfirm="movieconfirm">  
+      <input type='text' name="likeMovie" placeholder="请输入" bindinput='getLikeMovie'  auto-focus/>
+  </modal>
 
   </view>
   <view class='userinfo'>

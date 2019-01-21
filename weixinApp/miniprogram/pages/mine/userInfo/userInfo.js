@@ -18,8 +18,6 @@ Page({
       avatarUrl: options.avatarUrl,
       username:options.username
     });
-
-    console.log("touxiang:" + this.data.avatarUrl);
   },
 
   /**

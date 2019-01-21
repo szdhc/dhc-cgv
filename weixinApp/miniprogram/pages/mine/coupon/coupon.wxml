@@ -5,7 +5,7 @@
     <button class="btn add" bindtap="">添加</button>
   </view>
   <view class="stamp_list">
-    <import src='../../../templates/coupon.wxml' />
+    <import src='../../../templates/coupon/coupon.wxml' />
     <view wx:for="{{couponList}}" wx:key="{{couponList}}">
       <template is='couponTemplate' data="{{...item}}" />
     </view>
