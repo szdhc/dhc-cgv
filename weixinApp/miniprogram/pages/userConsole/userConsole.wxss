@@ -62,10 +62,10 @@ page {
   background-color: rgba(255, 0, 0, 0.596);
   color: #fff;
   background-size: cover;
-  margin-left: 270rpx;
   height:70rpx;
   border-bottom-left-radius:1.5em;
   border-top-left-radius:1.5em;
+  margin-right: 0%;
 }
 .userinfo-tequan::after {
   border: none;
