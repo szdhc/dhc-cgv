@@ -1,25 +1,45 @@
 // pages/index/chooseMovie/seat/seat.js
-var limt = 0
+var seatsId = []
 function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
+
+function checkSeats(map){
+  for(var i = 0; i < map.length ; i++){
+    for(var j = 1; j < map[i].length; j++){
+      if (map[i][j] === 3) {
+        if (map[i][j - 1] === 1 && map[i][j + 1] === 1) {
+          return false;
+        }
+      }
+      if(map[i][j] === 1){
+        if ((map[i][j - 1] === 2 || map[i][j - 1] === 3) && (map[i][j + 1] === 2|| map[i][j + 1] === 3)){
+          return false;
+        }
+      }
+    }
+  }
+  return true;
+}
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    shop: { shop: 'CGV影城(苏州中心店)', time: '今天 1月21号 16:25', effects: '英语3D', room: '3DIMAX厅', center: 6, price: 36.2,},
+    shop: { shop: 'CGV影城(苏州中心店)', time: '今天 1月21号 16:25', effects: '英语3D', room: '3DIMAX厅', center: 7, price: 36.2,},
     map: [],
     deltaX:30,
-    deltaY:1,
+    money:0,
+    deltaY:0,
     seats:[],
     willChange: false,
     hasSelected: false,
-    seatmap: [[1, 0, 2, 2, 2, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1], [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
+    seatmap: [[1, 0, 2, 2, 2, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1], [1, 0, 2, 2, 2, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
       [1, 0, 1, 1, 1, 1, 1, 1, 2, 2, 1, 0, 0, 1, 1, 1, 1], [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
-      [1, 0, 1, 1, 1, 2, 2, 2, 2, 1, 1, 0, 0, 1, 1, 1, 1]]
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[1, 0, 1, 1, 1, 2, 2, 2, 2, 1, 1, 0, 0, 1, 1, 1, 1]]
   },
 
   /**
@@ -35,10 +55,22 @@ Page({
   onReady: function () {
     var columnArr = []
     var map = this.data.seatmap
-    for (var i = 1; i <= map.length; i++) {
-      columnArr.push(i)
+    var row = 0
+    for (var i = 0; i < map.length; i++) {
+      var total = 0
+      for (var j = 0; j < map[i].length; j++) {
+        total = total + map[i][j]
+      }
+      if(total > 0){
+        columnArr.push(i + 1 - row)
+      }else{
+        row++
+        columnArr.push("")
+      }
     }
+    var money = this.data.seats.length * this.data.shop.price
     this.setData({
+      money: money.toFixed(1),
       columnArr: columnArr
     })
   },
@@ -115,20 +147,44 @@ Page({
     var ver = ev.currentTarget.dataset.ver
     var hor = ev.currentTarget.dataset.hor
     var map = this.data.seatmap
+    map[ver][hor] = 3
+    if (!checkSeats(map)){
+      wx.showToast({
+        title: '不能跳座空座',
+        icon: 'success',
+        duration: 2000
+      })
+      map[ver][hor] = 1
+      return;
+    }
     var seats = []
     var cStr = ''
-    limt++
-    if (limt <= 4) {
-      map[ver][hor] = 3
+    if (this.data.seats.length < 4) {
+      seatsId = []
+      var row = 0
       for (var i = 0; i < map.length; i++) {
-        for (var j = 0; j < map[i].length; j++) {
+        var total =0
+        for (var j = 0; j < map[i].length; j++){
+          total = total + map[i][j]
+        }
+        if(total === 0){
+          row++
+        }
+        var col = 0
+        for (var j = map[i].length; j >= 0; j--) {
+          if (map[i][j] === 0){
+            col++
+          }
           if (map[i][j] === 3) {
-            cStr = formatNumber(i + 1) + '排' + (j + 1) + '座'
+            cStr = formatNumber(i + 1 - row) + '排' + (map[i].length - j - col) + '座'
             seats.push(cStr)
+            seatsId.push(i + "-" + j)
           }
         }
-      }
+      } 
+      var money = seats.length * this.data.shop.price
       this.setData({
+        money: money.toFixed(1),
         seatmap: map,
         seats: seats
       })
@@ -139,7 +195,7 @@ Page({
         icon: 'success',
         duration: 2000
       })
-      limt = 4
+      map[ver][hor] = 1
     }
   },
   cancelSeat: function (ev) {
@@ -149,19 +205,104 @@ Page({
     var seats = []
     console.log(ev)
     var map = this.data.seatmap
-    limt--
+    seatsId = []
     map[ver][hor] = 1
+    if (!checkSeats(map)) {
+      wx.showToast({
+        title: '不能跳座空座',
+        icon: 'success',
+        duration: 2000
+      })
+      map[ver][hor] = 3
+      return;
+    }
+    var row = 0
     for (var i = 0; i < map.length; i++) {
+      var total = 0
       for (var j = 0; j < map[i].length; j++) {
+        total = total + map[i][j]
+      }
+      if (total === 0) {
+        row++
+      }
+      var col = 0
+      for (var j = map[i].length; j >= 0; j--) {
+        if (map[i][j] === 0) {
+          col++
+        }
         if (map[i][j] === 3) {
-          cStr = formatNumber(i + 1) + '排' + (j + 1) + '座'
+          cStr = formatNumber(i + 1 - row) + '排' + (map[i].length - j - col) + '座'
           seats.push(cStr)
+          seatsId.push(i + "-" + j)
         }
       }
     }
+    var money = seats.length * this.data.shop.price
     this.setData({
+      money: money.toFixed(1),
       seatmap: map,
       seats: seats
+    })
+  },
+
+  cancelShop: function(e){
+    var seats = []
+    var seat = seatsId[e.currentTarget.dataset.id]
+    seatsId = []
+    var map = this.data.seatmap
+    var cStr = ''
+    map[seat.split("-")[0]][seat.split("-")[1]] = 1
+    if (!checkSeats(map)) {
+      wx.showToast({
+        title: '不能跳座空座',
+        icon: 'success',
+        duration: 2000
+      })
+      map[ver][hor] = 3
+      return;
+    }
+    var row = 0
+    for (var i = 0; i < map.length; i++) {
+      var total = 0
+      for (var j = 0; j < map[i].length; j++) {
+        total = total + map[i][j]
+      }
+      if (total === 0) {
+        row++
+      }
+      var col = 0
+      for (var j = map[i].length; j >= 0; j--) {
+        if (map[i][j] === 0) {
+          col++
+        }
+        if (map[i][j] === 3) {
+          cStr = formatNumber(i + 1 - row) + '排' + (map[i].length - j - col) + '座'
+          seats.push(cStr)
+          seatsId.push(i + "-" + j)
+        }
+      }
+    }
+    var money = seats.length * this.data.shop.price
+    this.setData({
+      money: money.toFixed(1),
+      seatmap: map,
+      seats: seats
+    })
+  },
+
+  confirmseats: function(){
+    var seat = ' '
+    for (var i = 0; i < this.data.seats.length; i++){
+      seat = seat + this.data.seats[i] + ' '
+    }
+    wx.showModal({
+      title:'确认',
+      content: '您确认选择座位' + seat +'吗？',
+      success:function(res){
+        if(res.confirm){
+          console.log('确认')
+        }
+      }
     })
   }
 
