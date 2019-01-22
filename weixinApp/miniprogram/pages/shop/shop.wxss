@@ -753,6 +753,7 @@ page {
   border-radius:10px;
   box-shadow: 04px8px0rgba(0, 0, 0, 0.2), 06px20px0rgba(0, 0, 0, 0.19);
   flex-direction: row-reverse;
+  position: relative;
 }
 
 .card_type {
@@ -772,9 +773,9 @@ page {
 }
 
 .card_name {
-  width: 70%;
+  width: 78%;
   margin-top: 70rpx;
-  margin-left: 15%;
+  margin-left: 8%;
 }
 
 .card_image {
@@ -802,4 +803,6 @@ page {
   height: 80rpx;
   margin-top: 240rpx;
   background:rgba(20, 24, 24, 0.1);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
