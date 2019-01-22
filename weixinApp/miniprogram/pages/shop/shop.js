@@ -708,9 +708,42 @@ Page({
 
   // ---------------------------------------------//
   navbarTap: function (e) {
-    this.setData({
-      currentTab: e.currentTarget.dataset.idx
-    })
+    var that = this
+    if (e.currentTarget.dataset.idx == 1 && this.data.carArray.length != 0 ) {
+        wx.showModal({
+          title: '确认跳转会员卡页面吗',
+          content: '跳转会员卡将清理您已选择的卖品',
+          showCancel: true,
+          confirmColor: "red",
+          success: function(res) {
+            wx.removeStorageSync("jsonCarA");
+            that.setData({
+              currentTab: e.currentTarget.dataset.idx
+            })
+          }
+        })
+    } else {
+      this.setData({
+        currentTab: e.currentTarget.dataset.idx
+      })
+    }
+
+    if (e.currentTarget.dataset.idx == 0) {
+      let carArr = wx.getStorageSync("jsonCarA");
+      if (carArr == null || carArr == ""){
+        that.setData({ carArray: [] });
+
+        for(var i=0; i< that.data.goods.length; i++)
+          for(var j=0; j < that.data.goods[i].foods.length; j++) {
+            that.data.goods[i].foods[j].Count = 0;
+          }
+        that.setData({ goods: that.data.goods});
+      }
+      this.calTotalPrice();
+      this.setData({
+        payDesc: this.payDesc()
+      })
+    }
   },
   // ---------------------------------------------//
 
