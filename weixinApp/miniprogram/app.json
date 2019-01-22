@@ -26,7 +26,8 @@
     "pages/index/star/star",
     "pages/citys/citys",
     "pages/index/chooseMovie/hallInstruction/hallInstruction",
-    "pages/index/chooseMovie/seat/seat"
+    "pages/index/chooseMovie/seat/seat",
+    "pages/shop/dinnMethod/dinnMethod"
   ],
   "permission": {
     "scope.userLocation": {

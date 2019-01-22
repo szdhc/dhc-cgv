@@ -622,26 +622,42 @@ Page({
   },
   //差几元起送
   payDesc() {
+    // if (this.data.totalPrice === 0) {
+    //   // return `￥${this.data.minPrice}元起送`;
+    //   return '请选择';
+    // } else if (this.data.totalPrice < this.data.minPrice) {
+    //   let diff = this.data.minPrice - this.data.totalPrice;
+    //   return '还差' + diff + '元起送';
+    // } else {
+    //   return '选好了';
+    // }
     if (this.data.totalPrice === 0) {
       // return `￥${this.data.minPrice}元起送`;
       return '请选择';
-    } else if (this.data.totalPrice < this.data.minPrice) {
-      let diff = this.data.minPrice - this.data.totalPrice;
-      return '还差' + diff + '元起送';
     } else {
       return '选好了';
     }
   },
   //結算
   pay() {
-    if (this.data.totalPrice < this.data.minPrice) {
+    if (this.data.totalPrice == 0) {
+      wx.showModal({
+        title: '购物提示',
+        content: '请选择需要购买的商品',
+        showCancel: false,
+      })
       return;
     }
     // window.alert('支付' + this.totalPrice + '元');
     //确认支付逻辑
     var resultType = "success";
-    wx.redirectTo({
-      url: '../goods/pay/pay?resultType=' + resultType
+
+    let modeStr = JSON.stringify(this.data.carArray);
+    wx.removeStorageSync("jsonCarA");
+    wx.setStorageSync("jsonCarA", JSON.stringify(this.data.carArray)); 
+
+    wx.navigateTo({
+      url: '../shop/dinnMethod/dinnMethod'
     })
   },
   //彈起購物車
