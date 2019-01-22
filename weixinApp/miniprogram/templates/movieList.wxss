@@ -70,3 +70,6 @@
   width: 28rpx;
   height: 28rpx;
 }
+.salebutton {
+  width: 100rpx;
+}

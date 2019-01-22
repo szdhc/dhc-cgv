@@ -70,39 +70,39 @@ Page({
     })
     // wantFilms
     if (this.data.wantFlag) {
-      wx.request({
-        url: this.data.IP + '/users/update',
-        data: {
-          _id: wx.getStorageSync("userId"),
-          film: e.currentTarget.id,
-          isPush: true
-        },
-        success: ((res) => {
-        })
-      })
+      // wx.request({
+      //   url: this.data.IP + '/users/update',
+      //   data: {
+      //     _id: wx.getStorageSync("userId"),
+      //     film: e.currentTarget.id,
+      //     isPush: true
+      //   },
+      //   success: ((res) => {
+      //   })
+      // })
       wx.showToast({
         title: '已标记想看',
         icon: 'success',
         duration: 1500
       })
     } else {
-      wx.request({
-        url: this.data.IP + '/users/find',
-        data: {
-          _id: wx.getStorageSync("userId")
-        },
-        success: ((res) => {
-          wx.request({
-            url: this.data.IP + '/users/update',
-            data: {
-              _id: wx.getStorageSync("userId"),
-              film: res.data.film.filter(item => item != e.currentTarget.id)
-            },
-            success: ((res) => {
-            })
-          })
-        })
-      })
+      // wx.request({
+      //   url: this.data.IP + '/users/find',
+      //   data: {
+      //     _id: wx.getStorageSync("userId")
+      //   },
+      //   success: ((res) => {
+      //     wx.request({
+      //       url: this.data.IP + '/users/update',
+      //       data: {
+      //         _id: wx.getStorageSync("userId"),
+      //         film: res.data.film.filter(item => item != e.currentTarget.id)
+      //       },
+      //       success: ((res) => {
+      //       })
+      //     })
+      //   })
+      // })
       wx.showToast({
         title: '已取消想看',
         icon: 'success',
@@ -110,4 +110,10 @@ Page({
       })
     }
   },
+  yugaoHander(e) {
+    let Id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../yugao/yugao?id=' + Id,
+    })
+  }
 })

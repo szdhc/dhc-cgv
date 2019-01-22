@@ -11,7 +11,7 @@
 	},
 	"appid": "wx63d0ceeaaa99addf",
 	"projectname": "weixinApp",
-	"libVersion": "2.2.5",
+	"libVersion": "2.5.0",
 	"condition": {
 		"search": {
 			"current": -1,
