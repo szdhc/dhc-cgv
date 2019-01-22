@@ -6,7 +6,7 @@ page{
   width: 100%;
   display: flex;
   flex-direction: row;
-  background-color: #007aff;
+  background: rgba(224, 165, 94, 0.788);
 }
 .pointtext{
   color: white;
@@ -27,15 +27,11 @@ page{
   border-bottom: 1px solid #efefef;
   display: flex;
   flex-direction: row;
-  margin-top: 1%;
   
 }
 .textclass{
   padding-top: 2%;
   padding-left:4%;
-}
-.righttext{
-  
 }
 .rightButton{
   float: right;
