@@ -37,7 +37,6 @@
   width: 70%;
 }
 .info{
-  box-shadow: 0 0 20px 1px #666;
   margin-top: 10%;
   width: 90%;
   border-radius:12px;

@@ -1,27 +1,5 @@
 <!--pages/discountCard/discountCard.wxml-->
 <view class='container'>
-<view class='modelcoupon'>
-  <view class="all_cart coupon">
-    <view class="ac_content">
-      <!-- 内容 -->
-      <view class="box_top">
-        <view class="bt_title1">
-          <span class="rmb">￥</span>
-          <span class="big_num">{{cardprice}}</span>
-          <span class="sm_font">(满{{cardmaxprice}}可用)</span>
-        </view>
-        <view class="bt_title2">
-          可用影院： {{usedCinema}}
-        </view>
-        <view class="bt_title3">
-          <i class="icon-time">
-          {{startTime}} 至 {{endTime}}</i>
-          <a href="javascript:;">使用</a>
-        </view>
-      </view>
-    </view>
-  </view>
-  </view>
   <view class='bodytext'>
     <import src='../../../templates/discountCard/discountCard.wxml' />
     <view wx:for="{{discountInfo}}" wx:key="{{discountInfo}}">
@@ -34,12 +12,9 @@
       <text class=''>你现在还没有代金券</text>
     </view>
   </view>
-
   <navigator url="../discountInfo/discountInfo" hover-class="none" open-type="navigate" class="wodelist-text">
     <view class='lebalclass' bindtap='discountInfo'>
       <label class='noneclass'>点击领取代金券</label>
     </view>
   </navigator>
-  <!--优惠券  -->
-  
 </view>
