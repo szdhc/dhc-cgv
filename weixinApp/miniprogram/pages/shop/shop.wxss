@@ -738,3 +738,71 @@ page {
   content: "\e670";
 }
 
+.card_padd {
+  padding-left: 35rpx;
+  padding-right: 35rpx;
+  padding-bottom: 35rpx;
+}
+
+.card_backg {
+  width: 100%;
+  height: 300rpx;
+  background: rgb(248, 106, 106);
+  margin-top: 25rpx;
+  border:1px rgb(243, 239, 239) solid;
+  border-radius:10px;
+  box-shadow: 04px8px0rgba(0, 0, 0, 0.2), 06px20px0rgba(0, 0, 0, 0.19);
+  flex-direction: row-reverse;
+  position: relative;
+}
+
+.card_type {
+  height: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 15rpx;
+  width: 70rpx;
+  background:rgba(20, 24, 24, 0.1);
+  padding:5px;color:white; 
+  /* filter:alpha(Opacity=80);
+  -moz-opacity:0.6;
+  opacity: 0.1; */
+  font-size: 10rpx;
+  text-align: center;
+  line-height: 15rpx;
+  font-weight: 500;
+}
+
+.card_name {
+  width: 78%;
+  margin-top: 70rpx;
+  margin-left: 8%;
+}
+
+.card_image {
+  border-radius:50%;
+  height: 100rpx; 
+  width:100rpx;
+}
+
+.card_name_font_big {
+  color:white;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.card_name_font_sml {
+  color:white;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.card_price_buy {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80rpx;
+  margin-top: 240rpx;
+  background:rgba(20, 24, 24, 0.1);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

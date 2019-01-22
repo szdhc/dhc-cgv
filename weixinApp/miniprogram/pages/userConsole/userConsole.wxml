@@ -4,7 +4,7 @@
     <!-- 用户 openid -->
     <view class="userinfo">
       <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" bindtap='Userinfo' style="background-image: url({{avatarUrl}})"></button>
-      <text class="userinfo-nickname" bindtap="onGetOpenid">CGV影迷</text>
+      <text class="userinfo-nickname" bindtap="onGetOpenid">{{username}}</text>
       <button class="userinfo-tequan" bindtap="">我的特权</button>
     </view>
     <view class='title'>
