@@ -7,11 +7,11 @@ Page({
   data: {
       membershipName: '静待',
       membershipShow: '贵宾座',
-      membershipLevel: 'VIP11',
-      membershipLevelinfo: '还差10000经验升级',
-      membershipDiscount:'凭此卡订票可享受8.5折优惠',
+      membershipLevel: '不可储值，不可退换',
+      membershipDiscount:'凭此卡可享受8.5折优惠',
       msg:'',
-      mbsshow:''
+      mbsshow:'',
+      imageUrl: '../../../images/sale.png'
   },
 
   /**
@@ -26,7 +26,7 @@ Page({
     }else{
       this.setData({
         msg: 'none',
-        mbsshow: 'flex'
+        mbsshow: 'block'
       });
     }
   },

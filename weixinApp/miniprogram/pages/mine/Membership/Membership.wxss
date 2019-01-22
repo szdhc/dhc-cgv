@@ -38,13 +38,10 @@
 }
 .info{
   margin-top: 10%;
-  width: 75%;
-  display: flex;
-  flex-direction: column; 
-  border: 2px solid gray;
-  padding: 5% 5% 5% 5% ;
+  width: 90%;
   border-radius:12px;
   font-size: 85%;
+  color: white;
 }
 .buy{
   width: 100%;
@@ -54,4 +51,50 @@
 }
 .noneclass{
   padding-left: 30%;
+}
+.cardHeighttop{
+  font-size: 30rpx;
+  height: 150rpx;
+  display: flex;
+  flex-direction: column; 
+  background-color: #bd3d3d;
+    /* border-bottom-left-radius:1.5em; */
+  border-top-left-radius:0.8em;
+  border-top-right-radius:0.8em;
+  padding: 5% 5% 5% 5% ;
+}
+.cardHeightfoot{
+  font-size: 25rpx;
+  height: 10rpx;
+  display: flex;
+  flex-direction: row; 
+  background-color: #AE3838;
+  border-bottom-left-radius:0.8em;
+  border-bottom-right-radius:0.8em;
+  padding: 5% 5% 5% 5% ;
+}
+.images{
+  width: 90rpx;
+  height: 90rpx;
+  /* margin: 50rpx; */
+  border-radius: 50%;
+  background-size: cover;
+  background-color: white;
+  /* margin-top: 80rpx; */
+  /* background-image: url('../../../images/sale.png'); */
+  margin-top: 15%;
+  margin-left: 90%;
+}
+.imagesweizhi{
+  width: 30%;
+}
+.cardInfo{
+   display: flex;
+  flex-direction: column; 
+  width: 60%;
+  margin-left: 47%;
+  margin-top: -13%;
+}
+.textright{
+  padding-left: 23%;
 }

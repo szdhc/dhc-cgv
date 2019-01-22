@@ -1,17 +1,27 @@
 <!--pages/Membership/Membership.wxml-->
 <view class="container">
-  <view class="membershipinfo">   
-      <input type='text' class='input' placeholder='请输入会员卡信息'></input>
-      <button class="btn add" bindtap="">添加</button>
+  <view class="membershipinfo">
+    <input type='text' class='input' placeholder='请输入会员卡信息'></input>
+    <button class="btn add" bindtap="">添加</button>
   </view>
   <view class='lebalclass' style='display:{{msg}}' bindtap='buycard' id="lebalclass">
     <label class='noneclass'>暂无绑定卡</label>
   </view>
   <view class='info' style='display:{{mbsshow}}'>
-      <text class=''>{{membershipName}}</text>
-      <text class=''>{{membershipShow}}</text>
+    <view class='cardHeighttop'>
+      <view class='imagesweizhi'>
+        <button style="background-image: url({{imageUrl}})" class='images'></button>
+      </view>
+      <!-- <image src='../../../images/sale.png' class='images'> </image> -->
+      <view class='cardInfo'>
+        <text class='textmiddle'>{{membershipName}}</text>
+        <text class='textmiddle'>{{membershipShow}}</text>
+      </view>
+    </view>
+
+    <view class='cardHeightfoot'>
       <text class=''>{{membershipLevel}}</text>
-      <text class=''>{{membershipLevelinfo}}</text>
-      <text class=''>{{membershipDiscount}}</text>
+      <text class='textright'>{{membershipDiscount}}</text>
+    </view>
   </view>
 </view>
