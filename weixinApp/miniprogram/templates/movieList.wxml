@@ -31,6 +31,46 @@
   </view>
 </template>
 
+<template name='comingMovieTemplate'>
+  <view class='flex-wrp-row item'>
+    <!--电影图片-->
+    <view class='flex-wrp-cloumn'>
+      <image class='movieImage' src="{{ movieImage }}">
+      </image>
+    </view>
+    <!--电影名，特性，导演，主演-->
+    <view class='flex-wrp-cloumn content margin-left hidden-text' data-moveid="{{id}}">
+      <navigator url="../index/filmDetails/filmDetails?id={{id}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
+        <view>
+          <text class='medium-font-size'>{{movieName}}</text>
+        </view>
+        <view>
+          <text class='regular-font-size movieShow'>{{movieShow}}</text>
+        </view>
+        <view>
+          <text class='regular-font-size movieShow'>{{movieDirectorStarring}}</text>
+        </view>
+      </navigator>
+    </view>
+    <!--评分、购票/预售-->
+    <view class='flex-wrp-cloumn margin-left salecomment'>
+      <view class='want' wx:if="{{wantFlag}}" data-id="{{id}}" bindtap='clickWant'>
+        <text class='regular-font-size'>{{wishCount}}</text>
+        <text class='regular-font-size'>人</text>
+        <image class='loveImage' src='../../images/love.png'></image>
+      </view>
+      <view class='want' wx:else data-id="{{id}}" bindtap='clickWant'>
+        <text class='regular-font-size'>{{wishCount}}</text>
+        <text class='regular-font-size'>人</text>
+        <image class='loveImage' src='../../images/love_red.png'></image>
+      </view>
+      <view class='sale'>
+        <button class='movieStatus' bindtap='redirct'>{{movieStatus}}</button>
+      </view>
+    </view>
+  </view>
+</template>
+
 <template name='showTimeTemplate'>
   <view class='flex-wrp-row item'>
     <!--时间-->

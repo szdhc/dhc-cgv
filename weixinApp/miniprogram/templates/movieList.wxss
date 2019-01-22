@@ -50,3 +50,23 @@
   background: rgb(224, 166, 94);
   border-radius: 20rpx;
 }
+
+.salecomment {
+  width: 128rpx;
+}
+
+.want {
+  text-align: right;
+  position: relative;
+  left: 0rpx;
+  top: 22rpx;
+}
+
+.sale {
+  position: relative;
+  left: 12rpx;
+}
+.loveImage {
+  width: 28rpx;
+  height: 28rpx;
+}
