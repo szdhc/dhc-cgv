@@ -15,7 +15,7 @@ Page({
    */
   onLoad: function (options) {
     let Id = options.id;
-
+    let imglist = [];
     // 开启导航条加载动画 
     wx.showNavigationBarLoading();
     wx.request({
@@ -25,6 +25,10 @@ Page({
         'Content-Type': 'json',
       },
       success: (({ data }) => {
+        for (let i = 0; i < data.clips.length; i++) {
+          imglist: data.clips[i].resource_url
+        }
+        console.log(imglist)
         this.setData({
           filmDetails_info: data,
           filmType: this.options.type
@@ -41,6 +45,22 @@ Page({
         //请求成功同步数据
         // console.log(this.data.moviesData)
       })
+    })
+  },
+  /**
+ * 生命周期函数--监听页面初次渲染完成
+ */
+  onReady: function () { },
+  display_text() {
+    this.setData({
+      hiddenFlag: !this.data.hiddenFlag
+    })
+  },
+  previewImage: function (e) {
+    var current = e.target.dataset.src;
+    wx.previewImage({
+      current: current, // 当前显示图片的http链接  
+      urls: current // 需要预览的图片http链接列表  
     })
   },
    //   点击想看

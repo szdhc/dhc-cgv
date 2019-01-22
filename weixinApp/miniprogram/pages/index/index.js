@@ -59,8 +59,8 @@ Page({
       })
     },
   },
-   //选项卡切换
-  navbarTap: function (e) {
+  //选项卡切换
+  navbarTap: function(e) {
     this.setData({
       currentTab: e.currentTarget.dataset.idx
     })
@@ -78,14 +78,18 @@ Page({
       types,
     })
     // 请求热映
-    this.setData({ loader: true })
+    this.setData({
+      loader: true
+    })
     wx.request({
       url: `https://douban.uieee.com/v2/movie/${this.data.types}&start=${this.data.start}&count=${this.data.count}`,
       method: "GET",
       header: {
         'Content-Type': 'json',
       },
-      success: ({ data }) => {
+      success: ({
+        data
+      }) => {
         let arr = [];
         let movieObj = new Map();
         for (let i = 0; i < data.subjects.length; i++) {
@@ -93,25 +97,51 @@ Page({
           movieObj.set('movieName', data.subjects[i].title)
           movieObj.set('movieShow', data.subjects[i].title)
           let directors = '';
-          for (let j = 0; j < data.subjects[0].directors.length;j++){
+          for (let j = 0; j < data.subjects[0].directors.length; j++) {
             directors = directors + data.subjects[0].directors[j].name
           }
-          let casts='';
-          for (let k = 0; k < data.subjects[i].casts.length;k++){
+          let casts = '';
+          for (let k = 0; k < data.subjects[i].casts.length; k++) {
             casts = casts + data.subjects[i].casts[k].name
           }
           movieObj.set('movieDirectorStarring', directors + '/' + casts)
           movieObj.set('moiveGrade', data.subjects[i].rating.average)
           movieObj.set('movieStatus', '购票')
           movieObj.set('id', data.subjects[i].id)
+          movieObj.set('id', data.subjects[i].id)
           arr.push(JSON.parse(util.MapTOJson(movieObj)))
         }
         this.setData({
           hotMovieList: arr
         })
+
         console.log(data)
         console.log(arr)
         // console.log(arr[0][0].images.medium)
+        let arr2 = [];
+        let movieObj2 = new Map();
+        for (let i = 0; i < data.subjects.length; i++) {
+          movieObj2.set('movieImage', data.subjects[i].images['small'])
+          movieObj2.set('movieName', data.subjects[i].title)
+          movieObj2.set('movieShow', data.subjects[i].title)
+          let directors = '';
+          for (let j = 0; j < data.subjects[0].directors.length; j++) {
+            directors = directors + data.subjects[0].directors[j].name
+          }
+          let casts = '';
+          for (let k = 0; k < data.subjects[i].casts.length; k++) {
+            casts = casts + data.subjects[i].casts[k].name
+          }
+          movieObj2.set('movieDirectorStarring', directors + '/' + casts)
+          movieObj2.set('wishCount', data.subjects[i].collect_count)
+          movieObj2.set('movieStatus', '预售')
+          movieObj2.set('id', data.subjects[i].id)
+          movieObj2.set('wantFlag', false)
+          arr2.push(JSON.parse(util.MapTOJson(movieObj2)))
+        }
+        this.setData({
+          comingMovieList: arr2
+        })
       }
     })
   },
@@ -219,5 +249,67 @@ Page({
     wx.navigateTo({
       url: '/pages/jumpcinema/jumpcinema',
     })
+  },
+  //   点击想看
+  clickWant(e) {
+
+    // wantFilms
+    let arrL = this.data.comingMovieList
+    for (let i = 0; i < arrL.length; i++) {
+      if (arrL[i].id == e.currentTarget.dataset.id) {
+        if (arrL[i].wantFlag == false) {
+          // wx.request({
+          //   url: this.data.IP + '/users/update',
+          //   data: {
+          //     _id: wx.getStorageSync("userId"),
+          //     film: e.currentTarget.id,
+          //     isPush: true,
+          //   },
+          //   success: ((res) => {})
+          // })
+          this.setData({
+            wantFlag: true
+          })
+          wx.showToast({
+            title: '已取消想看',
+            icon: 'success',
+            duration: 1500
+          })
+          arrL[i].wantFlag = this.data.wantFlag
+          arrL[i].wishCount--;
+        } else {
+          // wx.request({
+          //   url: this.data.IP + '/users/find',
+          //   data: {
+          //     _id: wx.getStorageSync("userId")
+          //   },
+          //   success: ((res) => {
+          //     wx.request({
+          //       url: this.data.IP + '/users/update',
+          //       data: {
+          //         _id: wx.getStorageSync("userId"),
+          //         film: res.data.film.filter(item => item != e.currentTarget.id),
+          //         wantFlag: 0
+          //       },
+          //       success: ((res) => {})
+          //     })
+          //   })
+          // })
+          wx.showToast({
+            title: '已标记想看',
+            icon: 'success',
+            duration: 1500
+          })
+          this.setData({
+            wantFlag: false
+          })
+          arrL[i].wantFlag = this.data.wantFlag
+          arrL[i].wishCount++;
+        }
+        this.setData({
+          comingMovieList: arrL
+        })
+      }
+    } 
   },
 })

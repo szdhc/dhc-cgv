@@ -19,8 +19,8 @@
                 <text>{{filmDetails_info.genres}}</text>
                 <text wx:if="{{filmDetails_info.film_nd!=''}}" class='film_3D'>{{filmDetails_info.film_nd}}</text>
             </view>
-            <text>中国大陆/ {{filmDetails_info.durations}}</text>
-            <text>{{filmDetails_info.mainland_pubdate}}大陆上映</text>
+            <text>{{filmDetails_info.countries}}/{{filmDetails_info.durations}}</text>
+            <text>{{filmDetails_info.mainland_pubdate}} 大陆上映</text>
         </view>
     </view>
     <view class='want_comment'>
@@ -81,7 +81,7 @@
             <text>昨日票房排行</text>
         </view>
         <view>
-            <text>100000</text>
+            <text>10000</text>
             <text>首周票房</text>
         </view>
         <view>
@@ -100,7 +100,7 @@
             <image src='../../../images/play.png'></image>
         </view>
         <view wx:for="{{filmDetails_info.clips}}" wx:key="{{index}}" class='film_img' style='display:inline-block' wx:if="{{index!=0}}">
-            <image bindtap="previewImage" mode="aspectFill" src="{{filmDetails_info.clips[index].small}}" data-src="{{filmDetails_info.clips[index].small}}"></image>
+            <image bindtap="previewImage" mode="aspectFill" src="{{filmDetails_info.clips[index].small}}" data-src="{{filmDetails_info.clips[index].resource_url}}"></image>
         </view>
     </scroll-view>
 </view>
