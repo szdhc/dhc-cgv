@@ -11,11 +11,12 @@
   border-bottom: 1px solid rgb(211, 209, 209);
 }
 .list{
-  margin-left: 4%;
+  margin-left: 3%;
   
 }
 .righttest{
   margin-left: 65%;
+  float:right; 
   
 }
 .righttest1{
@@ -50,14 +51,4 @@
 }
 .region1{
   margin-left: 65%;
-}
-.left{
-  width: 40%;
-  padding-left: 3%;
-}
-.right{
-  width: 60%;
-}
-.rightsurname{
-  padding-left: 60%;
 }

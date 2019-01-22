@@ -1,5 +1,3 @@
-@import "../../style/guide.wxss";
-
 .a-z {
   width: 35rpx;
   position: fixed;
@@ -24,7 +22,7 @@
   padding-left: 5%;
   margin-left: 5%;
   height: 90rpx;
-  font-size: 40rpx;
+  font-size: 45rpx;
   line-height: 100rpx;
   border-bottom: 1rpx solid #ccc; /* border:1rpx solid red; */
 }

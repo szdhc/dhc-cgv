@@ -2,9 +2,9 @@ const app = getApp()
 
 Page({ /** * 生命周期函数--监听页面加载 */
   onLoad: function(options) {
-    this.setData({
-      cityType: options.cityType
-    })
+    // this.setData({
+    //   cityType: options.cityType
+    // })
     if (this.data.cityResults == null) {
       this.setData({
         cityResults: this.data.citys
@@ -50,13 +50,13 @@ Page({ /** * 生命周期函数--监听页面加载 */
   onReady: function() {
 
   },
-  citySelected: function(e) {
-    var cityNameTemp = e.currentTarget.dataset.cityname
-    if (this.data.cityType == 'begin') {
-      app.globalData.trainBeginCity = cityNameTemp
-    }
-    wx.navigateBack()
-  },
+  // citySelected: function(e) {
+  //   var cityNameTemp = e.currentTarget.dataset.cityname
+  //   if (this.data.cityType == 'begin') {
+  //     app.globalData.trainBeginCity = cityNameTemp
+  //   }
+  //   wx.navigateBack()
+  // },
   bindSarchInput: function(e) {
     wx.pageScrollTo({
       scrollTop: 0,
@@ -123,7 +123,7 @@ Page({ /** * 生命周期函数--监听页面加载 */
   data: {
     scrollAZ: null,
     scrollNow: 0,
-    cityType: 'begin',
+    //cityType: 'begin',
     cityResults: null,
     cityAZ: [{
       cityName: '热门'
@@ -289,10 +289,6 @@ Page({ /** * 生命周期函数--监听页面加载 */
       cityPinYin: 'cangzhou',
       cityPY: 'cz'
     }, {
-        cityName: '长沙',
-        cityPinYin: 'changsha',
-        cityPY: 'cs'
-      }, {
       cityName: '常德',
       cityPinYin: 'changde',
       cityPY: 'cd'
