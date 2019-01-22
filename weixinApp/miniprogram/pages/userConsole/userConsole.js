@@ -8,7 +8,7 @@ Page({
     logged: false,
     takeSession: false,
     requestResult: '',
-    username:'CGV影迷',
+    username:'',
     orderUrl:''
   },
 
