@@ -1,0 +1,13 @@
+<template name='jpCinemaTemplate'>
+  <view class='flex-wrp-row item border' style='background: #fff;' bindtap='bindMovieAddress' data-id="{{id}}">
+    <view class='item-left flex-wrp-row'>
+      <text class='cinema'>{{movieAddress}}</text>
+    </view>
+    <view class='item-left flex-wrp-row'>
+      <text class='medium-font-size'></text>
+    </view>
+    <view class='item-right flex-wrp-row'>
+      <icon class='iconfont icon-youjiantou icon-right'></icon>
+    </view>
+  </view>
+</template>
