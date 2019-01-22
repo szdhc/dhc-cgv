@@ -1,33 +1,14 @@
 <view class='flex-wrp-row item'>
   <view class='item-left flex-wrp-row'>
-    <text class='chooseCinema' bindtap='chooseCitys'> {{begin}}</text>
-    <icon class='iconfont icon-xiajiantou icon-right' bindtap='chooseCitys'></icon>
+    <input name='beginCity' value='{{begin}}' disabled='disabled' placeholder="定位城市" bindtap='bindBeginCityView' style='width:160rpx' />
+    <icon class='iconfont icon-xiajiantou icon-right' bindtap='bindBeginCityView'></icon>
   </view>
   <view class='item-left flex-wrp-row'>
     <text class='medium-font-size'></text>
   </view>
 </view>
 
-<view class='flex-wrp-row item border' style='background: #fff;'>
-  <view class='item-left flex-wrp-row'>
-    <text class='cinema'>{{cinema}}</text>
-  </view>
-  <view class='item-left flex-wrp-row'>
-    <text class='medium-font-size'></text>
-  </view>
-  <view class='item-right flex-wrp-row'>
-    <icon class='iconfont icon-youjiantou icon-right'></icon>
-  </view>
-</view>
-
-<view class='flex-wrp-row item border' style='background: #fff;'>
-  <view class='item-left flex-wrp-row'>
-    <text class='cinema'>CGV影城昆山广场店</text>
-  </view>
-  <view class='item-left flex-wrp-row'>
-    <text class='medium-font-size'></text>
-  </view>
-  <view class='item-right flex-wrp-row'>
-    <icon class='iconfont icon-youjiantou icon-right'></icon>
-  </view>
+<import src='../../templates/jumpcinema.wxml' />
+<view wx:for="{{movieAddressList}}" wx:key="{{movieAddressList}}">
+  <template is='jpCinemaTemplate' data="{{...item}}" />
 </view>

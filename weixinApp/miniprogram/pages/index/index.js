@@ -7,7 +7,7 @@ Page({
 
   data: {
     // openid: '',
-    movieAddress: '苏州平江万达广场店',
+    movieAddress: 'CGV影城苏州中心店',
     currProvince: '',
     currCity: '',
     // --------------------------------------------------------------//
@@ -69,6 +69,9 @@ Page({
     qqmapsdk = new QQMapWX({
       key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
     });
+    this.setData({
+      movieAddress:options.movieAddress
+    })
     // this.setData({
     //   openid: getApp().globalData.openid
     // })
