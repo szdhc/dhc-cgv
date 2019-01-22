@@ -46,19 +46,19 @@
     <view class="seat-wrap">
       <view class="seat-item" wx:for="{{seats}}">
         <view class="seat-let">{{item}}</view>
-        <view class="seat-cancel"></view>
+        <view class="seat-cancel" data-id="{{index}}" bindtap='cancelShop'></view>
       </view>
     </view>
   </view>
   <view class="confirm" hidden="{{!seats.length}}">
     <view class="total" >
       <view class="price">
-        <view class="price-s">{{seats.length*shop.price}}</view>
+        <view class="price-s">{{money}}</view>
         <view class="price-y">元</view>
       </view>
       <view class="priceL">{{shop.price}}x{{seats.length}}</view>
     </view>
-    <navigator url="../../book/book" class="confirm-s">确认选座</navigator>
+    <view class="confirm-s" bindtap='confirmseats'>确认选座</view>
   </view>
   <view class="confirm" hidden="{{seats.length}}">
     <view class="total" >

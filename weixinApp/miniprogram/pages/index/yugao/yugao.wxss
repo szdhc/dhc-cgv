@@ -1,0 +1,8 @@
+/* pages/yugao/yugao.wxss */
+.box {
+  height: 100%;
+}
+.videos {
+  width: 100%;
+  height: 100%;
+}

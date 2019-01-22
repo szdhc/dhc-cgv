@@ -157,7 +157,32 @@
 <!--会员卡-->
 <view hidden="{{currentTab!==1}}">
     <view class='hotFilm_container'>
-        <view><text>5534343</text></view>
+        
+    <view class='card_padd'>
+      <view class="flex-wrp-row card_backg">
+        <view class="card_type">
+          <text class='regular-font-size'>折扣卡</text>
+        </view>
+        <view class="card_name">
+          <view class="flex-wrp-row item">
+            <view class='flex-wrp-cloumn'>
+              <image class='card_image' src='../../images/card.png'></image>
+            </view>
+            <view class='flex-wrp-clomn margin-left'>
+              <view class='card_name_font_big'>
+                <text>E优卡(一年卡)</text>
+              </view>
+              <view class='card_name_font_sml'>
+                <text>IMAX等特效厅和普通厅全场挂牌价4折无赠券活动点击了解详情</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='card_price_buy'>
+        </view>
+      </view>
+    </view>
+    
     </view>
 </view>
 

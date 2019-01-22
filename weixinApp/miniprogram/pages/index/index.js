@@ -69,9 +69,9 @@ Page({
     qqmapsdk = new QQMapWX({
       key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
     });
-    this.setData({
-      movieAddress:options.movieAddress
-    })
+    // this.setData({
+    //   movieAddress:options.movieAddress
+    // })
     // this.setData({
     //   openid: getApp().globalData.openid
     // })

@@ -1,0 +1,5 @@
+<!--pages/yugao/yugao.wxml-->
+<view class='box'>
+<video src='{{movieData.clips[0].resource_url}}' class='videos' controls="true" autoplay="true" show-fullscreen-btn="true">
+</video>
+</view>
