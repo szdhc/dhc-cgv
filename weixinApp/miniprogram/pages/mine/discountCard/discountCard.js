@@ -15,6 +15,7 @@ Page({
     usedCinema: 'CGV影城',
     startTime:'2019-1-15',
     endTime:'2019-1-25'
+
   },
 
   /**
@@ -23,15 +24,17 @@ Page({
   onLoad: function(options) {
     this.setData({
       discountInfo: [{
-        discountName: 'CGV苏州中心影城',
-        discountShow: '5元',
-        discountLevel: '限线上支付使用',
-        discountTime: '2019.1.21-2019.1.28'
+        cardprice: 5,
+        cardmaxprice: 30,
+        usedCinema: 'CGV影城',
+        startTime: '2019-1-15',
+        endTime: '2019-1-25'
       }, {
-        discountName: 'CGV上海影城',
-        discountShow: '6元',
-        discountLevel: '限线上支付使用',
-        discountTime: '2019.1.21-2019.1.28'
+          cardprice: 5,
+          cardmaxprice: 30,
+          usedCinema: 'CGV影城',
+          startTime: '2019-1-15',
+          endTime: '2019-1-25'
       }]
     })
     if (this.data.discountInfo == '') {

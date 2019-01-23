@@ -1,8 +1,22 @@
 <template name='discountTemplate'>
-  <view class='info' style='display:{{mbsshow}}'>
-    <text class=''>{{discountName}}</text>
-    <text class=''>{{discountShow}}</text>
-    <text class=''>{{discountLevel}}</text>
-    <text class=''>{{discountTime}}</text>
+   <view class="all_cart coupon coupon_top">
+    <view class="ac_content">
+      <!-- 内容 -->
+      <view class="box_top">
+        <view class="bt_title1">
+          <span class="rmb">￥</span>
+          <span class="big_num">{{cardprice}}</span>
+          <span class="sm_font">(满{{cardmaxprice}}可用)</span>
+        </view>
+        <view class="bt_title2">
+          可用影院： {{usedCinema}}
+        </view>
+        <view class="bt_title3">
+          <i class="icon-time">
+          {{startTime}} 至 {{endTime}}</i>
+          <a href="javascript:;">使用</a>
+        </view>
+      </view>
+    </view>
   </view>
 </template>

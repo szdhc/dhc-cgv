@@ -58,6 +58,7 @@
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 0 20px 1px #666;
+  margin-top: 7%;
 }
 .all_cart .ac_content .box_top {
   background: #55bc75;
@@ -192,5 +193,4 @@
 }
 .modelcoupon{
  width: 85%;
- margin-top: 7%;
 }
