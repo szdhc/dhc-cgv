@@ -10,6 +10,11 @@ Page({
     membershipLevel: '限线上支付使用',
     membershipLevelinfo: '2019.1.21-2019.1.28',
     discountInfo: [],
+    cardprice:5,
+    cardmaxprice:30,
+    usedCinema: 'CGV影城',
+    startTime:'2019-1-15',
+    endTime:'2019-1-25'
   },
 
   /**

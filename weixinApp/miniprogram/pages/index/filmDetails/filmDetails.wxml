@@ -95,7 +95,7 @@
 <view class='actor'>
     <view class='actor_head'>视频和剧照</view>
     <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex;">
-        <view class='video_img' style='position:relative' hover-class='video_img_hover'>
+        <view class='video_img' style='position:relative' hover-class='video_img_hover' bindtap='yugaoHander'data-Id="{{filmDetails_info.id}}">
             <image mode="aspectFill" src="{{filmDetails_info.clips[0].small}}"></image>
             <image src='../../../images/play.png'></image>
         </view>

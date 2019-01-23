@@ -76,7 +76,7 @@
 }
 
 .wrap {
-  height: 760rpx;
+  height: 720rpx;
   background-color: #f0f0f0;
   position: relative;
   overflow: hidden;
@@ -98,7 +98,7 @@
   margin-left: 32rpx;
   width: 36rpx;
   position: absolute;
-  top: 154rpx;
+  top: 140rpx;
   background-color: #c2c2c2;
   opacity: 0.8;
   z-index: 2;
@@ -130,7 +130,7 @@
 }
 
 .buy {
-  padding: 0 30rpx;
+  padding: 0 20rpx;
   border-top: 2rpx #c0c0c0 solid;
 }
 
@@ -169,7 +169,7 @@
   content: '/';
   display: inline-block;
   width: 14px;
-  height: 1px;
+  height: 2px;
   background: #ccc;
   transform: rotate(-90deg);
 }
@@ -180,12 +180,12 @@
 
 .seat-item {
   display: flex;
-  width: 150rpx;
+  width: 160rpx;
   height: 58rpx;
   border: 2rpx #ddd solid;
   border-radius: 8rpx;
   margin-top: 14rpx;
-  margin-right: 10rpx;
+  margin-right: 8rpx;
   padding-left: 8rpx;
   align-items: center;
 }

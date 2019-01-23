@@ -65,7 +65,7 @@
         <image class='loveImage' src='../../images/love_red.png'></image>
       </view>
       <view class='sale'>
-        <button class='movieStatus' bindtap='redirct'>{{movieStatus}}</button>
+        <button class='movieStatus salebutton' bindtap='redirct'>{{movieStatus}}</button>
       </view>
     </view>
   </view>
