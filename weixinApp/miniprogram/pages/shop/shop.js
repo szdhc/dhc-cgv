@@ -497,9 +497,30 @@ Page({
     deliveryPrice: 4,//配送費
     fold: true,
     selectFoods: [{ price: 20, count: 2 }],
-    cartShow: 'none'
+    cartShow: 'none',
 
   // --------------------------end------------------------------------
+
+  // --------------------------------member Card---------------------------
+    memberCards: [
+      {
+        cardType: "折扣卡",
+        cardIcon: "../../images/card.png",
+        cardName: "E优卡(一年卡)",
+        cardDescription: "IMAX等特效厅和普通厅全场挂牌价4折无赠券活动点击了解详情",
+        cardInfo: "",
+        cardPrice: "600"
+      },
+      {
+        cardType: "折扣卡",
+        cardIcon: "../../images/film_red.png",
+        cardName: "E优卡(半年卡)",
+        cardDescription: "IMAX等特效厅和普通厅全场挂牌价4折无赠券活动点击了解详情",
+        cardInfo: "",
+        cardPrice: "300"
+      },
+    ]
+  // ------------------------------------end-------------------------------
 
   },
 
@@ -764,6 +785,16 @@ Page({
     }    
   },
   // ---------------------------------------------//
+
+  // ----------------------------------member Card-------------------------------------
+
+  goCardInfo: function (e) {
+      wx.navigateTo({
+        url: '../shop/memberCard/memberCard',
+      })
+  },
+
+  // ------------------------------------- end-----------------------------------------
 
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数

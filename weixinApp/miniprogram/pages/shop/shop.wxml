@@ -158,7 +158,7 @@
 <view hidden="{{currentTab!==1}}">
     <view class='hotFilm_container'>
         
-    <view class='card_padd'>
+    <!-- <view class='card_padd'>
       <view class="flex-wrp-row card_backg">
         <view class="card_type">
           <text class='regular-font-size'>折扣卡</text>
@@ -178,10 +178,49 @@
             </view>
           </view>
         </view>
-        <view class='card_price_buy'>
+        <view class='card_price_buy flex-wrp-row'>
+          <view class='card_itm_price'>
+            售价:￥30元
+          </view>
+          <view class='card_itm_buy'>
+            <button class='card_btnbuy'>购买</button>
+          </view>
+        </view>
+      </view>
+    </view> -->
+
+  <view wx:for="{{memberCards}}" wx:for-item="mCard" class='card_padd'>
+      <view class="flex-wrp-row card_backg" bindtap='goCardInfo'>
+        <view class="card_type">
+          <text class='regular-font-size'>{{mCard.cardType}}</text>
+        </view>
+        <view class="card_name">
+          <view class="flex-wrp-row item">
+            <view class='flex-wrp-cloumn'>
+              <image class='card_image' src='{{mCard.cardIcon}}'></image>
+            </view>
+            <view class='flex-wrp-clomn margin-left'>
+              <view class='card_name_font_big'>
+                <text>{{mCard.cardName}}</text>
+              </view>
+              <view class='card_name_font_sml'>
+                <text>{{mCard.cardDescription}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='card_price_buy flex-wrp-row'>
+          <view class='card_itm_price'>
+            售价:￥{{mCard.cardPrice}}元
+          </view>
+          <view class='card_itm_buy'>
+            <button class='card_btnbuy' bindtap='goCardBuy'>购买</button>
+          </view>
         </view>
       </view>
     </view>
+
+
     
     </view>
 </view>

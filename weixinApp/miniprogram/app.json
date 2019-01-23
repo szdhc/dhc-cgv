@@ -28,7 +28,8 @@
     "pages/index/chooseMovie/hallInstruction/hallInstruction",
     "pages/index/chooseMovie/seat/seat",
     "pages/shop/dinnMethod/dinnMethod",
-    "pages/index/yugao/yugao"
+    "pages/index/yugao/yugao",
+    "pages/shop/memberCard/memberCard"
   ],
   "permission": {
     "scope.userLocation": {
