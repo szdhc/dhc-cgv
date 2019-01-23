@@ -189,8 +189,8 @@
       </view>
     </view> -->
 
-  <view wx:for="{{memberCards}}" wx:for-item="mCard" class='card_padd'>
-      <view class="flex-wrp-row card_backg" bindtap='goCardInfo'>
+  <view wx:for="{{memberCards}}" wx:for-index="cardindex" wx:for-item="mCard" class='card_padd'>
+      <view class="flex-wrp-row card_backg" bindtap='goCardInfo' data-cardindex="{{cardindex}}">
         <view class="card_type">
           <text class='regular-font-size'>{{mCard.cardType}}</text>
         </view>

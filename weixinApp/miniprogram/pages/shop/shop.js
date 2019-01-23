@@ -506,18 +506,22 @@ Page({
       {
         cardType: "折扣卡",
         cardIcon: "../../images/card.png",
+        cardImage: "../../images/card.png",
         cardName: "E优卡(一年卡)",
         cardDescription: "IMAX等特效厅和普通厅全场挂牌价4折无赠券活动点击了解详情",
         cardInfo: "",
-        cardPrice: "600"
+        cardPrice: "600",
+        cardMonth: "12"
       },
       {
         cardType: "折扣卡",
         cardIcon: "../../images/film_red.png",
+        cardImage: "../../images/film_red.png",
         cardName: "E优卡(半年卡)",
         cardDescription: "IMAX等特效厅和普通厅全场挂牌价4折无赠券活动点击了解详情",
         cardInfo: "",
-        cardPrice: "300"
+        cardPrice: "300",
+        cardMonth: "6"
       },
     ]
   // ------------------------------------end-------------------------------
@@ -789,9 +793,21 @@ Page({
   // ----------------------------------member Card-------------------------------------
 
   goCardInfo: function (e) {
-      wx.navigateTo({
-        url: '../shop/memberCard/memberCard',
-      })
+    
+    var cardIndex = e.currentTarget.dataset.cardindex;
+    
+    // 转成json 字符串,并且存储在本地
+    let memberCard = JSON.stringify(this.data.memberCards[cardIndex]);
+    wx.removeStorageSync("memberCard");
+    wx.setStorageSync("memberCard", memberCard);
+
+    wx.navigateTo({
+      url: '../shop/memberCard/memberCard',
+    })
+  },
+
+  goCardBuy: function (e) {
+
   },
 
   // ------------------------------------- end-----------------------------------------
