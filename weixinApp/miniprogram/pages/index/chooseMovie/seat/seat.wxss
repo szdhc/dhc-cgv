@@ -111,8 +111,8 @@
 }
 
 .columnNum {
-  height: 27px;
-  line-height: 27px;
+  height: 50rpx;
+  line-height: 50rpx;
   color: #fff;
   text-align: center;
   font-size: 28rpx;
@@ -156,8 +156,8 @@
 
 .seat-cancel {
  
-  width: 14px;
-  height: 1px;
+  width: 18rpx;
+  height: 2rpx;
   background: #ccc;
   line-height: 0;
   font-size: 0;
@@ -168,8 +168,8 @@
 .seat-cancel:after {
   content: '/';
   display: inline-block;
-  width: 14px;
-  height: 2px;
+  width: 28rpx;
+  height: 4rpx;
   background: #ccc;
   transform: rotate(-90deg);
 }

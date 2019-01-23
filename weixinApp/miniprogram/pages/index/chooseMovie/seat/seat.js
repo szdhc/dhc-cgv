@@ -9,12 +9,7 @@ function checkSeats(map){
   for(var i = 0; i < map.length ; i++){
     for(var j = 1; j < map[i].length; j++){
       if (map[i][j] === 3) {
-        if (map[i][j - 1] === 1 && map[i][j + 1] === 1) {
-          return false;
-        }
-      }
-      if(map[i][j] === 1){
-        if ((map[i][j - 1] === 2 || map[i][j - 1] === 3) && (map[i][j + 1] === 2|| map[i][j + 1] === 3)){
+        if (map[i][j + 1] === 1 && map[i][j + 2] === 3) {
           return false;
         }
       }
@@ -31,7 +26,7 @@ Page({
   data: {
     shop: { shop: 'CGV影城(苏州中心店)', time: '今天 1月21号 16:25', effects: '英语3D', room: '3DIMAX厅', center: 7, price: 36.2,},
     map: [],
-    deltaX:30,
+    deltaX:60,
     money:0,
     deltaY:0,
     seats:[],
