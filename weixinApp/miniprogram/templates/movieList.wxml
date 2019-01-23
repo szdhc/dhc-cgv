@@ -7,7 +7,7 @@
     </view>
     <!--电影名，特性，导演，主演-->
     <view class='flex-wrp-cloumn content margin-left hidden-text' data-moveid="{{id}}">
-      <navigator url="../index/filmDetails/filmDetails?id={{id}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
+      <navigator url="../index/filmDetails/filmDetails?id={{id}}&wantFlag={{wantFlag}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
         <view>
           <text class='medium-font-size'>{{movieName}}</text>
         </view>
@@ -38,7 +38,7 @@
     </view>
     <!--电影名，特性，导演，主演-->
     <view class='flex-wrp-cloumn content margin-left hidden-text' data-moveid="{{id}}">
-      <navigator url="../index/filmDetails/filmDetails?id={{id}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
+      <navigator url="../index/filmDetails/filmDetails?id={{id}}&wantFlag={{wantFlag}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
         <view>
           <text class='medium-font-size'>{{movieName}}</text>
         </view>
@@ -52,7 +52,7 @@
     </view>
     <!--评分、购票/预售-->
     <view class='flex-wrp-cloumn margin-left salecomment'>
-      <view class='want' wx:if="{{wantFlag}}" data-id="{{id}}" bindtap='clickWant'>
+      <view class='want' wx:if="{{wantFlag==0}}" data-id="{{id}}" bindtap='clickWant'>
         <text class='regular-font-size'>{{wishCount}}</text>
         <text class='regular-font-size'>人</text>
         <image class='loveImage' src='../../images/love.png'></image>

@@ -33,7 +33,7 @@
             <import src='../../templates/movieList.wxml' />
             <view wx:for="{{hotMovieList}}" wx:key="{{hotMovieList}}">
               <view class="more" wx:if="{{index==7}}" hidden="{{moreTab==1}}" bindtap='clickMore'>
-                加载更多•••
+                加载更多
               </view>
               <template is='hotMovieTemplate' data="{{...item}}" />
             </view>
@@ -50,7 +50,7 @@
             <import src='../../templates/movieList.wxml' />
             <view wx:for="{{comingMovieList}}" wx:key="{{comingMovieList}}">
               <view class="more" wx:if="{{index==7}}" hidden="{{moreTab==1}}" bindtap='clickMore'>
-                加载更多•••
+                加载更多
               </view>
               <template is='comingMovieTemplate' data="{{...item}}" />
             </view>

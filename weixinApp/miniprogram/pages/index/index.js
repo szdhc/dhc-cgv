@@ -14,8 +14,8 @@ Page({
     navbar: ['热映', '待映'],
     currentTab: 0,
     moreTab: 0,
-    wantFlag: false,
-    // --------------------------------------------------------------//
+    wantFlag: 0,
+    // --------------------------------------------------------//
     bannerUrls: [{
         url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
         linkUrl: ''
@@ -63,19 +63,27 @@ Page({
   //选项卡切换
   navbarTap: function(e) {
     this.setData({
-      currentTab: e.currentTarget.dataset.idx
+      currentTab: e.currentTarget.dataset.idx,
+      conHeight: "1700rpx",
+      moreTab: 0
     })
   },
+     //滑动切换tab 
+    bindChange:   function(e)  {    
+    var  that  =  this;    
+    that.setData( { 
+      currentTab:  e.detail.current,
+      conHeight: "1700rpx",
+      moreTab: 0
+    });
+
+      
+  },
    
- //滑动切换tab 
-    bindChange:  function ( e )  {
-        var  that  =  this;
-        that.setData( {  currentTab:  e.detail.current  });
-    }, 
   onLoad: function(options) {
     qqmapsdk = new QQMapWX({
       key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
-    }); 
+    });
     // this.setData({
     //   openid: getApp().globalData.openid
     // })
@@ -141,7 +149,7 @@ Page({
           movieObj2.set('wishCount', data.subjects[i].collect_count)
           movieObj2.set('movieStatus', '预售')
           movieObj2.set('id', data.subjects[i].id)
-          movieObj2.set('wantFlag', false)
+          movieObj2.set('wantFlag', 0)
           arr2.push(JSON.parse(util.MapTOJson(movieObj2)))
         }
         this.setData({
@@ -257,8 +265,8 @@ Page({
   // 点击更多
   clickMore(e) {
     this.setData({
-      moreTab : 1,
-      conHeight : "4200rpx"
+      moreTab: 1,
+      conHeight: "4200rpx"
     })
   },
   // 点击想看
@@ -267,7 +275,7 @@ Page({
     let arrL = this.data.comingMovieList
     for (let i = 0; i < arrL.length; i++) {
       if (arrL[i].id == e.currentTarget.dataset.id) {
-        if (arrL[i].wantFlag == false) {
+        if (arrL[i].wantFlag == 0) {
           // wx.request({
           //   url: this.data.IP + '/users/update',
           //   data: {
@@ -278,7 +286,7 @@ Page({
           //   success: ((res) => {})
           // })
           this.setData({
-            wantFlag: true
+            wantFlag: 1
           })
           wx.showToast({
             title: '已取消想看',
@@ -311,7 +319,7 @@ Page({
             duration: 1500
           })
           this.setData({
-            wantFlag: false
+            wantFlag: 0
           })
           arrL[i].wantFlag = this.data.wantFlag
           arrL[i].wishCount++;
@@ -320,6 +328,6 @@ Page({
           comingMovieList: arrL
         })
       }
-    } 
+    }
   },
 })

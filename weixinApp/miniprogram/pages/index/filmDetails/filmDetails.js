@@ -7,7 +7,7 @@ Page({
   data: {
     filmDetails_info: {},
     filmType: '',
-    wantFlag: false,
+    wantFlag: 0,
   },
 
   /**
@@ -15,6 +15,7 @@ Page({
    */
   onLoad: function (options) {
     let Id = options.id;
+    var wFlag = options.wantFlag;
     let imglist = [];
     // 开启导航条加载动画 
     wx.showNavigationBarLoading();
@@ -31,7 +32,8 @@ Page({
         console.log(imglist)
         this.setData({
           filmDetails_info: data,
-          filmType: this.options.type
+          filmType: this.options.type,
+          wantFlag: wFlag
         })
         console.log(data)
 
@@ -66,7 +68,7 @@ Page({
    //   点击想看
     clickWant(e) {
     this.setData({
-      wantFlag: !this.data.wantFlag
+      wantFlag: 1
     })
     // wantFilms
     if (this.data.wantFlag) {
