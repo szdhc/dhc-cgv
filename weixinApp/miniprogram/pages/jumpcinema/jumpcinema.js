@@ -8,7 +8,6 @@ Page({
   data: {
     begin: '',
     cinema: '',
-    //movieAddress:'CGV影城',
     movieAddressList: [{
         id:0,
         'movieAddress': 'CGV影城苏州中心店'
@@ -20,16 +19,13 @@ Page({
     ]
 
   },
-  // onLoad: function (options) {
-  //   this.setData({
-  //     begin: options.begin
-  //   })
-  //   if (this.data.begin == '') {
-  //     this.setData({
-  //       begin: this.data.citys
-  //     })
-  //   }
-  // },
+
+  onLoad: function (options) {
+    console.log(options)
+    this.setData({
+      begin: options.ct
+    })
+  },
 
   formSubmit: function(e) {
     // console.log('form发生了submit事件，携带数据为：', e.detail.value) 

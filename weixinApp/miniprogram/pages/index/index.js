@@ -250,7 +250,7 @@ Page({
   //选择影城跳转事件
   jumpcinema() {
     wx.navigateTo({
-      url: '/pages/jumpcinema/jumpcinema',
+      url: '/pages/jumpcinema/jumpcinema?ct=' + this.data.currCity,
     })
   },
   //   点击想看
