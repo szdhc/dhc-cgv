@@ -1,23 +1,20 @@
-// pages/userInfo/userInfo.js
+// pages/shop/memberCard/memberCard.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    avatarUrl: '',
-    sex:'男',
-    level:'黄金会员'
+    mCard: {},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      avatarUrl: options.avatarUrl,
-      username:options.username
-    });
+    let jsonStr = wx.getStorageSync("memberCard");
+    let memberCard = JSON.parse(jsonStr);
+    this.setData({ mCard: memberCard });
   },
 
   /**
@@ -67,14 +64,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  userInfoModify() {
-    
-        wx.navigateTo({
-          url: '../userModify/userModify?avatarUrl=' + this.data.avatarUrl +'&username='+this.data.username+'&sex='+this.data.sex,
-        })
-      }
-      
-   
-  
+  }
 })

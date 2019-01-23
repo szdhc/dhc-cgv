@@ -1,23 +1,26 @@
-// pages/userInfo/userInfo.js
+// pages/mine/myLike/myLike.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    avatarUrl: '',
-    sex:'男',
-    level:'黄金会员'
+    LIKE_FLAG:0,
+    hotMovieList:[{
+      movieImage: '../../../images/201812131426092692802.jpg',
+      movieName: '大黄蜂',
+      movieShow: '大黄蜂首部个人电影',
+      movieDirectorStarring: '特拉维斯·奈特/迪伦·奥布莱恩; 海莉·斯坦菲尔德;',
+      moiveGrade: '9.3分',
+      movieStatus: '购票'
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      avatarUrl: options.avatarUrl,
-      username:options.username
-    });
+
   },
 
   /**
@@ -67,14 +70,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  userInfoModify() {
-    
-        wx.navigateTo({
-          url: '../userModify/userModify?avatarUrl=' + this.data.avatarUrl +'&username='+this.data.username+'&sex='+this.data.sex,
-        })
-      }
-      
-   
-  
+  }
 })

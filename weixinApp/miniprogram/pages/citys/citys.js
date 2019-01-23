@@ -51,10 +51,11 @@ Page({ /** * 生命周期函数--监听页面加载 */
 
   },
   citySelected: function(e) {
-    var cityNameTemp = e.currentTarget.dataset.cityname
-    if (this.data.cityType == 'begin') {
-      app.globalData.trainBeginCity = cityNameTemp
-    }
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];
+    prevPage.setData({
+      begin: e.currentTarget.dataset.cityname
+    })
     wx.navigateBack()
   },
   bindSarchInput: function(e) {

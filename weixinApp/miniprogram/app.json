@@ -16,6 +16,7 @@
     "pages/mine/discountCard/discountCard",
     "pages/mine/discountInfo/discountInfo",
     "pages/mine/myOrder/myOrder",
+    "pages/mine/myLike/myLike",
     "pages/mine/myPoints/myPoints",
     "pages/index/buyTickets/buyTickets",
     "pages/notice/notice",
@@ -28,7 +29,9 @@
     "pages/index/chooseMovie/hallInstruction/hallInstruction",
     "pages/index/chooseMovie/seat/seat",
     "pages/shop/dinnMethod/dinnMethod",
-    "pages/index/yugao/yugao"
+    "pages/index/yugao/yugao",
+    "pages/mine/mylevdetail/mylevdetail",
+    "pages/shop/memberCard/memberCard"
   ],
   "permission": {
     "scope.userLocation": {

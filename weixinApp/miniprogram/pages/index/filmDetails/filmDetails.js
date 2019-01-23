@@ -115,5 +115,10 @@ Page({
     wx.navigateTo({
       url: '../yugao/yugao?id=' + Id,
     })
+  },
+  buy_ticket(e){
+    wx.navigateTo({
+      url: '../chooseMovie/chooseMovie',
+    })
   }
 })

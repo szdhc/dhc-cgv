@@ -1,0 +1,9 @@
+<!--pages/mine/mylevdetail/mylevdetail.wxml-->
+<view class='container'>
+    <view class='mylevelbox'>
+      <view class='imagesstyle' style="background-image: url({{avatarUrl}})"></view>
+      <view class='mylevelname'>
+        {{mylevelname}}
+      </view>
+    </view>
+</view>

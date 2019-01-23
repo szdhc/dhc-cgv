@@ -1,0 +1,30 @@
+/* pages/mine/myLike/myLike.wxss */
+page{
+  background-color: #f1f1f1ef;
+}
+.textTop{
+  padding: 1%;
+  width: 100%;
+  padding-left: 6%;
+  font-size: 80%;
+  background-color: #f1f1f1ef;
+}
+.imagestyle{
+  width: 200rpx;
+  height: 150rpx;
+}
+.nodata{
+  width: 100%;
+  background-color: #f1f1f1ef;
+  padding-top: 80%;
+  padding-left: 72%;
+}
+.nodatatext{
+  margin-left: -5%;
+  font-size: 70%;
+  padding-top: 3%;
+  color: #918c8cef
+}
+.nodatanone{
+  padding-top: 45%;
+}

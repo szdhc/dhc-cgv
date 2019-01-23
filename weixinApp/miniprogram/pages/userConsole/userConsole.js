@@ -9,7 +9,8 @@ Page({
     takeSession: false,
     requestResult: '',
     username:'CGV影迷',
-    orderUrl:''
+    orderUrl:'',
+    statusBarHeight:app.globalData.statusBarHeight
   },
 
   onLoad: function () {
@@ -139,5 +140,9 @@ Page({
       }
     })
   },
-
+  myleveldetail:function(){
+    wx.navigateTo({
+      url: '../mine/mylevdetail/mylevdetail?avatarUrl='+this.data.avatarUrl,
+    })
+  }
 })

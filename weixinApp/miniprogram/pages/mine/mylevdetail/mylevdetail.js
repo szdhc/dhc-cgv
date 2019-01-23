@@ -1,13 +1,13 @@
-// pages/userInfo/userInfo.js
+// pages/mine/mylevdetail/mylevdetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    avatarUrl: '',
-    sex:'男',
-    level:'黄金会员'
+    mylevelname:'黄金会员',
+    pointinfo:'10',
+    avatarUrl:''
   },
 
   /**
@@ -15,9 +15,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      avatarUrl: options.avatarUrl,
-      username:options.username
-    });
+      avatarUrl:options.avatarUrl
+    })
   },
 
   /**
@@ -67,14 +66,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  userInfoModify() {
-    
-        wx.navigateTo({
-          url: '../userModify/userModify?avatarUrl=' + this.data.avatarUrl +'&username='+this.data.username+'&sex='+this.data.sex,
-        })
-      }
-      
-   
-  
+  }
 })

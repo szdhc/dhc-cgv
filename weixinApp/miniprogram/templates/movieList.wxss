@@ -60,11 +60,11 @@
   position: relative;
   left: 0rpx;
   top: 22rpx;
+  height: 75rpx;
 }
 
 .sale {
-  position: relative;
-  left: 12rpx;
+  top: 12rpx;
 }
 .loveImage {
   width: 28rpx;
@@ -72,4 +72,5 @@
 }
 .salebutton {
   width: 100rpx;
+  top:20rpx;
 }

@@ -1,0 +1,91 @@
+<!--pages/shop/memberCard/memberCard.wxml-->
+<view class='container'>
+  <view class='mem_board'>
+    <view class='mem_board_item'>
+      
+      <view class='card_padd'>
+          <view class="flex-wrp-row card_backg" bindtap='goCardInfo'>
+            <view class="card_type">
+              <text class='regular-font-size'>{{mCard.cardType}}</text>
+            </view>
+            <view class="card_name">
+              <view class="flex-wrp-row item">
+                <view class='flex-wrp-cloumn'>
+                  <image class='card_image' src='{{mCard.cardIcon}}'></image>
+                </view>
+                <view class='flex-wrp-clomn margin-left'>
+                  <view class='card_name_font_big'>
+                    <text>{{mCard.cardName}}</text>
+                  </view>
+                  <view class='card_name_font_sml'>
+                    <text>{{mCard.cardDescription}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view class='card_price_buy flex-wrp-row'>
+              <view class='card_itm_price'>
+                售价:￥{{mCard.cardPrice}}元
+              </view>
+              <!-- <view class='card_itm_buy'>
+                <button class='card_btnbuy' bindtap='goCardBuy'>购买</button>
+              </view> -->
+            </view>
+          </view>
+        </view>
+      
+    </view>
+
+  <view class='mem_board_item mem_flex_column'>
+    <view class='mem_private_title'>
+      电子会员卡特权
+    </view>
+    <view class="mem_private_info">
+      <image class='mem_private_icon' src="../../../images/点.png"></image>
+      <view class='mem_private_li'><text>本卡无需储值，全年享IMAX,4DX等所有特效厅和普通厅全场挂牌价4折优惠;</text></view>
+    </view>
+    <view class="mem_private_info">
+      <image class='mem_private_icon' src="../../../images/点.png"></image>
+      <view class='mem_private_li'><text>凭购卡手机号码或卡号，本卡可在影城现场使用。</text></view>
+    </view>    
+  </view>
+
+  <view class='mem_board_item mem_flex_column'>
+    <view class='mem_private_title'>
+      电子会员卡说明
+    </view>
+    <view class="mem_private_info">
+      <image class='mem_private_icon' src="../../../images/点.png"></image>
+      <view class='mem_private_li'><text>默认支付密码为手机号码后6位，如需修改请至影城现场;</text></view>
+    </view>
+    <view class="mem_private_info">
+      <image class='mem_private_icon' src="../../../images/点.png"></image>
+      <view class='mem_private_li'><text>影票折后优惠价如低于最低票价，差价需由顾客补足,具体价格以影城排片公示为准;</text></view>
+    </view>    
+    <view class="mem_private_info">
+      <image class='mem_private_icon' src="../../../images/点.png"></image>
+      <view class='mem_private_li'><text>本卡仅作为购票优惠凭证，卡内没有余额，购票时需要额外支付票款;</text></view>
+    </view>  
+    <view class="mem_private_info">
+      <image class='mem_private_icon' src="../../../images/点.png"></image>
+      <view class='mem_private_li'><text>有效期{{mCard.cardMonth}}个月,自购卡开卡之日起计算,过期失效;</text></view>
+    </view>  
+    <view class="mem_private_info">
+      <image class='mem_private_icon' src="../../../images/点.png"></image>
+      <view class='mem_private_li'><text>1卡1天限购6张优惠票;</text></view>
+    </view>  
+    <view class="mem_private_info">
+      <image class='mem_private_icon' src="../../../images/点.png"></image>
+      <view class='mem_private_li'><text>本卡不可于广州k11店使用;</text></view>
+    </view>     
+    <view class="mem_private_info">
+      <image class='mem_private_icon' src="../../../images/点.png"></image>
+      <view class='mem_private_li'><text>购买本卡仅作为购票优惠凭证,一经销售,非法律规定事由,不可退换;</text></view>
+    </view>                  
+  </view>  
+
+  <view class='buyCardBtn'>
+    <button class='mem_btn' bindtap=''>立即办卡</button>
+  </view>
+  </view>
+</view>

@@ -497,9 +497,34 @@ Page({
     deliveryPrice: 4,//配送費
     fold: true,
     selectFoods: [{ price: 20, count: 2 }],
-    cartShow: 'none'
+    cartShow: 'none',
 
   // --------------------------end------------------------------------
+
+  // --------------------------------member Card---------------------------
+    memberCards: [
+      {
+        cardType: "折扣卡",
+        cardIcon: "../../images/card.png",
+        cardImage: "../../images/card.png",
+        cardName: "E优卡(一年卡)",
+        cardDescription: "IMAX等特效厅和普通厅全场挂牌价4折无赠券活动点击了解详情",
+        cardInfo: "",
+        cardPrice: "600",
+        cardMonth: "12"
+      },
+      {
+        cardType: "折扣卡",
+        cardIcon: "../../images/film_red.png",
+        cardImage: "../../images/film_red.png",
+        cardName: "E优卡(半年卡)",
+        cardDescription: "IMAX等特效厅和普通厅全场挂牌价4折无赠券活动点击了解详情",
+        cardInfo: "",
+        cardPrice: "300",
+        cardMonth: "6"
+      },
+    ]
+  // ------------------------------------end-------------------------------
 
   },
 
@@ -545,34 +570,33 @@ Page({
   decreaseCart: function (e) {
     var index = e.currentTarget.dataset.itemIndex;
     var parentIndex = e.currentTarget.dataset.parentindex;
-    this.data.goods.forEach((good) => {
-      good.foods.forEach((food) => {
-        var num = this.data.goods[parentIndex].foods[index].Count;
-        var mark = 'a' + index + 'b' + parentIndex
-        if (food.Count > 0) {
-          this.data.goods[parentIndex].foods[index].Count--
-          var price = this.data.goods[parentIndex].foods[index].price;
-          var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
-          var carArray1 = this.data.carArray.filter(item => item.mark != mark);
-          carArray1.push(obj);
-          console.log(carArray1);
-          this.setData({
-            carArray: carArray1,
-            goods: this.data.goods
-          })
-          this.calTotalPrice()
-          this.setData({
-            payDesc: this.payDesc()
-          })
+    this.data.goods[parentIndex].foods[index].Count--;
+    var mark = 'a' + index + 'b' + parentIndex;
+    var price = this.data.goods[parentIndex].foods[index].price;
+    var num = this.data.goods[parentIndex].foods[index].Count;
+    var name = this.data.goods[parentIndex].foods[index].name;
+    var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex }; 
+
+    var carArray1 = [];
+    if (this.data.carArray != undefined && this.data.carArray != null) {
+      for (var i = 0; i < this.data.carArray.length; i++) {
+        if (this.data.carArray[i].mark == mark) {
+          this.data.carArray[i].num = num;
+          this.data.carArray[i].price = price;
+          carArray1 = this.data.carArray;
         }
-        if (num > 0) {
-          var carArray1 = this.data.carArray.filter(item => item.num > 0)
-          console.log(carArray1)
-          this.setData({
-            carArray: carArray1,
-          })
-        }
-      })
+      }
+    }
+
+    carArray1 = this.data.carArray.filter(item => item.num > 0)
+    this.setData({
+      carArray: carArray1,
+      goods: this.data.goods
+    })
+
+    this.calTotalPrice();
+    this.setData({
+      payDesc: this.payDesc()
     })
   },
 
@@ -590,9 +614,25 @@ Page({
     var num = this.data.goods[parentIndex].foods[index].Count;
     var name = this.data.goods[parentIndex].foods[index].name;
     var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
-    var carArray1 = this.data.carArray.filter(item => item.mark != mark);
-    carArray1.push(obj);
-    console.log(carArray1);
+
+    var updateFlg = 0;
+    var carArray1 = [];
+    if (this.data.carArray != undefined && this.data.carArray != null){
+      for (var i = 0; i < this.data.carArray.length; i++) {
+        if (this.data.carArray[i].mark == mark) {
+          this.data.carArray[i].num = num;
+          this.data.carArray[i].price = price;
+          updateFlg = 1;
+          carArray1 = this.data.carArray;
+        }
+      }
+    }
+
+    if(updateFlg == 0){
+      carArray1 = this.data.carArray.filter(item => item.mark != mark);
+      carArray1.push(obj);
+      console.log(carArray1);
+    }
     this.setData({
       carArray: carArray1,
       goods: this.data.goods
@@ -749,6 +789,28 @@ Page({
     }    
   },
   // ---------------------------------------------//
+
+  // ----------------------------------member Card-------------------------------------
+
+  goCardInfo: function (e) {
+    
+    var cardIndex = e.currentTarget.dataset.cardindex;
+    
+    // 转成json 字符串,并且存储在本地
+    let memberCard = JSON.stringify(this.data.memberCards[cardIndex]);
+    wx.removeStorageSync("memberCard");
+    wx.setStorageSync("memberCard", memberCard);
+
+    wx.navigateTo({
+      url: '../shop/memberCard/memberCard',
+    })
+  },
+
+  goCardBuy: function (e) {
+
+  },
+
+  // ------------------------------------- end-----------------------------------------
 
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数

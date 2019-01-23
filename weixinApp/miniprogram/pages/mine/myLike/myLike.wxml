@@ -1,0 +1,20 @@
+<!--pages/mine/myLike/myLike.wxml-->
+<view class='container'>
+  <view class='textTop' wx:if="{{LIKE_FLAG==1}}">
+    <text class=''>我想看的电影列表</text>
+  </view>
+  <view class='nodata' wx:if="{{LIKE_FLAG==1}}">
+    <view>
+      <image src='../../../images/mine-nodata.png' class='imagestyle'></image>
+    </view>
+    <view class='nodatatext'>
+      <text >您还没有想看电影哦</text>
+    </view>
+  </view>
+  <view wx:if="{{LIKE_FLAG==0}}" style='background-color:white;margin-top:3%'>
+    <import src='../../../templates/movieList.wxml' />
+        <view wx:for="{{hotMovieList}}" wx:key="{{hotMovieList}}">
+          <template is='hotMovieTemplate' data="{{...item}}" />
+        </view>
+  </view>
+</view>

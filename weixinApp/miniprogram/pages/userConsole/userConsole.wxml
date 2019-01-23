@@ -2,10 +2,10 @@
 <view class="container">
   <view class='guide'>
     <!-- 用户 openid -->
-    <view class="userinfo">
+    <view class="userinfo ">
       <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" bindtap='Userinfo' style="background-image: url({{avatarUrl}})"></button>
       <text class="userinfo-nickname" bindtap="onGetOpenid">{{username}}</text>
-      <button class="userinfo-tequan" bindtap="">我的特权</button>
+      <button class="userinfo-tequan" bindtap="myleveldetail">我的特权</button>
     </view>
     <view class='title'>
     <navigator url="../mine/Membership/Membership" hover-class="none" open-type="navigate" class="wodelist-text">
@@ -48,6 +48,22 @@
         <!-- <icon class='iconfont icon-weibiaoti-3' > -->
         <icon class='iconfont icon-3dtouchdaijinquanxiangqingliebiao' >
           <text style='padding-left:20rpx'>代金券</text>
+        </icon>
+      </view>
+      <view class='item-left flex-wrp-row'>
+        <text class='medium-font-size'></text>
+      </view>
+      <view class='item-right flex-wrp-row'>
+        <icon class='iconfont icon-youjiantou icon-right'></icon>
+      </view>
+    </view>
+    </navigator>
+    <navigator url="../mine/myLike/myLike" hover-class="none" open-type="navigate" class="wodelist-text">
+    <view class='flex-wrp-row item border' style='background: #fff;'>
+      <view class='item-left flex-wrp-row'>
+        <!-- <icon class='iconfont icon-weibiaoti-3' > -->
+        <icon class='iconfont icon-3dtouchdaijinquanxiangqingliebiao' >
+          <text style='padding-left:20rpx'>想看的电影</text>
         </icon>
       </view>
       <view class='item-left flex-wrp-row'>

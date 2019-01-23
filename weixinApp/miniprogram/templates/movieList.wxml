@@ -1,5 +1,5 @@
 <template name='hotMovieTemplate'>
-  <view class='flex-wrp-row item'>
+  <view class='flex-wrp-row item' style='height:{{conHeight}}'>
     <!--电影图片-->
     <view class='flex-wrp-cloumn'>
       <image class='movieImage' src="{{ movieImage }}">
@@ -24,15 +24,13 @@
       <view>
         <text class='medium-font-size moiveGrade'>{{moiveGrade}}</text>
       </view>
-      <view class=''>
         <button class='movieStatus' bindtap='redirct'>{{movieStatus}}</button>
-      </view>
     </view>
   </view>
 </template>
 
 <template name='comingMovieTemplate'>
-  <view class='flex-wrp-row item'>
+  <view class='flex-wrp-row item' style='height:{{conHeight}}'>
     <!--电影图片-->
     <view class='flex-wrp-cloumn'>
       <image class='movieImage' src="{{ movieImage }}">
@@ -64,9 +62,7 @@
         <text class='regular-font-size'>人</text>
         <image class='loveImage' src='../../images/love_red.png'></image>
       </view>
-      <view class='sale'>
         <button class='movieStatus salebutton' bindtap='redirct'>{{movieStatus}}</button>
-      </view>
     </view>
   </view>
 </template>

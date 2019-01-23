@@ -65,7 +65,7 @@
   padding: 2%;
 	width:30%;
 	/* background: #F8E71C; */
-  background: rgba(4, 101, 212, 0.959);
+  background: rgba(72, 157, 255, 0.959);
 }
 .circle_list{
 	position:absolute;
@@ -112,14 +112,14 @@
 .stamp_sign{
   padding: 10%;
   font-size: 75%;
-  color: red;
+  color: rgb(253, 106, 106);
   font-weight: bold;
   margin-left: 10%;
   margin-top: 15%;
 }
 .stamp_price{
   font-weight: bold;
-  color: red;
+  color: rgb(255, 101, 101);
   margin-left: 35%;
   margin-top: -38%;
 }

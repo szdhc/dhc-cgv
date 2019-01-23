@@ -7,12 +7,13 @@ Page({
 
   data: {
     // openid: '',
-    movieAddress: 'CGV影城苏州中心店',
+    movieAddress: '苏州平江万达广场店',
     currProvince: '',
     currCity: '',
     // --------------------------------------------------------------//
     navbar: ['热映', '待映'],
     currentTab: 0,
+    moreTab: 0,
     wantFlag: false,
     // --------------------------------------------------------------//
     bannerUrls: [{
@@ -37,7 +38,7 @@ Page({
     autoplay: true,
     interval: 3000,
     duration: 1000,
-
+    conHeight: "1700rpx",
     changeIndicatorDots: function(e) {
       this.setData({
         indicatorDots: !this.data.indicatorDots
@@ -65,23 +66,24 @@ Page({
       currentTab: e.currentTarget.dataset.idx
     })
   },
+   
+ //滑动切换tab 
+    bindChange:  function ( e )  {
+        var  that  =  this;
+        that.setData( {  currentTab:  e.detail.current  });
+    }, 
   onLoad: function(options) {
     qqmapsdk = new QQMapWX({
       key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
-    });
-    // this.setData({
-    //   movieAddress:options.movieAddress
-    // })
+    }); 
     // this.setData({
     //   openid: getApp().globalData.openid
     // })
     // bannerJs.imgHeight(this);
     let types = options.ask || 'in_theaters';
-    this.setData({
-      types,
-    })
     // 请求热映
     this.setData({
+      types,
       loader: true
     })
     wx.request({
@@ -240,7 +242,6 @@ Page({
       Height: swiperH //设置高度
     })
   },
-
   redirct: function() {
     wx.navigateTo({
       url: '../index/chooseMovie/chooseMovie',
@@ -250,12 +251,18 @@ Page({
   //选择影城跳转事件
   jumpcinema() {
     wx.navigateTo({
-      url: '/pages/jumpcinema/jumpcinema?ct=' + this.data.currCity,
+      url: '/pages/jumpcinema/jumpcinema',
     })
   },
-  //   点击想看
+  // 点击更多
+  clickMore(e) {
+    this.setData({
+      moreTab : 1,
+      conHeight : "4200rpx"
+    })
+  },
+  // 点击想看
   clickWant(e) {
-
     // wantFilms
     let arrL = this.data.comingMovieList
     for (let i = 0; i < arrL.length; i++) {
