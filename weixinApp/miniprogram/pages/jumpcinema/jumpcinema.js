@@ -1,5 +1,4 @@
 const app = getApp()
-var begin
 Page({
 
   /**
@@ -9,18 +8,18 @@ Page({
     begin: '',
     cinema: '',
     movieAddressList: [{
-        id:0,
+        id: 0,
         'movieAddress': 'CGV影城苏州中心店'
       },
       {
-        id:1,
+        id: 1,
         'movieAddress': 'CGV影城昆山广场店'
       }
     ]
 
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     console.log(options)
     this.setData({
       begin: options.ct
@@ -45,25 +44,19 @@ Page({
   onPullDownRefresh: function() {
     wx.stopPullDownRefresh();
   },
+
+
   bindBeginCityView: function() {
     wx.navigateTo({
       url: '../citys/citys?cityType=begin',
+      // url:'pages/citys/citys',
     })
   },
-  onShow: function() {
-    this.setData({
-      begin: app.globalData.trainBeginCity
-    })
+  onShow: function () {
 
   },
 
 
-  //选择城市跳转事件
-  chooseCitys() {
-    wx.navigateTo({
-      url: '/pages/citys/citys',
-    })
-  },
   //选择影城并返回首页
   bindMovieAddress: function(e) {
     let pages = getCurrentPages();
