@@ -58,9 +58,10 @@
 .want {
   text-align: right;
   position: relative;
-  left: 0rpx;
+  left: -38rpx;
   top: 22rpx;
   height: 75rpx;
+  width: 140rpx;
 }
 
 .sale {

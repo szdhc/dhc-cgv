@@ -51,6 +51,7 @@ text-align:center;
 padding:10rpx 0;
 font-size:28rpx;
 }
+
 .text_icon {
     width: 30rpx;
     height: 30rpx;
