@@ -10,14 +10,14 @@ page{
 }
 .pointtext{
   color: white;
-  padding: 7% 1% 5% 4%;
+  padding: 7% 1% 5% 7%;
   font-size: 70%;
 }
 .pointnum{
   color: white;
   margin-top: 14%;
   padding-bottom: 4%;
-  margin-left: -23%;
+  margin-left: -20%;
 }
 .pointinfo{
   background: white;
@@ -156,29 +156,30 @@ page{
   width: 100%;
 }
 .textleft{
-  padding-left: 7%;
+  padding-left: 10%;
 }
 .textmiddle{
   text-align: center;
-  padding-left: 33%;
+  padding-left: 30%;
 }
 .textright{
-  float: right;
-  padding-left: 23%;
+  padding-left: 26%;
 }
 .flex-wrp-row{
   font-size: 75%;
   color: rgb(104, 104, 104);
 }
 .content {
-  width: 340rpx;
-  padding-left: 20rpx;
+  width: 345rpx;
+  margin-left: 6%;
 }
 .content1{
-  width:260rpx;
+  margin-left: 8%;
+  width:256rpx;
 }
 .content2{
   width:150rpx;
+  margin-left: 13%;
 }
 .textkong{
   width: 60%;

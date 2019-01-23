@@ -196,7 +196,7 @@
   font-size: 70%;
   color: rgba(247, 3, 3, 0.747);
   background: #fff;
-  width: 15%;
+  width: 16%;
   margin-top: 2%;
   align-items: center;
 }
