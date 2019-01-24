@@ -6,7 +6,7 @@
       </image>
     </view>
     <!--电影名，特性，导演，主演-->
-    <view class='flex-wrp-cloumn content margin-left hidden-text' data-moveid="{{id}}">
+    <view class='flex-wrp-cloumn content margin-left' data-moveid="{{id}}">
       <navigator url="../index/filmDetails/filmDetails?id={{id}}&wantFlag={{wantFlag}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
         <view>
           <text class='medium-font-size'>{{movieName}}</text>
@@ -14,9 +14,8 @@
         <view>
           <text class='regular-font-size movieShow'>{{movieShow}}</text>
         </view>
-        <view>
-          <text class='regular-font-size movieShow'>{{movieDirectorStarring}}</text>
-        </view>
+      
+        <view class='regular-font-size movieShow hidden-text'>{{movieDirectorStarring}}</view>
       </navigator>
     </view>
     <!--评分、购票/预售-->
@@ -24,9 +23,15 @@
       <view>
         <text class='medium-font-size moiveGrade'>{{moiveGrade}}</text>
       </view>
+      <view wx:if="{{movieStatus=='购票'}}">
+        <button class='movieStatus' bindtap='redirct' style=' background:#FF0000;'>{{movieStatus}}</button>
+        </view>
+        <view wx:else>
         <button class='movieStatus' bindtap='redirct'>{{movieStatus}}</button>
+        </view>
     </view>
   </view>
+        <view class="divLine"></view>
 </template>
 
 <template name='comingMovieTemplate'>
@@ -37,7 +42,7 @@
       </image>
     </view>
     <!--电影名，特性，导演，主演-->
-    <view class='flex-wrp-cloumn content margin-left hidden-text' data-moveid="{{id}}">
+    <view class='flex-wrp-cloumn content margin-left' data-moveid="{{id}}">
       <navigator url="../index/filmDetails/filmDetails?id={{id}}&wantFlag={{wantFlag}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
         <view>
           <text class='medium-font-size'>{{movieName}}</text>
@@ -45,8 +50,7 @@
         <view>
           <text class='regular-font-size movieShow'>{{movieShow}}</text>
         </view>
-        <view>
-          <text class='regular-font-size movieShow'>{{movieDirectorStarring}}</text>
+        <view class='regular-font-size movieShow hidden-text' >{{movieDirectorStarring}}
         </view>
       </navigator>
     </view>
@@ -65,6 +69,7 @@
         <button class='movieStatus salebutton' bindtap='redirct'>{{movieStatus}}</button>
     </view>
   </view>
+        <view class="divLine"></view>
 </template>
 
 <template name='showTimeTemplate'>
