@@ -6,7 +6,7 @@ Page({
    */
   data: {
     mylevelname:'黄金会员',
-    pointinfo:'10',
+    pointinfo:'200',
     avatarUrl:''
   },
 

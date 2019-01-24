@@ -13,6 +13,7 @@ page {
   flex-direction: row;
   background: rgba(224, 165, 94, 0.788);
   text-align:right;
+  padding-bottom: 5%;
 }
 
 .uploader, .tunnel {
@@ -30,13 +31,13 @@ page {
 }
 
 .userinfo-avatar {
-  width: 100rpx;
-  height: 100rpx;
+  width: 120rpx;
+  height: 120rpx;
   margin: 50rpx;
   border-radius: 50%;
   background-size: cover;
   background-color: white;
-  margin-top: 80rpx;
+  margin-top: 69rpx;
 }
 
 .userinfo-avatar:after {

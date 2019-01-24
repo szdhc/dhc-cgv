@@ -5,5 +5,9 @@
       <view class='mylevelname'>
         {{mylevelname}}
       </view>
+      <view class='progressInfo'>
+        <progress percent="70" active />
+      </view>
+      <view class='textInfo'>经验值：{{pointinfo}}</view>
     </view>
 </view>
