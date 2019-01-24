@@ -114,7 +114,7 @@
         <view class="shopcart-list" style="display:{{cartShow}}">
           <view class="list-header">
             <view class="title">购物车</view>
-            <text class="empty" bindtap="empty">清空</text>
+            <text class="empty" bindtap="emptyCar">清空</text>
           </view>
           <view class="list-content">
             <view class="shopcart-food" wx:for="{{carArray}}">

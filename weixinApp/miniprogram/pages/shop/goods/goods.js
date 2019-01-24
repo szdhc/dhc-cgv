@@ -29,6 +29,26 @@ Page({
     console.log(this.data.toView);
   },
 
+  //清空购物车
+  emptyCar: function (e) {
+    let carA = this.data.carArray;
+    if (carA != undefined && carA != null) {
+      for (var i = 0; i < carA.length; i++) {
+        this.data.goods.Count = 0;
+      }
+      this.setData({ goods: this.data.goods });
+    }
+    this.data.carArray = [];
+    this.setData({ carArray: this.data.carArray });
+
+    this.calTotalPrice();
+    this.setData({
+      payDesc: this.payDesc()
+    })
+
+    this.toggleList();
+  },
+
   //移除商品
   decreaseCart: function (e) {
     // var index = this.data.goods.index;
@@ -95,10 +115,87 @@ Page({
       payDesc: this.payDesc()
     })
 
+    if (this.data.totalCount == 0) {
+      this.toggleList();
+    }
+
   },
 
   decreaseShopCart: function (e) {
-    this.decreaseCart(e);
+
+    var index = e.currentTarget.dataset.itemIndex;
+    var parentIndex = e.currentTarget.dataset.parentindex;
+
+    if (index == this.data.goods.index && parentIndex == this.data.goods.parentIndex) {
+      this.data.goods.Count--;
+      this.setData({ goods: this.data.goods });
+    }
+
+    var mark = 'a' + index + 'b' + parentIndex
+    // var price = this.data.goods.price;
+    // var num = this.data.goods.Count;
+    // var name = this.data.goods.name;
+    // var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
+
+    var carArray1 = [];
+    let carArray = this.data.carArray;
+    if (carArray != undefined && carArray != null) {
+      for (var i = 0; i < carArray.length; i++) {
+        if (carArray[i].mark == mark) {
+          carArray[i].num = carArray[i].num - 1;
+          carArray1 = carArray;
+        }
+      }
+    }
+
+    carArray1 = this.data.carArray.filter(item => item.num > 0);
+    this.setData({
+      carArray: carArray1
+    })
+    this.calTotalPrice();
+    this.setData({
+      payDesc: this.payDesc()
+    })
+
+    if (this.data.totalCount == 0) {
+      this.toggleList();
+    }
+
+
+    // var index = e.currentTarget.dataset.itemIndex;
+    // var parentIndex = e.currentTarget.dataset.parentindex;
+    // this.data.goods[parentIndex].foods[index].Count--;
+    // var mark = 'a' + index + 'b' + parentIndex;
+    // var price = this.data.goods[parentIndex].foods[index].price;
+    // var num = this.data.goods[parentIndex].foods[index].Count;
+    // var name = this.data.goods[parentIndex].foods[index].name;
+    // var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
+
+    // var carArray1 = [];
+    // if (this.data.carArray != undefined && this.data.carArray != null) {
+    //   for (var i = 0; i < this.data.carArray.length; i++) {
+    //     if (this.data.carArray[i].mark == mark) {
+    //       this.data.carArray[i].num = num;
+    //       this.data.carArray[i].price = price;
+    //       carArray1 = this.data.carArray;
+    //     }
+    //   }
+    // }
+
+    // carArray1 = this.data.carArray.filter(item => item.num > 0)
+    // this.setData({
+    //   carArray: carArray1,
+    //   goods: this.data.goods
+    // })
+
+    // this.calTotalPrice();
+    // this.setData({
+    //   payDesc: this.payDesc()
+    // })
+
+    // if (this.data.totalCount == 0) {
+    //   this.toggleList();
+    // }
   },
 
   //添加到购物车
@@ -159,7 +256,38 @@ Page({
 
   },
   addShopCart: function (e) {
-    this.addCart(e);
+    var index = e.currentTarget.dataset.itemIndex;
+    var parentIndex = e.currentTarget.dataset.parentindex;
+    
+    if(index == this.data.goods.index && parentIndex == this.data.goods.parentindex) {
+      this.data.goods.Count++;      
+      this.setData({goods: this.data.goods});
+    }
+
+    var mark = 'a' + index + 'b' + parentIndex
+    // var price = this.data.goods.price;
+    // var num = this.data.goods.Count;
+    // var name = this.data.goods.name;
+    // var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
+
+    var carArray1 = [];
+    let carArray = this.data.carArray;
+    if (carArray != undefined && carArray != null) {
+      for (var i = 0; i < carArray.length; i++) {
+        if (carArray[i].mark == mark) {
+          carArray[i].num = carArray[i].num + 1;
+          carArray1 = carArray;
+        }
+      }
+    }
+
+    this.setData({
+      carArray: carArray1
+    })
+    this.calTotalPrice();
+    this.setData({
+      payDesc: this.payDesc()
+    })
   },
   //计算总价
   calTotalPrice: function () {
@@ -203,7 +331,7 @@ Page({
   //彈起購物車
   toggleList: function () {
     if (!this.data.totalCount) {
-      return;
+      this.data.fold = false;
     }
     this.setData({
       fold: !this.data.fold,

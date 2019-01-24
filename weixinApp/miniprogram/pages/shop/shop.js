@@ -1,6 +1,5 @@
 var QQMapWX = require('../../qqmap-wx-jssdk/qqmap-wx-jssdk.min.js');
 var qqmapsdk
-
 Page({
 
   data: {
@@ -584,6 +583,26 @@ Page({
     console.log(this.data.toView);
   },
 
+  //清空购物车
+  emptyCar: function(e) {
+    let carA = this.data.carArray;
+    if (carA != undefined && carA != null) {
+      for (var i = 0; i < carA.length; i++) {
+        this.data.goods[carA[i].parentIndex].foods[carA[i].index].Count = 0;
+      }
+      this.setData({goods: this.data.goods});
+    }
+    this.data.carArray = [];
+    this.setData({ carArray: this.data.carArray });
+
+    this.calTotalPrice();
+    this.setData({
+      payDesc: this.payDesc()
+    })
+
+    this.toggleList();
+  },
+
   //移除商品
   decreaseCart: function (e) {
     var index = e.currentTarget.dataset.itemIndex;
@@ -616,6 +635,11 @@ Page({
     this.setData({
       payDesc: this.payDesc()
     })
+
+    if(this.data.totalCount == 0){
+      this.toggleList();
+    }
+
   },
 
   decreaseShopCart: function (e) {
@@ -660,6 +684,7 @@ Page({
       payDesc: this.payDesc()
     })
   },
+
   addShopCart: function (e) {
     this.addCart(e);
   },
@@ -721,7 +746,7 @@ Page({
   //彈起購物車
   toggleList: function () {
     if (!this.data.totalCount) {
-      return;
+      this.data.fold = false;
     }
     this.setData({
       fold: !this.data.fold,
