@@ -236,11 +236,14 @@
           <view class='rule_check'>
             <view class='flex-wrp-row rule_check_hig'>
 
-                <checkbox class='rule_check_center' value="1"></checkbox>
+                <checkbox class='rule_check_center' checked='true'></checkbox>
 
               <view class='rule-check-text rule_check_center'>
                 <text>我已阅读并同意</text><navigator class='turn-line' url='../shop/privacy/privacy'><text class='rule-text-red'>《隐私权政策书》</text></navigator>
               </view>
+            </view>
+            <view class='rule_btn_posi'>
+              <button class='rule_btn'>确认购买</button>
             </view>
           </view>
         </view>

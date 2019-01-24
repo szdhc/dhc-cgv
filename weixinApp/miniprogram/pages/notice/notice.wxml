@@ -1,2 +1,134 @@
 <!--pages/notice/notice.wxml-->
-<text>顾客须知内容</text>
+<!--pages/shop/privacy/privacy.wxml-->
+<view class='container'>
+  <view class='privacy_board'>
+
+    <view class='privacy_title flex-wrp-column'>
+      <text>顾客须知</text>
+    </view>
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p pri_bold'>
+        <text decode="{{true}}" space="{{true}}">1、点餐&取餐</text>
+      </view>
+    </view>
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p'>
+        <text decode="{{true}}" space="{{true}}">选择您的餐品和份数,加入[购物车点击[选好了]进入取餐方式确认后进入支付页面。输入并确认您的[手机号码] ,可在取货处通过取餐号来领取您的餐品。</text>
+      </view>
+    </view>
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p pri_bold'>
+        <text decode="{{true}}" space="{{true}}">2、支付</text>
+      </view>
+    </view>
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p'>
+        <text decode="{{true}}" space="{{true}}">目前自助点单,支持[微信支付]及支付宝支付] ,支付前请再次检查手机号码、订单金额、订单内容等信息无误后,点击支付,支付完成后,您的订单将自动提交,页面出现订单提交成功提示。</text>
+      </view>
+    </view>
+    <br/>
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p pri_bold'>
+        <text decode="{{true}}" space="{{true}}">点餐须知</text>
+      </view>
+    </view>
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p'>
+        <text decode="{{true}}" space="{{true}}">1、本服务仅接受当天订餐及取货,必须支付完成后再取餐。</text>
+      </view>
+    </view>    
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p'>
+        <text decode="{{true}}" space="{{true}}">2、支付成功后将显示取餐排号,请至取餐区出示取餐排号取餐。根据您实际完成支付的时间,您指定的取餐时间可能顺延。</text>
+      </view>
+    </view>  
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p'>
+        <text decode="{{true}}" space="{{true}}">3、本服务营业时间为10 : 00-22: 30 (根据各影城实际情况有所不同)。</text>
+      </view>
+    </view>    
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p'>
+        <text decode="{{true}}" space="{{true}}">4、如有问题请联系现场工作人员。</text>
+      </view>
+    </view>  
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p pri_bold'>
+        <text decode="{{true}}" space="{{true}}">常见问题</text>
+      </view>
+    </view>
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p pri_bold'>
+        <text decode="{{true}}" space="{{true}}">1、怎么修改订单？</text>
+      </view>
+    </view>
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p'>
+        <text decode="{{true}}" space="{{true}}">自助点单不提供修改订单功能,请在支付前仔细核对订单内容。</text>
+      </view>
+    </view> 
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p pri_bold'>
+        <text decode="{{true}}" space="{{true}}">2、支付后的订单可以退款和取消吗?</text>
+      </view>
+    </view>
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p'>
+        <text decode="{{true}}" space="{{true}}">支付完成后不能进行退款和取消，请在支付前仔细核对订单内容。</text>
+      </view>
+    </view> 
+
+        <view class='flex-wrp-row'>
+      <view class='privacy_p pri_bold'>
+        <text decode="{{true}}" space="{{true}}">3、临时有事,无法按时取餐？</text>
+      </view>
+    </view>
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p'>
+        <text decode="{{true}}" space="{{true}}">所有已进入配餐等候的订单，均无法取消且不能退款,请及时领取您的餐品。</text>
+      </view>
+    </view> 
+
+        <view class='flex-wrp-row'>
+      <view class='privacy_p pri_bold'>
+        <text decode="{{true}}" space="{{true}}">4、如何查我的订单状态？</text>
+      </view>
+    </view>
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p'>
+        <text decode="{{true}}" space="{{true}}">点击MYCGV在“我的订单”中查询订单状态。</text>
+      </view>
+    </view> 
+
+        <view class='flex-wrp-row'>
+      <view class='privacy_p pri_bold'>
+        <text decode="{{true}}" space="{{true}}">5、周边卖品怎么领取？</text>
+      </view>
+    </view>
+
+    <view class='flex-wrp-row'>
+      <view class='privacy_p'>
+        <text decode="{{true}}" space="{{true}}">请在购买后，到购买店领取,前台工作人品将会准备好您的商品。</text>
+      </view>
+    </view> 
+
+
+  </view>
+</view>
+

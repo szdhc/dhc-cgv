@@ -1,1 +1,2 @@
 /* pages/notice/notice.wxss */
+@import "../shop/privacy/privacy.wxss";

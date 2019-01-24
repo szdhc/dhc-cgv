@@ -31,37 +31,70 @@ Page({
 
   //移除商品
   decreaseCart: function (e) {
+    // var index = this.data.goods.index;
+    // var parentIndex = this.data.goods.parentIndex;
+    // this.data.goods.forEach((good) => {
+    //   good.foods.forEach((food) => {
+    //     var num = this.data.goods[parentIndex].foods[index].Count;
+    //     var mark = 'a' + index + 'b' + parentIndex
+    //     if (food.Count > 0) {
+    //       this.data.goods[parentIndex].foods[index].Count--
+    //       var price = this.data.goods[parentIndex].foods[index].price;
+    //       var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
+    //       var carArray1 = this.data.carArray.filter(item => item.mark != mark);
+    //       carArray1.push(obj);
+    //       console.log(carArray1);
+    //       this.setData({
+    //         carArray: carArray1,
+    //         goods: this.data.goods
+    //       })
+    //       this.calTotalPrice()
+    //       this.setData({
+    //         payDesc: this.payDesc()
+    //       })
+    //     }
+    //     if (num > 0) {
+    //       var carArray1 = this.data.carArray.filter(item => item.num > 0)
+    //       console.log(carArray1)
+    //       this.setData({
+    //         carArray: carArray1,
+    //       })
+    //     }
+    //   })
+    // })
+
+
     var index = this.data.goods.index;
-    var parentIndex = this.data.goods.parentIndex;;
-    this.data.goods.forEach((good) => {
-      good.foods.forEach((food) => {
-        var num = this.data.goods[parentIndex].foods[index].Count;
-        var mark = 'a' + index + 'b' + parentIndex
-        if (food.Count > 0) {
-          this.data.goods[parentIndex].foods[index].Count--
-          var price = this.data.goods[parentIndex].foods[index].price;
-          var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
-          var carArray1 = this.data.carArray.filter(item => item.mark != mark);
-          carArray1.push(obj);
-          console.log(carArray1);
-          this.setData({
-            carArray: carArray1,
-            goods: this.data.goods
-          })
-          this.calTotalPrice()
-          this.setData({
-            payDesc: this.payDesc()
-          })
+    var parentIndex = this.data.goods.parentIndex;
+    this.data.goods.Count--;
+    var mark = 'a' + index + 'b' + parentIndex;
+    var price = this.data.goods.price;
+    var num = this.data.goods.Count;
+    var name = this.data.goods.name;
+    var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
+
+    var carArray1 = [];
+    if (this.data.carArray != undefined && this.data.carArray != null) {
+      for (var i = 0; i < this.data.carArray.length; i++) {
+        if (this.data.carArray[i].mark == mark) {
+          this.data.carArray[i].num = num;
+          this.data.carArray[i].price = price;
+          carArray1 = this.data.carArray;
         }
-        if (num > 0) {
-          var carArray1 = this.data.carArray.filter(item => item.num > 0)
-          console.log(carArray1)
-          this.setData({
-            carArray: carArray1,
-          })
-        }
-      })
+      }
+    }
+
+    carArray1 = this.data.carArray.filter(item => item.num > 0)
+    this.setData({
+      carArray: carArray1,
+      goods: this.data.goods
     })
+
+    this.calTotalPrice();
+    this.setData({
+      payDesc: this.payDesc()
+    })
+
   },
 
   decreaseShopCart: function (e) {
@@ -70,6 +103,24 @@ Page({
 
   //添加到购物车
   addCart(e) {
+    // var index = this.data.goods.index;
+    // var parentIndex = this.data.goods.parentIndex;
+    // this.data.goods.Count++;
+    // var mark = 'a' + index + 'b' + parentIndex
+    // var price = this.data.goods.price;
+    // var num = this.data.goods.Count;
+    // var name = this.data.goods.name;
+    // var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
+    // var carArray1 = this.data.carArray.filter(item => item.mark != mark);
+    // carArray1.push(obj);
+    // this.setData({
+    //   carArray: carArray1,
+    //   goods: this.data.goods
+    // })
+    // this.calTotalPrice();
+    // this.setData({
+    //   payDesc: this.payDesc()
+    // })
     var index = this.data.goods.index;
     var parentIndex = this.data.goods.parentIndex;
     this.data.goods.Count++;
@@ -78,8 +129,25 @@ Page({
     var num = this.data.goods.Count;
     var name = this.data.goods.name;
     var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
-    var carArray1 = this.data.carArray.filter(item => item.mark != mark);
-    carArray1.push(obj);
+
+    var updateFlg = 0;
+    var carArray1 = [];
+    if (this.data.carArray != undefined && this.data.carArray != null) {
+      for (var i = 0; i < this.data.carArray.length; i++) {
+        if (this.data.carArray[i].mark == mark) {
+          this.data.carArray[i].num = num;
+          this.data.carArray[i].price = price;
+          updateFlg = 1;
+          carArray1 = this.data.carArray;
+        }
+      }
+    }
+
+    if (updateFlg == 0) {
+      carArray1 = this.data.carArray.filter(item => item.mark != mark);
+      carArray1.push(obj);
+      console.log(carArray1);
+    }
     this.setData({
       carArray: carArray1,
       goods: this.data.goods
@@ -88,6 +156,7 @@ Page({
     this.setData({
       payDesc: this.payDesc()
     })
+
   },
   addShopCart: function (e) {
     this.addCart(e);
@@ -237,6 +306,9 @@ Page({
     console.log("goods-----unload!!!!!");
     wx.removeStorageSync("jsonCarA");
     wx.setStorageSync("jsonCarA", JSON.stringify(this.data.carArray));  
+
+    wx.removeStorageSync("jsonStr");
+    wx.setStorageSync("jsonStr", JSON.stringify(this.data.goods));        
 
     var that = this
     setTimeout(function () {
