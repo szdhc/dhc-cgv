@@ -1,3 +1,4 @@
+var QQMapWX = require('../../qqmap-wx-jssdk/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
 // var bannerJs = require("../../templates/banner.js");
 // pages/index/index.js
@@ -117,7 +118,7 @@ Page({
             casts = casts + data.subjects[i].casts[k].name
           }
           movieObj.set('movieDirectorStarring', directors + '/' + casts)
-          movieObj.set('moiveGrade', data.subjects[i].rating.average + '分')
+          movieObj.set('moiveGrade', data.subjects[i].rating.average)
           movieObj.set('movieStatus', '购票')
           movieObj.set('id', data.subjects[i].id)
           movieObj.set('id', data.subjects[i].id)
@@ -138,11 +139,11 @@ Page({
           movieObj2.set('movieShow', data.subjects[i].title)
           let directors = '';
           for (let j = 0; j < data.subjects[0].directors.length; j++) {
-            directors = directors + data.subjects[0].directors[j].name 
+            directors = directors + data.subjects[0].directors[j].name
           }
           let casts = '';
           for (let k = 0; k < data.subjects[i].casts.length; k++) {
-            casts = casts + data.subjects[i].casts[k].name + " "
+            casts = casts + data.subjects[i].casts[k].name
           }
           movieObj2.set('movieDirectorStarring', directors + '/' + casts)
           movieObj2.set('wishCount', data.subjects[i].collect_count)
@@ -274,7 +275,7 @@ Page({
     let arrL = this.data.comingMovieList
     for (let i = 0; i < arrL.length; i++) {
       if (arrL[i].id == e.currentTarget.dataset.id) {
-        if (arrL[i].wantFlag == 1) {
+        if (arrL[i].wantFlag == 0) {
           // wx.request({
           //   url: this.data.IP + '/users/update',
           //   data: {
@@ -285,7 +286,7 @@ Page({
           //   success: ((res) => {})
           // })
           this.setData({
-            wantFlag: 0
+            wantFlag: 1
           })
           wx.showToast({
             title: '已取消想看',
@@ -318,7 +319,7 @@ Page({
             duration: 1500
           })
           this.setData({
-            wantFlag: 1
+            wantFlag: 0
           })
           arrL[i].wantFlag = this.data.wantFlag
           arrL[i].wishCount++;

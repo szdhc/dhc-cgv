@@ -15,17 +15,15 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 430rpx;
 }
 
 .movieShow {
   color: rgba(68, 63, 63, 0.87);
-
 }
 
 .moiveGrade {
   color: burlywood;
-  margin-left:20rpx;
+  margin-left:30rpx;
 }
 
 .movieStatus {
@@ -76,10 +74,4 @@
 .salebutton {
   width: 100rpx;
   top:20rpx;
-}
-.divLine{
- background: #E0E3DA;
- width: 94%;
- height: 5rpx;
- margin-left:3%;
 }
