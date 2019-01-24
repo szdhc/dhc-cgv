@@ -31,7 +31,8 @@
     "pages/shop/dinnMethod/dinnMethod",
     "pages/index/yugao/yugao",
     "pages/mine/mylevdetail/mylevdetail",
-    "pages/shop/memberCard/memberCard"
+    "pages/shop/memberCard/memberCard",
+    "pages/shop/privacy/privacy"
   ],
   "permission": {
     "scope.userLocation": {

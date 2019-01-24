@@ -190,12 +190,12 @@
     </view> -->
 
   <view wx:for="{{memberCards}}" wx:for-index="cardindex" wx:for-item="mCard" class='card_padd'>
-      <view class="flex-wrp-row card_backg" bindtap='goCardInfo' data-cardindex="{{cardindex}}">
+      <view class="flex-wrp-row card_backg">
         <view class="card_type">
           <text class='regular-font-size'>{{mCard.cardType}}</text>
         </view>
         <view class="card_name">
-          <view class="flex-wrp-row item">
+          <view class="flex-wrp-row item" bindtap='goCardInfo' data-cardindex="{{cardindex}}">
             <view class='flex-wrp-cloumn'>
               <image class='card_image' src='{{mCard.cardIcon}}'></image>
             </view>
@@ -214,12 +214,37 @@
             售价:￥{{mCard.cardPrice}}元
           </view>
           <view class='card_itm_buy'>
-            <button class='card_btnbuy' bindtap='goCardBuy'>购买</button>
+            <button class='card_btnbuy' bindtap='showRule'>购买</button>
           </view>
         </view>
       </view>
     </view>
 
+
+    <!------------------------弹出层效果-------------------------------->
+    <view class="ruleZhezhao {{isRuleTrue?'isRuleShow':'isRuleHide'}}">
+        <view class='ruleZhezhaoContent'>
+          <view class='ruleZhezhaoTitle'>
+            <text>CGV影城会员卡协议</text>
+          </view>
+          <view class='ruleInfo'>
+          <view class='ruleZhezhaoText' wx:for='{{rule}}' wx:for-index='index'>
+            <text>{{index+1}}.{{item}}</text>
+          </view>
+          </view>
+          <image src='../../images/rule-hide.png' class='ruleHide' bindtap='hideRule'></image>
+          <view class='rule_check'>
+            <view class='flex-wrp-row rule_check_hig'>
+
+                <checkbox class='rule_check_center' value="1"></checkbox>
+
+              <view class='rule-check-text rule_check_center'>
+                <text>我已阅读并同意</text><navigator class='turn-line' url='../shop/privacy/privacy'><text class='rule-text-red'>《隐私权政策书》</text></navigator>
+              </view>
+            </view>
+          </view>
+        </view>
+    </view>
 
     
     </view>

@@ -505,8 +505,8 @@ Page({
     memberCards: [
       {
         cardType: "折扣卡",
-        cardIcon: "../../images/card.png",
-        cardImage: "../../images/card.png",
+        cardIcon: "https://thumbnail0.baidupcs.com/thumbnail/14f78189c73b9569bb2026c221caa155?fid=2320392649-250528-867904750537262&time=1548295200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-6PRlU81XGwbUxeiz0JHbo0UgVu0%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=543345714040864742&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video",
+        cardImage: "https://thumbnail0.baidupcs.com/thumbnail/14f78189c73b9569bb2026c221caa155?fid=2320392649-250528-867904750537262&time=1548295200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-6PRlU81XGwbUxeiz0JHbo0UgVu0%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=543345714040864742&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video",
         cardName: "E优卡(一年卡)",
         cardDescription: "IMAX等特效厅和普通厅全场挂牌价4折无赠券活动点击了解详情",
         cardInfo: "",
@@ -515,14 +515,32 @@ Page({
       },
       {
         cardType: "折扣卡",
-        cardIcon: "../../images/film_red.png",
-        cardImage: "../../images/film_red.png",
+        cardIcon: "https://thumbnail0.baidupcs.com/thumbnail/4ca9d967d7b7519e30dbae334d9df6f4?fid=2320392649-250528-7407752078427&time=1548295200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-4lT8wrAmvYEzeQen%2FTcaqnJxB7Q%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=543387918776468071&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video",
+        cardImage: "https://thumbnail0.baidupcs.com/thumbnail/4ca9d967d7b7519e30dbae334d9df6f4?fid=2320392649-250528-7407752078427&time=1548295200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-4lT8wrAmvYEzeQen%2FTcaqnJxB7Q%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=543387918776468071&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video",
         cardName: "E优卡(半年卡)",
         cardDescription: "IMAX等特效厅和普通厅全场挂牌价4折无赠券活动点击了解详情",
         cardInfo: "",
         cardPrice: "300",
         cardMonth: "6"
       },
+    ],
+
+    //---------rule------------
+    isRuleTrue: false,
+    rule: [
+      '会员持本卡购票，可在正价的基础上享受相应优惠；每卡每天线上线下优惠价限购电影票共6张，超出限购优惠数量的，以正价购买；',
+      '为保证您能享受到全部优惠和服务，线下消费前请出示此卡或提供会员手机号码并输入密码；',
+      '如遇发行方或原先规定的影片最低票价超过持卡优惠价时，观众需按影片最低票价付款；',
+      '电子会员卡为权益卡，已经使用恕不退还，卡费为权益费，不得折抵现金使用；',
+      '电子卡有效期自开卡之日起计算，到期自动失效；',
+      '请您妥善保管电子卡账户及密码，电子卡默认密码为购卡手机号后6位；为充分保证您的会员权益，请勿借予他人使用；',
+      '会员凭此卡享受会员权益时不与影城其他优惠同时享受；',
+      '更多会员权益及优惠以影城现场公告为准',
+      '本卡支持全国通用，因辞去，影城政策差异，会员以消费门店规定的权益享受具体优惠；',
+      'CGV官方网站，APP,微信小程序销售的会员卡可能与影城现场销售的会员卡产品不同',
+      '会员卡可在CGV官方网站，APP，微信小程序和影城现场通用，电子会员卡在影城现场的使用规则可能与官网，APP，微信小程序不同，具体折扣以各场次价格公示为准；',
+      '成功注册会员视为愿意开始接受影城每月影讯，影城活动相关的商业性短信息；',
+      '请您填写并提交本申请前详细查看《隐私权政策书》,如果您愿意继续加入会员视为您已经充分了解并认可前述政策。',
     ]
   // ------------------------------------end-------------------------------
 
@@ -806,8 +824,17 @@ Page({
     })
   },
 
-  goCardBuy: function (e) {
-
+  //打开规则提示
+  showRule: function (e) {
+    this.setData({
+      isRuleTrue: true
+    })
+  },
+  //关闭规则提示
+  hideRule: function () {
+    this.setData({
+      isRuleTrue: false
+    })
   },
 
   // ------------------------------------- end-----------------------------------------
