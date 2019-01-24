@@ -245,6 +245,18 @@ redirctSeat:function(){
   wx.navigateTo({
     url: '../chooseMovie/seat/seat',
   })
+},
+
+callphone:function(){
+  wx.makePhoneCall({
+    phoneNumber:this.data.movieTel,
+    success: function(){
+      console.log("拨打成功")
+    },
+    fail: function () {
+      console.log("拨打失败")
+    },
+  })
 }
 
 })

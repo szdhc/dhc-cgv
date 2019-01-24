@@ -66,8 +66,8 @@
 }
 
 .seat-img {
-  width: 36rpx;
-  height: 32rpx;
+  /* width: 36rpx;
+  height: 32rpx; */
   margin: 7rpx 4rpx;
 }
 

@@ -17,7 +17,7 @@
       </view>
       <view class='phone'>
         <view class='iconfont icon-weibiaoti-3'></view>
-        <view class='hallInstruction'><text>{{movieTel}}</text></view>
+        <view class='hallInstruction' bindtap='callphone'><text>{{movieTel}}</text></view>
       </view>
     </view>
     <view class='container map' bindtap='map'>

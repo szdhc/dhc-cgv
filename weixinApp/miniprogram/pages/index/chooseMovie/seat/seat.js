@@ -27,6 +27,12 @@ Page({
     shop: { shop: 'CGV影城(苏州中心店)', time: '今天 1月21号 16:25', effects: '英语3D', room: '3DIMAX厅', center: 7, price: 36.2,},
     map: [],
     deltaX:60,
+    sX:0,
+    scaleWidth:36,
+    scaleHeight:32,
+    olddistance:0,
+    scale:1,
+    sY:0,
     money:0,
     deltaY:0,
     seats:[],
@@ -67,6 +73,11 @@ Page({
     this.setData({
       money: money.toFixed(1),
       columnArr: columnArr
+    })
+    wx.showModal({
+      title: '温馨提示',
+      content: '儿童需要自行购票',
+      showCancel: false,
     })
   },
 
@@ -113,31 +124,67 @@ Page({
   },
 
   scrollstart: function (ev) {
+    if (ev.touches.length == 1) {
     this.sX = ev.changedTouches[0].clientX
     this.sY = ev.changedTouches[0].clientY
     this.setData({
       willChange: true
     })
     console.log(ev)
+    }
   },
-  scrollmove: function (ev) {
-    var mX = ev.changedTouches[0].clientX
-    var mY = ev.changedTouches[0].clientY
-    var deltaX = (mX - this.sX) / 2
-    var deltaY = (mY - this.sY) / 2
-    this.setData({
-      deltaX: deltaX,
-      deltaY: deltaY
-    })
+
+  scrollmove: function (e) {
+    if (e.touches.length == 1) {
+      var mX = e.changedTouches[0].clientX
+      var mY = e.changedTouches[0].clientY
+      var deltaX = (mX - this.sX) / 2
+      var deltaY = (mY - this.sY) / 2
+      this.setData({
+        deltaX: deltaX,
+        deltaY: deltaY
+      })
+    }
+
+
+    // 单手指缩放不做任何操作
+    if (e.touches.length == 2) {
+      let xMove = e.touches[1].clientX - e.touches[0].clientX
+      let yMove = e.touches[1].clientY - e.touches[0].clientY
+      // 新的 ditance 
+      let distance = Math.sqrt(xMove * xMove + yMove * yMove);
+      let distanceDiff = distance - this.data.olddistance;
+      let newScale = this.data.scale + 0.005 * distanceDiff
+      // 为了防止缩放得太大，所以scale需要限制，同理最小值也是 
+      if (newScale >= 2) {
+        newScale = 2
+      }
+      if (newScale <= 0.6) {
+        newScale = 0.6
+      }
+      let scaleWidth = newScale * 36
+      let scaleHeight = newScale * 32
+      // 赋值 新的 => 旧的
+      this.setData({
+        scale: newScale,
+        olddistance: distance,
+        scaleWidth: scaleWidth,
+        scaleHeight: scaleHeight,
+      })
+    }
   },
+
   scrollend: function (ev) {
+    if (ev.touches.length == 1) {
     var eX = ev.changedTouches[0].clientX
     var eY = ev.changedTouches[0].clientY
     console.log(ev)
     this.setData({
       willChange: false
     })
+    }
   },
+
   selectSeat: function (ev) {
     var ver = ev.currentTarget.dataset.ver
     var hor = ev.currentTarget.dataset.hor
@@ -171,7 +218,7 @@ Page({
             col++
           }
           if (map[i][j] === 3) {
-            cStr = formatNumber(i + 1 - row) + '排' + (map[i].length - j - col) + '座'
+            cStr = formatNumber(i + 1 - row) + '排' + formatNumber(map[i].length - j - col) + '座'
             seats.push(cStr)
             seatsId.push(i + "-" + j)
           }
@@ -226,7 +273,7 @@ Page({
           col++
         }
         if (map[i][j] === 3) {
-          cStr = formatNumber(i + 1 - row) + '排' + (map[i].length - j - col) + '座'
+          cStr = formatNumber(i + 1 - row) + '排' + formatNumber(map[i].length - j - col) + '座'
           seats.push(cStr)
           seatsId.push(i + "-" + j)
         }
@@ -271,7 +318,7 @@ Page({
           col++
         }
         if (map[i][j] === 3) {
-          cStr = formatNumber(i + 1 - row) + '排' + (map[i].length - j - col) + '座'
+          cStr = formatNumber(i + 1 - row) + '排' + formatNumber(map[i].length - j - col) + '座'
           seats.push(cStr)
           seatsId.push(i + "-" + j)
         }
@@ -299,6 +346,7 @@ Page({
         }
       }
     })
-  }
+  },
+
 
 })
