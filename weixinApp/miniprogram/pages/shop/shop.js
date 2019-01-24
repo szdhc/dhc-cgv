@@ -883,6 +883,11 @@ Page({
       let carA = JSON.parse(carArr);
       this.setData({ carArray: carA });
 
+      let jsonStr = wx.getStorageSync("jsonStr");
+      let carGood = JSON.parse(jsonStr);
+      this.data.goods[carGood.parentIndex].foods[carGood.index] = carGood;
+      this.setData({ goods: this.data.goods});
+
       this.calTotalPrice();
       this.setData({
         payDesc: this.payDesc()

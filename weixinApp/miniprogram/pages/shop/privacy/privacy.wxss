@@ -1,1 +1,9 @@
 /* pages/shop/privacy/privacy.wxss */
+.privacy_board {
+  padding: 40rpx 20rpx 0 20rpx;
+}
+
+.privacy_title {
+  color: black;
+  font-size: 30rpx;
+}

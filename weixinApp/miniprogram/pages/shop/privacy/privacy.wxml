@@ -1,2 +1,10 @@
 <!--pages/shop/privacy/privacy.wxml-->
-<text>pages/shop/privacy/privacy.wxml</text>
+<view class='container'>
+  <view class='privacy_board'>
+    <view class='privacy_title'>
+      隐私权政策
+    </view>
+    <view class=''>
+    </view>
+  </view>
+</view>
