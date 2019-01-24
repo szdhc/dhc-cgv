@@ -13,8 +13,10 @@
   </view>
   <view wx:if="{{LIKE_FLAG==0}}" style='background-color:white;margin-top:3%'>
     <import src='../../../templates/movieList.wxml' />
-        <view wx:for="{{hotMovieList}}" wx:key="{{hotMovieList}}">
-          <template is='hotMovieTemplate' data="{{...item}}" />
+        <view wx:for="{{comingMovieList}}" wx:key="{{this}}">
+          <view wx:if="{{comingMovieList[index].wantFlag==1}}">
+          <template is='comingMovieTemplate' data="{{...item}}" />
+          </view>
         </view>
   </view>
 </view>

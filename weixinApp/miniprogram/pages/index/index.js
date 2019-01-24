@@ -150,11 +150,14 @@ Page({
           movieObj2.set('movieStatus', '预售')
           movieObj2.set('id', data.subjects[i].id)
           movieObj2.set('wantFlag', 0)
+          movieObj2.set('url', '../index/filmDetails/filmDetails')
           arr2.push(JSON.parse(util.MapTOJson(movieObj2)))
         }
         this.setData({
           comingMovieList: arr2
         })
+        
+
       }
     })
   },
@@ -255,7 +258,6 @@ Page({
       url: '../index/chooseMovie/chooseMovie',
     })
   },
-
   //选择影城跳转事件
   jumpcinema() {
     wx.navigateTo({
@@ -293,7 +295,8 @@ Page({
           //   success: ((res) => {})
           // })
           this.setData({
-            wantFlag: 0
+            wantFlag: 0,
+            comingMovieList: arrL
           })
           wx.showToast({
             title: '已取消想看',
@@ -326,7 +329,8 @@ Page({
             duration: 1500
           })
           this.setData({
-            wantFlag: 1
+            wantFlag: 1,
+            comingMovieList: arrL
           })
           arrL[i].wantFlag = this.data.wantFlag
           arrL[i].wishCount++;
@@ -336,5 +340,6 @@ Page({
         })
       }
     }
+    wx.setStorageSync("comingMovieList", this.data.comingMovieList);
   },
 })
