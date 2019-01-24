@@ -50,6 +50,8 @@ Page({ /** * 生命周期函数--监听页面加载 */
   onReady: function() {
 
   },
+
+  //选择城市返回选择影城页面
   citySelected: function(e) {
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
@@ -58,6 +60,7 @@ Page({ /** * 生命周期函数--监听页面加载 */
     })
     wx.navigateBack()
   },
+
   bindSarchInput: function(e) {
     wx.pageScrollTo({
       scrollTop: 0,
@@ -1198,7 +1201,7 @@ Page({ /** * 生命周期函数--监听页面加载 */
       cityPinYin: 'suizhou',
       cityPY: 'sz'
     }, {
-      cityName: '苏州',
+      cityName: '苏州市',
       cityPinYin: 'suzhou',
       cityPY: 'sz'
     }, {

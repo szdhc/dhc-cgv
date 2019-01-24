@@ -8,11 +8,11 @@ Page({
     begin: '',
     cinema: '',
     movieAddressList: [{
-        id: 0,
+        'id': '0',
         'movieAddress': 'CGV影城苏州中心店'
       },
       {
-        id: 1,
+        'id': '1',
         'movieAddress': 'CGV影城昆山广场店'
       }
     ]
@@ -21,6 +21,7 @@ Page({
 
   onLoad: function(options) {
     console.log(options)
+    console.log('load')
     this.setData({
       begin: options.ct
     })
@@ -49,11 +50,46 @@ Page({
   bindBeginCityView: function() {
     wx.navigateTo({
       url: '../citys/citys?cityType=begin',
-      // url:'pages/citys/citys',
     })
   },
-  onShow: function () {
+  onShow: function() {
+    this.getMovieAddressList(this.data.begin);
+  },
+  //TODO 通过api来设置list值
+  getMovieAddressList: function(city) {
+    let list = [];
+    let suzhou = [{
+        'id': '0',
+        'movieAddress': 'CGV影城苏州中心店'
+      },
+      {
+        'id': '1',
+        'movieAddress': 'CGV影城昆山广场店'
+      }
+    ];
+    let shanghai = [{
+        'id': '0',
+        'movieAddress': 'CGV影城shanghai中心店'
+      },
+      {
+        'id': '1',
+        'movieAddress': 'CGV影城waitan广场店'
+      },
+      {
+        'id': '2',
+        'movieAddress': 'CGV影城waitan店'
+      }
+    ];
+    if (city === '苏州市') {
+      list = suzhou;
+    } else {
+      list = shanghai;
+    };
 
+    this.setData({
+      movieAddressList: list
+    })
+    console.log('show->' + this.data.begin)
   },
 
 
