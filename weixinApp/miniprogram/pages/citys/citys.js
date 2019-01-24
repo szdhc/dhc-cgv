@@ -127,7 +127,7 @@ Page({ /** * 生命周期函数--监听页面加载 */
     cityType: 'begin',
     cityResults: null,
     cityAZ: [{
-      cityName: '热门'
+      //cityName: '热门'
     }, {
       cityName: 'A'
     }, {

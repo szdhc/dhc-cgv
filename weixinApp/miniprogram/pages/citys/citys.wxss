@@ -3,10 +3,9 @@
 .a-z {
   width: 35rpx;
   position: fixed;
-  top: 112rpx;
+  top: 230rpx;
   text-align: center;
   right: 5rpx;
-  color: #39c;
   font-size: 30rpx; /* border: 1rpx solid #3399CC; */
 }
 
@@ -24,7 +23,7 @@
   padding-left: 5%;
   margin-left: 5%;
   height: 90rpx;
-  font-size: 40rpx;
+  font-size: 30rpx;
   line-height: 100rpx;
   border-bottom: 1rpx solid #ccc; /* border:1rpx solid red; */
 }
