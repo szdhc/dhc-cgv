@@ -24,8 +24,17 @@ Page({
     this.setData({
       comingMovieList:wx.getStorageSync("comingMovieList")
     })
-    for (let i = 0; i < comingMovieList.length-1; i++) { 
-      this.data.comingMovieList[i].url ="../../index/filmDetails/filmDetails"
+
+
+    // let mylikeurl = wx.getStorageSync("mylikeurl")
+    for (let i = 0; i < this.data.comingMovieList.length-1; i++) { 
+      if (this.data.comingMovieList[i].wantFlag=='1'){
+        this.setData({
+          LIKE_FLAG:'1'
+        })
+        // this.data.comingMovieList[i].url = '/pages/index/filmDetails/filmDetails';
+      }
+      
     }
     
     // console.log("aaaa:" + comingMovieList)

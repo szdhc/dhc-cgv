@@ -7,7 +7,7 @@
     </view>
     <!--电影名，特性，导演，主演-->
     <view class='flex-wrp-cloumn content margin-left' data-moveid="{{id}}">
-      <navigator url="../index/filmDetails/filmDetails?id={{id}}&wantFlag={{wantFlag}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
+      <navigator url="/pages/index/filmDetails/filmDetails?id={{id}}&wantFlag={{wantFlag}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
         <view>
           <text class='medium-font-size'>{{movieName}}</text>
         </view>

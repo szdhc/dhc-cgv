@@ -58,7 +58,7 @@
       </view>
     </view>
     </navigator>
-    <navigator url="../mine/myLike/myLike" hover-class="none" open-type="navigate" class="wodelist-text">
+    <navigator url="../myLike/myLike" hover-class="none" open-type="navigate" class="wodelist-text">
     <view class='flex-wrp-row item border' style='background: #fff;'>
       <view class='item-left flex-wrp-row'>
         <!-- <icon class='iconfont icon-weibiaoti-3' > -->

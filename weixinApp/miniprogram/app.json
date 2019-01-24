@@ -16,7 +16,7 @@
     "pages/mine/discountCard/discountCard",
     "pages/mine/discountInfo/discountInfo",
     "pages/mine/myOrder/myOrder",
-    "pages/mine/myLike/myLike",
+    "pages/myLike/myLike",
     "pages/mine/myPoints/myPoints",
     "pages/index/buyTickets/buyTickets",
     "pages/notice/notice",
