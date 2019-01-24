@@ -67,11 +67,8 @@ Page({
   },
    //   点击想看
     clickWant(e) {
-    this.setData({
-      wantFlag: 1
-    })
     // wantFilms
-    if (this.data.wantFlag) {
+    if (this.data.wantFlag==0) {
       // wx.request({
       //   url: this.data.IP + '/users/update',
       //   data: {
@@ -82,6 +79,9 @@ Page({
       //   success: ((res) => {
       //   })
       // })
+      this.setData({
+        wantFlag: 1
+      })
       wx.showToast({
         title: '已标记想看',
         icon: 'success',
@@ -105,6 +105,9 @@ Page({
       //     })
       //   })
       // })
+      this.setData({
+        wantFlag: 0
+      })
       wx.showToast({
         title: '已取消想看',
         icon: 'success',

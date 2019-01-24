@@ -266,7 +266,14 @@ Page({
   clickMore(e) {
     this.setData({
       moreTab: 1,
-      conHeight: "4200rpx"
+      conHeight: "4500rpx"
+    })
+  },
+  // 收起更多
+  clickHidden(e) {
+    this.setData({
+      moreTab: 0,
+      conHeight: "1700rpx"
     })
   },
   // 点击想看

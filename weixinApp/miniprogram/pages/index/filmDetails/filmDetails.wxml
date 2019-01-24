@@ -48,17 +48,18 @@
 <view class='gray'></view>
 <!--演职人员  -->
 <view class='actor'>
-    <view class='actor_head'>演职人员</view>
-    <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex;">
+    <scroll-view class='scroller' scroll-x="true">
+        <view class='actor_head'><text decode="{{true}}">导演&emsp;&emsp;&emsp;&emsp;&nbsp;演员</text></view>
         <view class='actor_container'>
             <view style='position:relative'>
                 <image style='width:145rpx;height:188rpx' src="{{filmDetails_info.directors[0].avatars.medium}}"></image>
             </view>
             <view class='actor_text' style='display:flex;flex-direction:column;font-size:24rpx;text-align:center'>
                 <text class='actor_name'>{{filmDetails_info.directors[0].name}}</text>
-                <text style='color:#666'>导演</text>
+                <text style='color:#666'></text>
             </view>
         </view>
+        <view class="actor_container Line"></view>
         <view class='actor_container' wx:for="{{filmDetails_info.casts}}" wx:key="{{index}}">
             <view style='position:relative'>
                 <image style='width:145rpx;height:188rpx' src="{{filmDetails_info.casts[index].avatars.medium}}"></image>

@@ -1,5 +1,5 @@
 <template name='hotMovieTemplate'>
-  <view class='flex-wrp-row item' style='height:{{conHeight}}'>
+  <view class='flex-wrp-row item'>
     <!--电影图片-->
     <view class='flex-wrp-cloumn'>
       <image class='movieImage' src="{{ movieImage }}">
@@ -35,7 +35,7 @@
 </template>
 
 <template name='comingMovieTemplate'>
-  <view class='flex-wrp-row item' style='height:{{conHeight}}'>
+  <view class='flex-wrp-row item'>
     <!--电影图片-->
     <view class='flex-wrp-cloumn'>
       <image class='movieImage' src="{{ movieImage }}">
