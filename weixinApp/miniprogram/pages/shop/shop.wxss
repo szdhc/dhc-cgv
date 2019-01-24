@@ -623,7 +623,7 @@ page {
 
 .shopCart .shopcart-list .list-content {
   padding: 0 18px;
-  max-height: 217px;
+  /*max-height: 217px;*/
   overflow: hidden;
   background: #fff;
 }
