@@ -1,28 +1,30 @@
 <template name='orderTemplate'>
-  <view class="orderDetails">
-    <view class="orderListTitle">
-      <view class="userImg">
-        <image src=""></image>
+  <form bindsubmit="formSubmit" report-submit="true">
+    <view class="orderDetails">
+      <view class="orderListTitle">
+        <view class="userImg">
+          <image src=""></image>
+        </view>
+        <text class="userName">{{username}}</text>
+        <text class="orderStatus">{{orderStatus}}</text>
       </view>
-      <text class="userName">{{username}}</text>
-      <text class="orderStatus">{{orderStatus}}</text>
+      <view class="orderListDetails">
+        <view class="productImg">
+          <image src=""></image>
+        </view>
+        <view class="productInfo">
+          <view class="productTitle">{{movieName}}</view>
+          <view class="productTitle">{{movieShow}}</view>
+          <text class="productPrice">￥{{moviePrice}}</text>
+          <text class="productQuantity">x{{movieNum}}</text>
+        </view>
+      </view>
+      <view class="productCount">
+        <view>合计：￥
+          <text>{{movieCountPrice}}</text>
+        </view>
+        <button class='orderCancel' form-type='submit' >退票</button>
+      </view>
     </view>
-    <view class="orderListDetails">
-      <view class="productImg">
-        <image src=""></image>
-      </view>
-      <view class="productInfo">
-        <view class="productTitle">{{movieName}}</view>
-        <view class="productTitle">{{movieShow}}</view>
-        <text class="productPrice">￥{{moviePrice}}</text>
-        <text class="productQuantity">x{{movieNum}}</text>
-      </view>
-    </view>
-    <view class="productCount">
-      <view>合计：￥
-        <text>{{movieCountPrice}}</text>
-      </view>
-      <button class='orderCancel' bindtap='showTip'>退票</button>
-    </view>
-  </view>
+  </form>
 </template>
