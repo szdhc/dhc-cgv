@@ -886,6 +886,13 @@ Page({
   */
   onUnload: function () {
 
+    // this.setData({ carArray: [] });
+
+    // for (var i = 0; i < this.data.goods.length; i++)
+    //   for (var j = 0; j < this.data.goods[i].foods.length; j++) {
+    //     this.data.goods[i].foods[j].Count = 0;
+    //   }
+    // this.setData({ goods: this.data.goods });
 
   },
 
@@ -922,7 +929,7 @@ Page({
           this.data.goods[carA[i].parentIndex].foods[carA[i].index].Count = carA[i].num;
         } 
       }
-      
+
       this.setData({ goods: this.data.goods });
 
       // let jsonStr = wx.getStorageSync("jsonStr");
