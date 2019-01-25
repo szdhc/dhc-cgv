@@ -1,6 +1,6 @@
 <view class='flex-wrp-row item'>
   <view class='item-left flex-wrp-row'>
-    <input name='beginCity' value='{{begin}}' disabled='disabled' bindtap='bindBeginCityView' style='width:160rpx' />
+    <input name='beginCity' value='{{begin}}' disabled='disabled' bindtap='bindBeginCityView'  />
     <!-- <icon class='iconfont icon-xiajiantou icon-right' bindtap='bindBeginCityView'></icon> -->
   </view>
   <view class='item-left flex-wrp-row'>

@@ -7,15 +7,6 @@ Page({
   data: {
     begin: '',
     cinema: '',
-    movieAddressList: [{
-        'id': '0',
-        'movieAddress': 'CGV影城苏州中心店'
-      },
-      {
-        'id': '1',
-        'movieAddress': 'CGV影城昆山广场店'
-      }
-    ]
 
   },
 
@@ -97,6 +88,7 @@ Page({
   bindMovieAddress: function(e) {
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
+    wx.setStorageSync('localMovieAddress', this.data.movieAddressList[e.currentTarget.dataset.id].movieAddress)
     e.currentTarget.dataset
     prevPage.setData({
       movieAddress: this.data.movieAddressList[e.currentTarget.dataset.id].movieAddress,

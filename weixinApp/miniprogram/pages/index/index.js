@@ -7,7 +7,7 @@ Page({
 
   data: {
     // openid: '',
-    movieAddress: '苏州平江万达广场店',
+    movieAddress: '',
     currProvince: '',
     currCity: '',
     // --------------------------------------------------------------//
@@ -228,9 +228,19 @@ Page({
       success: function(res) {
         console.log(JSON.stringify(res));
         if (res.status === 0) {
+          let localMovieAddr = wx.getStorageSync('localMovieAddress');
+          let localCityName = wx.getStorageSync('localCityName');
+          console.log('local->' + localMovieAddr)
+          if (localMovieAddr == undefined || localMovieAddr == '') {
+            localMovieAddr = that.getMovieAddress(res.result.address_component.city);
+          }
+          if (localCityName == undefined || localCityName == '') {
+            localCityName = res.result.address_component.city;
+          }
           that.setData({
             currProvince: res.result.address_component.province,
-            currCity: res.result.address_component.city
+            currCity: localCityName,
+            movieAddress: localMovieAddr
           })
         }
       },
@@ -242,6 +252,43 @@ Page({
       }
     });
   },
+
+
+
+  //TODO 
+  getMovieAddress: function (city) {
+    let list = [];
+    let suzhou = [{
+      'id': '0',
+      'movieAddress': 'CGV影城苏州中心店'
+    },
+    {
+      'id': '1',
+      'movieAddress': 'CGV影城昆山广场店'
+    }
+    ];
+    let shanghai = [{
+      'id': '0',
+      'movieAddress': 'CGV影城shanghai中心店'
+    },
+    {
+      'id': '1',
+      'movieAddress': 'CGV影城waitan广场店'
+    },
+    {
+      'id': '2',
+      'movieAddress': 'CGV影城waitan店'
+    }
+    ];
+    if (city === '苏州市') {
+      list = suzhou;
+    } else {
+      list = shanghai;
+    };
+
+    return list[0].movieAddress
+  },
+
 
   //轮播高度自适应——获取图片高度
   imgHeight: function(e) {

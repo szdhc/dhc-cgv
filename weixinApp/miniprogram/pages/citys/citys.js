@@ -55,6 +55,7 @@ Page({ /** * 生命周期函数--监听页面加载 */
   citySelected: function(e) {
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
+    wx.setStorageSync('localCityName', e.currentTarget.dataset.cityname)
     prevPage.setData({
       begin: e.currentTarget.dataset.cityname
     })
