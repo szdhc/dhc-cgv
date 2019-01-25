@@ -802,15 +802,18 @@ Page({
         showCancel: true,
         confirmColor: "red",
         success: function (res) {
-          wx.removeStorageSync("jsonCarA");
-          that.setData({
-            currentTab: e.currentTarget.dataset.idx
-          })
-        }
-      })
-    } else {
-      this.setData({
-        currentTab: e.currentTarget.dataset.idx
+          if(res.confirm) {
+            wx.removeStorageSync("jsonCarA");
+            that.setData({
+              currentTab: e.currentTarget.dataset.idx
+            })
+          } else if(res.cancel) {
+            that.setData({
+              currentTab: 0
+            })
+            return;
+          }
+        },
       })
     }
 
@@ -908,18 +911,18 @@ Page({
       let carA = JSON.parse(carArr);
       this.setData({ carArray: carA });
 
-      if (carA != undefined && carA != null) {
-        for (var i = 0; i < carA.length; i++) {
-          this.data.goods[carA[i].parentIndex].foods[carA[i].index].Count = carA[i].num;
-        }
-        
-      } else {
-        for(var i = 0; i < this.data.goods.length; i++){
-          for(var j = 0; j < this.data.goods[i].foods.length; j++){
-            this.data.goods[i].foods[j].Count = 0;
-          }
+      for (var i = 0; i < this.data.goods.length; i++) {
+        for (var j = 0; j < this.data.goods[i].foods.length; j++) {
+          this.data.goods[i].foods[j].Count = 0;
         }
       }
+
+      if (carA != undefined && carA != null && carA.length > 0) {
+        for (var i = 0; i < carA.length; i++) {
+          this.data.goods[carA[i].parentIndex].foods[carA[i].index].Count = carA[i].num;
+        } 
+      }
+      
       this.setData({ goods: this.data.goods });
 
       // let jsonStr = wx.getStorageSync("jsonStr");
