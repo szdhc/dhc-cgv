@@ -96,7 +96,6 @@
 
 .columnN {
   margin-left: 32rpx;
-  width: 36rpx;
   position: absolute;
   top: 140rpx;
   background-color: #c2c2c2;
@@ -111,7 +110,6 @@
 }
 
 .columnNum {
-  height: 50rpx;
   line-height: 50rpx;
   color: #fff;
   text-align: center;

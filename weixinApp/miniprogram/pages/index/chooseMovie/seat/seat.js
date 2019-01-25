@@ -30,6 +30,8 @@ Page({
     sX:0,
     scaleWidth:36,
     scaleHeight:32,
+    colWidth:36,
+    colHeight: 50,
     olddistance:0,
     scale:1,
     sY:0,
@@ -164,12 +166,16 @@ Page({
       }
       let scaleWidth = newScale * 36
       let scaleHeight = newScale * 32
+      let colWidth = newScale * 36
+      let colHeight = newScale * 50
       // 赋值 新的 => 旧的
       this.setData({
         scale: newScale,
         olddistance: distance,
         scaleWidth: scaleWidth,
         scaleHeight: scaleHeight,
+        colWidth: colWidth,
+        colHeight: colHeight
       })
     }
   },

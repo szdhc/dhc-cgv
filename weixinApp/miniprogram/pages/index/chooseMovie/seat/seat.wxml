@@ -25,8 +25,8 @@
   <view class="room" style="transform: translateX({{deltaX}}px)">
     <view class="roomL">{{shop.room}}</view>
   </view>
-  <view class="columnN" style="transform: translateY({{deltaY}}px)">
-    <view class="columnNum" wx:for="{{columnArr}}" wx:key="{{columnArr}}">{{item}}</view>
+  <view class="columnN" style="width: {{colWidth}}rpx;transform: translateY({{deltaY}}px)">
+    <view class="columnNum" wx:for="{{columnArr}}" wx:key="{{columnArr}}" style="height: {{colHeight}}rpx">{{item}}</view>
   </view>
   <view class="map {{willChange?'willChange':''}}" bindtouchstart="scrollstart" bindtouchmove="scrollmove" bindtouchend="scrollend" style="transform: translate({{deltaX}}px,{{deltaY}}px)">
     <view class="centerTips" style="margin-left:{{44*shop.center}}rpx">银幕中央</view>
