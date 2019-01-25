@@ -55,9 +55,13 @@ Page({ /** * 生命周期函数--监听页面加载 */
   citySelected: function(e) {
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
+    let indexPage = pages[pages.length - 3];//把选择的城市存到index页面
     wx.setStorageSync('localCityName', e.currentTarget.dataset.cityname)
     prevPage.setData({
       begin: e.currentTarget.dataset.cityname
+    })
+    indexPage.setData({
+      currCity: e.currentTarget.dataset.cityname
     })
     wx.navigateBack()
   },

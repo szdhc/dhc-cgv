@@ -10,6 +10,8 @@ Page({
     movieAddress: '',
     currProvince: '',
     currCity: '',
+    latitude1: 0.0,
+    longitude1: 0.0,
     // --------------------------------------------------------------//
     navbar: ['热映', '待映'],
     currentTab: 0,
@@ -139,7 +141,7 @@ Page({
           movieObj2.set('movieShow', data.subjects[i].title)
           let directors = '';
           for (let j = 0; j < data.subjects[0].directors.length; j++) {
-            directors = directors + data.subjects[0].directors[j].name 
+            directors = directors + data.subjects[0].directors[j].name
           }
           let casts = '';
           for (let k = 0; k < data.subjects[i].casts.length; k++) {
@@ -156,7 +158,7 @@ Page({
         this.setData({
           comingMovieList: arr2
         })
-        
+
 
       }
     })
@@ -204,6 +206,10 @@ Page({
           // success  
           var latitude = res.latitude
           var longitude = res.longitude
+          vm.setData({
+            latitude1: latitude,
+            longitude1: longitude
+          })
           vm.getLocal(latitude, longitude);
         }
       },
@@ -253,32 +259,56 @@ Page({
     });
   },
 
+  //计算两个坐标点的距离
+  distance: function(la2, lo2) {
+    var la1 = this.data.latitude1;
+    var lo1 = this.data.longitude1;
+    var La1 = la1 * Math.PI / 180.0;
+    var La2 = la2 * Math.PI / 180.0;
+    var La3 = La1 - La2;
+    var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+    s = s * 6378.137;
+    s = Math.round(s * 10000) / 10000;
+    s = s.toFixed(2);
+    return s;
+  },
 
 
   //TODO 
-  getMovieAddress: function (city) {
+  getMovieAddress: function(city) {
     let list = [];
     let suzhou = [{
-      'id': '0',
-      'movieAddress': 'CGV影城苏州中心店'
-    },
-    {
-      'id': '1',
-      'movieAddress': 'CGV影城昆山广场店'
-    }
+        'id': '0',
+        'movieAddress': 'CGV苏州中心店',
+        'latitude': '39.915405',
+        'longitude': '116.403802'
+      },
+      {
+        'id': '1',
+        'movieAddress': 'CGV昆山广场店',
+        'latitude': '31.200479',
+        'longitude': '121.334421'
+      }
     ];
     let shanghai = [{
-      'id': '0',
-      'movieAddress': 'CGV影城shanghai中心店'
-    },
-    {
-      'id': '1',
-      'movieAddress': 'CGV影城waitan广场店'
-    },
-    {
-      'id': '2',
-      'movieAddress': 'CGV影城waitan店'
-    }
+        'id': '0',
+        'movieAddress': 'CGV上海广场',
+        'latitude': 1.2,
+        'longitude': 2.2
+      },
+      {
+        'id': '1',
+        'movieAddress': 'CGV外滩店',
+        'latitude': '77.77777',
+        'longitude': '11.11111'
+      },
+      {
+        'id': '2',
+        'movieAddress': 'CGV浦东店',
+        'latitude': '22.1111',
+        'longitude': '65.4321'
+      }
     ];
     if (city === '苏州市') {
       list = suzhou;
@@ -286,7 +316,20 @@ Page({
       list = shanghai;
     };
 
-    return list[0].movieAddress
+    var tempDistance = this.distance(list[0].latitude, list[0].longitude);
+    var tempNode = list[0];
+
+    for (let a of list) {
+      var dis = this.distance(a.latitude, a.longitude);
+      console.log('t->' + tempDistance + ' d->' + dis)
+      console.log(tempDistance < dis)
+      if (tempDistance < dis) {
+        tempDistance = dis;
+        tempNode = a;
+      }
+    }
+
+    return tempNode.movieAddress
   },
 
 
