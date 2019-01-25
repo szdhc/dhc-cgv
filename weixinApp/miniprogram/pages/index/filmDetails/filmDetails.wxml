@@ -23,11 +23,11 @@
         </view>
     </view>
     <view class='want_comment'>
-        <view wx:if="{{wantFlag==0}}" data-id="{{filmDetails_info.id}}" bindtap='clickWant'>
+        <view wx:if="{{wantFlag==0}}" id="{{filmDetails_info.id}}" bindtap='clickWant'>
             <image src='../../../images/love.png'></image>
             <text>想看</text>
         </view>
-        <view wx:else bindtap='clickWant' data-id="{{filmDetails_info.id}}">
+        <view wx:else bindtap='clickWant' id="{{filmDetails_info.id}}">
             <image src='../../../images/love_red.png'></image>
             <text>已想看</text>
         </view>

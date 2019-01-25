@@ -83,19 +83,3 @@
  height: 5rpx;
  margin-left:3%;
 }
-.text-want{
-  position: relative;
-  top: 0rpx;
-  left:-30rpx
-}
-.share-img-button{
-  position: absolute;
-  top: -14rpx;
-  width: 96rpx;
-  height: 96rpx;
-  background: none;
-  left:81rpx
-}
-.share-img-button::after {
-  border: none;
-}

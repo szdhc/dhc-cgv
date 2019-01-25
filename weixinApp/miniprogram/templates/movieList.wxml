@@ -7,14 +7,14 @@
     </view>
     <!--电影名，特性，导演，主演-->
     <view class='flex-wrp-cloumn content margin-left' data-moveid="{{id}}">
-      <navigator url="../index/filmDetails/filmDetails?id={{id}}&wantFlag={{wantFlag}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
+      <navigator url="/pages/index/filmDetails/filmDetails?id={{id}}&wantFlag={{wantFlag}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
         <view>
           <text class='medium-font-size'>{{movieName}}</text>
         </view>
         <view>
           <text class='regular-font-size movieShow'>{{movieShow}}</text>
         </view>
-
+      
         <view class='regular-font-size movieShow hidden-text'>{{movieDirectorStarring}}</view>
       </navigator>
     </view>
@@ -25,62 +25,51 @@
       </view>
       <view wx:if="{{movieStatus=='购票'}}">
         <button class='movieStatus' bindtap='redirct' style=' background:#FF0000;'>{{movieStatus}}</button>
-      </view>
-      <view wx:else>
+        </view>
+        <view wx:else>
         <button class='movieStatus' bindtap='redirct'>{{movieStatus}}</button>
-      </view>
+        </view>
     </view>
   </view>
-  <view class="divLine"></view>
+        <view class="divLine"></view>
 </template>
 
-
 <template name='comingMovieTemplate'>
-  <form bindsubmit="formSubmit" report-submit="true">
-    <view class='flex-wrp-row item'>
-      <!--电影图片-->
-      <view class='flex-wrp-cloumn'>
-        <image class='movieImage' src="{{ movieImage }}">
-        </image>
-      </view>
-      <!--电影名，特性，导演，主演-->
-      <view class='flex-wrp-cloumn content margin-left' data-moveid="{{id}}" bindtap='movieDetail'>
-        <navigator url="{{url}}?id={{id}}&wantFlag={{wantFlag}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
-          <view>
-            <text class='medium-font-size'>{{movieName}}</text>
-          </view>
-          <view>
-            <text class='regular-font-size movieShow'>{{movieShow}}</text>
-          </view>
-          <view class='regular-font-size movieShow hidden-text'>{{movieDirectorStarring}}
-          </view>
-        </navigator>
-      </view>
-      <!--评分、购票/预售-->
-      <view class='flex-wrp-cloumn margin-left salecomment'>
-        <view class='want' wx:if="{{wantFlag==0}}" data-id="{{id}}" bindtap='clickWant'>
-          <view class='text-want'>
-            <text class='regular-font-size'>{{wishCount}}</text>
-            <text class='regular-font-size'>人</text>
-          </view>
-          <button class='share-img-button' formType="submit">
-            <image class='loveImage' src='../../images/love.png' formType="submit"></image>
-          </button>
-        </view>
-        <view class='want' wx:else data-id="{{id}}" bindtap='clickWant'>
-          <view class='text-want'>
-            <text class='regular-font-size'>{{wishCount}}</text>
-            <text class='regular-font-size'>人</text>
-          </view>
-          <button class='share-img-button' formType="submit">
-            <image class='loveImage' src='../../images/love_red.png'></image>
-          </button>
-        </view>
-        <button class='movieStatus salebutton' bindtap='redirct'>{{movieStatus}}</button>
-      </view>
+  <view class='flex-wrp-row item'>
+    <!--电影图片-->
+    <view class='flex-wrp-cloumn'>
+      <image class='movieImage' src="{{ movieImage }}">
+      </image>
     </view>
-    <view class="divLine"></view>
-  </form>
+    <!--电影名，特性，导演，主演-->
+    <view class='flex-wrp-cloumn content margin-left' data-moveid="{{id}}" bindtap='movieDetail'>
+      <navigator url="{{url}}?id={{id}}&wantFlag={{wantFlag}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
+        <view>
+          <text class='medium-font-size'>{{movieName}}</text>
+        </view>
+        <view>
+          <text class='regular-font-size movieShow'>{{movieShow}}</text>
+        </view>
+        <view class='regular-font-size movieShow hidden-text' >{{movieDirectorStarring}}
+        </view>
+      </navigator>
+    </view>
+    <!--评分、购票/预售-->
+    <view class='flex-wrp-cloumn margin-left salecomment'>
+      <view class='want' wx:if="{{wantFlag==0}}" data-id="{{id}}" bindtap='clickWant'>
+        <text class='regular-font-size'>{{wishCount}}</text>
+        <text class='regular-font-size'>人</text>
+        <image class='loveImage' src='../../images/love.png'></image>
+      </view>
+      <view class='want' wx:else data-id="{{id}}" bindtap='clickWant'>
+        <text class='regular-font-size'>{{wishCount}}</text>
+        <text class='regular-font-size'>人</text>
+        <image class='loveImage' src='../../images/love_red.png'></image>
+      </view>
+        <button class='movieStatus salebutton' bindtap='redirct'>{{movieStatus}}</button>
+    </view>
+  </view>
+        <view class="divLine"></view>
 </template>
 
 <template name='showTimeTemplate'>
