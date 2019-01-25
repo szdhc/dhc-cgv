@@ -7,14 +7,17 @@ Page({
 
   data: {
     // openid: '',
-    movieAddress: '',
+    movieAddress: '苏州平江万达广场店',
     currProvince: '',
     currCity: '',
     // --------------------------------------------------------------//
     navbar: ['热映', '待映'],
     currentTab: 0,
     moreTab: 0,
+    loader: 0,
     wantFlag: 0,
+    count:7,
+
     // --------------------------------------------------------//
     bannerUrls: [{
         url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
@@ -34,11 +37,12 @@ Page({
       }
     ],
     hotMovieList: [],
+    filmDetails_info: [],
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
     duration: 1000,
-    conHeight: "1700rpx",
+    conHeight: "1740rpx",
     changeIndicatorDots: function(e) {
       this.setData({
         indicatorDots: !this.data.indicatorDots
@@ -60,26 +64,6 @@ Page({
       })
     },
   },
-  //选项卡切换
-  navbarTap: function(e) {
-    this.setData({
-      currentTab: e.currentTarget.dataset.idx,
-      conHeight: "1700rpx",
-      moreTab: 0
-    })
-  },
-     //滑动切换tab 
-    bindChange:   function(e)  {    
-    var  that  =  this;    
-    that.setData( { 
-      currentTab:  e.detail.current,
-      conHeight: "1700rpx",
-      moreTab: 0
-    });
-
-      
-  },
-   
   onLoad: function(options) {
     qqmapsdk = new QQMapWX({
       key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
@@ -92,8 +76,12 @@ Page({
     // 请求热映
     this.setData({
       types,
-      loader: true
+      loader: true,
     })
+    this.loadMovies();
+  },
+  loadMovies() {
+    this.setData({ loader: 1 })
     wx.request({
       url: `https://douban.uieee.com/v2/movie/${this.data.types}&start=${this.data.start}&count=${this.data.count}`,
       method: "GET",
@@ -125,9 +113,9 @@ Page({
           arr.push(JSON.parse(util.MapTOJson(movieObj)))
         }
         this.setData({
-          hotMovieList: arr
+          hotMovieList: arr,
+          loader: 0,
         })
-
         console.log(data)
         console.log(arr)
         // console.log(arr[0][0].images.medium)
@@ -156,8 +144,6 @@ Page({
         this.setData({
           comingMovieList: arr2
         })
-        
-
       }
     })
   },
@@ -194,6 +180,27 @@ Page({
     });
 
   },
+  //选项卡切换
+  navbarTap: function (e) {
+    this.setData({
+      currentTab: e.currentTarget.dataset.idx,
+      conHeight: "1730rpx",
+      moreTab: 0,
+      count: 7
+    })
+    this.loadMovies();
+  },
+  //滑动切换tab 
+  bindChange: function (e) {
+    var that = this;
+    that.setData( {
+      currentTab: e.detail.current,
+      conHeight: "1730rpx",
+      moreTab: 0,
+      count: 7
+    });
+    this.loadMovies();
+  },
   getLocation: function() {
     let vm = this;
     wx.getLocation({
@@ -228,19 +235,9 @@ Page({
       success: function(res) {
         console.log(JSON.stringify(res));
         if (res.status === 0) {
-          let localMovieAddr = wx.getStorageSync('localMovieAddress');
-          let localCityName = wx.getStorageSync('localCityName');
-          console.log('local->' + localMovieAddr)
-          if (localMovieAddr == undefined || localMovieAddr == '') {
-            localMovieAddr = that.getMovieAddress(res.result.address_component.city);
-          }
-          if (localCityName == undefined || localCityName == '') {
-            localCityName = res.result.address_component.city;
-          }
           that.setData({
             currProvince: res.result.address_component.province,
-            currCity: localCityName,
-            movieAddress: localMovieAddr
+            currCity: res.result.address_component.city
           })
         }
       },
@@ -252,43 +249,6 @@ Page({
       }
     });
   },
-
-
-
-  //TODO 
-  getMovieAddress: function (city) {
-    let list = [];
-    let suzhou = [{
-      'id': '0',
-      'movieAddress': 'CGV影城苏州中心店'
-    },
-    {
-      'id': '1',
-      'movieAddress': 'CGV影城昆山广场店'
-    }
-    ];
-    let shanghai = [{
-      'id': '0',
-      'movieAddress': 'CGV影城shanghai中心店'
-    },
-    {
-      'id': '1',
-      'movieAddress': 'CGV影城waitan广场店'
-    },
-    {
-      'id': '2',
-      'movieAddress': 'CGV影城waitan店'
-    }
-    ];
-    if (city === '苏州市') {
-      list = suzhou;
-    } else {
-      list = shanghai;
-    };
-
-    return list[0].movieAddress
-  },
-
 
   //轮播高度自适应——获取图片高度
   imgHeight: function(e) {
@@ -315,15 +275,11 @@ Page({
   clickMore(e) {
     this.setData({
       moreTab: 1,
-      conHeight: "4500rpx"
+      loader: 1,
+      conHeight: "5000rpx",
+      count: this.data.count += 15
     })
-  },
-  // 收起更多
-  clickHidden(e) {
-    this.setData({
-      moreTab: 0,
-      conHeight: "1700rpx"
-    })
+    this.loadMovies();
   },
   // 点击想看
   clickWant(e) {
@@ -389,4 +345,7 @@ Page({
     }
     wx.setStorageSync("comingMovieList", this.data.comingMovieList);
   },
+  formSubmit: function (e) {
+    console.log(e.detail.formId) // 获取formid
+  }
 })

@@ -32,7 +32,6 @@ Page({
         this.setData({
           LIKE_FLAG:'1'
         })
-        // this.data.comingMovieList[i].url = '/pages/index/filmDetails/filmDetails';
       }
       
     }
