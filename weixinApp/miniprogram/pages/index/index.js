@@ -18,6 +18,8 @@ Page({
     moreTab: 0,
     loader: 0,
     wantFlag: 0,
+    formId:[],
+    mylikeList:[],
     count: 7,
     // --------------------------------------------------------//
     bannerUrls: [{
@@ -126,6 +128,7 @@ Page({
           movieObj2.set('movieImage', data.subjects[i].images['small'])
           movieObj2.set('movieName', data.subjects[i].title)
           movieObj2.set('movieShow', data.subjects[i].title)
+          movieObj2.set('movieOntime', data.subjects[i].mainland_pubdate)
           let directors = '';
           for (let j = 0; j < data.subjects[0].directors.length; j++) {
             directors = directors + data.subjects[0].directors[j].name
@@ -139,6 +142,7 @@ Page({
           movieObj2.set('movieStatus', '预售')
           movieObj2.set('id', data.subjects[i].id)
           movieObj2.set('wantFlag', 0)
+          movieObj2.set('formId', '')
           movieObj2.set('url', '../index/filmDetails/filmDetails')
           arr2.push(JSON.parse(util.MapTOJson(movieObj2)))
         }
@@ -432,6 +436,58 @@ Page({
     wx.setStorageSync("comingMovieList", this.data.comingMovieList);
   },
   formSubmit: function (e) {
-    console.log(e.detail.formId) // 获取formid
-  }
+    let arrL = this.data.comingMovieList
+    for (let i = 0; i < arrL.length; i++) {
+      if (arrL[i].id == e.currentTarget.dataset.id) {
+        arrL[i].formId = e.detail.formId // 获取formid
+      }
+    }
+    this.setData({
+      comingMovieList: arrL
+    })
+    for (let i = 0; i < arrL.length; i++) {
+      if (arrL[i].formId != '') {
+        this.data.mylikeList[i] = arrL[i];
+      }
+    }
+
+    //服务通知
+    let access_token = wx.getStorageSync("access_token");
+    let openid = wx.getStorageSync("openid");
+    let templateid = 'n3vyeuNm3XT0OpkXJvpZzeOEXJ6EqwBQ0TZxJcgKPJI';
+    wx.request({
+      url: 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=' + access_token,
+      data: {
+        "touser": openid,
+        "template_id": templateid,
+        "form_id": this.data.mylikeList.formId,
+        "data": {
+          "keyword1": {
+            "value": "想看电影通知"
+          },
+          "keyword2": {
+            "value": "您想看的电影《" + this.data.mylikeList.movieName + "》上映啦"
+          },
+          "keyword3": {
+            "value": "" + this.data.mylikeList.movieOntime
+          }
+        },
+        method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        // header: {}, // 设置请求的 header
+        success: function () {
+          // success
+          console.log()
+        },
+        fail: function () {
+          // fail
+          console.log()
+        },
+        complete: function () {
+          // complete
+        }
+      }
+    })
+
+
+  },
 })

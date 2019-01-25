@@ -36,7 +36,7 @@
 
 
 <template name='comingMovieTemplate'>
-  <form bindsubmit="formSubmit" report-submit="true">
+  <form bindsubmit="formSubmit" report-submit="true" data-id='{{id}}'>
     <view class='flex-wrp-row item'>
       <!--电影图片-->
       <view class='flex-wrp-cloumn'>
@@ -72,7 +72,7 @@
             <text class='regular-font-size'>{{wishCount}}</text>
             <text class='regular-font-size'>人</text>
           </view>
-          <button class='share-img-button' formType="submit">
+          <button class='share-img-button'>
             <image class='loveImage' src='../../images/love_red.png'></image>
           </button>
         </view>
