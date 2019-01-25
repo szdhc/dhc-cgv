@@ -1,0 +1,2 @@
+/* pages/index/chooseMovie/seat/buyGoods/buyGoods.wxss */
+@import "../../../../../templates/shopCar/shopCar.wxss";

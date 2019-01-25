@@ -1,0 +1,2 @@
+<!--pages/index/chooseMovie/seat/buyGoods/buyGoods.wxml-->
+<include src="../../../../../templates/shopCar/shopCar.wxml"></include>

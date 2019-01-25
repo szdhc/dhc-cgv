@@ -348,7 +348,9 @@ Page({
       content: '您确认选择座位' + seat +'吗？',
       success:function(res){
         if(res.confirm){
-          console.log('确认')
+          wx.navigateTo({
+            url: '../seat/buyGoods/buyGoods',
+          })
         }
       }
     })

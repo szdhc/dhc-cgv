@@ -32,7 +32,8 @@
     "pages/index/yugao/yugao",
     "pages/mine/mylevdetail/mylevdetail",
     "pages/shop/memberCard/memberCard",
-    "pages/shop/privacy/privacy"
+    "pages/shop/privacy/privacy",
+    "pages/index/chooseMovie/seat/buyGoods/buyGoods"
   ],
   "permission": {
     "scope.userLocation": {
