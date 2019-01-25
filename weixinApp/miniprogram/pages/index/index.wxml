@@ -25,17 +25,20 @@
             <!-- <text class="headline">{{currProvince}}</text>
     <text class="headline">{{currCity}}</text> -->
             <import src='../../templates/banner.wxml' />
-            <template is='bannnerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
+            <template is='bannerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
             <!-- <text class="p">1. 打开云开发控制台</text>
     <image class="image1" src="../../images/console-entrance.png" mode="aspectFit"></image>
     <text class="p">2. 切换到 "用户管理" 标签页</text>
     <text class="p">3. 查看访问小程序的用户列表</text> -->
             <import src='../../templates/movieList.wxml' />
             <view wx:for="{{hotMovieList}}" wx:key="{{hotMovieList}}">
-              <view class="more" wx:if="{{index==7}}" hidden="{{moreTab==1}}" bindtap='clickMore'>
+              <template is='hotMovieTemplate' data="{{...item}}" />
+              <view class="more" wx:if="{{index==6}}" hidden="{{moreTab==1}}" bindtap='clickMore'>
                 加载更多
               </view>
-              <template is='hotMovieTemplate' data="{{...item}}" />
+              <view class='loading' wx:if="{{loader}}">
+                <image class='loadingimg' wx:if="{{index==6}}" hidden="{{moreTab==0}}" src="../../images/loading-bars.svg"></image>
+              </view>
             </view>
           </view>
 
@@ -46,13 +49,17 @@
         <swiper-item>
           <view class='comingFilm_container'>
             <import src='../../templates/banner.wxml' />
-            <template is='bannnerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
-            <import src='../../templates/movieList.wxml' />
-            <view wx:for="{{comingMovieList}}" wx:key="{{comingMovieList}}">
-              <view class="more" wx:if="{{index==7}}" hidden="{{moreTab==1}}" bindtap='clickMore'>
+            <template is='bannerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
+
+              <import src='../../templates/movieList.wxml' />
+              <view wx:for="{{comingMovieList}}" wx:key="{{comingMovieList}}" formType="submit">
+              <template is='comingMovieTemplate' data="{{...item}}" />
+              <view class="more" wx:if="{{index==6}}" hidden="{{moreTab==1}}" bindtap='clickMore'>
                 加载更多
               </view>
-              <template is='comingMovieTemplate' data="{{...item}}" />
+              <view class='loading' wx:if="{{loader}}">
+                <image class='loadingimg' wx:if="{{index==6}}" hidden="{{moreTab==0}}" src="../../images/loading-bars.svg"></image>
+              </view>
             </view>
           </view>
         </swiper-item>

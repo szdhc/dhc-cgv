@@ -1,4 +1,4 @@
-<template name='bannnerTemplate'>
+<template name='bannerTemplate'>
   <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:{{Height}}'>
     <block wx:for="{{ bannerUrls }}" wx:key="{{bannerUrls}}">
       <swiper-item>

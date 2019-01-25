@@ -19,6 +19,7 @@ Page({
     let imglist = [];
     // 开启导航条加载动画 
     wx.showNavigationBarLoading();
+    
     wx.request({
       url: 'https://douban.uieee.com/v2/movie/subject/' + Id,
       method: "GET",
@@ -68,6 +69,8 @@ Page({
    //   点击想看
     clickWant(e) {
     // wantFilms
+      let arrL = this.data.filmDetails_info
+      let Id = e.currentTarget.dataset.id;
     if (this.data.wantFlag==0) {
       // wx.request({
       //   url: this.data.IP + '/users/update',
@@ -105,6 +108,7 @@ Page({
       //     })
       //   })
       // })
+
       this.setData({
         wantFlag: 0
       })
@@ -114,6 +118,12 @@ Page({
         duration: 1500
       })
     }
+      for (let i = 0; i < arrL.length; i++) {
+        if (arrL[i].id == Id) {
+          arrL[i].wantFlag = this.data.wantFlag
+        }
+      }
+      wx.setStorageSync("filmDetails_info", arrL);
   },
   yugaoHander(e) {
     let Id = e.currentTarget.dataset.id;
