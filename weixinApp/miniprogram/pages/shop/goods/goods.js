@@ -259,7 +259,7 @@ Page({
     var index = e.currentTarget.dataset.itemIndex;
     var parentIndex = e.currentTarget.dataset.parentindex;
     
-    if(index == this.data.goods.index && parentIndex == this.data.goods.parentindex) {
+    if (index == this.data.goods.index && parentIndex == this.data.goods.parentIndex) {
       this.data.goods.Count++;      
       this.setData({goods: this.data.goods});
     }
@@ -309,9 +309,6 @@ Page({
     if (this.data.totalPrice === 0) {
       // return `￥${this.data.minPrice}元起送`;
       return '请选择';
-    } else if (this.data.totalPrice < this.data.minPrice) {
-      let diff = this.data.minPrice - this.data.totalPrice;
-      return '还差' + diff + '元起送';
     } else {
       return '选好了';
     }
