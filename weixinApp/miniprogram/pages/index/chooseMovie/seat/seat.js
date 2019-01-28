@@ -253,7 +253,6 @@ Page({
     var seats = []
     console.log(ev)
     var map = this.data.seatmap
-    seatsId = []
     map[ver][hor] = 1
     if (!checkSeats(map)) {
       wx.showToast({
@@ -264,6 +263,7 @@ Page({
       map[ver][hor] = 3
       return;
     }
+    seatsId = []
     var row = 0
     for (var i = 0; i < map.length; i++) {
       var total = 0
@@ -296,7 +296,6 @@ Page({
   cancelShop: function(e){
     var seats = []
     var seat = seatsId[e.currentTarget.dataset.id]
-    seatsId = []
     var map = this.data.seatmap
     var cStr = ''
     map[seat.split("-")[0]][seat.split("-")[1]] = 1
@@ -306,9 +305,10 @@ Page({
         icon: 'success',
         duration: 2000
       })
-      map[ver][hor] = 3
+      map[seat.split("-")[0]][seat.split("-")[1]] = 3
       return;
     }
+    seatsId = []
     var row = 0
     for (var i = 0; i < map.length; i++) {
       var total = 0
