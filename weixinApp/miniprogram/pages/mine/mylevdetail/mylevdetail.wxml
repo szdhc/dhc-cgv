@@ -10,4 +10,24 @@
       </view>
       <view class='textInfo'>经验值：{{pointinfo}}</view>
     </view>
+    <view class='middlestyle'>
+      <view class='sonmiddle'>
+          <icon class='iconfont icon-duihua icon-left'></icon>
+          <text class='textleft'>专属客服通道</text>
+      </view>
+      <view class='sonmiddle'>
+      <icon class='iconfont icon-gerenzhongxin icon-small'></icon>
+      <text class='textsmall'>会员专属定制</text>
+      </view>
+      <view class='sonmiddle'>
+      <icon class='iconfont icon-dingdan icon-small'></icon>
+       <text class='textsmall'>定制票纸</text>
+      </view>
+    </view>
+    <view class='middlestyle'>
+      <view class='sonmiddle'>
+          <icon class='iconfont icon-huangguan icon-left'></icon>
+          <text class='textleft'>专享活动</text>
+      </view>
+    </view>
 </view>

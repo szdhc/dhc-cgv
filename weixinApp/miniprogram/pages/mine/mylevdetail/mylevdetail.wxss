@@ -14,19 +14,49 @@ page{
   font-size: 80%;
   display: flex;
   flex-direction: row;
-  background-color: white;
+  background-color: #E6B880;
   width: 100%;
 }
 .mylevelname{
-  padding-top: 4%;
+  padding-top: 5%;
 }
 .progressInfo{
   width: 40%;
   margin-left: -18%;
-  margin-top: 10%;
+  margin-top: 11%;
 }
 .textInfo{
   width: 40%;
   margin-left: -39%;
-  margin-top: 12%;
+  margin-top: 14%;
+}
+.middlestyle{
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  height: 210rpx;
+}
+.sonmiddle{
+  width: 33.3%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.icon-left{
+  font-size: 60px;
+  padding-top: 12%;
+}
+.icon-small{
+  font-size: 45px;
+  padding-top: 16%;
+}
+.textsmall{
+  font-size: 65%;
+text-align: center;
+padding-top: 8%;
+}
+.textleft{
+  font-size: 65%;
+text-align: center;
 }

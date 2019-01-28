@@ -14,7 +14,7 @@
       <view class='item-left flex-wrp-row'>
         <!-- <icon class='iconfont icon-weibiaoti-3' > -->
         <icon class='iconfont icon-huiyuanqia' >
-          <text style='padding-left:20rpx'>会员卡</text>
+          <text class='foottext'>会员卡</text>
         </icon>
       </view>
       <view class='item-left flex-wrp-row'>
@@ -31,7 +31,7 @@
       <view class='item-left flex-wrp-row'>
         <!-- <icon class='iconfont icon-weibiaoti-3' > -->
         <icon class='iconfont icon-youhuiquan' >
-          <text style='padding-left:20rpx'>优惠券</text>
+          <text class='foottext'>优惠券</text>
         </icon>
       </view>
       <view class='item-left flex-wrp-row'>
@@ -46,8 +46,8 @@
     <view class='flex-wrp-row item border' style='background: #fff;'>
       <view class='item-left flex-wrp-row'>
         <!-- <icon class='iconfont icon-weibiaoti-3' > -->
-        <icon class='iconfont icon-3dtouchdaijinquanxiangqingliebiao' >
-          <text style='padding-left:20rpx'>代金券</text>
+        <icon class='iconfont icon-wodedaijinquan' >
+          <text class='foottext'>代金券</text>
         </icon>
       </view>
       <view class='item-left flex-wrp-row'>
@@ -62,8 +62,8 @@
     <view class='flex-wrp-row item border' style='background: #fff;'>
       <view class='item-left flex-wrp-row'>
         <!-- <icon class='iconfont icon-weibiaoti-3' > -->
-        <icon class='iconfont icon-3dtouchdaijinquanxiangqingliebiao' >
-          <text style='padding-left:20rpx'>想看的电影</text>
+        <icon class='iconfont icon-dianying' >
+          <text class='foottext'>想看的电影</text>
         </icon>
       </view>
       <view class='item-left flex-wrp-row'>
@@ -79,7 +79,7 @@
       <view class='item-left flex-wrp-row'>
         <!-- <icon class='iconfont icon-weibiaoti-3' > -->
         <icon class='iconfont icon-dingdan' >
-          <text style='padding-left:20rpx'>我的订单</text>
+          <text class='foottext'>我的订单</text>
         </icon>
       </view>
       <view class='item-left flex-wrp-row'>
@@ -94,8 +94,8 @@
     <view class='flex-wrp-row item border' style='background: #fff;'>
       <view class='item-left flex-wrp-row'>
         <!-- <icon class='iconfont icon-weibiaoti-3' > -->
-        <icon class='iconfont icon-icon' >
-          <text style='padding-left:20rpx'>我的积分</text>
+        <icon class='iconfont icon-jifen' >
+          <text class='foottext'>我的积分</text>
         </icon>
       </view>
       <view class='item-left flex-wrp-row'>

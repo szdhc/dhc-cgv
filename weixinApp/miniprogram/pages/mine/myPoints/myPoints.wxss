@@ -187,3 +187,8 @@ page{
 .msgtext{
   padding-top: 15rpx;
 }
+.icon-style{
+  font-size: 13px;
+  padding-left: 7%;
+  padding-bottom: 15%;
+}
