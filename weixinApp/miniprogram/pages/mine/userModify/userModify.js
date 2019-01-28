@@ -60,6 +60,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      userSurname: wx.getStorageSync("userSurname"),
+      birthday:wx.getStorageSync("birthday"),
+      password:wx.getStorageSync("password"),
+      likeMovie:wx.getStorageSync("likeMovie"),
+      cinemaindex:wx.getStorageSync("cinemaindex"),
+      memorial:wx.getStorageSync("memorial"),
+      region:wx.getStorageSync("region"),
+      marryIndex:wx.getStorageSync("marryIndex"),
+      childindex:wx.getStorageSync("childindex")
+    })
 
   },
 
@@ -128,13 +139,22 @@ Page({
     })
   },
   modefySubmit(){
-    // wx.showToast({
-    //   title: '信息已经保存',
-    //   icon: 'success',
-    //   duration: 2000
-    // });
+    wx.setStorageSync("userSurname", this.data.userSurname);
+    wx.setStorageSync("birthday", this.data.birthday)
+    wx.setStorageSync("password", this.data.password)
+    wx.setStorageSync("likeMovie", this.data.likeMovie)
+    wx.setStorageSync("cinemaindex", this.data.cinemaindex)
+    wx.setStorageSync("memorial", this.data.memorial)
+    wx.setStorageSync("region", this.data.region)
+    wx.setStorageSync("marryIndex", this.data.marryIndex)
+    wx.setStorageSync("childindex", this.data.childindex)
+    wx.showToast({
+      title: '信息已经保存',
+      icon: 'success',
+      duration: 2000
+    });
     wx.navigateTo({
-      url: '../../userConsole/userConsole',
+      url: '../userInfo/userInfo?avatarUrl=' + this.data.avatarUrl+'&username='+this.data.username,
     })
   },
   bindRegionChange: function (e) {
