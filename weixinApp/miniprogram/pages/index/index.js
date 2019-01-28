@@ -18,8 +18,8 @@ Page({
     moreTab: 0,
     loader: 0,
     wantFlag: 0,
-    formId:[],
-    mylikeList:[],
+    formId: [],
+    mylikeList: [],
     count: 7,
     // --------------------------------------------------------//
     bannerUrls: [{
@@ -44,7 +44,7 @@ Page({
     autoplay: true,
     interval: 3000,
     duration: 1000,
-    conHeight: "1740rpx",
+    conHeight: "",
     changeIndicatorDots: function(e) {
       this.setData({
         indicatorDots: !this.data.indicatorDots
@@ -79,12 +79,14 @@ Page({
     // 请求热映
     this.setData({
       types,
-      loader: true
     })
     this.loadMovies();
   },
   loadMovies() {
-    this.setData({ loader: 1 })
+
+    this.setData({
+      loader: 1
+    })
     wx.request({
       url: `https://douban.uieee.com/v2/movie/${this.data.types}&start=${this.data.start}&count=${this.data.count}`,
       method: "GET",
@@ -94,61 +96,86 @@ Page({
       success: ({
         data
       }) => {
-        let arr = [];
-        let movieObj = new Map();
-        for (let i = 0; i < data.subjects.length; i++) {
-          movieObj.set('movieImage', data.subjects[i].images['small'])
-          movieObj.set('movieName', data.subjects[i].title)
-          movieObj.set('movieShow', data.subjects[i].title)
-          let directors = '';
-          for (let j = 0; j < data.subjects[0].directors.length; j++) {
-            directors = directors + data.subjects[0].directors[j].name
+        if (this.data.currentTab==0) {
+          let height = 340;
+          let arr = [];
+          let movieObj = new Map();
+          for (let i = 0; i < data.subjects.length; i++) {
+            movieObj.set('movieImage', data.subjects[i].images['small'])
+            movieObj.set('movieName', data.subjects[i].title)
+            movieObj.set('movieShow', data.subjects[i].title)
+            let directors = '';
+            for (let j = 0; j < data.subjects[0].directors.length; j++) {
+              directors = directors + data.subjects[0].directors[j].name
+            }
+            let casts = '';
+            for (let k = 0; k < data.subjects[i].casts.length; k++) {
+              casts = casts + data.subjects[i].casts[k].name
+            }
+            movieObj.set('movieDirectorStarring', directors + '/' + casts)
+            movieObj.set('moiveGrade', data.subjects[i].rating.average + '分')
+            if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190115') {
+              movieObj.set('movieStatus', '预售')
+            }
+            else{
+              movieObj.set('movieStatus', '购票')
+            }
+            movieObj.set('id', data.subjects[i].id)
+            movieObj.set('id', data.subjects[i].id)
+            arr.push(JSON.parse(util.MapTOJson(movieObj)))
+            height = height + 200;
           }
-          let casts = '';
-          for (let k = 0; k < data.subjects[i].casts.length; k++) {
-            casts = casts + data.subjects[i].casts[k].name
+          this.data.conHeight = String(height) + "rpx";
+          console.log(this.data.conHeight)
+          this.setData({
+            conHeight: this.data.conHeight,
+            hotMovieList: arr,
+            loader: 0,
+          })
+          console.log(data)
+          console.log(arr)
+        } else {
+          let height = 340;
+          let arr2 = [];
+          let movieObj2 = new Map();
+          // 获取当前时间
+          var myDate = new Date();
+          let localeDate = parseInt('' + myDate.getFullYear() + myDate.getMonth() + 1 + myDate.getDate());
+          console.log(localeDate)
+          for (let i = 0; i < data.subjects.length; i++) {
+            if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190115') {
+              console.log(data.subjects[i].mainland_pubdate.replace(/-/g, ''))
+              movieObj2.set('movieImage', data.subjects[i].images['small'])
+              movieObj2.set('movieName', data.subjects[i].title)
+              movieObj2.set('movieShow', data.subjects[i].title)
+              movieObj2.set('movieOntime', data.subjects[i].mainland_pubdate)
+              let directors = '';
+              for (let j = 0; j < data.subjects[0].directors.length; j++) {
+                directors = directors + data.subjects[0].directors[j].name
+              }
+              let casts = '';
+              for (let k = 0; k < data.subjects[i].casts.length; k++) {
+                casts = casts + data.subjects[i].casts[k].name + " "
+              }
+              movieObj2.set('movieDirectorStarring', directors + '/' + casts)
+              movieObj2.set('wishCount', data.subjects[i].collect_count)
+              movieObj2.set('movieStatus', '预售')
+              movieObj2.set('id', data.subjects[i].id)
+              movieObj2.set('wantFlag', 0)
+              movieObj2.set('formId', '')
+              movieObj2.set('url', '../index/filmDetails/filmDetails')
+              arr2.push(JSON.parse(util.MapTOJson(movieObj2)))
+              height = height + 200;
+            }
           }
-          movieObj.set('movieDirectorStarring', directors + '/' + casts)
-          movieObj.set('moiveGrade', data.subjects[i].rating.average + '分')
-          movieObj.set('movieStatus', '购票')
-          movieObj.set('id', data.subjects[i].id)
-          movieObj.set('id', data.subjects[i].id)
-          arr.push(JSON.parse(util.MapTOJson(movieObj)))
+          this.data.conHeight = String(height) + "rpx";
+          console.log(this.data.conHeight)
+          this.setData({
+            conHeight: this.data.conHeight,
+            comingMovieList: arr2,
+            loader: 0,
+          })
         }
-        this.setData({
-          hotMovieList: arr,
-          loader: 0,
-        })
-        console.log(data)
-        console.log(arr)
-        // console.log(arr[0][0].images.medium)
-        let arr2 = [];
-        let movieObj2 = new Map();
-        for (let i = 0; i < data.subjects.length; i++) {
-          movieObj2.set('movieImage', data.subjects[i].images['small'])
-          movieObj2.set('movieName', data.subjects[i].title)
-          movieObj2.set('movieShow', data.subjects[i].title)
-          movieObj2.set('movieOntime', data.subjects[i].mainland_pubdate)
-          let directors = '';
-          for (let j = 0; j < data.subjects[0].directors.length; j++) {
-            directors = directors + data.subjects[0].directors[j].name
-          }
-          let casts = '';
-          for (let k = 0; k < data.subjects[i].casts.length; k++) {
-            casts = casts + data.subjects[i].casts[k].name + " "
-          }
-          movieObj2.set('movieDirectorStarring', directors + '/' + casts)
-          movieObj2.set('wishCount', data.subjects[i].collect_count)
-          movieObj2.set('movieStatus', '预售')
-          movieObj2.set('id', data.subjects[i].id)
-          movieObj2.set('wantFlag', 0)
-          movieObj2.set('formId', '')
-          movieObj2.set('url', '../index/filmDetails/filmDetails')
-          arr2.push(JSON.parse(util.MapTOJson(movieObj2)))
-        }
-        this.setData({
-          comingMovieList: arr2
-        })
       }
     })
   },
@@ -185,21 +212,19 @@ Page({
     });
   },
   //选项卡切换
-  navbarTap: function (e) {
+  navbarTap: function(e) {
     this.setData({
       currentTab: e.currentTarget.dataset.idx,
-      conHeight: "1730rpx",
       moreTab: 0,
       count: 7
     })
     this.loadMovies();
   },
   //滑动切换tab 
-  bindChange: function (e) {
+  bindChange: function(e) {
     var that = this;
     that.setData( {
       currentTab: e.detail.current,
-      conHeight: "1730rpx",
       moreTab: 0,
       count: 7
     });
@@ -435,7 +460,7 @@ Page({
     }
     wx.setStorageSync("comingMovieList", this.data.comingMovieList);
   },
-  formSubmit: function (e) {
+  formSubmit: function(e) {
     let arrL = this.data.comingMovieList
     for (let i = 0; i < arrL.length; i++) {
       if (arrL[i].id == e.currentTarget.dataset.id) {
@@ -474,15 +499,15 @@ Page({
         },
         method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         // header: {}, // 设置请求的 header
-        success: function () {
+        success: function() {
           // success
           console.log()
         },
-        fail: function () {
+        fail: function() {
           // fail
           console.log()
         },
-        complete: function () {
+        complete: function() {
           // complete
         }
       }
