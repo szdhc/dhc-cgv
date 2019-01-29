@@ -5,13 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-      membershipName: '静待',
+      membershipName: '',
       membershipShow: '贵宾座',
       membershipLevel: '不可储值，不可退换',
       membershipDiscount:'凭此卡可享受8.5折优惠',
       msg:'',
       mbsshow:'',
-      imageUrl: '../../../images/sale.png'
+      imageUrl: '../../../images/sale.png',
+      membershipIndex:'1'
   },
 
   /**
@@ -80,9 +81,11 @@ Page({
 
   },
   buycard(){
-    wx.navigateTo({
-      url: '../coupon/coupon',
-    })
+    wx.setStorageSync("membershipIndex", this.data.membershipIndex);
+    wx.switchTab({
+      url: '../../shop/shop'
+    });
+
     console.log("快去买会员卡吧");
   }
 })

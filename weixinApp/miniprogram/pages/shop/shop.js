@@ -868,10 +868,13 @@ Page({
   // ------------------------------------- end-----------------------------------------
 
   onLoad: function (options) {
+
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
       payDesc: this.payDesc()
+      
     });
+ 
 
     // qqmapsdk = new QQMapWX({
     //   key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
@@ -906,6 +909,15 @@ Page({
   },
 
   onShow: function () {
+
+    let membershipIndex = wx.getStorageSync("membershipIndex");
+    if (membershipIndex != undefined && membershipIndex != "") {
+      this.setData({
+        currentTab: 1,
+        memberCards: this.data.memberCards
+      })
+    }
+    wx.removeStorageSync("membershipIndex");
 
     console.log("shops-----------------" + this.data.isClose);
 
