@@ -862,7 +862,7 @@ page {
   justify-content: space-around;
   align-items: center;
   position: relative;
-  height: 800rpx;
+  height: 70%;
 }
 .ruleZhezhaoText{
   width: 95%;
