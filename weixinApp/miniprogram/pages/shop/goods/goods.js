@@ -12,7 +12,7 @@ Page({
     totalPrice: 0,// 总价格
     totalCount: 0, // 总商品数
     carArray: [],
-    minPrice: 20,//起送價格
+    minPrice: 0,//起送價格
     payDesc: '',
     deliveryPrice: 4,//配送費
     fold: true,
@@ -322,7 +322,7 @@ Page({
     //确认支付逻辑
     var resultType = "success";
     wx.redirectTo({
-      url: '../goods/pay/pay?resultType=' + resultType
+      url: '../../shop/dinnMethod/dinnMethod'
     })
   },
   //彈起購物車
