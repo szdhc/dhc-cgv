@@ -167,7 +167,7 @@ Page({
       icon: 'success',
       duration: 2000
     });
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../userInfo/userInfo?avatarUrl=' + this.data.avatarUrl+'&username='+this.data.username,
     })
   },

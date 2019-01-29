@@ -1,0 +1,9 @@
+{
+  "triggers": [
+    {
+      "name": "formSubmit",
+      "type": "timer",
+      "config": "0 0 10 * * * *"
+    }
+  ]
+}

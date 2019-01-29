@@ -37,7 +37,17 @@ Page({
           })
         }
       }
-    })
+    })  
+  },
+  onGetUserInfo: function (e) {
+    if (!this.logged && e.detail.userInfo) {
+      this.setData({
+        logged: true,
+        avatarUrl: e.detail.userInfo.avatarUrl,
+        userInfo: e.detail.userInfo,
+        username: e.detail.userInfo.nickName
+      })
+    }
   },
   Userinfo() {
     wx.cloud.callFunction({
@@ -59,16 +69,7 @@ Page({
     })
     
   },
-  onGetUserInfo: function (e) {
-    if (!this.logged && e.detail.userInfo) {
-      this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo,
-        username: e.detail.userInfo.nickName
-      })
-    }
-  },
+  
 
   onGetOpenid: function () {
     // 调用云函数

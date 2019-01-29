@@ -472,7 +472,7 @@ Page({
     })
     for (let i = 0; i < arrL.length; i++) {
       if (arrL[i].formId != '') {
-        this.data.mylikeList[i] = arrL[i];
+        this.data.mylikeList[0] = arrL[i];
       }
     }
 
@@ -485,16 +485,16 @@ Page({
       data: {
         "touser": openid,
         "template_id": templateid,
-        "form_id": this.data.mylikeList.formId,
+        "form_id": this.data.mylikeList[0].formId,
         "data": {
           "keyword1": {
             "value": "想看电影通知"
           },
           "keyword2": {
-            "value": "您想看的电影《" + this.data.mylikeList.movieName + "》上映啦"
+            "value": "您想看的电影《" + this.data.mylikeList[0].movieName + "》上映啦"
           },
           "keyword3": {
-            "value": "" + this.data.mylikeList.movieOntime
+            "value": "" + this.data.mylikeList[0].movieOntime
           }
         },
         method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
