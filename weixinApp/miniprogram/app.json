@@ -33,7 +33,8 @@
     "pages/mine/mylevdetail/mylevdetail",
     "pages/shop/memberCard/memberCard",
     "pages/shop/privacy/privacy",
-    "pages/index/chooseMovie/seat/buyGoods/buyGoods"
+    "pages/index/chooseMovie/seat/buyGoods/buyGoods",
+    "pages/mine/userLogin/userLogin"
   ],
   "permission": {
     "scope.userLocation": {

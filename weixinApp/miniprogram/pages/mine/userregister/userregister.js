@@ -5,14 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    logosrc: 'cgvlogo.PNG',
+    iv: null, //加密算法的初始向量
+    encryptedData: null //完整用户信息的加密数据
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**
@@ -62,5 +63,35 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  /**
+   * 获取用户手机号等信息
+   */
+  getPhoneNumber(e) {
+    console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
+
+    if (e.detail.iv){
+      this.setData({
+        iv: e.detail.iv
+      })
+    }
+
+    if (e.detail.encryptedData) {
+      this.setData({
+        iv: e.detail.encryptedData
+      })
+    }
+  },
+
+  /**
+   * 手机号登录跳转
+   */
+  gotoLogin: function(){
+    wx.navigateTo({
+      url: '../userLogin/userLogin',
+    })
   }
 })

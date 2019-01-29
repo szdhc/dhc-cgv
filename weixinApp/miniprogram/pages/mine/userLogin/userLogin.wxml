@@ -1,0 +1,53 @@
+<view class='webview'>
+<view class='logoview'>
+  <image src="{{logosrc}}" mode="aspectFit"></image>
+</view>
+<van-cell-group>
+  <van-field
+    value="{{phoneNo}}"
+    center
+    label="{{phoneLbl}}"
+    placeholder="{{phonePhd}}"
+    border="{{false}}"
+    use-button-slot
+    type="number"
+    maxlength='11'
+    bindinput="bindPhoneNoInput"
+  >
+  </van-field>
+</van-cell-group>
+<view class="slidersBox">
+  <text>{{ hint }}</text>
+  <view class='operationBgBox' style='left: {{ -(w + 2) }}px; transform: {{ cssAnimation }}'>
+    <text>{{ succeedMsg }}</text>
+    <view wx:if='{{!istelnoflg}}' class='operationBox' catchtouchmove='moveFun' catchtouchend='endFun'>
+      <image src='line.png'></image>
+    </view>
+    <view wx:else class='operationBox'>
+      <image src='line.png'></image>
+    </view>
+  </view>
+</view>
+<van-cell-group>
+  <van-field
+    value="{{smsNo}}"
+    center
+    label="{{smsLbl}}"
+    placeholder="{{smsPhd}}"
+    border="{{false}}"
+    use-button-slot
+    type="number"
+    maxlength='6'
+    bindinput="bindSmsInput"
+  >
+    <van-button wx:if='{{firsttime==1}}' slot="button" size="small" type="primary" disabled="{{istelnoflg || !sliderflg}}" bind:click='sendsms'>发送验证码</van-button>
+    <van-button wx:elif='{{firsttime!=1 && second>0}}' slot="button" size="small" type="primary" disabled>({{second}})秒后再发送</van-button>
+    <van-button wx:else slot="button" size="small" type="primary" bind:click='sendsms'>再发送</van-button>
+  </van-field>
+</van-cell-group>
+<view class='loginview'>
+<van-button type='primary' size='large' round disabled="{{isOk}}" bind:click='login'>登录</van-button>
+</view>
+</view>
+<van-dialog id="van-dialog" />
+<van-button type="warning">{{smsNoCode}}</van-button>

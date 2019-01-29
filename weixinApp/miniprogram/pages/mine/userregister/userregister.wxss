@@ -1,36 +1,6 @@
 /* pages/userInfo/userInfo.wxss */
 .webview{
-  background-image: url('./background.png');
-  background-size: cover;
   width: 100%;
-  height: 135%;
-}
-.container {
-  width: 100%;
-  padding: 20rpx 20rpx 20rpx 0;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  box-sizing: border-box;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-.btnclass{
-        width: 40%;
-        background-color: #428bca;  
-        border-color: #357ebd;  
-        color: #fff;  
-        -moz-border-radius: 10%;  
-        -webkit-border-radius: 10%;  
-        border-radius: 20px; /* future proofing */  
-        -khtml-border-radius: 10px; /* for old Konqueror browsers */  
-        text-align: center;  
-        vertical-align: middle;  
-        border: 1px solid transparent;  
-        font-weight: 900;
-}
-.top{
-  margin-top: 10%;
-}
-.footer{
-  margin-top: 60%;
+  height: 100%;
+  text-align: center; 
 }
