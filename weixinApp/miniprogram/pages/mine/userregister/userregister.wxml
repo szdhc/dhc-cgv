@@ -1,6 +1,6 @@
 <!--userregister.wxml-->
 <view class='webview'>
   <image src="{{logosrc}}" mode="aspectFit"></image>
-  <van-button round type="primary" size="large" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"><van-icon name="https://img.icons8.com/ios/50/000000/weixing.png" />微信快速登录</van-button>
+  <van-button round type="primary" size="large" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"><icon class='iconfont icon-weixin'></icon>微信快速登录</van-button>
   <van-button size="large" bindtap="gotoLogin">输入手机号登录</van-button>
 </view>
