@@ -1,6 +1,6 @@
 /* pages/mine/mylevdetail/mylevdetail.wxss */
 page{
-  background-color: #f1f1f1f8;
+  background-color: white;
 }
 .imagesstyle{
   width: 120rpx;

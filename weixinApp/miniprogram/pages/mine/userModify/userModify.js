@@ -7,7 +7,7 @@ Page({
   data: {
     avatarUrl: '',
     username: '',
-    sex: ['未完善', '男', '女'],
+    sex: ['男', '女'],
     birthday: '未完善',
     memorial: '未完善',
     cinemasort: ['未完善', '2D', '3D', '3DMAX'],
@@ -60,6 +60,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    
     this.setData({
       userSurname: wx.getStorageSync("userSurname"),
       birthday:wx.getStorageSync("birthday"),
@@ -71,7 +72,20 @@ Page({
       marryIndex:wx.getStorageSync("marryIndex"),
       childindex:wx.getStorageSync("childindex")
     })
-
+    if (this.data.birthday === '' || this.data.memorial === '') {
+        this.setData({
+          userSurname: '未完善',
+          birthday: '未完善',
+          password: '未完善',
+          likeMovie: '未完善',
+          cinemaindex:'0',
+          cinemasort: ['未完善', '2D', '3D', '3DMAX'],
+          memorial: '未完善',
+          region: ['广东省', '广州市', '海珠区'],
+          marryIndex: '0',
+          childindex: '0'
+        })
+    }
   },
 
   /**
