@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "登录注册",
   "usingComponents": {
-    "van-button": "../../../bin/dist/button/index",
-    "van-icon": "../../../bin/dist/icon/index"
+    "van-button": "../../../bin/dist/button/index"
   }
 }
