@@ -10,18 +10,18 @@
         <view>
           <text class='hallName'>{{storeName}}</text>
         </view>
-        <view class='iconfont icon-weibiaoti-3' bindtap='toInstruction'></view>
+        <view class='iconfont icon-tishishuoming' bindtap='toInstruction'></view>
       </view>
       <view>
         <text class='hallInstruction'>{{movieAddress}}</text>
       </view>
       <view class='phone'>
-        <view class='iconfont icon-weibiaoti-3'></view>
+        <view class='iconfont icon-002dianhua'></view>
         <view class='hallInstruction' bindtap='callphone'><text>{{movieTel}}</text></view>
       </view>
     </view>
     <view class='container map' bindtap='map'>
-      <view class='iconfont icon-weibiaoti-3'></view>
+      <view class='iconfont icon-daohangdizhi'></view>
       <view><text class='hallInstruction'>地图</text></view>
     </view>
   </view>
