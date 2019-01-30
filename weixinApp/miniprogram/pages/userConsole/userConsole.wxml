@@ -12,7 +12,6 @@
     <view class='flex-wrp-row item border' style='background: #fff;'>
     
       <view class='item-left flex-wrp-row'>
-        <!-- <icon class='iconfont icon-weibiaoti-3' > -->
         <icon class='iconfont icon-huiyuanqia' >
           <text class='foottext'>会员卡</text>
         </icon>
@@ -21,7 +20,7 @@
         <text class='medium-font-size'></text>
       </view>
       <view class='item-right flex-wrp-row'>
-        <icon class='iconfont icon-youjiantou icon-right'></icon>
+        <icon class='iconfont icon-jiantouyou icon-right'></icon>
       </view>
       
     </view>
@@ -29,7 +28,6 @@
     <navigator url="../mine/coupon/coupon" hover-class="none" open-type="navigate" class="wodelist-text">
     <view class='flex-wrp-row item border' style='background: #fff;'>
       <view class='item-left flex-wrp-row'>
-        <!-- <icon class='iconfont icon-weibiaoti-3' > -->
         <icon class='iconfont icon-youhuiquan' >
           <text class='foottext'>优惠券</text>
         </icon>
@@ -38,14 +36,13 @@
         <text class='medium-font-size'></text>
       </view>
       <view class='item-right flex-wrp-row'>
-        <icon class='iconfont icon-youjiantou icon-right'></icon>
+        <icon class='iconfont icon-jiantouyou icon-right'></icon>
       </view>
     </view>
     </navigator>
     <navigator url="../mine/discountCard/discountCard" hover-class="none" open-type="navigate" class="wodelist-text">
     <view class='flex-wrp-row item border' style='background: #fff;'>
       <view class='item-left flex-wrp-row'>
-        <!-- <icon class='iconfont icon-weibiaoti-3' > -->
         <icon class='iconfont icon-wodedaijinquan' >
           <text class='foottext'>代金券</text>
         </icon>
@@ -54,14 +51,13 @@
         <text class='medium-font-size'></text>
       </view>
       <view class='item-right flex-wrp-row'>
-        <icon class='iconfont icon-youjiantou icon-right'></icon>
+        <icon class='iconfont icon-jiantouyou icon-right'></icon>
       </view>
     </view>
     </navigator>
     <navigator url="../myLike/myLike" hover-class="none" open-type="navigate" class="wodelist-text">
     <view class='flex-wrp-row item border' style='background: #fff;'>
       <view class='item-left flex-wrp-row'>
-        <!-- <icon class='iconfont icon-weibiaoti-3' > -->
         <icon class='iconfont icon-dianying' >
           <text class='foottext'>想看的电影</text>
         </icon>
@@ -70,14 +66,13 @@
         <text class='medium-font-size'></text>
       </view>
       <view class='item-right flex-wrp-row'>
-        <icon class='iconfont icon-youjiantou icon-right'></icon>
+        <icon class='iconfont icon-jiantouyou icon-right'></icon>
       </view>
     </view>
     </navigator>
     <navigator url="../mine/myOrder/myOrder" hover-class="none" open-type="navigate" class="wodelist-text">
     <view class='flex-wrp-row item border' style='background: #fff;'>
       <view class='item-left flex-wrp-row'>
-        <!-- <icon class='iconfont icon-weibiaoti-3' > -->
         <icon class='iconfont icon-dingdan' >
           <text class='foottext'>我的订单</text>
         </icon>
@@ -86,14 +81,13 @@
         <text class='medium-font-size'></text>
       </view>
       <view class='item-right flex-wrp-row'>
-        <icon class='iconfont icon-youjiantou icon-right'></icon>
+        <icon class='iconfont icon-jiantouyou icon-right'></icon>
       </view>
     </view>
      </navigator>
      <navigator url="../mine/myPoints/myPoints" hover-class="none" open-type="navigate" class="wodelist-text">
     <view class='flex-wrp-row item border' style='background: #fff;'>
       <view class='item-left flex-wrp-row'>
-        <!-- <icon class='iconfont icon-weibiaoti-3' > -->
         <icon class='iconfont icon-jifen' >
           <text class='foottext'>我的积分</text>
         </icon>
@@ -102,7 +96,7 @@
         <text class='medium-font-size'></text>
       </view>
       <view class='item-right flex-wrp-row'>
-        <icon class='iconfont icon-youjiantou icon-right'></icon>
+        <icon class='iconfont icon-jiantouyou icon-right'></icon>
       </view>
     </view>
     </navigator>

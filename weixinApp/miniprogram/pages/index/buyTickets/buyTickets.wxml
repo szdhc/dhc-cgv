@@ -47,7 +47,7 @@
 
   <text class="pay-hint-content {{ellipsis?'ellipsis':'unellipsis'}}" >《情圣2》是由宋晓飞、董旭联合执导，吴秀波、白百何、肖央主演的爱情喜剧电影。该片将于2019年2月5日大年初一全国公映。该片讲述了与男友方远相恋七年，深陷家庭琐事的田心，焦头烂额之际偶遇从天而降的帅气邻居肖遥，在经历了一连串哭笑不得的囧事后，下定决心重新活出潇洒人生的故事</text>
   <view class='container' bindtap='ellipsis'>
-    <view class="{{ellipsis?'iconfont icon-xiajiantou,img-ellipsis':'iconfont icon-youjiantou,img-ellipsis'}}"></view>
+    <view class="{{ellipsis?'iconfont icon-xiajiantou,img-ellipsis':'iconfont icon-jiantouyou,img-ellipsis'}}"></view>
   </view>
 
 </view>

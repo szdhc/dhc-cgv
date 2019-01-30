@@ -7,7 +7,7 @@
       <text class='medium-font-size'></text>
     </view>
     <view class='item-right flex-wrp-row'>
-      <icon class='iconfont icon-youjiantou icon-right'></icon>
+      <icon class='iconfont icon-jiantouyou icon-right'></icon>
     </view>
   </view>
 </template>
