@@ -15,7 +15,8 @@ Page({
     // --------------------------------------------------------------//
     navbar: ['热映', '待映'],
     currentTab: 0,
-    moreTab: 0,
+    moreTab1: 0,
+    moreTab2: 0,
     loader: 0,
     wantFlag: 0,
     formId: [],
@@ -23,21 +24,21 @@ Page({
     count: 7,
     // --------------------------------------------------------//
     bannerUrls: [{
-        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
-        linkUrl: ''
-      },
-      {
-        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=77c8b34af1b44fd990e6e201df49f827&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201403%2F20%2F20140320140243_5MySw.jpeg',
-        linkUrl: ''
-      },
-      {
-        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378838&di=e01f784abb225d79416180122bc456e1&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0118cf5837d75ea801219c77f35e67.jpg',
-        linkUrl: ''
-      },
-      {
-        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378837&di=6127169e3cc9a444bf43da0906e9a57b&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01ce8b582439aea84a0e282ba855d9.jpg',
-        linkUrl: ''
-      }
+      url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
+      linkUrl: ''
+    },
+    {
+      url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=77c8b34af1b44fd990e6e201df49f827&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201403%2F20%2F20140320140243_5MySw.jpeg',
+      linkUrl: ''
+    },
+    {
+      url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378838&di=e01f784abb225d79416180122bc456e1&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0118cf5837d75ea801219c77f35e67.jpg',
+      linkUrl: ''
+    },
+    {
+      url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378837&di=6127169e3cc9a444bf43da0906e9a57b&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01ce8b582439aea84a0e282ba855d9.jpg',
+      linkUrl: ''
+    }
     ],
     hotMovieList: [],
     indicatorDots: true,
@@ -66,7 +67,7 @@ Page({
       })
     },
   },
-   
+
   onLoad: function(options) {
     qqmapsdk = new QQMapWX({
       key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
@@ -105,8 +106,8 @@ Page({
             movieObj.set('movieName', data.subjects[i].title)
             movieObj.set('movieShow', data.subjects[i].title)
             let directors = '';
-            for (let j = 0; j < data.subjects[0].directors.length; j++) {
-              directors = directors + data.subjects[0].directors[j].name
+            for (let j = 0; j < data.subjects[i].directors.length; j++) {
+              directors = directors + data.subjects[i].directors[j].name
             }
             let casts = '';
             for (let k = 0; k < data.subjects[i].casts.length; k++) {
@@ -117,7 +118,7 @@ Page({
             if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190115') {
               movieObj.set('movieStatus', '预售')
             }
-            else{
+            else {
               movieObj.set('movieStatus', '购票')
             }
             movieObj.set('id', data.subjects[i].id)
@@ -150,8 +151,8 @@ Page({
               movieObj2.set('movieShow', data.subjects[i].title)
               movieObj2.set('movieOntime', data.subjects[i].mainland_pubdate)
               let directors = '';
-              for (let j = 0; j < data.subjects[0].directors.length; j++) {
-                directors = directors + data.subjects[0].directors[j].name
+              for (let j = 0; j < data.subjects[i].directors.length; j++) {
+                directors = directors + data.subjects[i].directors[j].name
               }
               let casts = '';
               for (let k = 0; k < data.subjects[i].casts.length; k++) {
@@ -215,8 +216,7 @@ Page({
   navbarTap: function(e) {
     this.setData({
       currentTab: e.currentTarget.dataset.idx,
-      moreTab: 0,
-      count: 7
+      // moreTab: 0,
     })
     this.loadMovies();
   },
@@ -225,8 +225,7 @@ Page({
     var that = this;
     that.setData( {
       currentTab: e.detail.current,
-      moreTab: 0,
-      count: 7
+      // moreTab: 0,
     });
     this.loadMovies();
   },
@@ -311,36 +310,35 @@ Page({
   getMovieAddress: function(city) {
     let list = [];
     let suzhou = [{
-        'id': '0',
-        'movieAddress': 'CGV苏州中心店',
-        'latitude': '39.915405',
-        'longitude': '116.403802'
-      },
-      {
-        'id': '1',
-        'movieAddress': 'CGV昆山广场店',
-        'latitude': '31.200479',
-        'longitude': '121.334421'
-      }
+      'movieAddress': 'CGV苏州中心店',
+      'latitude': '39.915405',
+      'longitude': '116.403802'
+    },
+    {
+      'id': '1',
+      'movieAddress': 'CGV昆山广场店',
+      'latitude': '31.200479',
+      'longitude': '121.334421'
+    }
     ];
     let shanghai = [{
-        'id': '0',
-        'movieAddress': 'CGV上海广场',
-        'latitude': 1.2,
-        'longitude': 2.2
-      },
-      {
-        'id': '1',
-        'movieAddress': 'CGV外滩店',
-        'latitude': '77.77777',
-        'longitude': '11.11111'
-      },
-      {
-        'id': '2',
-        'movieAddress': 'CGV浦东店',
-        'latitude': '22.1111',
-        'longitude': '65.4321'
-      }
+      'id': '0',
+      'movieAddress': 'CGV上海广场',
+      'latitude': 1.2,
+      'longitude': 2.2
+    },
+    {
+      'id': '1',
+      'movieAddress': 'CGV外滩店',
+      'latitude': '77.77777',
+      'longitude': '11.11111'
+    },
+    {
+      'id': '2',
+      'movieAddress': 'CGV浦东店',
+      'latitude': '22.1111',
+      'longitude': '65.4321'
+    }
     ];
     if (city === '苏州市') {
       list = suzhou;
@@ -388,12 +386,22 @@ Page({
   },
   // 点击更多
   clickMore(e) {
-    this.setData({
-      moreTab: 1,
-      loader: 1,
-      conHeight: "5000rpx",
-      count: this.data.count += 15
-    })
+    if (this.data.currentTab == 0) {
+      this.setData({
+        moreTab1: 1,
+        loader: 1,
+        conHeight: "5000rpx",
+        count: this.data.count += 15
+      })
+    }
+    else if (this.data.currentTab == 1) {
+      this.setData({
+        moreTab2: 1,
+        loader: 1,
+        conHeight: "5000rpx",
+        count: this.data.count += 15
+      })
+    }
     this.loadMovies();
   },
   // 点击想看
@@ -472,7 +480,7 @@ Page({
     })
     for (let i = 0; i < arrL.length; i++) {
       if (arrL[i].formId != '') {
-        this.data.mylikeList[0] = arrL[i];
+        this.data.mylikeList[i] = arrL[i];
       }
     }
 
