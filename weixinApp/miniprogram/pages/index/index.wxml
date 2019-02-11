@@ -19,12 +19,12 @@
     </view>
   </view>
 </view>
-<scroll-view scroll-y="true" style="height:450px">
+<scroll-view scroll-y="true">
+  <swiper current="{{currentTab}}" duration="300" bindchange="bindChange" style="height:600px">
   <!--热映-->
-  <swiper current="{{currentTab}}" duration="300" bindchange="bindChange" style="height:450px">
     <view hidden="{{currentTab!==0}}">
       <swiper-item>
-          <scroll-view style="height:450px" scroll-y="true">
+          <scroll-view style="height:100%" scroll-y="true">
         <view class='hotFilm_container'>
           <!-- <text class="headline">{{currProvince}}</text>
     <text class="headline">{{currCity}}</text> -->
@@ -41,7 +41,7 @@
               加载更多
             </view>
             <view class='loading' wx:if="{{loader}}">
-              <image class='loadingimg' wx:if="{{index==hotMovieList.length-1}}" hidden="{{moreTab==0}}" src="../../images/loading-bars.svg"></image>
+              <image class='loadingimg' wx:if="{{index==hotMovieList.length-1}}" hidden="{{moreTab1==0}}" src="../../images/loading-bars.svg"></image>
             </view>
           </view>
         </view>
@@ -51,7 +51,7 @@
     <!--待映-->
     <view hidden="{{currentTab!==1}}">
       <swiper-item>
-      <scroll-view style="height:450px" scroll-y="true">
+      <scroll-view style="height:100%" scroll-y="true">
         <view class='comingFilm_container'>
           <import src='../../templates/banner.wxml' />
           <template is='bannerTemplate' data='{{indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
@@ -62,7 +62,7 @@
               加载更多
             </view>
             <view class='loading' wx:if="{{loader}}">
-              <image class='loadingimg' wx:if="{{index==comingMovieList.length-1}}" hidden="{{moreTab==0}}" src="../../images/loading-bars.svg"></image>
+              <image class='loadingimg' wx:if="{{index==comingMovieList.length-1}}" hidden="{{moreTab2==0}}" src="../../images/loading-bars.svg"></image>
             </view>
           </view>
         </view>

@@ -21,7 +21,12 @@ Page({
     wantFlag: 0,
     formId: [],
     mylikeList: [],
-    count: 7,
+    start: 0,
+    count: 40,
+    hotCount: 0,
+    comingCount: 0,
+    fixedCount1: 7,
+    fixedCount2: 7,
     // --------------------------------------------------------//
     bannerUrls: [{
       url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
@@ -45,30 +50,29 @@ Page({
     autoplay: true,
     interval: 3000,
     duration: 1000,
-    conHeight: "",
-    changeIndicatorDots: function(e) {
+    changeIndicatorDots: function (e) {
       this.setData({
         indicatorDots: !this.data.indicatorDots
       })
     },
-    changeAutoplay: function(e) {
+    changeAutoplay: function (e) {
       this.setData({
         autoplay: !this.data.autoplay
       })
     },
-    intervalChange: function(e) {
+    intervalChange: function (e) {
       this.setData({
         interval: e.detail.value
       })
     },
-    durationChange: function(e) {
+    durationChange: function (e) {
       this.setData({
         duration: e.detail.value
       })
     },
   },
 
-  onLoad: function(options) {
+  onLoad: function (options) {
     qqmapsdk = new QQMapWX({
       key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
     });
@@ -81,10 +85,10 @@ Page({
     this.setData({
       types,
     })
-    this.loadMovies();
+    this.hotMovies();
+    this.comingMovies();
   },
-  loadMovies() {
-
+  hotMovies() {
     this.setData({
       loader: 1
     })
@@ -97,55 +101,68 @@ Page({
       success: ({
         data
       }) => {
-        if (this.data.currentTab==0) {
-          let height = 340;
-          let arr = [];
-          let movieObj = new Map();
-          for (let i = 0; i < data.subjects.length; i++) {
-            movieObj.set('movieImage', data.subjects[i].images['small'])
-            movieObj.set('movieName', data.subjects[i].title)
-            movieObj.set('movieShow', data.subjects[i].title)
-            let directors = '';
-            for (let j = 0; j < data.subjects[i].directors.length; j++) {
-              directors = directors + data.subjects[i].directors[j].name
-            }
-            let casts = '';
-            for (let k = 0; k < data.subjects[i].casts.length; k++) {
-              casts = casts + data.subjects[i].casts[k].name
-            }
-            movieObj.set('movieDirectorStarring', directors + '/' + casts)
-            movieObj.set('moiveGrade', data.subjects[i].rating.average + '分')
-            if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190115') {
-              movieObj.set('movieStatus', '预售')
-            }
-            else {
-              movieObj.set('movieStatus', '购票')
-            }
-            movieObj.set('id', data.subjects[i].id)
-            movieObj.set('id', data.subjects[i].id)
-            arr.push(JSON.parse(util.MapTOJson(movieObj)))
-            height = height + 200;
+        let height = 380;
+        let arr = [];
+        let movieObj = new Map();
+        for (let i = 0; i < this.data.fixedCount1; i++) {
+          movieObj.set('movieImage', data.subjects[i].images['small'])
+          movieObj.set('movieName', data.subjects[i].title)
+          movieObj.set('movieShow', data.subjects[i].title)
+          let directors = '';
+          for (let j = 0; j < data.subjects[i].directors.length; j++) {
+            directors = directors + data.subjects[i].directors[j].name
           }
-          this.data.conHeight = String(height) + "rpx";
-          console.log(this.data.conHeight)
-          this.setData({
-            conHeight: this.data.conHeight,
-            hotMovieList: arr,
-            loader: 0,
-          })
-          console.log(data)
-          console.log(arr)
-        } else {
-          let height = 340;
-          let arr2 = [];
-          let movieObj2 = new Map();
-          // 获取当前时间
-          var myDate = new Date();
-          let localeDate = parseInt('' + myDate.getFullYear() + myDate.getMonth() + 1 + myDate.getDate());
-          console.log(localeDate)
-          for (let i = 0; i < data.subjects.length; i++) {
-            if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190115') {
-              console.log(data.subjects[i].mainland_pubdate.replace(/-/g, ''))
+          let casts = '';
+          for (let k = 0; k < data.subjects[i].casts.length; k++) {
+            casts = casts + data.subjects[i].casts[k].name
+          }
+          movieObj.set('movieDirectorStarring', directors + '/' + casts)
+          movieObj.set('moiveGrade', data.subjects[i].rating.average + '分')
+          if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190115') {
+            movieObj.set('movieStatus', '预售')
+          } else {
+            movieObj.set('movieStatus', '购票')
+
+          }
+          movieObj.set('id', data.subjects[i].id)
+          arr.push(JSON.parse(util.MapTOJson(movieObj)))
+          height = height + 200;
+        }
+        this.setData({
+          hotCount: data.subjects.length,
+          hotMovieList: arr,
+          loader: 0,
+
+        })
+        console.log(data)
+        console.log(arr)
+      }
+    })
+  },
+  comingMovies() {
+    this.setData({
+      loader: 1
+    })
+    wx.request({
+      url: `https://douban.uieee.com/v2/movie/${this.data.types}&start=${this.data.start}&count=${this.data.count}`,
+      method: "GET",
+      header: {
+        'Content-Type': 'json',
+      },
+      success: ({
+        data
+      }) => {
+        let number = 0;
+        let height = 340;
+        let arr2 = [];
+        let movieObj2 = new Map();
+        // 获取当前时间
+        var myDate = new Date();
+        let localeDate = parseInt('' + myDate.getFullYear() + myDate.getMonth() + 1 + myDate.getDate());
+        for (let i = 0; i < data.subjects.length; i++) {
+          if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190115') {
+            number++;
+            if (number <= this.data.fixedCount2) {
               movieObj2.set('movieImage', data.subjects[i].images['small'])
               movieObj2.set('movieName', data.subjects[i].title)
               movieObj2.set('movieShow', data.subjects[i].title)
@@ -169,72 +186,73 @@ Page({
               height = height + 200;
             }
           }
-          this.data.conHeight = String(height) + "rpx";
-          console.log(this.data.conHeight)
-          this.setData({
-            conHeight: this.data.conHeight,
-            comingMovieList: arr2,
-            loader: 0,
-          })
         }
+        this.setData({
+          comingCount: number,
+          comingMovieList: arr2,
+          loader: 0,
+        })
       }
     })
   },
-
-  onShow: function() {
+  onShow: function () {
     let vm = this;
     this.getLocation();
     qqmapsdk.getCityList({
-      success: function(res) {
+      success: function (res) {
         console.log(res);
         console.log('省份数据：', res.result[0]); //打印省份数据
         console.log('城市数据：', res.result[1]); //打印城市数据
         console.log('区县数据：', res.result[2]); //打印区县数据
       },
-      fail: function(error) {
+      fail: function (error) {
         console.error(error);
       },
-      complete: function(res) {
+      complete: function (res) {
         console.log(res);
       }
     });
     // 调用接口
     qqmapsdk.search({
       keyword: 'CVG影城',
-      success: function(res) {
+      success: function (res) {
         console.log('CVG影城:' + res);
       },
-      fail: function(res) {
+      fail: function (res) {
         console.log(res);
       },
-      complete: function(res) {
+      complete: function (res) {
         console.log(res);
       }
     });
   },
   //选项卡切换
-  navbarTap: function(e) {
+  navbarTap: function (e) {
     this.setData({
       currentTab: e.currentTarget.dataset.idx,
-      // moreTab: 0,
     })
-    this.loadMovies();
+    // this.loadMovies();
+    // this.setData({
+    //   loader: 0,
+    // })
   },
   //滑动切换tab 
-  bindChange: function(e) {
+  bindChange: function (e) {
     var that = this;
     that.setData( {
       currentTab: e.detail.current,
-      // moreTab: 0,
     });
-    this.loadMovies();
+    // this.loadMovies();
+    // this.setData({
+    //   loader: 0,
+    // })
   },
-  getLocation: function() {
+  getLocation: function () {
     let vm = this;
     wx.getLocation({
       type: 'wgs84',
       altitude: true,
-      success: function(res) {
+      success: function (res) {
         if (res.errMsg === 'getLocation:ok') {
           // success  
           var latitude = res.latitude
@@ -246,23 +264,23 @@ Page({
           vm.getLocal(latitude, longitude);
         }
       },
-      fail: function(res) {
+      fail: function (res) {
         console.error(res);
       },
-      complete: function(res) {
+      complete: function (res) {
         console.log(res);
       },
     });
   },
   //获取当前地理位置
-  getLocal: function(latitude, longitude) {
+  getLocal: function (latitude, longitude) {
     var that = this;
     qqmapsdk.reverseGeocoder({
       location: {
         latitude: latitude,
         longitude: longitude
       },
-      success: function(res) {
+      success: function (res) {
         console.log(JSON.stringify(res));
         if (res.status === 0) {
           let localMovieAddr = wx.getStorageSync('localMovieAddress');
@@ -281,17 +299,17 @@ Page({
           })
         }
       },
-      fail: function(error) {
+      fail: function (error) {
         console.error(error);
       },
-      complete: function(res) {
+      complete: function (res) {
         console.log(res);
       }
     });
   },
 
   //计算两个坐标点的距离
-  distance: function(la2, lo2) {
+  distance: function (la2, lo2) {
     var la1 = this.data.latitude1;
     var lo1 = this.data.longitude1;
     var La1 = la1 * Math.PI / 180.0;
@@ -307,9 +325,10 @@ Page({
 
 
   //TODO 
-  getMovieAddress: function(city) {
+  getMovieAddress: function (city) {
     let list = [];
     let suzhou = [{
+      'id': '0',
       'movieAddress': 'CGV苏州中心店',
       'latitude': '39.915405',
       'longitude': '116.403802'
@@ -364,7 +383,7 @@ Page({
 
 
   //轮播高度自适应——获取图片高度
-  imgHeight: function(e) {
+  imgHeight: function (e) {
     var winWid = wx.getSystemInfoSync().windowWidth; //获取当前屏幕的宽度
     var imgh = e.detail.height; //图片高度
     var imgw = e.detail.width; //图片宽度
@@ -373,7 +392,7 @@ Page({
       Height: swiperH //设置高度
     })
   },
-  redirct: function() {
+  redirct: function () {
     wx.navigateTo({
       url: '../index/chooseMovie/chooseMovie',
     })
@@ -390,19 +409,18 @@ Page({
       this.setData({
         moreTab1: 1,
         loader: 1,
-        conHeight: "5000rpx",
-        count: this.data.count += 15
+        fixedCount1: this.data.hotCount,
       })
+      this.hotMovies();
     }
     else if (this.data.currentTab == 1) {
       this.setData({
         moreTab2: 1,
         loader: 1,
-        conHeight: "5000rpx",
-        count: this.data.count += 15
+        fixedCount2: this.data.comingCount,
       })
     }
-    this.loadMovies();
+    this.comingMovies();
   },
   // 点击想看
   clickWant(e) {
@@ -468,7 +486,7 @@ Page({
     }
     wx.setStorageSync("comingMovieList", this.data.comingMovieList);
   },
-  formSubmit: function(e) {
+  formSubmit: function (e) {
     let arrL = this.data.comingMovieList
     for (let i = 0; i < arrL.length; i++) {
       if (arrL[i].id == e.currentTarget.dataset.id) {
@@ -493,29 +511,29 @@ Page({
       data: {
         "touser": openid,
         "template_id": templateid,
-        "form_id": this.data.mylikeList[0].formId,
+        "form_id": this.data.mylikeList.formId,
         "data": {
           "keyword1": {
             "value": "想看电影通知"
           },
           "keyword2": {
-            "value": "您想看的电影《" + this.data.mylikeList[0].movieName + "》上映啦"
+            "value": "您想看的电影《" + this.data.mylikeList.movieName + "》上映啦"
           },
           "keyword3": {
-            "value": "" + this.data.mylikeList[0].movieOntime
+            "value": "" + this.data.mylikeList.movieOntime
           }
         },
         method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         // header: {}, // 设置请求的 header
-        success: function() {
+        success: function () {
           // success
           console.log()
         },
-        fail: function() {
+        fail: function () {
           // fail
           console.log()
         },
-        complete: function() {
+        complete: function () {
           // complete
         }
       }
