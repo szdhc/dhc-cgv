@@ -1,8 +1,8 @@
 var app = getApp()
 Page({
     data: {
-        IP: "",
-        FileIP: "",
+        // IP: "",
+        // FileIP: "",
         stars: [0, 1, 2, 3, 4],
         normalSrc: '../../../images/no_star.png',
         selectedSrc: '../../../images/full_star.png',
@@ -14,33 +14,33 @@ Page({
         scoreText: ['超烂啊', '超烂啊', '比较差', '比较差', '一般般', '一般般', '比较好', '比较好', '完美', '完美']
     },
     onLoad: function () {
-        this.setData({
-          IP: "http://192.168.0.121:3333",
-          FileIP: "http://192.168.0.121:3223"
-        })
-        var that = this
-        _getUserInfo();
-        function _getUserInfo() {
-            wx.getUserInfo({
-                success: function (res) {
-                    that.setData({
-                        userInfo: res.userInfo
-                    })
-                    that.update()
-                }
-            })
-        }
-        wx.request({
-            url: this.data.IP + '/film/find',
-            data: {
-                _id: this.options.id
-            },
-            success: ((res) => {
-                this.setData({
-                    filmData: res.data
-                })
-            })
-        })
+        // this.setData({
+        //   IP: "http://192.168.0.121:3333",
+        //   FileIP: "http://192.168.0.121:3223"
+        // })
+        // var that = this
+        // _getUserInfo();
+        // function _getUserInfo() {
+        //     wx.getUserInfo({
+        //         success: function (res) {
+        //             that.setData({
+        //                 userInfo: res.userInfo
+        //             })
+        //             //that.update()
+        //         }
+        //     })
+        // }
+        // wx.request({
+        //     url: this.data.IP + '/film/find',
+        //     data: {
+        //         _id: this.options.id
+        //     },
+        //     success: ((res) => {
+        //         this.setData({
+        //             filmData: res.data
+        //         })
+        //     })
+        // })
     },
     //点击右边,半颗星
     selectLeft: function (e) {
@@ -93,40 +93,40 @@ Page({
                 head_img: this.data.userInfo.avatarUrl,
                 good_num: 684,
                 time: '昨天',
-                film_img: this.data.filmData.film_bill[0].replace(/\\/g,'/'),
+                //film_img: this.data.filmData.film_bill[0].replace(/\\/g,'/'),
                 film_name: this.data.filmData.film_name,
                 film_nd: this.data.filmData.film_nd,
                 film_id: this.data.filmData._id
             }
             // 请求电影 
             wx.request({
-                url: this.data.IP + '/film_comment/add',
-                data: commentArr,
-                success: ((res) => {
-                    // 存我的评价
-                    wx.request({
-                        url: this.data.IP + '/users/update',
-                        data: { _id: wx.getStorageSync("userId"), film_comment: res.data, isPush: true },
-                        success: ((res) => {
-                        })
-                    })
-                    wx.request({
-                        url: this.data.IP + '/film/update',
-                        data: { _id: this.options.id, film_comment: res.data, isPush: true },
-                        success: ((res) => {
-                            wx.showToast({
-                                title: '评论成功',
-                                icon: 'none',
-                                duration: 2000
-                            })
+                // url: this.data.IP + '/film_comment/add',
+                // data: commentArr,
+                // success: ((res) => {
+                //     // 存我的评价
+                //     wx.request({
+                //         url: this.data.IP + '/users/update',
+                //         data: { _id: wx.getStorageSync("userId"), film_comment: res.data, isPush: true },
+                //         success: ((res) => {
+                //         })
+                //     })
+                //     wx.request({
+                //         url: this.data.IP + '/film/update',
+                //         data: { _id: this.options.id, film_comment: res.data, isPush: true },
+                //         success: ((res) => {
+                //             wx.showToast({
+                //                 title: '评论成功',
+                //                 icon: 'none',
+                //                 duration: 2000
+                //             })
                             
-                            let timer=setTimeout(function(){
-                            wx.navigateBack({ changed: true })
-                            clearTimeout(timer)
-                            },1500)
-                        })
-                    })
-                })
+                //             let timer=setTimeout(function(){
+                //             wx.navigateBack({ changed: true })
+                //             clearTimeout(timer)
+                //             },1500)
+                //         })
+                //     })
+                // })
             })
         }
     }

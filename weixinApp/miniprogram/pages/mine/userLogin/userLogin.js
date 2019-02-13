@@ -1,4 +1,13 @@
 import Dialog from '../../../bin/dist/dialog/dialog';
+
+var t = '';  //验证码倒计时用时间戳
+var sysW = wx.getSystemInfoSync().windowWidth;  //获取屏幕宽度
+var xAxial = 0;  //X轴的初始值
+var x = 0;  //触摸时X轴的值
+var pullStatus = true;  //是否允许验证成功后继续滑动
+var smstimestamp = null;  //验证码生成时时间
+var smsNoInput = null;  //输入的验证码
+var smsNoCode = null;  //生成的验证码
 Page({
   
   /**
@@ -8,8 +17,7 @@ Page({
     phoneNo: null,  //输入的手机号
     phoneLbl: '手机号',
     phonePhd: '请输入手机号',
-    smsNoInput: null,  //输入的验证码
-    smsNoCode: null,  //生成的验证码
+
     smsLbl: '短信验证码',
     smsPhd: '请输入短信验证码',
     logosrc: '../userregister/cgvlogo.PNG',
@@ -18,17 +26,13 @@ Page({
     isOk: true,  //登录button flg
     firsttime: 1,  //验证码发送次数
     second: 60,  //验证码发送间隔
-    smstimestamp: null,  //验证码生成时时间
+
 
     hint: '右滑完成验证',//默认提示语
-    sysW: wx.getSystemInfoSync().windowWidth,//获取屏幕宽度
-    xAxial: 0,//X轴的初始值
-    x: 0,//触摸时X轴的值
     w: (wx.getSystemInfoSync().windowWidth * 0.8) - 50,//滑块可移动的X轴范围
     cssAnimation: 'translate3d(0, 0, 0)',//CSS动画的初始值
     succeedMsg: '',//验证成功提示信息的默认值
-    pullStatus: true,//是否允许验证成功后继续滑动
-    sliderflg: false,
+    sliderflg: false,  //验证是否成功flg
   },
 
   /**
@@ -56,14 +60,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+      //clearInterval(this.data.t);
+    clearInterval(t);  //定时器手动回收
   },
 
   /**
@@ -91,18 +95,21 @@ Page({
    * 手机号输入数字满位，滑动验证可用
    */
   bindPhoneNoInput: function (e) {
-    this.setData({
-      phoneNo: e.detail,  //输入的手机号
-      smsNo: null,  //清空验证码
-      isOk: true  //登录按钮不可用
-    })
-    var that = this;
-    that.reset();  //滑动恢复初期状态
+    if (x != 0){
+      this.setData({
+        smsNo: null,  //清空验证码
+        isOk: true  //登录按钮不可用
+      })
+      var that = this;
+      that.reset();  //滑动恢复初期状态
+    }
+    
     if (e.detail){
       //输入的是数字并且11位
       if (e.detail.length == 11 && (/^[0-9]+$/.test(e.detail))){
         this.setData({
-          istelnoflg: false
+          istelnoflg: false,
+          phoneNo: e.detail,  //输入的手机号
         })
       } else {
         this.setData({
@@ -120,9 +127,9 @@ Page({
     if (e.detail) {
       //验证码是6位数字并且手机号验证及滑动验证通过
       if (e.detail.length == 6 && (/^[0-9]+$/.test(e.detail)) && !that.data.istelnoflg && that.data.sliderflg) {
+        smsNoInput = e.detail;
         this.setData({
           isOk: false,
-          smsNoInput: e.detail
         })
         } else {
           this.setData({
@@ -135,15 +142,15 @@ Page({
   //滑块移动中执行的事件
   moveFun: function (e) {
     //如果验证成功后仍允许滑动，则执行下面代码块（初始值默认为允许）
-    if (this.data.pullStatus) {
+    if (pullStatus) {
       //设置X轴的始点
-      this.data.x = e.changedTouches[0].clientX - ((this.data.sysW * 0.1) + 25);
+      x = e.changedTouches[0].clientX - ((sysW * 0.1) + 25);
       //如果触摸时X轴的坐标大于可移动距离则设置元素X轴的坐标等于可移动距离的最大值，否则元素X轴的坐标等于等于当前触摸X轴的坐标
-      this.data.x >= this.data.w ? this.data.xAxial = this.data.w : this.data.xAxial = this.data.x;
+      x >= this.data.w ? xAxial = this.data.w : xAxial = x;
       //如果触摸时X轴的坐标小于设定的始点，则将元素X轴的坐标设置为0
-      if (this.data.x < 25) this.data.xAxial = 0;
+      if (x < 25) xAxial = 0;
       //根据获取到的X轴坐标进行动画演示
-      this.data.cssAnimation = 'translate3d(' + this.data.xAxial + 'px, 0, 0)';
+      this.data.cssAnimation = 'translate3d(' + xAxial + 'px, 0, 0)';
 
       this.setData({
         cssAnimation: this.data.cssAnimation
@@ -156,19 +163,19 @@ Page({
     //自定义组件触发事件时提供的detail对象
     var detail = {};
     //如果触摸的X轴坐标大于等于限定的可移动范围，则验证成功
-    if (this.data.x >= this.data.w) {
+    if (x >= this.data.w) {
       //元素X轴坐标等于可移动范围的最大值
-      this.data.xAxial = this.data.w;
+      xAxial = this.data.w;
       //设置验证成功提示语
       this.data.succeedMsg = '验证成功';
       //设置detail对象的返回值
       detail.msg = true;
       //验证成功后，禁止滑块滑动
-      this.data.pullStatus = false;
+      pullStatus = false;
       this.data.sliderflg = true;
     } else {
       //元素X轴坐标归0
-      this.data.xAxial = 0;
+      xAxial = 0;
       //清空验证成功提示语
       this.data.succeedMsg = '';
       //设置detail对象的返回值
@@ -179,7 +186,7 @@ Page({
     //使用triggerEvent事件，将绑定在此组件的myevent事件，将返回值传递过去
     this.triggerEvent('myevent', detail);
     //根据获取到的X轴坐标进行动画演示
-    this.data.cssAnimation = 'translate3d(' + this.data.xAxial + 'px, 0, 0)';
+    this.data.cssAnimation = 'translate3d(' + xAxial + 'px, 0, 0)';
 
     this.setData({
       succeedMsg: this.data.succeedMsg,
@@ -192,15 +199,15 @@ Page({
   reset: function () {
     this.setData({
       hint: '右滑完成验证',//默认提示语
-      sysW: wx.getSystemInfoSync().windowWidth,//获取屏幕宽度
-      xAxial: 0,//X轴的初始值
-      x: 0,//触摸时X轴的值
       w: (wx.getSystemInfoSync().windowWidth * 0.8) - 50,//滑块可移动的X轴范围
       cssAnimation: 'translate3d(0, 0, 0)',//CSS动画的初始值
       succeedMsg: '',//验证成功提示信息的默认值
-      pullStatus: true,//是否允许验证成功后继续滑动
       sliderflg: false,
     })
+    sysW = wx.getSystemInfoSync().windowWidth;  //获取屏幕宽度
+    xAxial = 0;  //X轴的初始值
+    x = 0;  //触摸时X轴的值
+    pullStatus = true;  //是否允许验证成功后继续滑动
   },
 
   //发送验证码
@@ -216,16 +223,15 @@ Page({
     }
     //获取当前时间戳  
     var timestamp = Date.parse(new Date());
-    timestamp = timestamp/1000;
-    console.log("当前时间戳为：" + timestamp);
+    smstimestamp = timestamp/1000;
+    console.log("当前时间戳为：" + smstimestamp);
 
+    smsNoCode = code;
     this.setData({
-      smsNoCode: code,
       firsttime: that.firsttime + 1,
       second: 60,
-      smstimestamp: timestamp
     })
-    console.log(code, that.data.smsNoCode)  //验证码
+    console.log(code, smsNoCode)  //验证码
 
     this.resendsms(this);
 
@@ -264,20 +270,18 @@ Page({
    * 每60s允许发送一次验证码
    */
   resendsms: function(that) {
-    var minussecond = null;
 
-    var t = setInterval(function () {
+    //每隔1s刷新按钮上倒计时的时间
+    t = setInterval(function () {
+      //1min倒计时结束，回收计时器
       if (that.data.second == 0) {
         clearInterval(t);
         return;
       }
-      minussecond = that.data.second - 1;
       that.setData({
-        second: minussecond
+        second: that.data.second - 1
       })
     }, 1000)
-
-    
   },
 
   /**
@@ -285,7 +289,7 @@ Page({
    */
   login: function(){
     var that = this;
-    var pretimestamp = that.data.smstimestamp;
+    var pretimestamp = smstimestamp;
     //获取当前时间戳  
     var nowtimestamp = Date.parse(new Date());
     nowtimestamp = nowtimestamp / 1000;
@@ -295,7 +299,7 @@ Page({
     console.log('时间间隔:' + timestamp);
 
     //用户输入验证码与最近发出验证码一致且验证码有效期未过
-    if (that.data.smsNoCode == that.data.smsNoInput && timestamp < 5){
+    if (smsNoCode == smsNoInput && timestamp < 5){
       Dialog.alert({
         message: '未开发功能'
       }).then(() => {

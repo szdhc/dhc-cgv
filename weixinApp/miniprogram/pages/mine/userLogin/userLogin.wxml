@@ -50,4 +50,3 @@
 </view>
 </view>
 <van-dialog id="van-dialog" />
-<van-button type="warning">{{smsNoCode}}</van-button>
