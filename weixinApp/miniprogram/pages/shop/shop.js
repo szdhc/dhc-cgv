@@ -7,7 +7,7 @@ Page({
     movieAddress: '苏州平江万达广场店',
     currProvince: '',
     currCity: '',
-    isClose: true,     //判断当前页面是打开还是返回页
+    //isClose: true,     //判断当前页面是打开还是返回页
     // --------------------------------------------------------------//
     navbar: ['卖品', '会员卡'],
     currentTab: 0,
@@ -504,8 +504,8 @@ Page({
     memberCards: [
       {
         cardType: "折扣卡",
-        cardIcon: "https://thumbnail0.baidupcs.com/thumbnail/14f78189c73b9569bb2026c221caa155?fid=2320392649-250528-867904750537262&time=1548295200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-6PRlU81XGwbUxeiz0JHbo0UgVu0%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=543345714040864742&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video",
-        cardImage: "https://thumbnail0.baidupcs.com/thumbnail/14f78189c73b9569bb2026c221caa155?fid=2320392649-250528-867904750537262&time=1548295200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-6PRlU81XGwbUxeiz0JHbo0UgVu0%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=543345714040864742&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video",
+        cardIcon: "cloud://cvg20190102-80d55e.6376-cvg20190102-80d55e/card1.jpg",
+        cardImage: "cloud://cvg20190102-80d55e.6376-cvg20190102-80d55e/card1.jpg",
         cardName: "E优卡(一年卡)",
         cardDescription: "IMAX等特效厅和普通厅全场挂牌价4折无赠券活动点击了解详情",
         cardInfo: "",
@@ -514,8 +514,8 @@ Page({
       },
       {
         cardType: "折扣卡",
-        cardIcon: "https://thumbnail0.baidupcs.com/thumbnail/4ca9d967d7b7519e30dbae334d9df6f4?fid=2320392649-250528-7407752078427&time=1548295200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-4lT8wrAmvYEzeQen%2FTcaqnJxB7Q%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=543387918776468071&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video",
-        cardImage: "https://thumbnail0.baidupcs.com/thumbnail/4ca9d967d7b7519e30dbae334d9df6f4?fid=2320392649-250528-7407752078427&time=1548295200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-4lT8wrAmvYEzeQen%2FTcaqnJxB7Q%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=543387918776468071&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video",
+        cardIcon: "cloud://cvg20190102-80d55e.6376-cvg20190102-80d55e/card2.jpg",
+        cardImage: "cloud://cvg20190102-80d55e.6376-cvg20190102-80d55e/card2.jpg",
         cardName: "E优卡(半年卡)",
         cardDescription: "IMAX等特效厅和普通厅全场挂牌价4折无赠券活动点击了解详情",
         cardInfo: "",
@@ -568,7 +568,7 @@ Page({
     // url encode
     // let modeEncode = encodeURIComponent(modeStr);
     // console.log(modeStr);
-    this.setData({ isClose: false });
+    //this.setData({ isClose: false });
     wx.navigateTo({
       url: '../shop/goods/goods',
       //url: '../shop/goods/goods?jsonStr=' + str,
@@ -903,9 +903,6 @@ Page({
 * 生命周期函数--监听页面隐藏
 */
   onHide: function () {
-    if (this.data.isClose) {
-      console.log('重新打开')
-    }
   },
 
   onShow: function () {
@@ -919,12 +916,10 @@ Page({
     }
     wx.removeStorageSync("membershipIndex");
 
-    console.log("shops-----------------" + this.data.isClose);
-
     // 当页面从详细跳转过来时
-    let pages = getCurrentPages();
-    let prevpage = pages[pages.length - 1];
-    if (!this.data.isClose) {
+    let isGoodsJson = wx.getStorageSync("jsongoods");
+    let isGoods = JSON.parse(isGoodsJson);
+    if (isGoods != undefined && isGoods != null && isGoods == "goodsPage") {
 
       let carArr = wx.getStorageSync("jsonCarA");
       let carA = JSON.parse(carArr);

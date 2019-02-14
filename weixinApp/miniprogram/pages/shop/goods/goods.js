@@ -433,12 +433,11 @@ Page({
     wx.setStorageSync("jsonCarA", JSON.stringify(this.data.carArray));  
 
     wx.removeStorageSync("jsonStr");
-    wx.setStorageSync("jsonStr", JSON.stringify(this.data.goods));        
+    wx.setStorageSync("jsonStr", JSON.stringify(this.data.goods));     
 
-    var that = this
-    setTimeout(function () {
-      that.setData({ isClose: true })
-    }, 200) 
+    wx.removeStorageSync("jsongoods");
+    wx.setStorageSync("jsongoods", JSON.stringify("goodsPage"));   
+
   },
 
   /**
