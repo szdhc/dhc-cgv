@@ -18,11 +18,11 @@ Page({
     childindex:0,
     marryIndex:0,
     region: ['广东省', '广州市', '海珠区'],
-    hiddenmodalput: true,
-    hiddenmodalpsdput: true,
+    //hiddenmodalput: true,
+    //hiddenmodalpsdput: true,
     userSurname:'未完善',
-    password:'未完善',
-    hiddenmodalmovieput:true,
+    password:'',
+    //hiddenmodalmovieput:true,
     likeMovie:'未完善'
     //可以通过hidden是否掩藏弹出框的属性，来指定那个弹出框  
     
@@ -177,30 +177,30 @@ Page({
       region: e.detail.value
     })
   },
-  //点击按钮痰喘指定的hiddenmodalput弹出框  
-  modalinput: function (e) {
-    this.setData({
-      hiddenmodalput: !this.data.hiddenmodalput,
-    })
+  //点击按钮弹出指定的hiddenmodalput弹出框  
+  // modalinput: function (e) {
+  //   this.setData({
+  //     hiddenmodalput: !this.data.hiddenmodalput,
+  //   })
     
-  },
+  // },
   //取消按钮  
-  cancel: function () {
-    this.setData({
-      hiddenmodalput: true
-    });
-  },
+  // cancel: function () {
+  //   this.setData({
+  //     hiddenmodalput: true
+  //   });
+  // },
   //确认  
-  confirm: function (e) {
-    this.setData({
-      hiddenmodalput: true
-    })
-    wx.showToast({
-      title: '提交成功',
-      icon: 'success',
-      duration: 2000
-    })
-  },
+  // confirm: function (e) {
+  //   this.setData({
+  //     hiddenmodalput: true
+  //   })
+  //   wx.showToast({
+  //     title: '提交成功',
+  //     icon: 'success',
+  //     duration: 2000
+  //   })
+  // },
   getUserSurname: function(e){
     this.setData({
       userSurname: e.detail.value
@@ -211,63 +211,58 @@ Page({
       })
     }
   },
-  modalpsd: function(){
-    this.setData({
-      hiddenmodalpsdput: !this.data.hiddenmodalpsdput,
-    })
-  },
-  psdcancel: function () {
-    this.setData({
-      hiddenmodalpsdput: true
-    });
-  },
-  //确认  
-  psdconfirm: function (e) {
-    this.setData({
-      hiddenmodalpsdput: true
-    })
-    wx.showToast({
-      title: '提交成功',
-      icon: 'success',
-      duration: 2000
-    })
-  },
+  // modalpsd: function(){
+  //   this.setData({
+  //     hiddenmodalpsdput: !this.data.hiddenmodalpsdput,
+  //   })
+  // },
+  // psdcancel: function () {
+  //   this.setData({
+  //     hiddenmodalpsdput: true
+  //   });
+  // },
+  // //确认  
+  // psdconfirm: function (e) {
+  //   this.setData({
+  //     hiddenmodalpsdput: true
+  //   })
+  //   wx.showToast({
+  //     title: '提交成功',
+  //     icon: 'success',
+  //     duration: 2000
+  //   })
+  // },
   getPassword: function (e) {
     this.setData({
       password: e.detail.value
     })
-    if (this.data.password == '') {
-      this.setData({
-        password: '未完善'
-      })
-    }
   },
 
 
 
 
 
-  modalmovie: function () {
-    this.setData({
-      hiddenmodalmovieput: !this.data.hiddenmodalmovieput,
-    })
-  },
-  moviecancel: function () {
-    this.setData({
-      hiddenmodalmovieput: true
-    });
-  },
-  //确认  
-  movieconfirm: function (e) {
-    this.setData({
-      hiddenmodalmovieput: true
-    })
-    wx.showToast({
-      title: '提交成功',
-      icon: 'success',
-      duration: 2000
-    })
-  },
+  // modalmovie: function () {
+  //   this.setData({
+  //     hiddenmodalmovieput: !this.data.hiddenmodalmovieput,
+  //   })
+  // },
+  // moviecancel: function () {
+  //   this.setData({
+  //     hiddenmodalmovieput: true
+  //   });
+  // },
+  // //确认  
+  // movieconfirm: function (e) {
+  //   this.setData({
+  //     hiddenmodalmovieput: true
+  //   })
+  //   wx.showToast({
+  //     title: '提交成功',
+  //     icon: 'success',
+  //     duration: 2000
+  //   })
+  // },
   getLikeMovie: function (e) {
     this.setData({
       likeMovie: e.detail.value

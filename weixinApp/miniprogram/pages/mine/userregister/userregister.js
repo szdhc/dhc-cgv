@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    logosrc: 'cgvlogo.PNG',
+    logosrc: 'cloud://cvg20190102-80d55e.6376-cvg20190102-80d55e/cgvlogo.PNG',
     iv: null, //加密算法的初始向量
     encryptedData: null //完整用户信息的加密数据
   },

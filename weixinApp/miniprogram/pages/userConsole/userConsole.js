@@ -1,16 +1,25 @@
 //userConsole.js
-const app = getApp()
+const app = getApp();
+const regurl = '../mine/userregister/userregister';
+var loginstatus = false;
 
 Page({
   data: {
-    avatarUrl: './user-unlogin.png',
+    avatarUrl: 'cloud://cvg20190102-80d55e.6376-cvg20190102-80d55e/user-unlogin.png',
     userInfo: {},
     logged: false,
     takeSession: false,
     requestResult: '',
-    username:'CGV影迷',
+    username:'未登录',
     orderUrl:'',
-    statusBarHeight:app.globalData.statusBarHeight
+    statusBarHeight:app.globalData.statusBarHeight,
+
+    menbershipUrl: regurl,
+    couponUrl: regurl,
+    discountCardUrl: regurl,
+    myLikeUrl: regurl,
+    myOrderUrl: regurl,
+    myPointsUrl: regurl
   },
 
   onLoad: function () {
@@ -18,78 +27,77 @@ Page({
       wx.redirectTo({
         url: '../chooseLib/chooseLib',
       })
-      return
+      return;
     }
 
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo,
-                username:res.userInfo.nickName
-              })
-            }
-          })
-        }
-      }
-    })  
-  },
-  onGetUserInfo: function (e) {
-    if (!this.logged && e.detail.userInfo) {
+    //Todo
+    if (loginstatus){
       this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo,
-        username: e.detail.userInfo.nickName
+        menbershipUrl: '../mine/Membership/Membership',
+        couponUrl: '../mine/coupon/coupon',
+        discountCardUrl: '../mine/discountCard/discountCard',
+        myLikeUrl: '../myLike/myLike',
+        myOrderUrl: '../mine/myOrder/myOrder',
+        myPointsUrl: '../mine/myPoints/myPoints'
       })
     }
-  },
-  Userinfo() {
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        wx.navigateTo({
-          url: '../mine/userInfo/userInfo?avatarUrl=' + this.data.avatarUrl+'&username='+this.data.username,
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
-        })
-      }
-    })
-    
-  },
-  
+   
 
-  onGetOpenid: function () {
-    // 调用云函数
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        wx.navigateTo({
-          url: '../mine/userregister/userregister',
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
-        })
-      }
-    })
+    // 获取用户信息
+    // wx.getSetting({
+    //   success: res => {
+    //     if (res.authSetting['scope.userInfo']) {
+    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+    //       wx.getUserInfo({
+    //         success: res => {
+    //           this.setData({
+    //             avatarUrl: res.userInfo.avatarUrl,
+    //             userInfo: res.userInfo,
+    //             username:res.userInfo.nickName,
+    //           })
+    //         }
+    //       })
+    //     }
+    //   }
+    // })  
+  },
+  // onGetUserInfo: function (e) {
+  //   if (!this.logged && e.detail.userInfo) {
+  //     this.setData({
+  //       logged: true,
+  //       avatarUrl: e.detail.userInfo.avatarUrl,
+  //       userInfo: e.detail.userInfo,
+  //       username: e.detail.userInfo.nickName
+  //     })
+  //   }
+  // },
+  Userinfo() {
+
+    if(loginstatus){
+      wx.cloud.callFunction({
+        name: 'login',
+        data: {},
+        success: res => {
+          console.log('[云函数] [login] user openid: ', res.result.openid)
+          app.globalData.openid = res.result.openid
+          wx.navigateTo({
+            url: '../mine/userInfo/userInfo?avatarUrl=' + this.data.avatarUrl + '&username=' + this.data.username,
+          })
+        },
+        fail: err => {
+          console.error('[云函数] [login] 调用失败', err)
+          wx.navigateTo({
+            url: '../deployFunctions/deployFunctions',
+          })
+        }
+      })
+    }
+    else{
+      wx.navigateTo({
+        url: regurl,
+      })
+    }
+    
   },
   
   // 上传图片
@@ -142,8 +150,15 @@ Page({
     })
   },
   myleveldetail:function(){
-    wx.navigateTo({
-      url: '../mine/mylevdetail/mylevdetail?avatarUrl='+this.data.avatarUrl,
-    })
+    if(loginstatus){
+      wx.navigateTo({
+        url: '../mine/mylevdetail/mylevdetail?avatarUrl=' + this.data.avatarUrl,
+      })
+    } else {
+      wx.navigateTo({
+        url: regurl,
+      })
+    }
+    
   }
 })

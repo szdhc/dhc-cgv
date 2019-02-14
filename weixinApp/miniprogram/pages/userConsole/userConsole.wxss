@@ -44,6 +44,11 @@ page {
   border: none;
 }
 
+.userinfo-avatar-image {
+  width: 60px;
+  height: 60px;
+}
+
 .userinfo-nickname {
   font-weight:600;
   margin-top: 14%;
@@ -51,7 +56,6 @@ page {
   color: #fff;
   background-size: cover;
   background-color: transparent;
-  margin-left: -22rpx;
 }
 
 .userinfo-nickname::after {

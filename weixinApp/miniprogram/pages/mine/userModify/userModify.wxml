@@ -25,10 +25,7 @@
       <text class='list'>姓氏</text>
     </view>
     <view class='right'>
-      <text class='rightsurname' bindtap="modalinput" value="">{{userSurname}}</text>
-      <modal id="modal" hidden="{{hiddenmodalput}}" title="姓氏" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
-        <input type='text' name="userSurname" placeholder="请输入" bindinput='getUserSurname' />
-      </modal>
+        <input class='rightsurname' type='text' value='{{userSurname}}' bindblur='getUserSurname' confirm-type='done' />
     </view>
   </view>
   <view class='userinfo'>
@@ -47,10 +44,7 @@
       <text class='list'>密码</text>
     </view>
     <view class='right'>
-      <text class='rightsurname' bindtap="modalpsd">••••••</text>
-      <modal id="modal" hidden="{{hiddenmodalpsdput}}" title="密码" confirm-text="提交" cancel-text="取消" bindcancel="psdcancel" bindconfirm="psdconfirm">
-        <input type='password' name="password" placeholder="请输入" bindinput='getPassword' />
-      </modal>
+        <input class='rightsurname' type='password' placeholder='未设置密码' value='{{password}}' bindblur='getPassword' confirm-type='done' />
     </view>
   </view>
   <view class='userinfo'>
@@ -58,10 +52,7 @@
       <text class='list'>喜欢的电影</text>
     </view>
     <view class='right'>
-      <text class='rightsurname' bindtap='modalmovie'>{{likeMovie}}</text>
-      <modal id="modal" hidden="{{hiddenmodalmovieput}}" title="喜欢的电影" confirm-text="提交" cancel-text="取消" bindcancel="moviecancel" bindconfirm="movieconfirm">
-        <input type='text' name="likeMovie" placeholder="请输入" bindinput='getLikeMovie' />
-      </modal>
+        <input class='rightsurname' type='text' value='{{likeMovie}}' bindinput='getLikeMovie' confirm-type='done' />
     </view>
   </view>
   <view class='userinfo'>

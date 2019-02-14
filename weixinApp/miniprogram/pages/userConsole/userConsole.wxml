@@ -2,13 +2,15 @@
 <view class="container">
   <view class='guide'>
     <!-- 用户 openid -->
-    <view class="userinfo ">
-      <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" bindtap='Userinfo' style="background-image: url({{avatarUrl}})"></button>
-      <text class="userinfo-nickname" bindtap="onGetOpenid">{{username}}</text>
+    <view class="userinfo">
+      <button class="userinfo-avatar" plain='true' bindtap='Userinfo'><image class='userinfo-avatar-image' src='{{avatarUrl}}' mode='aspectFit'></image></button>
+      <text class="userinfo-nickname" bindtap="Userinfo">{{username}}</text>
       <button class="userinfo-tequan" bindtap="myleveldetail">我的特权</button>
     </view>
+
+
     <view class='title'>
-    <navigator url="../mine/Membership/Membership" hover-class="none" open-type="navigate" class="wodelist-text">
+    <navigator url="{{menbershipUrl}}" hover-class="none" open-type="navigate" class="wodelist-text">
     <view class='flex-wrp-row item border' style='background: #fff;'>
     
       <view class='item-left flex-wrp-row'>
@@ -25,7 +27,7 @@
       
     </view>
     </navigator>
-    <navigator url="../mine/coupon/coupon" hover-class="none" open-type="navigate" class="wodelist-text">
+    <navigator url="{{couponUrl}}" hover-class="none" open-type="navigate" class="wodelist-text">
     <view class='flex-wrp-row item border' style='background: #fff;'>
       <view class='item-left flex-wrp-row'>
         <icon class='iconfont icon-youhuiquan' >
@@ -40,7 +42,7 @@
       </view>
     </view>
     </navigator>
-    <navigator url="../mine/discountCard/discountCard" hover-class="none" open-type="navigate" class="wodelist-text">
+    <navigator url="{{discountCardUrl}}" hover-class="none" open-type="navigate" class="wodelist-text">
     <view class='flex-wrp-row item border' style='background: #fff;'>
       <view class='item-left flex-wrp-row'>
         <icon class='iconfont icon-wodedaijinquan' >
@@ -55,7 +57,7 @@
       </view>
     </view>
     </navigator>
-    <navigator url="../myLike/myLike" hover-class="none" open-type="navigate" class="wodelist-text">
+    <navigator url="{{myLikeUrl}}" hover-class="none" open-type="navigate" class="wodelist-text">
     <view class='flex-wrp-row item border' style='background: #fff;'>
       <view class='item-left flex-wrp-row'>
         <icon class='iconfont icon-dianying' >
@@ -70,7 +72,7 @@
       </view>
     </view>
     </navigator>
-    <navigator url="../mine/myOrder/myOrder" hover-class="none" open-type="navigate" class="wodelist-text">
+    <navigator url="{{myOrderUrl}}" hover-class="none" open-type="navigate" class="wodelist-text">
     <view class='flex-wrp-row item border' style='background: #fff;'>
       <view class='item-left flex-wrp-row'>
         <icon class='iconfont icon-dingdan' >
@@ -85,7 +87,7 @@
       </view>
     </view>
      </navigator>
-     <navigator url="../mine/myPoints/myPoints" hover-class="none" open-type="navigate" class="wodelist-text">
+     <navigator url="{{myPointsUrl}}" hover-class="none" open-type="navigate" class="wodelist-text">
     <view class='flex-wrp-row item border' style='background: #fff;'>
       <view class='item-left flex-wrp-row'>
         <icon class='iconfont icon-jifen' >

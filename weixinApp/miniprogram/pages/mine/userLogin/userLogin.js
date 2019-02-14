@@ -20,7 +20,7 @@ Page({
 
     smsLbl: '短信验证码',
     smsPhd: '请输入短信验证码',
-    logosrc: '../userregister/cgvlogo.PNG',
+    logosrc: 'cloud://cvg20190102-80d55e.6376-cvg20190102-80d55e/cgvlogo.PNG',
     istelnoflg: true,  //手机号验证flg
     issmsflg: false,  //验证码验证flg
     isOk: true,  //登录button flg

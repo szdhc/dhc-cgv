@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      membershipName: '',
+      membershipName: '11',
       membershipShow: '贵宾座',
       membershipLevel: '不可储值，不可退换',
       membershipDiscount:'凭此卡可享受8.5折优惠',

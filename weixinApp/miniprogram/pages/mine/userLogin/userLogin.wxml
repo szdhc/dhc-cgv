@@ -24,7 +24,7 @@
       <image src='line.png'></image>
     </view>
     <view wx:else class='operationBox'>
-      <image src='line.png'></image>
+      <image lazy-load='true' src='cloud://cvg20190102-80d55e.6376-cvg20190102-80d55e/line.png'></image>
     </view>
   </view>
 </view>
