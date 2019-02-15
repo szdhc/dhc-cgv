@@ -10,6 +10,8 @@
       <navigator url="../index/filmDetails/filmDetails?id={{id}}&wantFlag={{wantFlag}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
         <view>
           <text class='medium-font-size'>{{movieName}}</text>
+          <image class='typeImage' src='{{movieType1}}'></image>
+          <image class='typeImage' src='{{movieType2}}'></image>
         </view>
         <view>
           <text class='regular-font-size movieShow'>{{movieShow}}</text>
@@ -48,6 +50,8 @@
         <navigator url="{{url}}?id={{id}}&wantFlag={{wantFlag}}&type=hot" hover-class="none hover" style='display:flex;flex-direction:column'>
           <view>
             <text class='medium-font-size'>{{movieName}}</text>
+            <image class='typeImage' src='{{movieType1}}'></image>
+            <image class='typeImage' src='{{movieType2}}'></image>
           </view>
           <view>
             <text class='regular-font-size movieShow'>{{movieShow}}</text>

@@ -6,7 +6,7 @@
         </view>
         <view style='display:flex;flex-direction:column;justify-content: space-around;height:300rpx'>
             <text style='font-size:34rpx;color:white;'>{{filmDetails_info.title}}</text>
-            <text class='eng_name'>{{filmDetails_info.original_title}}</text>
+            <text class='eng_name'>{{filmDetails_info.aka[filmDetails_info.aka.length-1]}}</text>
             <text wx:if="{{filmType=='coming'}}" style='color:rgb(246,200,68);font-size:34rpx;margin:10rpx 0;'>{{filmDetails_info.wish_count}}人想看</text>
             <view class='comment_star' wx:if="{{filmType=='hot'}}">
                 <image src='../../../images/full_star.png' wx:for='{{filmDetails_info.rating.average/2-1 }}' wx:key='s' style='width:32rpx;height:32rpx'></image>

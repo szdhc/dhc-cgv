@@ -40,7 +40,7 @@ Page({
 
   bindBeginCityView: function() {
     wx.navigateTo({
-      url: '../citys/citys?cityType=begin',
+      url: '../citys/citys?cityType=begin&beginCity=' + this.data.begin,
     })
   },
   onShow: function() {
@@ -87,15 +87,19 @@ Page({
   //选择影城并返回首页
   bindMovieAddress: function(e) {
     let pages = getCurrentPages();
-    let prevPage = pages[pages.length - 2];
+    let prevPage = pages[pages.length - 3];
     wx.setStorageSync('localMovieAddress', this.data.movieAddressList[e.currentTarget.dataset.id].movieAddress)
     e.currentTarget.dataset
     prevPage.setData({
       movieAddress: this.data.movieAddressList[e.currentTarget.dataset.id].movieAddress,
-      // movieAddress: this.data.movieAddress
+      //  movieAddress: this.data.movieAddress
     })
-    wx.navigateBack({
-      delta: 1
+    // wx.navigateBack({
+    //   delta: 1
+    // })
+    wx.switchTab({
+      url: '/pages/index/index'
+      //url: '/pages/citys/citys?cityType=begin&beginCity=' + this.data.currCity,
     })
   }
 })

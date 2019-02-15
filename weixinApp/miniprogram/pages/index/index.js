@@ -10,6 +10,7 @@ Page({
     movieAddress: '',
     currProvince: '',
     currCity: '',
+    location: '',
     latitude1: 0.0,
     longitude1: 0.0,
     // --------------------------------------------------------------//
@@ -87,115 +88,6 @@ Page({
     })
     this.hotMovies();
     this.comingMovies();
-  },
-  hotMovies() {
-    this.setData({
-      loader: 1
-    })
-    wx.request({
-      url: `https://douban.uieee.com/v2/movie/${this.data.types}&start=${this.data.start}&count=${this.data.count}`,
-      method: "GET",
-      header: {
-        'Content-Type': 'json',
-      },
-      success: ({
-        data
-      }) => {
-        let height = 380;
-        let arr = [];
-        let movieObj = new Map();
-        for (let i = 0; i < this.data.fixedCount1; i++) {
-          movieObj.set('movieImage', data.subjects[i].images['small'])
-          movieObj.set('movieName', data.subjects[i].title)
-          movieObj.set('movieShow', data.subjects[i].title)
-          let directors = '';
-          for (let j = 0; j < data.subjects[i].directors.length; j++) {
-            directors = directors + data.subjects[i].directors[j].name
-          }
-          let casts = '';
-          for (let k = 0; k < data.subjects[i].casts.length; k++) {
-            casts = casts + data.subjects[i].casts[k].name
-          }
-          movieObj.set('movieDirectorStarring', directors + '/' + casts)
-          movieObj.set('moiveGrade', data.subjects[i].rating.average + '分')
-          if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190115') {
-            movieObj.set('movieStatus', '预售')
-          } else {
-            movieObj.set('movieStatus', '购票')
-
-          }
-          movieObj.set('id', data.subjects[i].id)
-          arr.push(JSON.parse(util.MapTOJson(movieObj)))
-          height = height + 200;
-        }
-        this.setData({
-          hotCount: data.subjects.length,
-          hotMovieList: arr,
-          loader: 0,
-
-        })
-        console.log(data)
-        console.log(arr)
-      }
-    })
-  },
-  comingMovies() {
-    this.setData({
-      loader: 1
-    })
-    wx.request({
-      url: `https://douban.uieee.com/v2/movie/${this.data.types}&start=${this.data.start}&count=${this.data.count}`,
-      method: "GET",
-      header: {
-        'Content-Type': 'json',
-      },
-      success: ({
-        data
-      }) => {
-        let number = 0;
-        let height = 340;
-        let arr2 = [];
-        let movieObj2 = new Map();
-        // 获取当前时间
-        var myDate = new Date();
-        let localeDate = parseInt('' + myDate.getFullYear() + myDate.getMonth() + 1 + myDate.getDate());
-        for (let i = 0; i < data.subjects.length; i++) {
-          if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190115') {
-            number++;
-            if (number <= this.data.fixedCount2) {
-              movieObj2.set('movieImage', data.subjects[i].images['small'])
-              movieObj2.set('movieName', data.subjects[i].title)
-              movieObj2.set('movieShow', data.subjects[i].title)
-              movieObj2.set('movieOntime', data.subjects[i].mainland_pubdate)
-              let directors = '';
-              for (let j = 0; j < data.subjects[i].directors.length; j++) {
-                directors = directors + data.subjects[i].directors[j].name
-              }
-              let casts = '';
-              for (let k = 0; k < data.subjects[i].casts.length; k++) {
-                casts = casts + data.subjects[i].casts[k].name + " "
-              }
-              movieObj2.set('movieDirectorStarring', directors + '/' + casts)
-              movieObj2.set('wishCount', data.subjects[i].collect_count)
-              movieObj2.set('movieStatus', '预售')
-              movieObj2.set('id', data.subjects[i].id)
-              movieObj2.set('wantFlag', 0)
-              movieObj2.set('formId', '')
-              movieObj2.set('url', '../index/filmDetails/filmDetails')
-              arr2.push(JSON.parse(util.MapTOJson(movieObj2)))
-              height = height + 200;
-            }
-          }
-        }
-        this.setData({
-          comingCount: number,
-          comingMovieList: arr2,
-          loader: 0,
-        })
-      }
-    })
-  },
-  onShow: function () {
     let vm = this;
     this.getLocation();
     qqmapsdk.getCityList({
@@ -225,6 +117,140 @@ Page({
         console.log(res);
       }
     });
+
+  },
+  hotMovies() {
+    this.setData({
+      loader: 1
+    })
+    wx.request({
+      url: `https://douban.uieee.com/v2/movie/${this.data.types}&start=${this.data.start}&count=${this.data.count}`,
+      method: "GET",
+      header: {
+        'Content-Type': 'json',
+      },
+      success: ({
+        data
+      }) => {
+        let height = 380;
+        let arr = [];
+        let movieObj = new Map();
+        for (let i = 0; i < this.data.fixedCount1; i++) {
+          movieObj.set('movieImage', data.subjects[i].images['small'])
+          movieObj.set('movieName', data.subjects[i].title)
+          movieObj.set('movieShow', data.subjects[i].title)
+          // let directors = '';
+          // for (let j = 0; j < data.subjects[i].directors.length; j++) {
+          //   directors = directors + data.subjects[i].directors[j].name
+          // }
+          let casts = '主演:';
+          for (let k = 0; k < data.subjects[i].casts.length; k++) {
+            casts = casts + data.subjects[i].casts[k].name
+            if (k + 1 != data.subjects[i].casts.length) {
+              casts = casts + ','
+            }
+          }
+          movieObj.set('movieDirectorStarring',casts)
+          movieObj.set('moiveGrade', data.subjects[i].rating.average + '分')
+          if (data.subjects[i].rating.average>6){
+            movieObj.set('movieType1', '../../images/4DX.png')
+            movieObj.set('movieType2', '../../images/IMAX.png')
+          }
+          else{
+            movieObj.set('movieType1', '')
+            movieObj.set('movieType2', '')
+          }
+         
+          if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190201') {
+            movieObj.set('movieStatus', '预售')
+          } else {
+            movieObj.set('movieStatus', '购票')
+
+          }
+          movieObj.set('id', data.subjects[i].id)
+          arr.push(JSON.parse(util.MapTOJson(movieObj)))
+          height = height + 200;
+        }
+        this.setData({
+          hotCount: data.subjects.length,
+          hotMovieList: arr,
+          loader: 0,
+
+        })
+
+        console.log(arr)
+      }
+    })
+  },
+  comingMovies() {
+    this.setData({
+      loader: 1
+    })
+    wx.request({
+      url: `https://douban.uieee.com/v2/movie/${this.data.types}&start=${this.data.start}&count=${this.data.count}`,
+      method: "GET",
+      header: {
+        'Content-Type': 'json',
+      },
+      success: ({
+        data
+      }) => {
+        let number = 0;
+        let height = 340;
+        let arr2 = [];
+        let movieObj2 = new Map();
+        // 获取当前时间
+        var myDate = new Date();
+        let localeDate = parseInt('' + myDate.getFullYear() + myDate.getMonth() + 1 + myDate.getDate());
+        for (let i = 0; i < data.subjects.length; i++) {
+          if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190201') {
+            number++;
+            if (number <= this.data.fixedCount2) {
+              movieObj2.set('movieImage', data.subjects[i].images['small'])
+              movieObj2.set('movieName', data.subjects[i].title)
+              movieObj2.set('movieShow', data.subjects[i].title)
+              movieObj2.set('movieOntime', data.subjects[i].mainland_pubdate)
+              // let directors = '';
+              // for (let j = 0; j < data.subjects[i].directors.length; j++) {
+              //   directors = directors + data.subjects[i].directors[j].name
+              // }
+              let casts = '主演:';
+              for (let k = 0; k < data.subjects[i].casts.length; k++) {
+                casts = casts + data.subjects[i].casts[k].name
+                if (k + 1 != data.subjects[i].casts.length) {
+                  casts = casts + ','
+                }
+              }
+              movieObj2.set('movieDirectorStarring', casts)
+              movieObj2.set('wishCount', data.subjects[i].collect_count)
+              if (data.subjects[i].rating.average > 6) {
+                movieObj2.set('movieType1', '../../images/4DX.png')
+                movieObj2.set('movieType2', '../../images/IMAX.png')
+              }
+              else {
+                movieObj2.set('movieType1', '')
+                movieObj2.set('movieType2', '')
+              }
+              movieObj2.set('movieStatus', '预售')
+              movieObj2.set('id', data.subjects[i].id)
+              movieObj2.set('wantFlag', 0)
+              movieObj2.set('formId', '')
+              movieObj2.set('url', '../index/filmDetails/filmDetails')
+              arr2.push(JSON.parse(util.MapTOJson(movieObj2)))
+              height = height + 200;
+            }
+          }
+        }
+        this.setData({
+          comingCount: number,
+          comingMovieList: arr2,
+          loader: 0,
+        })
+      }
+    })
+  },
+  onShow: function () {
+
   },
   //选项卡切换
   navbarTap: function (e) {
@@ -275,6 +301,7 @@ Page({
   //获取当前地理位置
   getLocal: function (latitude, longitude) {
     var that = this;
+    let city = '';
     qqmapsdk.reverseGeocoder({
       location: {
         latitude: latitude,
@@ -282,21 +309,42 @@ Page({
       },
       success: function (res) {
         console.log(JSON.stringify(res));
-        if (res.status === 0) {
+        city = res.result.address_component.city
+        if (res.status == 0) {
           let localMovieAddr = wx.getStorageSync('localMovieAddress');
           let localCityName = wx.getStorageSync('localCityName');
           console.log('local->' + localMovieAddr)
-          if (localMovieAddr == undefined || localMovieAddr == '') {
-            localMovieAddr = that.getMovieAddress(res.result.address_component.city);
+          // if (localMovieAddr == undefined || localMovieAddr == '') {
+          //   localMovieAddr = that.getMovieAddress(res.result.address_component.city);
+          // }
+          if (localCityName != city) {
+            wx.showModal({
+              title: '温馨提示',
+              content: '当前定位为' + city + '是否切换为【' + city+'】影城？',
+              success: function (res) {
+                if (res.confirm) {
+                  console.log('用户点击确定')
+                   localCityName = city;
+                  console.log('用户点击确定' + localCityName)
+                  that.setData({
+                    // currProvince: res.result.address_component.province,
+                    currCity: localCityName,
+                    movieAddress: localMovieAddr,
+
+                  })
+                } else if (res.cancel) {
+                  console.log('用户点击取消')
+                  that.setData({
+                    // currProvince: res.result.address_component.province,
+                    currCity: localCityName,
+                    movieAddress: localMovieAddr,
+
+                  })
+                }
+              }
+            })
           }
-          if (localCityName == undefined || localCityName == '') {
-            localCityName = res.result.address_component.city;
-          }
-          that.setData({
-            currProvince: res.result.address_component.province,
-            currCity: localCityName,
-            movieAddress: localMovieAddr
-          })
+
         }
       },
       fail: function (error) {
@@ -400,8 +448,10 @@ Page({
   //选择影城跳转事件
   jumpcinema() {
     wx.navigateTo({
-      url: '/pages/jumpcinema/jumpcinema?ct=' + this.data.currCity,
+      //  url: '/pages/jumpcinema/jumpcinema?ct=' + this.data.currCity,
+       url: '/pages/citys/citys?cityType=begin&beginCity=' + this.data.currCity,
     })
+
   },
   // 点击更多
   clickMore(e) {

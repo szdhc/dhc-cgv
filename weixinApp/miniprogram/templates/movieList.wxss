@@ -99,3 +99,8 @@
 .share-img-button::after {
   border: none;
 }
+.typeImage {
+  width: 50rpx;
+  height: 32rpx;
+  padding: 0 6rpx;
+}

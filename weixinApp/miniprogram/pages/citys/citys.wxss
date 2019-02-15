@@ -1,7 +1,7 @@
 @import "../../style/guide.wxss";
 
 .a-z {
-  width: 35rpx;
+  width: 75rpx;
   position: fixed;
   top: 230rpx;
   text-align: center;
@@ -9,19 +9,26 @@
   font-size: 30rpx; /* border: 1rpx solid #3399CC; */
 }
 
+.a-z-style {
+  
+            background-color: gold;
+            padding: 0rpx 20rpx 0rpx 20rpx;
+            border-radius:30rpx;
+            /* margin-right: 23rpx; */
+}
+
 .city-item-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 110rpx;
+  margin-top: 21rpx;
   background-color: #fff;
 }
 
 .city-item {
   background: #fff; /* margin-top: 5rpx; */
   width: 80%;
-  padding-left: 5%;
-  margin-left: 5%;
+  margin-left: 6%;
   height: 90rpx;
   font-size: 30rpx;
   line-height: 100rpx;
@@ -32,10 +39,9 @@
   width: 100%;
   height: 40rpx;
   font-size: 30rpx;
-  padding-left: 10%;
+  margin-top: 11rpx;
+  padding-left: 6%;
   background-color: #eee;
-  border-top: 1rpx solid #ccc;
-  margin-top: -1rpx;
 }
 
 .search-box {
@@ -46,6 +52,7 @@
   height: 110rpx;
   font-size: 30rpx;
   border-bottom: 1rpx solid #ddd; /* border: 1rpx solid red; */
+    margin-bottom: 114rpx;
 }
 
 .search-input {
@@ -61,4 +68,71 @@
 
 .search-input-placeholder {
   text-align: center;
+}
+
+.city-picker {
+
+  background-color: #fff;
+  margin-bottom: -10rpx;
+}
+
+.hotcity-common {
+  font-size: 24rpx;
+  color: #666;
+  padding-bottom: 0;
+  margin: 8rpx 0;
+  margin-left: 16rpx;
+}
+
+.current-city {
+  display: inline-block;
+  border: 1rpx solid #fff;
+  border-radius: 8rpx;
+  padding: 10rpx;
+  font-size: 24rpx;
+  color: #fff;
+  text-align: center;
+  min-width: 149.5rpx;
+  margin: 16rpx;
+}
+
+.hot-city {
+  background-color: #fff;
+  margin-bottom: -10rpx;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 5%;
+}
+
+.weui-grid {
+  padding: 10rpx 0;
+  width: 200rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #ececec;
+  border-radius: 8rpx;
+  background-color: white;
+  margin: 22rpx 0 8rpx 8rpx;
+}
+
+.weui-grid-label {
+  display: block;
+  text-align: center;
+  color: #333;
+  font-size: 24rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ul {
+  display: block;
+  color: grey;
+  margin-left: 20rpx;
+  margin-top:100rpx;
+}
+
+.li {
+  display: block;
+  font-weight: 100;
+  font-size: 28rpx;
+  padding: 16rpx 0;
 }

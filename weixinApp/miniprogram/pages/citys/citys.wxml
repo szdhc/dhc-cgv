@@ -1,13 +1,33 @@
 <view class="search-box">
-  <input placeholder="中文/拼音/首字母" class='search-input' bindinput='bindSarchInput' placeholder-class='search-input-placeholder' /> </view>
-<view class='a-z'>
+  <input placeholder="中文/拼音/首字母" class='search-input'bindblur="bindBlur" bindinput='bindSarchInput' placeholder-class='search-input-placeholder' /> </view>
+        <ul class="ul">
+        <li wx:for="{{completeList}}" wx:key="*this" bindtap="citySelected" data-city="{{item}}"class="li">{{item}}</li>
+      </ul>
+<view class='a-z' catchtouchmove="handlerMove" atchtouchend="handlerEnd">
   <view wx:for="{{cityAZ}}" wx:key="unique">
-    <view data-id='{{item.cityName}}' bindtap='bindAZ'>{{item.cityName}}</view>
+    <view class='a-z-style' wx:if="{{item.cityName==nowTarget}}">
+      <view style='color: red' data-id='{{item.cityName}}'>{{nowTarget}}</view>
+    </view>
+    <view data-id='{{item.cityName}}' hidden='{{item.cityName==nowTarget}}'bindtap='bindAZ'>{{item.cityName}}</view>
+  </view>
+</view>
+<view class="city-picker">
+  <view class="city-item-A-Z">定位城市</view>
+  <view class="weui-grid" style='margin-left:6%;'>
+    <view class="weui-grid-label" data-city="{{beginCity}}" bindtap="citySelected">{{beginCity}}</view>
+  </view>
+  <view class="city-item-A-Z">热门城市</view>
+  <view class="hot-city" wx:key="initial">
+    <view wx:for="{{hotCityList}}" wx:key="cityCode">
+      <view class="weui-grid" data-code="{{item.cityCode}}" data-city="{{item.city}}" bindtap="chooseCity">
+        <view class="weui-grid-label" data-city="{{item.city}}" bindtap="citySelected">{{item.city}}</view>
+      </view>
+    </view>
   </view>
 </view>
 <view class='city-item-content'>
-  <view wx:for="{{cityResults}}" wx:key="unique">
-    <view wx:if="{{item.cityPinYin.length > 1}}" class='city-item' data-cityname='{{item.cityName}}' bindtap='citySelected'>{{item.cityName}}</view>
-    <view wx:else class='city-item-A-Z' data-cityname='{{item.cityName}}'>{{item.cityName}}</view>
+  <view wx:for="{{cityResults}}" wx:key="initial">
+    <view class="city-item-A-Z" data-initial="{{item.initial}}">{{item.initial}}</view>
+    <view class='city-item' wx:for="{{item.cityInfo}}" wx:for-item="ct" wx:key="id" data-code="{{ct.code}}" data-city="{{ct.city}}" data-cityname='{{ct.initial}}' bindtap='citySelected'>{{ct.city}}</view>
   </view>
 </view>
