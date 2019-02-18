@@ -119,7 +119,6 @@
           </view>
           <view class="list-content">
             <view class="shopcart-food" wx:for="{{carArray}}">
-              <image src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114" data-src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114" lazy-load="{{true}}" style="width: 25px;height: 25px"></image>
               <text class="name">{{item.name}}</text>
               <view class="price" >
                 <span>￥{{item.price*item.num}}</span> 
