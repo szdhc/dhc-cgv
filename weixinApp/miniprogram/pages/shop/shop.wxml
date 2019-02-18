@@ -59,7 +59,7 @@
       <view id="order{{parentIndex}}" class="title">{{item.name}}</view>
       <view wx:for="{{item.foods}}" class="food-item" wx:for-item="food" data-food="{{food}}" data-item-index="{{index}}" data-parentIndex="{{parentIndex}}" bindtap="selectFoods">
         <view class="icon">
-          <image src="{{food.icon}}" style="width: 57px;height: 57px"></image>
+          <image src="{{food.icon}}" data-src="{{food.icon}}" bindload='onLazyLoad' lazy-load="{{true}}" style="width: 57px;height: 57px"></image>
         </view>
         <view class="gcontent">
           <view class="name">{{food.name}}</view>

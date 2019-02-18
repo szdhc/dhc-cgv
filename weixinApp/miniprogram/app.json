@@ -34,7 +34,8 @@
     "pages/shop/memberCard/memberCard",
     "pages/shop/privacy/privacy",
     "pages/index/chooseMovie/seat/buyGoods/buyGoods",
-    "pages/mine/userLogin/userLogin"
+    "pages/mine/userLogin/userLogin",
+    "pages/shop/goodspay/goodspay"
   ],
   "permission": {
     "scope.userLocation": {

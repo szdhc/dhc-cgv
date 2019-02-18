@@ -889,6 +889,10 @@ Page({
     // })
   },
 
+  onLazyLoad(info) {
+    console.log(info)
+  },
+
   /**
   * 生命周期函数--监听页面卸载
   */
