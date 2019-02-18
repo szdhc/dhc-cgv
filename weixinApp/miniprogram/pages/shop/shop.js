@@ -1,4 +1,5 @@
 var QQMapWX = require('../../qqmap-wx-jssdk/qqmap-wx-jssdk.min.js');
+var util = require('../../utils/util.js');
 var qqmapsdk
 Page({
 
@@ -874,7 +875,7 @@ Page({
       payDesc: this.payDesc()
       
     });
-
+    util.getLocation();
     // 清除缓存
     wx.removeStorageSync('jsonStr')
     wx.removeStorageSync('jsongoods')
@@ -915,6 +916,14 @@ Page({
   },
 
   onShow: function () {
+    var that = this
+
+    var movieAddress1 = wx.getStorageSync("localMovieAddress")
+    var currCity1 = wx.getStorageSync('localCityName');
+    that.setData({
+      movieAddress: movieAddress1,
+      currCity: currCity1
+    })
 
     let membershipIndex = wx.getStorageSync("membershipIndex");
     if (membershipIndex != undefined && membershipIndex != "") {
@@ -1063,7 +1072,7 @@ Page({
   //选择影城跳转事件
   jumpcinema() {
     wx.navigateTo({
-      url: '/pages/jumpcinema/jumpcinema',
+      url: '/pages/citys/citys?cityType=begin&beginCity=' + this.data.currCity,
     })
   },
 

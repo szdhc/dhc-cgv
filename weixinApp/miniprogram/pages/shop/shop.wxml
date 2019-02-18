@@ -2,7 +2,7 @@
 <view class="container">
   <!-- 首页banner -->
   <view class="guide">
-    <include src="../../templates/chooseCinema.wxml" />
+
     
 <!-------------------------------------------------------------------------------->
 <!--导航条-->
@@ -11,7 +11,8 @@
         <text class='address'></text>
         <text class=""></text>
     </view> -->
-    <view>
+        <include src="../../templates/chooseCinema.wxml" />
+    <view class="bar">
         <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
     </view>
     <!-- <view bindtap='clickSearch' class='search'>
@@ -20,8 +21,8 @@
 </view>
 
 <!--卖品-->
-<view hidden="{{currentTab!==0}}">
-    <view class='hotFilm_container'>
+<view class='hotFilm_container' hidden="{{currentTab!==0}}">
+    <view>
 
         <!-- <text class="headline">{{currProvince}}</text>
         <text class="headline">{{currCity}}</text> -->
@@ -156,8 +157,8 @@
   </view>
 
 <!--会员卡-->
-<view hidden="{{currentTab!==1}}">
-    <view class='hotFilm_container'>
+<view class='hotFilm_container' hidden="{{currentTab!==1}}">
+    <view >
         
     <!-- <view class='card_padd'>
       <view class="flex-wrp-row card_backg">
