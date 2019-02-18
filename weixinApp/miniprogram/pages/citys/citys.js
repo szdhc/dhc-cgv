@@ -82,13 +82,19 @@ Page({ /** * 生命周期函数--监听页面加载 */
   onReady: function() {
 
   },
+    //搜索城市后选择城市
+  citySearch: function (e) {
+    this.setData({
+      beginCity: e.currentTarget.dataset.city
+    })
+  },
 
   //选择城市返回选择影城页面
   citySelected: function(e) {
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     let indexPage = pages[pages.length - 3];//把选择的城市存到index页面
-    wx.setStorageSync('localCityName', e.currentTarget.dataset.city)
+
     // prevPage.setData({
     //   begin: e.currentTarget.dataset.city
     // })

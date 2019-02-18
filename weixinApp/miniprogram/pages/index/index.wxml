@@ -1,8 +1,8 @@
 <!--pages/index/index.wxml-->
-<view class="container">
+<view class="container" style='height: 100%; overflow: hidden;'>
   <!-- 首页banner -->
   <view class="guide">
-    <include src="../../templates/chooseCinema.wxml" />
+
     <!-------------------------------------------------------------------------------->
     <!--导航条-->
     <view class="navbar">
@@ -10,7 +10,9 @@
         <text class='address'></text>
         <text class=""></text>
     </view> -->
-      <view>
+              <include src="../../templates/chooseCinema.wxml" />
+      <view class="bar">
+
         <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
       </view>
       <!-- <view bindtap='clickSearch' class='search'>
@@ -19,7 +21,7 @@
     </view>
   </view>
 </view>
-<scroll-view scroll-y="true">
+<scroll-view scroll-y="true" style="padding-top:36px">
   <swiper current="{{currentTab}}" duration="300" bindchange="bindChange" style="height:600px">
   <!--热映-->
     <view hidden="{{currentTab!==0}}">

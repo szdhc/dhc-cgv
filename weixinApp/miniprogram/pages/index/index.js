@@ -116,9 +116,12 @@ Page({
         var that = this
 
     var movieAddress1 = wx.getStorageSync("localMovieAddress")
+    var currCity1 = wx.getStorageSync('localCityName');
     that.setData({
-      movieAddress: movieAddress1
+      movieAddress: movieAddress1,
+      currCity :currCity1
     })
+
 
   },
   //选项卡切换

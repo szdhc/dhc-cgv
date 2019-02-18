@@ -31,7 +31,11 @@
   width: 100%;
 }
 
-
+.local {
+  position: absolute;
+  top: 2rpx;
+  left: 10rpx;
+}
 
 .medium-font-size {
   font-weight: bold;

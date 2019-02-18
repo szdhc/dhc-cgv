@@ -66,10 +66,8 @@ function getLocation() {
 
 //获取当前地理位置
 function getLocal (latitude, longitude) {
-  let city = '';
-  let location = '';
   let localMovieAddr = wx.getStorageSync('localMovieAddress');
-  let localCityName = wx.getStorageSync('localCityName');
+   let localCityName = wx.getStorageSync('localCityName');
   qqmapsdk.reverseGeocoder({
     location: {
       latitude: latitude,
@@ -77,11 +75,11 @@ function getLocal (latitude, longitude) {
     },
     success: function (res) {
       console.log(JSON.stringify(res));
-      city = res.result.address_component.city
+      var city = res.result.address_component.city
       if (res.status == 0) {
         console.log('local->' + localMovieAddr)
         // if (localMovieAddr == undefined || localMovieAddr == '') {
-        location = getMovieAddress(res.result.address_component.city);
+        var location = getMovieAddress(city);
         // }
         if (localCityName != city || localMovieAddr == undefined || localMovieAddr == '') {
 
@@ -92,9 +90,9 @@ function getLocal (latitude, longitude) {
               if (res.confirm) {
                 console.log('用户点击确定')
                 localCityName = city;
-                wx.setStorageSync('nowCityName', city)
+                wx.setStorageSync('currCity', city)
+                wx.setStorageSync('localCityName', city)
                 wx.setStorageSync('localMovieAddress', location)
-
                 var page = getCurrentPages().pop();
                 console.log(page);
                 if(page == undefined || page == null) return;

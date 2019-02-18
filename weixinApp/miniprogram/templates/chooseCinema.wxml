@@ -1,14 +1,11 @@
 
-<view class='flex-wrp-row item' bindtap='jumpcinema'>
-  <view class='item-left flex-wrp-row'>
+<view class='local' bindtap='jumpcinema'>
+  <view class='' style='flex:0;'>
     <icon class='iconfont icon-dizhiguanli' >
       <text class='chooseCinema'> {{movieAddress}}</text>
     </icon>
   </view>
-  <view class='item-left flex-wrp-row'>
-    <text class='medium-font-size'></text>
-  </view>
-  <view class='item-right flex-wrp-row'>
+  <!-- <view class='item-left flex-wrp-row'>
     <icon class='iconfont icon-jiantouyou icon-right'></icon>
-  </view>
+  </view> -->
 </view>

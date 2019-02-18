@@ -13,16 +13,20 @@ Page({
   onLoad: function(options) {
     console.log(options)
     console.log('load')
+
     this.setData({
       begin: options.ct
     })
+
   },
 
   formSubmit: function(e) {
     // console.log('form发生了submit事件，携带数据为：', e.detail.value) 
+
     wx.navigateTo({
       url: '../trains/trains?beginCity=' + e.detail.value.beginCity,
     })
+
   },
   formReset: function() {
     console.log('form发生了reset事件')
@@ -88,6 +92,7 @@ Page({
   bindMovieAddress: function(e) {
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 3];
+    wx.setStorageSync('localCityName', this.data.begin)
     wx.setStorageSync('localMovieAddress', this.data.movieAddressList[e.currentTarget.dataset.id].movieAddress)
     e.currentTarget.dataset
     prevPage.setData({
