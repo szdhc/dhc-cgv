@@ -43,7 +43,7 @@
 }
 
 .coloum{
-  margin-left: 15%;
+  margin-left: 10%;
 }
 
 .buttonCss {
@@ -103,4 +103,7 @@
   width: 50rpx;
   height: 32rpx;
   padding: 0 6rpx;
+}
+.movieprice {
+  margin-top: 3rpx;  
 }

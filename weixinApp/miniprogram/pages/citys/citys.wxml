@@ -1,7 +1,7 @@
 <view class="search-box">
-  <input placeholder="中文/拼音/首字母" class='search-input'bindblur="bindBlur" bindinput='bindSarchInput' placeholder-class='search-input-placeholder' /> </view>
+  <input placeholder="中文/拼音/首字母" class='search-input'bindblur="bindBlur" bindinput='bindSarchInput' placeholder-class='search-input-placeholder' /></view>
         <ul class="ul">
-        <li wx:for="{{completeList}}" wx:key="*this" bindtap="citySelected" data-city="{{item}}"class="li">{{item}}</li>
+        <li wx:for="{{completeList}}" wx:key="*this" bindtap="citySearch" data-city="{{item}}"class="li">{{item}}</li>
       </ul>
 <view class='a-z' catchtouchmove="handlerMove" atchtouchend="handlerEnd">
   <view wx:for="{{cityAZ}}" wx:key="unique">

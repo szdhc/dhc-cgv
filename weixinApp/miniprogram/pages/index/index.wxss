@@ -2,7 +2,9 @@
 @import "../../style/guide.wxss";
 
 .navbar {
-  display: flex;
+   position: fixed;
+   z-index:9999;
+  /* display: flex; */
   flex-direction: column;
   background: #fff;
   border-bottom: 1rpx solid #e6e6e6;
@@ -82,4 +84,8 @@ width: 100%;
 height: 100%;
 overflow: hidden;
 white-space: nowrap;
+}
+.bar {
+  /* float: right; */
+  padding-left: 480rpx;
 }
