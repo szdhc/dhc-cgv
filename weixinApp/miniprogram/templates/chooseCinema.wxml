@@ -2,7 +2,7 @@
 <view class='flex-wrp-row item' bindtap='jumpcinema'>
   <view class='item-left flex-wrp-row'>
     <icon class='iconfont icon-dizhiguanli' >
-      <text class='chooseCinema'> {{currCity}}</text>
+      <text class='chooseCinema'> {{movieAddress}}</text>
     </icon>
   </view>
   <view class='item-left flex-wrp-row'>

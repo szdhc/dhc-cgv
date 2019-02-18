@@ -99,7 +99,6 @@ Page({
     // })
     wx.switchTab({
       url: '/pages/index/index'
-      //url: '/pages/citys/citys?cityType=begin&beginCity=' + this.data.currCity,
     })
   }
 })

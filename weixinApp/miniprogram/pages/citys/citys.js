@@ -1,3 +1,4 @@
+
 import { LETTERS, CITY_LIST, HOT_CITY_LIST} from '../../locale/citydata'
 var util = require('../../utils/util.js');
 const app = getApp()
