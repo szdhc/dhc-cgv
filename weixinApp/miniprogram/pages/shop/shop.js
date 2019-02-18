@@ -794,45 +794,45 @@ Page({
     this.setData({
       currentTab: e.currentTarget.dataset.idx
     })
-    var that = this
-    if (e.currentTarget.dataset.idx == 1 && this.data.carArray.length != 0) {
-      wx.showModal({
-        title: '确认跳转会员卡页面吗',
-        content: '跳转会员卡将清理您已选择的卖品',
-        showCancel: true,
-        confirmColor: "red",
-        success: function (res) {
-          if(res.confirm) {
-            wx.removeStorageSync("jsonCarA");
-            that.setData({
-              currentTab: e.currentTarget.dataset.idx
-            })
-          } else if(res.cancel) {
-            that.setData({
-              currentTab: 0
-            })
-            return;
-          }
-        },
-      })
-    }
+    // var that = this
+    // if (e.currentTarget.dataset.idx == 1 && this.data.carArray.length != 0) {
+    //   wx.showModal({
+    //     title: '确认跳转会员卡页面吗',
+    //     content: '跳转会员卡将清理您已选择的卖品',
+    //     showCancel: true,
+    //     confirmColor: "red",
+    //     success: function (res) {
+    //       if(res.confirm) {
+    //         wx.removeStorageSync("jsonCarA");
+    //         that.setData({
+    //           currentTab: e.currentTarget.dataset.idx
+    //         })
+    //       } else if(res.cancel) {
+    //         that.setData({
+    //           currentTab: 0
+    //         })
+    //         return;
+    //       }
+    //     },
+    //   })
+    // }
 
-    if (e.currentTarget.dataset.idx == 0) {
-      let carArr = wx.getStorageSync("jsonCarA");
-      if (carArr == null || carArr == "") {
-        that.setData({ carArray: [] });
+    // if (e.currentTarget.dataset.idx == 0) {
+    //   let carArr = wx.getStorageSync("jsonCarA");
+    //   if (carArr == null || carArr == "") {
+    //     that.setData({ carArray: [] });
 
-        for (var i = 0; i < that.data.goods.length; i++)
-          for (var j = 0; j < that.data.goods[i].foods.length; j++) {
-            that.data.goods[i].foods[j].Count = 0;
-          }
-        that.setData({ goods: that.data.goods });
-      }
-      this.calTotalPrice();
-      this.setData({
-        payDesc: this.payDesc()
-      })
-    }    
+    //     for (var i = 0; i < that.data.goods.length; i++)
+    //       for (var j = 0; j < that.data.goods[i].foods.length; j++) {
+    //         that.data.goods[i].foods[j].Count = 0;
+    //       }
+    //     that.setData({ goods: that.data.goods });
+    //   }
+    //   this.calTotalPrice();
+    //   this.setData({
+    //     payDesc: this.payDesc()
+    //   })
+    // }    
   },
   // ---------------------------------------------//
 
