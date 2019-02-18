@@ -874,6 +874,11 @@ Page({
       payDesc: this.payDesc()
       
     });
+
+    // 清除缓存
+    wx.removeStorageSync('jsonStr')
+    wx.removeStorageSync('jsongoods')
+    wx.removeStorageSync('memberCard')
  
 
     // qqmapsdk = new QQMapWX({
@@ -918,8 +923,7 @@ Page({
 
     // 当页面从详细跳转过来时
     let isGoodsJson = wx.getStorageSync("jsongoods");
-    let isGoods = JSON.parse(isGoodsJson);
-    if (isGoods != undefined && isGoods != null && isGoods == "goodsPage") {
+    if (isGoodsJson != undefined && isGoodsJson != null && isGoodsJson != '' && JSON.parse(isGoodsJson) == "goodsPage") {
 
       let carArr = wx.getStorageSync("jsonCarA");
       let carA = JSON.parse(carArr);
