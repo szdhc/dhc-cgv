@@ -485,7 +485,7 @@ Page({
         ]
       }
     ],
-    toView: '0',
+    toView: 'order0',
     scrollTop: 100,
     foodCounts: 0,
     totalPrice: 0,// 总价格
