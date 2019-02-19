@@ -30,6 +30,7 @@ Page({
     comingCount: 0,
     fixedCount1: 7,
     fixedCount2: 7,
+
     // --------------------------------------------------------//
     bannerUrls: [{
       url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
@@ -84,6 +85,7 @@ Page({
     // 请求热映
     this.setData({
       types,
+
     })
     util.getLocation()
     this.hotMovies();
@@ -368,7 +370,9 @@ Page({
           hotCount: data.subjects.length,
           hotMovieList: arr,
           loader: 0,
-
+          sanUrl: '../../images/san.png',
+          adUrl: '../../images/ad.png',
+          chaUrl: '../../images/cha.png',
         })
 
         console.log(arr)
