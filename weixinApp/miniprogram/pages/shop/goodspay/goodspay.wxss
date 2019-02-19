@@ -1,1 +1,138 @@
 /* pages/shop/goodspay/goodspay.wxss */
+@import "../../index/index.wxss";
+
+.pay-board {
+    background-color: #f8f9fb;
+}
+
+.pay-point {
+    width: 100%;
+    height: 35rpx;
+    background: #FFD39B;
+    padding: 5rpx 0 5rpx 50rpx;
+    line-height: 35rpx;
+}
+
+.point-size {
+    color: white;
+    font-size: 20rpx;
+}
+
+.pay-item {
+    display: flex;
+    background-color: #fff;
+    width: 100%;
+    padding: 8rpx 0 8rpx 5%;
+}
+
+.pay-height-mid {
+    height: 65rpx;
+    line-height: 65rpx;
+}
+
+.pay-height-big {
+    height: 75rpx;
+    line-height: 75rpx;
+}
+
+.pay-item-left {
+    font-size: 25rpx;
+    color: black;
+    width: 65%;
+}
+
+.pay-font-bold {
+    font-weight: 600;
+}
+
+.pay-item-mid {
+    font-size: 25rpx;
+    color: black;
+    width: 25%;    
+}
+
+.pay-item-right {
+    font-size: 25rpx;
+    color: black;
+    width: 5%;  
+}
+
+.pay-margin {
+    margin-top: 15rpx;
+}
+
+.pay-location {
+    font-size: 30rpx;
+}
+
+.pay-solid {
+    width: 90%;
+    border-bottom: 1rpx solid gray;
+    opacity: 0.2;
+}
+
+.pay-food-image {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.pay-margin-left {
+    margin-left: 10rpx;
+}
+
+.pay-name {
+    margin: 2px 0 8px 0;
+    font-size: 14px;
+    line-height: 14px;
+    height: 14px;
+    color: rgb(7, 17, 27);
+}
+
+.pay-desc {
+    font-size: 10px;
+    line-height: 10px;
+    color: rgb(147, 153, 159);
+    margin-bottom: 8px;
+    line-height: 12px;
+}
+
+.pay-price {
+    font-weight: 700px;
+    line-height: 24px;
+}
+
+.pay-price-now {
+    margin-right: 8px;
+    font-size: 14px;
+    color: rgb(224, 166, 94);
+}
+
+.pay-good-count {
+    position: absolute;
+    right: 100rpx;
+    bottom: 50rpx;
+}
+
+.pay-count {
+    margin: 2px 0 8px 0;
+    font-size: 15px;
+    line-height: 14px;
+    height: 14px;
+    color: rgb(7, 17, 27);
+}
+
+.pay-dashed {
+    width: 90%;
+    border-bottom: 1rpx dashed gray;
+    opacity: 0.2;
+    margin-left: 5%;
+}
+
+.pay-good-item {
+    position: relative;
+    padding: 20rpx 20rpx 5rpx 20rpx;
+}
+
+.pay-size-gray {
+    color: rgb(147, 153, 159);
+}

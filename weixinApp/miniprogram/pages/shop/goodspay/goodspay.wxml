@@ -1,3 +1,137 @@
-<view class="container">
-    <view class="flex-wrp-cloumn"></view>
+<view class="container pay-board">
+        <!--
+            待支付订单倒计时提示
+        -->        
+        <view class="pay-point">
+            <view class="point-size">
+                <text>支付提醒：请在{{paymin}}分{{paysec}}秒内完成支付，超时将取消订单</text>
+            </view>
+        </view>
+
+        <!--
+            取票码发送到手机栏
+        -->         
+        <view class="pay-item pay-height-mid">
+            <view class="pay-item-left pay-font-bold">
+                <text>将取票码发送到手机</text>
+            </view>
+            <view class="pay-item-mid">
+                <text>{{mobilenumber}}</text>
+            </view>        
+            <view class="pay-item-right">
+                <icon class="iconfont icon-jiantouyou icon-right" /> 
+            </view>   
+        </view>
+
+        <!--
+            订单地址
+        -->      
+        <view class="pay-item pay-margin pay-height-big">
+            <text class="pay-location">{{paylocation}}</text>
+        </view>
+
+        <!--
+            分割线
+        -->           
+        <view class="pay-solid">
+        </view>
+
+        <!--
+            订单详细
+        -->
+        <view style="background-color:#fff; width:100%" wx:for="{{curOrder}}" wx:key="{{curOrder}}" wx:for-item="forder">
+            <view class="flex-wrp-row pay-good-item">
+                <!--订单图片-->
+                <view class='flex-wrp-cloumn'>
+                    <image class='pay-food-image' src="{{forder.icon}}">
+                    </image>
+                </view>  
+                <!--订单详细价格等-->
+                <view class="flex-wrp-cloumn content pay-margin-left">
+                    <view style="display:flex; flex-direction:column">
+                        <view>
+                            <view class="pay-name">{{forder.name}}</view>
+                            <view class="pay-desc">{{forder.description}}</view>
+                            <!-- <view class="extra">
+                                <text class="count">月售{{food.sellCount}}</text>
+                                <text class="count">好评{{food.rating}}</text>
+                            </view> -->
+                            <view class="pay-price">
+                                <view class="pay-price-now">￥{{forder.price}}</view>
+                            </view>
+
+                        </view>
+                    </view>
+                </view>
+                <!--订单数量-->
+                <view class="pay-good-count">
+                    <view class="pay-count">×{{forder.num}}</view>
+                </view>
+            </view>
+            <view class="pay-dashed"></view>
+        </view>
+
+       <!--
+            卖品优惠券
+        -->         
+        <view class="pay-item pay-height-mid pay-margin">
+            <view class="pay-item-left">
+                <text>卖品优惠券</text>
+            </view>
+            <view class="pay-item-mid pay-size-gray">
+                <text>{{isCoupon}}</text>
+            </view>        
+            <view class="pay-item-right">
+                <icon class="iconfont icon-jiantouyou icon-right" /> 
+            </view>   
+        </view>
+
+        <!--
+            分割线
+        -->           
+        <view class="pay-solid">
+        </view>
+
+       <!--
+            使用会员卡
+        -->         
+        <view class="pay-item pay-height-mid">
+            <view class="pay-item-left">
+                <text>使用会员卡</text>
+            </view>
+            <view class="pay-item-mid pay-size-gray">
+                <text>{{isMemCard}}</text>
+            </view>        
+            <view class="pay-item-right">
+                <icon class="iconfont icon-jiantouyou icon-right" /> 
+            </view>   
+        </view>
+
+        <!--
+            分割线
+        -->           
+        <view class="pay-solid">
+        </view>
+
+       <!--
+            使用星意卡
+        -->         
+        <view class="pay-item pay-height-mid">
+            <view class="pay-item-left">
+                <text>使用星意卡</text>
+            </view>
+            <view class="pay-item-mid pay-size-gray">
+                <text>{{isStarCard}}</text>
+            </view>        
+            <view class="pay-item-right">
+                <icon class="iconfont icon-jiantouyou icon-right" /> 
+            </view>   
+        </view>
+
+        <!--
+            分割线
+        -->           
+        <view class="pay-solid">
+        </view>
+
 </view>

@@ -1,3 +1,5 @@
+var util = require('../../../utils/util.js');
+
 // pages/shop/goodspay/goodspay.js
 Page({
 
@@ -5,14 +7,66 @@ Page({
    * 页面的初始数据
    */
   data: {
+    paymin : '',     //支付剩余时间xx分
+    paysec : '',     //支付剩余时间xx秒
+    timer: '',       //计时器
+    orderArray: [],  //所有的订单
+    curOrder: {},    //当前订单
+    mobilenumber: '13345668751', //取票码手机号码
+    paylocation: '苏州中心',      //订单地址
 
+    isCoupon: '暂无可用卖品券',   //是否有卖品券
+    isMemCard: '暂无可用会员卡',  //是否有会员卡
+    isStarCard: '暂无可用星意卡', //是否有星意卡 
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let carArr = wx.getStorageSync("jsonCarA");
+    let carA = JSON.parse(carArr);
+    this.setData({ curOrder: carA });
+  },
 
+  /**
+   * 未支付订单倒计时
+   */
+  countDown:function(){
+    var that = this;
+    // 定时器的设置
+    this.data.timer = setInterval(function(){
+      var orders = this.data.orderArray;
+      // 遍历所有的订单
+      for(var i = 0; i < orders.length; i++) {
+        //得到当前订单的订单状态；0表示待付款
+        var status = orders[i].status;
+        //如果订单待付款
+        if (status == 0) {
+          //订单结束日时
+          var end_time = orders[i].end_time;
+          //计算剩余时间差值
+          var leftTime = new Date(end_time).getTime() - (new Date().getTime());
+          if (leftTime > 0) {
+            //计算剩余的分钟
+            var minutes = util.formatNumber(parseInt(leftTime / 1000 / 60 % 60, 10));
+            //计算剩余的秒数
+            var seconds = util.formatNumber(parseInt(leftTime / 1000 % 60, 10));
+            //给订单的支付剩余时间赋值
+            orders[i].paymin = minutes;
+            orders[i].paysec = seconds;
+          }else {
+            //移除超时未支付的订单
+            orders.splice(i,1);
+          }
+        }
+      }
+
+      //画面相应
+      that.setData({
+        orderArray:orders
+      });
+    }, 1000);
   },
 
   /**
@@ -40,6 +94,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+
+    //清除定时器
+    clearInterval(this.data.timer);
 
   },
 
