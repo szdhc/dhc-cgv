@@ -10,7 +10,10 @@
 }
 
 .a-z-style {
-  
+  position:fixed;
+top:500rpx;
+left:350rpx;
+
             background-color: gold;
             padding: 0rpx 20rpx 0rpx 20rpx;
             border-radius:30rpx;

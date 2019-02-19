@@ -45,6 +45,9 @@ Page({ /** * 生命周期函数--监听页面加载 */
     var currentCityName = e.currentTarget.dataset.id
     var that = this;
     that.actionToScroll(currentCityName)
+    that.setData({
+      nowTarget: currentCityName
+    })
   },
   actionToScroll(target) {
     var _this = this;
@@ -102,7 +105,12 @@ Page({ /** * 生命周期函数--监听页面加载 */
       url: '/pages/jumpcinema/jumpcinema?ct=' + e.currentTarget.dataset.city,
     })
   },
-
+//离开滚动条
+  handlerEnd: function (e) {
+    this.setData({
+      nowTarget: ''
+    })
+  },
   bindSarchInput: function(e) {
     wx.pageScrollTo({
       scrollTop: 0,

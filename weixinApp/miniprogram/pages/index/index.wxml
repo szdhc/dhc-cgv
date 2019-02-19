@@ -1,5 +1,5 @@
 <!--pages/index/index.wxml-->
-<view class="container" style='height: 100%; overflow: hidden;'>
+<view class="container">
   <!-- 首页banner -->
   <view class="guide">
 
@@ -15,13 +15,11 @@
 
         <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
       </view>
-      <!-- <view bindtap='clickSearch' class='search'>
-        <image class='search_img' src='../../img/search.png'></image>
-    </view> -->
+
     </view>
   </view>
 </view>
-<scroll-view scroll-y="true" style="padding-top:36px">
+<scroll-view scroll-y="true">
   <swiper current="{{currentTab}}" duration="300" bindchange="bindChange" style="height:600px">
   <!--热映-->
     <view hidden="{{currentTab!==0}}">
@@ -32,10 +30,16 @@
     <text class="headline">{{currCity}}</text> -->
           <import src='../../templates/banner.wxml' />
           <template is='bannerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
+          <view style='height:{{viewHeight}}rpx'>
+                  <image src='../../images/san.png' animation="{{animationPlus}}" class='search_img' bindtap='plus' hidden='{{sanHidden}}'></image>
+    <image src="../../images/ad.png" animation="{{animationTranspond}}" class="card_img" bindtap="transpond"></image>
+    <image src="../../images/cha.png" animation="{{animationTranspond}}" class="cha_img" bindtap="chaback" ></image>
+    </view>
           <!-- <text class="p">1. 打开云开发控制台</text>
     <image class="image1" src="../../images/console-entrance.png" mode="aspectFit"></image>
     <text class="p">2. 切换到 "用户管理" 标签页</text>
     <text class="p">3. 查看访问小程序的用户列表</text> -->
+
           <import src='../../templates/movieList.wxml' />
           <view wx:for="{{hotMovieList}}" wx:key="{{hotMovieList}}">
             <template is='hotMovieTemplate' data="{{...item}}" />

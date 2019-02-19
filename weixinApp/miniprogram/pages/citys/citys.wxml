@@ -3,12 +3,9 @@
         <ul class="ul">
         <li wx:for="{{completeList}}" wx:key="*this" bindtap="citySearch" data-city="{{item}}"class="li">{{item}}</li>
       </ul>
-<view class='a-z' catchtouchmove="handlerMove" atchtouchend="handlerEnd">
+<view class='a-z' catchtouchmove="handlerMove" catchtouchend="handlerEnd">
   <view wx:for="{{cityAZ}}" wx:key="unique">
-    <view class='a-z-style' wx:if="{{item.cityName==nowTarget}}">
-      <view style='color: red' data-id='{{item.cityName}}'>{{nowTarget}}</view>
-    </view>
-    <view data-id='{{item.cityName}}' hidden='{{item.cityName==nowTarget}}'bindtap='bindAZ'>{{item.cityName}}</view>
+    <view data-id='{{item.cityName}}'bindtap='bindAZ'>{{item.cityName}}</view>
   </view>
 </view>
 <view class="city-picker">
@@ -31,3 +28,8 @@
     <view class='city-item' wx:for="{{item.cityInfo}}" wx:for-item="ct" wx:key="id" data-code="{{ct.code}}" data-city="{{ct.city}}" data-cityname='{{ct.initial}}' bindtap='citySelected'>{{ct.city}}</view>
   </view>
 </view>
+  <view wx:for="{{cityAZ}}" wx:key="unique">
+    <view class='a-z-style' wx:if="{{item.cityName==nowTarget}}">
+      <view style='color: red' data-id='{{item.cityName}}'>{{nowTarget}}</view>
+    </view>
+    </view>

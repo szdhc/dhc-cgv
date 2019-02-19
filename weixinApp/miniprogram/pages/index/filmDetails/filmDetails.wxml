@@ -37,7 +37,7 @@
         </navigator>
     </view>
 </view>
-<view class='summary' style="height:{{hiddenFlag?'148rpx':'auto'}}">
+<view class='summary' style="height:{{hiddenFlag?'auto':'148rpx'}}">
     <text>{{filmDetails_info.summary}}</text>
 </view>
 <view bindtap='display_text' class='text_icon_container'>

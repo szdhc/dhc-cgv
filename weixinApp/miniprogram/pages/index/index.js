@@ -3,6 +3,12 @@ var qqmapsdk;
 var util = require('../../utils/util.js');
 Page({
   data: {
+    sanHidden:true,
+    adHidden:false,
+    viewHeight:44,
+    isPopping: false,//是否已经弹出
+    animationPlus: {},//旋转动画
+    animationTranspond: {},//item位移,透明度
     // openid: '',
     movieAddress: '',
     currProvince: '',
@@ -436,4 +442,72 @@ Page({
       }
     })
   },
+  //点击弹出
+  plus: function () {
+    // if (this.data.isPopping) {
+      //缩回动画
+      popp.call(this);
+    //   this.setData({
+    //     isPopping: false
+    //   })
+    // } else {
+      // //弹出动画
+      // takeback.call(this);
+      // this.setData({
+      //   isPopping: true
+      // })
+
+  },
+  chaback: function () {
+    takeback.call(this);
+  },
+  transpond: function () {
+    console.log("transpond")
+  },
 })
+//弹出动画
+function popp() {
+  //plus顺时针旋转
+  var animationPlus = wx.createAnimation({
+    duration: 500,
+    timingFunction: 'ease-out'
+  })
+
+  var animationTranspond = wx.createAnimation({
+    duration: 500,
+    timingFunction: 'ease-out'
+  })
+  // animationPlus.opacity(0).step();
+  // animationTranspond.translate(-140, 0).rotateZ(180).opacity(1).step();
+  animationTranspond.translateZ(100).opacity(1).step();
+  this.setData({
+    viewHeight: 44,
+    adHidden: false,
+    sanHidden:true,
+    animationPlus: animationPlus.export(),
+    animationTranspond: animationTranspond.export(),
+  })
+}
+function takeback() {
+  
+  //plus逆时针旋转
+  var animationPlus = wx.createAnimation({
+    duration: 500,
+    timingFunction: 'ease-out'
+  })
+  var animationTranspond = wx.createAnimation({
+    duration: 500,
+    timingFunction: 'ease-out'
+  })
+
+   animationPlus.rotateZ(0).step();
+  // animationTranspond.translate(0, 0).rotateZ(0).opacity(0).step();
+  animationTranspond.translate(0, 0).opacity(0).step();
+  this.setData({
+    adHidden: true,
+    sanHidden: false,
+    viewHeight:0,
+    animationPlus: animationPlus.export(),
+    animationTranspond: animationTranspond.export(),
+  })
+}

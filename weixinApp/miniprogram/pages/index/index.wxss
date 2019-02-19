@@ -2,8 +2,8 @@
 @import "../../style/guide.wxss";
 
 .navbar {
-   position: fixed;
-   z-index:9999;
+  position: fixed;
+  z-index: 9999;
   /* display: flex; */
   flex-direction: column;
   background: #fff;
@@ -66,26 +66,56 @@
   height: 0rpx;
   text-align: center;
 }
+
 .loadingimg {
-  height:80rpx;
-  width:80rpx;
-text-align: center;
+  height: 80rpx;
+  width: 80rpx;
+  text-align: center;
 }
+
 .hotFilm_container {
-
-  display:inline-block;
+  display: inline-block;
 }
+
 .comingFilm_container {
+  display: inline-block;
+}
 
-  display:inline-block;
+.scroll_box {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
 }
-.scroll_box{
-width: 100%;
-height: 100%;
-overflow: hidden;
-white-space: nowrap;
-}
+
 .bar {
   /* float: right; */
   padding-left: 480rpx;
 }
+
+.search_img {
+  position: absolute;
+  height: 47rpx;
+  width: 88rpx;
+  top: 215rpx;
+  left: 356rpx;
+  z-index: 100;
+}
+
+.card_img {
+  position: absolute;
+  height: 51rpx;
+  width: 100%;
+  top: 225rpx;
+  left: -1rpx;
+  opacity: 1;
+}
+.cha_img {
+  position: absolute;
+  height: 30rpx;
+  width: 30rpx;
+  top: 235rpx;
+  left: 13rpx;
+  opacity: 1;
+}
+

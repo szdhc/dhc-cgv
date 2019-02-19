@@ -70,12 +70,14 @@
   top: 12rpx;
 }
 .loveImage {
-  width: 28rpx;
-  height: 28rpx;
+  width: 35rpx;
+  height: 35rpx;
 }
 .salebutton {
   width: 100rpx;
   top:20rpx;
+left:-12rpx;
+
 }
 .divLine{
  background: #E0E3DA;
@@ -94,7 +96,7 @@
   width: 96rpx;
   height: 96rpx;
   background: none;
-  left:81rpx
+  left:50rpx
 }
 .share-img-button::after {
   border: none;

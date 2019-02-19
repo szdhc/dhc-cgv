@@ -13,11 +13,14 @@
           <image class='typeImage' src='{{movieType1}}'></image>
           <image class='typeImage' src='{{movieType2}}'></image>
         </view>
+        <view class='regular-font-size movieShow hidden-text' style='color: black;'>{{movieDirectorStarring}}</view>
+        <text class='regular-font-size movieShow' style='color: red;'>今日123家影院播放12333次</text>
+        <text class='regular-font-size movieShow' style='color: gery;'>近期场次：12:30|13:00|13:30</text>
         <view>
-          <text class='regular-font-size movieShow'>{{movieShow}}</text>
+
         </view>
 
-        <view class='regular-font-size movieShow hidden-text'>{{movieDirectorStarring}}</view>
+
       </navigator>
     </view>
     <!--评分、购票/预售-->
@@ -58,24 +61,17 @@
           </view>
           <view class='regular-font-size movieShow hidden-text'>{{movieDirectorStarring}}
           </view>
+          <text class='regular-font-size'>{{wishCount}}人想看</text>
         </navigator>
       </view>
       <!--评分、购票/预售-->
       <view class='flex-wrp-cloumn margin-left salecomment'>
         <view class='want' wx:if="{{wantFlag==0}}" data-id="{{id}}" bindtap='clickWant'>
-          <view class='text-want'>
-            <text class='regular-font-size'>{{wishCount}}</text>
-            <text class='regular-font-size'>人</text>
-          </view>
           <button class='share-img-button' formType="submit">
             <image class='loveImage' src='../../images/love.png' formType="submit"></image>
           </button>
         </view>
         <view class='want' wx:else data-id="{{id}}" bindtap='clickWant'>
-          <view class='text-want'>
-            <text class='regular-font-size'>{{wishCount}}</text>
-            <text class='regular-font-size'>人</text>
-          </view>
           <button class='share-img-button'>
             <image class='loveImage' src='../../images/love_red.png'></image>
           </button>
@@ -83,7 +79,7 @@
         <button class='movieStatus salebutton' bindtap='redirct'>{{movieStatus}}</button>
       </view>
     </view>
-    <view class="divLine"></view>
+    <view class="divLine" style='width:91%;'></view>
   </form>
 </template>
 

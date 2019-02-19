@@ -103,7 +103,7 @@ Page({
     //   delta: 1
     // })
     wx.switchTab({
-      url: '/pages/index/index'
+      url: '/' + prevPage.route
     })
   }
 })
