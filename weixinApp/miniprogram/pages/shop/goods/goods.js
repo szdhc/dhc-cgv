@@ -225,7 +225,9 @@ Page({
     var price = this.data.goods.price;
     var num = this.data.goods.Count;
     var name = this.data.goods.name;
-    var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
+    var icon = this.data.goods.icon;
+    var description = this.data.goods.description;    
+    var obj = { price: price, num: num, mark: mark, name: name,icon: icon,description: description, index: index, parentIndex: parentIndex };
 
     var updateFlg = 0;
     var carArray1 = [];

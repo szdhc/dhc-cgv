@@ -612,8 +612,6 @@ Page({
     var mark = 'a' + index + 'b' + parentIndex;
     var price = this.data.goods[parentIndex].foods[index].price;
     var num = this.data.goods[parentIndex].foods[index].Count;
-    var name = this.data.goods[parentIndex].foods[index].name;
-    var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex }; 
 
     var carArray1 = [];
     if (this.data.carArray != undefined && this.data.carArray != null) {
@@ -656,7 +654,9 @@ Page({
     var price = this.data.goods[parentIndex].foods[index].price;
     var num = this.data.goods[parentIndex].foods[index].Count;
     var name = this.data.goods[parentIndex].foods[index].name;
-    var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
+    var icon = this.data.goods[parentIndex].foods[index].icon;
+    var description = this.data.goods[parentIndex].foods[index].description;
+    var obj = { price: price, num: num, mark: mark, name: name,icon: icon,description: description, index: index, parentIndex: parentIndex };
 
     var updateFlg = 0;
     var carArray1 = [];

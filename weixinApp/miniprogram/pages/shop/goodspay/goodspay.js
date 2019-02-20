@@ -7,22 +7,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    paymin : '',     //支付剩余时间xx分
-    paysec : '',     //支付剩余时间xx秒
-    timer: '',       //计时器
-    orderArray: [],  //所有的订单
-    curOrder: {},    //当前订单
+    paymin : '',                 //支付剩余时间xx分
+    paysec : '',                 //支付剩余时间xx秒
+    timer: '',                   //计时器
+    orderArray: [],              //所有的订单
+    curOrder: {},                //当前订单
     mobilenumber: '13345668751', //取票码手机号码
     paylocation: '苏州中心',      //订单地址
-    curOrderPrice: 0,           //订单总价
-    payPrice: 0,                //应付价格
+    curOrderPrice: 0,            //订单总价
+    payPrice: 0,                 //应付价格
 
     isCoupon: '暂无可用卖品券',   //是否有卖品券
     isMemCard: '暂无可用会员卡',  //是否有会员卡
     isStarCard: '暂无可用星意卡', //是否有星意卡 
 
-    havecredit: '5',            //可使用积分
-    usecredit: '50',            //满xx积分可用
+    havecredit: '5',             //可使用积分
+    usecredit: '50',             //满xx积分可用
+  },
+
+  /**
+   * 
+   */
+  selectMobile: function() {
+    
   },
 
   /**

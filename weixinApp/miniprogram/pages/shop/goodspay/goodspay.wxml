@@ -11,7 +11,7 @@
         <!--
             取票码发送到手机栏
         -->         
-        <view class="pay-item pay-height-mid">
+        <view class="pay-item pay-height-mid" bindtap="selectMobile">
             <view class="pay-item-left pay-font-bold">
                 <text>将取票码发送到手机</text>
             </view>
@@ -172,10 +172,10 @@
             <view class="flex-wrp-row pay-good-item">
                 <!--微信支付-->
                 <view class='flex-wrp-cloumn'>
-                    <icon class="iconfont icon-weixin" />
+                    <icon class="iconfont icon-weixin1 icon-pay" />
                 </view>  
                 <!--支付信息-->
-                <view class="flex-wrp-cloumn content pay-margin-left">
+                <view class="flex-wrp-cloumn content pay-margin-price-left">
                     <view style="display:flex; flex-direction:column">
                         <view>
                             <view class="pay-name">微信支付</view>

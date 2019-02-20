@@ -81,6 +81,10 @@
     margin-left: 10rpx;
 }
 
+.pay-margin-price-left {
+    margin-left: 30rpx;
+}
+
 .pay-name {
     margin: 2px 0 8px 0;
     font-size: 14px;
@@ -141,7 +145,7 @@
 .pay-item-credit-left {
     font-size: 25rpx;
     color: black;
-    width: 85%;
+    width: 76%;
 }
 
 .pay-item-credit-mid {
@@ -226,4 +230,9 @@ radio .wx-radio-input{
     border-radius: 0;
     line-height: 100rpx;
     text-align: center;
+}
+
+.icon-pay {
+    font-size: 52rpx!important;
+    color:#09C400;
 }
