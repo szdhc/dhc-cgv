@@ -11,7 +11,7 @@ page {
   width: 100%;
   display: flex;
   flex-direction: row;
-  background: rgba(224, 165, 94, 0.788);
+  background: rgba(250, 79, 79, 0.788);
   text-align:right;
   padding-bottom: 5%;
 }
@@ -64,7 +64,7 @@ page {
 .userinfo-tequan{
   margin-top: 12%;
   font-size:28rpx;
-  background-color: rgba(255, 0, 0, 0.596);
+  background-color: rgba(245, 222, 14, 0.932);
   color: #fff;
   background-size: cover;
   height:70rpx;
@@ -174,7 +174,7 @@ page {
 
 .wodelist-text {
   width: 100%;
-  color: rgb(224, 166, 94);
+  color: rgba(250, 79, 79, 0.788);
 }
 .title{
   margin-top: 18rpx;

@@ -2,12 +2,16 @@
 <view class="container">
   <view class='guide'>
     <!-- 用户 openid -->
-    <view class="userinfo">
+    <view wx:if='{{!loginstatus}}' class="userinfo">
       <button class="userinfo-avatar" plain='true' bindtap='Userinfo'><image class='userinfo-avatar-image' src='{{avatarUrl}}' mode='aspectFit'></image></button>
       <text class="userinfo-nickname" bindtap="Userinfo">{{username}}</text>
       <button class="userinfo-tequan" bindtap="myleveldetail">我的特权</button>
     </view>
-
+    <view wx:else class="userinfo ">
+      <button class="userinfo-avatar" bindtap='Userinfo' style="background-image: url({{avatarUrl}})"></button>
+      <text class="userinfo-nickname" bindtap="Userinfo">{{username}}</text>
+      <button class="userinfo-tequan" bindtap="myleveldetail">我的特权</button>
+    </view>
 
     <view class='title'>
     <navigator url="{{menbershipUrl}}" hover-class="none" open-type="navigate" class="wodelist-text">

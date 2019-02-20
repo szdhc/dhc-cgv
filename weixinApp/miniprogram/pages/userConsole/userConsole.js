@@ -1,7 +1,6 @@
 //userConsole.js
 const app = getApp();
 const regurl = '../mine/userregister/userregister';
-var loginstatus = false;
 
 Page({
   data: {
@@ -19,7 +18,9 @@ Page({
     discountCardUrl: regurl,
     myLikeUrl: regurl,
     myOrderUrl: regurl,
-    myPointsUrl: regurl
+    myPointsUrl: regurl,
+
+    loginstatus: false
   },
 
   onLoad: function () {
@@ -31,14 +32,19 @@ Page({
     }
 
     //Todo
-    if (loginstatus){
+    if (app.globalData.isLogin){
       this.setData({
         menbershipUrl: '../mine/Membership/Membership',
         couponUrl: '../mine/coupon/coupon',
         discountCardUrl: '../mine/discountCard/discountCard',
         myLikeUrl: '../myLike/myLike',
         myOrderUrl: '../mine/myOrder/myOrder',
-        myPointsUrl: '../mine/myPoints/myPoints'
+        myPointsUrl: '../mine/myPoints/myPoints',
+
+        loginstatus: true,
+        avatarUrl: app.globalData.userInfo.avatarUrl,
+        userInfo: app.globalData.userInfo,
+        username: app.globalData.userInfo.nickName,
       })
     }
    
@@ -61,6 +67,23 @@ Page({
     //   }
     // })  
   },
+  onShow: function(){
+    if (app.globalData.isLogin) {
+      this.setData({
+        menbershipUrl: '../mine/Membership/Membership',
+        couponUrl: '../mine/coupon/coupon',
+        discountCardUrl: '../mine/discountCard/discountCard',
+        myLikeUrl: '../myLike/myLike',
+        myOrderUrl: '../mine/myOrder/myOrder',
+        myPointsUrl: '../mine/myPoints/myPoints',
+
+        loginstatus: true,
+        avatarUrl: app.globalData.userInfo.avatarUrl,
+        userInfo: app.globalData.userInfo,
+        username: app.globalData.userInfo.nickName,
+      })
+    }
+  },
   // onGetUserInfo: function (e) {
   //   if (!this.logged && e.detail.userInfo) {
   //     this.setData({
@@ -73,7 +96,7 @@ Page({
   // },
   Userinfo() {
 
-    if(loginstatus){
+    if (app.globalData.isLogin){
       wx.cloud.callFunction({
         name: 'login',
         data: {},
@@ -150,7 +173,7 @@ Page({
     })
   },
   myleveldetail:function(){
-    if(loginstatus){
+    if (app.globalData.isLogin){
       wx.navigateTo({
         url: '../mine/mylevdetail/mylevdetail?avatarUrl=' + this.data.avatarUrl,
       })

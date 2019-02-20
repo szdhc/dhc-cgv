@@ -1,4 +1,6 @@
 // pages/userInfo/userInfo.js
+
+const app = getApp();
 Page({
 
   /**
@@ -93,5 +95,16 @@ Page({
     wx.navigateTo({
       url: '../userLogin/userLogin',
     })
-  }
+  },
+
+
+  onGetUserInfo: function (e) {
+    if (e.detail.userInfo) {
+      app.globalData.isLogin = true;
+      app.globalData.userInfo = e.detail.userInfo;
+      wx.navigateBack({
+        delta: 1
+      })
+    }
+  },
 })
