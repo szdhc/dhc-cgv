@@ -11,7 +11,6 @@ Page({
     requestResult: '',
     username:'未登录',
     orderUrl:'',
-    statusBarHeight:app.globalData.statusBarHeight,
 
     menbershipUrl: regurl,
     couponUrl: regurl,
@@ -32,57 +31,66 @@ Page({
     }
 
     //Todo
-    if (app.globalData.isLogin){
-      this.setData({
-        menbershipUrl: '../mine/Membership/Membership',
-        couponUrl: '../mine/coupon/coupon',
-        discountCardUrl: '../mine/discountCard/discountCard',
-        myLikeUrl: '../myLike/myLike',
-        myOrderUrl: '../mine/myOrder/myOrder',
-        myPointsUrl: '../mine/myPoints/myPoints',
+    // if (app.globalData.isLogin){
+    //   this.setData({
+    //     menbershipUrl: '../mine/Membership/Membership',
+    //     couponUrl: '../mine/coupon/coupon',
+    //     discountCardUrl: '../mine/discountCard/discountCard',
+    //     myLikeUrl: '../myLike/myLike',
+    //     myOrderUrl: '../mine/myOrder/myOrder',
+    //     myPointsUrl: '../mine/myPoints/myPoints',
 
-        loginstatus: true,
-        avatarUrl: app.globalData.userInfo.avatarUrl,
-        userInfo: app.globalData.userInfo,
-        username: app.globalData.userInfo.nickName,
-      })
-    }
+    //     loginstatus: true,
+    //     avatarUrl: app.globalData.userInfo.avatarUrl,
+    //     userInfo: app.globalData.userInfo,
+    //     username: app.globalData.userInfo.nickName,
+    //   })
+    // }
    
 
-    // 获取用户信息
-    // wx.getSetting({
-    //   success: res => {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-    //       wx.getUserInfo({
-    //         success: res => {
-    //           this.setData({
-    //             avatarUrl: res.userInfo.avatarUrl,
-    //             userInfo: res.userInfo,
-    //             username:res.userInfo.nickName,
-    //           })
-    //         }
-    //       })
-    //     }
-    //   }
-    // })  
+    //获取用户信息
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              this.setData({
+                menbershipUrl: '../mine/Membership/Membership',
+                couponUrl: '../mine/coupon/coupon',
+                discountCardUrl: '../mine/discountCard/discountCard',
+                myLikeUrl: '../myLike/myLike',
+                myOrderUrl: '../mine/myOrder/myOrder',
+                myPointsUrl: '../mine/myPoints/myPoints',
+
+                loginstatus: true,
+
+                avatarUrl: res.userInfo.avatarUrl,
+                userInfo: res.userInfo,
+                username:res.userInfo.nickName,
+              })
+            }
+          })
+        }
+      }
+    })  
   },
   onShow: function(){
-    if (app.globalData.isLogin) {
-      this.setData({
-        menbershipUrl: '../mine/Membership/Membership',
-        couponUrl: '../mine/coupon/coupon',
-        discountCardUrl: '../mine/discountCard/discountCard',
-        myLikeUrl: '../myLike/myLike',
-        myOrderUrl: '../mine/myOrder/myOrder',
-        myPointsUrl: '../mine/myPoints/myPoints',
+    // if (app.globalData.isLogin) {
+    //   this.setData({
+    //     menbershipUrl: '../mine/Membership/Membership',
+    //     couponUrl: '../mine/coupon/coupon',
+    //     discountCardUrl: '../mine/discountCard/discountCard',
+    //     myLikeUrl: '../myLike/myLike',
+    //     myOrderUrl: '../mine/myOrder/myOrder',
+    //     myPointsUrl: '../mine/myPoints/myPoints',
 
-        loginstatus: true,
-        avatarUrl: app.globalData.userInfo.avatarUrl,
-        userInfo: app.globalData.userInfo,
-        username: app.globalData.userInfo.nickName,
-      })
-    }
+    //     loginstatus: true,
+    //     avatarUrl: app.globalData.userInfo.avatarUrl,
+    //     userInfo: app.globalData.userInfo,
+    //     username: app.globalData.userInfo.nickName,
+    //   })
+    // }
   },
   // onGetUserInfo: function (e) {
   //   if (!this.logged && e.detail.userInfo) {
@@ -96,7 +104,7 @@ Page({
   // },
   Userinfo() {
 
-    if (app.globalData.isLogin){
+    if (this.data.userInfo.nickName){
       wx.cloud.callFunction({
         name: 'login',
         data: {},
@@ -173,7 +181,7 @@ Page({
     })
   },
   myleveldetail:function(){
-    if (app.globalData.isLogin){
+    if (this.data.userInfo.nickName){
       wx.navigateTo({
         url: '../mine/mylevdetail/mylevdetail?avatarUrl=' + this.data.avatarUrl,
       })
