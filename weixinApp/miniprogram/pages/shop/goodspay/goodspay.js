@@ -14,10 +14,15 @@ Page({
     curOrder: {},    //当前订单
     mobilenumber: '13345668751', //取票码手机号码
     paylocation: '苏州中心',      //订单地址
+    curOrderPrice: 0,           //订单总价
+    payPrice: 0,                //应付价格
 
     isCoupon: '暂无可用卖品券',   //是否有卖品券
     isMemCard: '暂无可用会员卡',  //是否有会员卡
     isStarCard: '暂无可用星意卡', //是否有星意卡 
+
+    havecredit: '5',            //可使用积分
+    usecredit: '50',            //满xx积分可用
   },
 
   /**
@@ -27,6 +32,16 @@ Page({
     let carArr = wx.getStorageSync("jsonCarA");
     let carA = JSON.parse(carArr);
     this.setData({ curOrder: carA });
+
+    let orderCountPirce = 0;
+
+    for(var i = 0; i < carA.length; i++) {
+      orderCountPirce = orderCountPirce + parseInt(carA[i].price) * parseInt(carA[i].num);
+    }
+    this.setData({
+      curOrderPrice: orderCountPirce,
+      payPrice: orderCountPirce
+    });
   },
 
   /**
@@ -67,6 +82,13 @@ Page({
         orderArray:orders
       });
     }, 1000);
+  },
+
+  /**
+   * switch开关监听
+   */
+  listenerSwitch: function(e) {
+    console.log('switch当前状态----',e.detail.value);
   },
 
   /**

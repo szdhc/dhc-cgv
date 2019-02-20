@@ -15,10 +15,10 @@
             <view class="pay-item-left pay-font-bold">
                 <text>将取票码发送到手机</text>
             </view>
-            <view class="pay-item-mid">
+            <view class="pay-item-mid pay-size-gray">
                 <text>{{mobilenumber}}</text>
             </view>        
-            <view class="pay-item-right">
+            <view class="pay-item-right pay-size-gray">
                 <icon class="iconfont icon-jiantouyou icon-right" /> 
             </view>   
         </view>
@@ -39,7 +39,7 @@
         <!--
             订单详细
         -->
-        <view style="background-color:#fff; width:100%" wx:for="{{curOrder}}" wx:key="{{curOrder}}" wx:for-item="forder">
+        <view style="background-color:#fff; width:100%" wx:for="{{curOrder}}" wx:key="{{curOrder}}" wx:for-index="findex" wx:for-item="forder">
             <view class="flex-wrp-row pay-good-item">
                 <!--订单图片-->
                 <view class='flex-wrp-cloumn'>
@@ -71,6 +71,20 @@
             <view class="pay-dashed"></view>
         </view>
 
+        <!--
+            订单总价
+        -->
+        <view class="pay-item pay-height-mid">
+            <view class="pay-item-credit-left">
+                <text>订单总价</text>
+            </view>
+            <view class="pay-item-credit-mid">
+               <text>￥{{curOrderPrice}}</text>
+            </view>        
+            <view class="pay-item-right pay-size-gray">
+            </view>   
+        </view>
+
        <!--
             卖品优惠券
         -->         
@@ -81,7 +95,7 @@
             <view class="pay-item-mid pay-size-gray">
                 <text>{{isCoupon}}</text>
             </view>        
-            <view class="pay-item-right">
+            <view class="pay-item-right pay-size-gray">
                 <icon class="iconfont icon-jiantouyou icon-right" /> 
             </view>   
         </view>
@@ -102,7 +116,7 @@
             <view class="pay-item-mid pay-size-gray">
                 <text>{{isMemCard}}</text>
             </view>        
-            <view class="pay-item-right">
+            <view class="pay-item-right pay-size-gray">
                 <icon class="iconfont icon-jiantouyou icon-right" /> 
             </view>   
         </view>
@@ -123,7 +137,7 @@
             <view class="pay-item-mid pay-size-gray">
                 <text>{{isStarCard}}</text>
             </view>        
-            <view class="pay-item-right">
+            <view class="pay-item-right pay-size-gray">
                 <icon class="iconfont icon-jiantouyou icon-right" /> 
             </view>   
         </view>
@@ -132,6 +146,63 @@
             分割线
         -->           
         <view class="pay-solid">
+        </view>
+
+      <!--
+            使用积分
+        -->         
+        <view class="pay-item pay-height-mid">
+            <view class="pay-item-credit-left">
+                <text>可使用积分{{havecredit}},满{{usecredit}}积分可用</text>
+            </view>
+            <view class="pay-item-credit-mid pay-size-gray">
+               <switch type="switch" bindchange="listenerSwitch" disabled = "{{havecredit<usecredit?true:false}}"/>
+            </view>        
+            <view class="pay-item-right pay-size-gray">
+            </view>   
+        </view>
+
+      <!--
+            支付方式
+        -->
+        <view style="background-color:#fff; width:100%;padding-top:20rpx;padding-bottom:20rpx;" class="pay-margin">
+            <view class="pay-item-left">
+                <text>选择支付方式</text>
+            </view>
+            <view class="flex-wrp-row pay-good-item">
+                <!--微信支付-->
+                <view class='flex-wrp-cloumn'>
+                    <icon class="iconfont icon-weixin" />
+                </view>  
+                <!--支付信息-->
+                <view class="flex-wrp-cloumn content pay-margin-left">
+                    <view style="display:flex; flex-direction:column">
+                        <view>
+                            <view class="pay-name">微信支付</view>
+                            <view class="pay-desc">支持储蓄卡，信用卡</view>
+                        </view>
+                    </view>
+                </view>
+                <!--是否确认支付-->
+                <view class="pay-check">
+                    <radio checked='true'></radio>
+                </view>
+            </view>
+        </view>        
+
+        <!--
+            支付按钮
+        -->
+        <view class="pay-button-area">
+            <view class="pay-button-content">
+                <view class="pay-button-left">
+                    <text>应付:</text>
+                    <text class="pay-button-price">￥{{payPrice}}</text>
+                </view>            
+                <view class="pay-button-right">
+                    <button class="pay-button-btn">立即支付</button>
+                </view>
+            </view>
         </view>
 
 </view>

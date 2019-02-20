@@ -3,6 +3,7 @@
 
 .pay-board {
     background-color: #f8f9fb;
+    padding-bottom: 100rpx;
 }
 
 .pay-point {
@@ -135,4 +136,94 @@
 
 .pay-size-gray {
     color: rgb(147, 153, 159);
+}
+
+.pay-item-credit-left {
+    font-size: 25rpx;
+    color: black;
+    width: 85%;
+}
+
+.pay-item-credit-mid {
+    font-size: 25rpx;
+    color: black;
+    width: 15%; 
+}
+
+.wx-switch-input{width:42px !important;height:20px !important;}
+.wx-switch-input::before{width:41px !important;height: 20px !important;}
+.wx-switch-input::after{width: 18px !important;height: 18px !important;}
+
+.pay-check {
+    position: absolute;
+    right: 30rpx;
+    bottom: 50rpx;
+}
+
+/*  重写 radio 样式  */
+/* 未选中的 背景样式 */
+radio .wx-radio-input{
+    border-radius: 50%;/* 圆角 */
+    width: 40rpx;
+    height: 40rpx;
+ }
+ /* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+ radio .wx-radio-input.wx-radio-input-checked{
+    border: none;
+    background: red!important;
+ }
+ /* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+ radio .wx-radio-input.wx-radio-input-checked::before{
+    border-radius: 50%;/* 圆角 */
+    width: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+    height: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+    line-height: 40rpx;
+    text-align: center;
+    font-size:30rpx; /* 对勾大小 30rpx */
+    color:#fff; /* 对勾颜色 白色 */
+    background: transparent;
+    transform:translate(-50%, -50%) scale(1);
+    -webkit-transform:translate(-50%, -50%) scale(1);
+ }
+
+.pay-button-area {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100rpx;
+    background-color: #fff;
+}
+
+.pay-button-content {
+    display: flex;
+    border: 1rpx solid red;
+}
+
+.pay-button-left {
+    font-size: 30rpx!important;
+    color: black;
+    width: 60%;
+    height: 100rpx;
+    padding-left: 30rpx!important;
+    line-height: 100rpx;
+    display: inline-block;
+}
+
+.pay-button-price {
+    color: red;
+}
+
+.pay-button-right {
+    width: 40%;
+    display: inline-block;
+}
+
+.pay-button-btn {
+    background: red;
+    color: white;
+    font-size: 28rpx;
+    height: 100rpx;
+    border-radius: 0;
+    line-height: 100rpx;
+    text-align: center;
 }
