@@ -4,7 +4,7 @@ var util = require('../../utils/util.js');
 Page({
   data: {
     sanHidden:true,
-    adHidden:false,
+    chaHidden:false,
     viewHeight:44,
     isPopping: false,//是否已经弹出
     animationPlus: {},//旋转动画
@@ -32,14 +32,14 @@ Page({
     fixedCount2: 7,
 
     // --------------------------------------------------------//
-    bannerUrls: [{
-      url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
-      linkUrl: ''
-    },
-    {
-      url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=77c8b34af1b44fd990e6e201df49f827&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201403%2F20%2F20140320140243_5MySw.jpeg',
-      linkUrl: ''
-    },
+    bannerUrls: [
+    //   url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
+    //   linkUrl: ''
+    // },
+    // {
+    //   url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=77c8b34af1b44fd990e6e201df49f827&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201403%2F20%2F20140320140243_5MySw.jpeg',
+    //   linkUrl: ''
+    // },
     {
       url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378838&di=e01f784abb225d79416180122bc456e1&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0118cf5837d75ea801219c77f35e67.jpg',
       linkUrl: ''
@@ -88,6 +88,12 @@ Page({
 
     })
     util.getLocation()
+    if(this.data.loader==0){
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      mask: true
+    }) }
     this.hotMovies();
     this.comingMovies();
 
@@ -165,10 +171,12 @@ Page({
       Height: swiperH //设置高度
     })
   },
-  redirct: function () {
+  redirct: function (e) {
     wx.navigateTo({
       url: '../index/chooseMovie/chooseMovie',
     })
+    wx.setStorageSync('image', e.currentTarget.dataset.image)
+      
   },
   //选择影城跳转事件
   jumpcinema() {
@@ -260,6 +268,7 @@ Page({
       }
     }
     wx.setStorageSync("comingMovieList", this.data.comingMovieList);
+
   },
   formSubmit: function (e) {
     let arrL = this.data.comingMovieList
@@ -346,7 +355,8 @@ Page({
             }
           }
           movieObj.set('movieDirectorStarring', casts)
-          movieObj.set('moiveGrade', data.subjects[i].rating.average + '分')
+          movieObj.set('movieType', data.subjects[i].genres)
+          movieObj.set('time', data.subjects[i].durations[0])
           if (data.subjects[i].rating.average > 6) {
             movieObj.set('movieType1', '../../images/4DX.png')
             movieObj.set('movieType2', '../../images/IMAX.png')
@@ -356,11 +366,11 @@ Page({
             movieObj.set('movieType2', '')
           }
 
-          if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190201') {
+          if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190214') {
             movieObj.set('movieStatus', '预售')
           } else {
             movieObj.set('movieStatus', '购票')
-
+            movieObj.set('moiveGrade', data.subjects[i].rating.average + '分')
           }
           movieObj.set('id', data.subjects[i].id)
           arr.push(JSON.parse(util.MapTOJson(movieObj)))
@@ -374,8 +384,9 @@ Page({
           adUrl: '../../images/ad.png',
           chaUrl: '../../images/cha.png',
         })
-
+        console.log(data)
         console.log(arr)
+        wx.setStorageSync("hotMovieList", this.data.hotMovieList);
       }
     })
   },
@@ -400,7 +411,7 @@ Page({
         var myDate = new Date();
         let localeDate = parseInt('' + myDate.getFullYear() + myDate.getMonth() + 1 + myDate.getDate());
         for (let i = 0; i < data.subjects.length; i++) {
-          if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190201') {
+          if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190214') {
             number++;
             if (number <= this.data.fixedCount2) {
               movieObj2.set('movieImage', data.subjects[i].images['small'])
@@ -482,11 +493,10 @@ function popp() {
     timingFunction: 'ease-out'
   })
   // animationPlus.opacity(0).step();
-  // animationTranspond.translate(-140, 0).rotateZ(180).opacity(1).step();
-  animationTranspond.translateZ(100).opacity(1).step();
+   animationTranspond.translate(0, 0).step();
   this.setData({
     viewHeight: 44,
-    adHidden: false,
+    chaHidden: false,
     sanHidden:true,
     animationPlus: animationPlus.export(),
     animationTranspond: animationTranspond.export(),
@@ -503,12 +513,10 @@ function takeback() {
     duration: 500,
     timingFunction: 'ease-out'
   })
-
    animationPlus.rotateZ(0).step();
-  // animationTranspond.translate(0, 0).rotateZ(0).opacity(0).step();
-  animationTranspond.translate(0, 0).opacity(0).step();
+  animationTranspond.translate(0, -25).step();
   this.setData({
-    adHidden: true,
+    chaHidden: true,
     sanHidden: false,
     viewHeight:0,
     animationPlus: animationPlus.export(),

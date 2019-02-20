@@ -3,6 +3,10 @@
   <!-- 显示购票影城 -->
   <!-- 显示加载当前购票影城的信息，地址、影城名称、联系电话 -->
   <view class="store">
+      <view class='container map' bindtap='map'>
+      <view class='iconfont icon-daohangdizhi'></view>
+      <view><text class='hallInstruction'>地图</text></view>
+    </view>
     <view class="storeInstruction">
       <!-- 影城详情 -->
       <!-- 介绍影城的详细信息 -->
@@ -20,10 +24,7 @@
         <view class='hallInstruction' bindtap='callphone'><text>{{movieTel}}</text></view>
       </view>
     </view>
-    <view class='container map' bindtap='map'>
-      <view class='iconfont icon-daohangdizhi'></view>
-      <view><text class='hallInstruction'>地图</text></view>
-    </view>
+
   </view>
 
 
@@ -37,7 +38,7 @@
   <swiper  class="swiper-block"  previous-margin="250rpx" next-margin="270rpx" current="0" bindchange="swiperChange" current='{{swiperCurrent}}'>
     <block wx:for="{{movieList}}" wx:key="{{movieList}}" wx:index="{{index}}">
         <swiper-item class="swiper-item">
-          <image mode="aspectFill" src="{{item.url}}" class="slide-image {{swiperIndex == index ? 'active_img' : ''}}" data-index='{{index}}' bindtap='swipclick'/>
+          <image mode="aspectFill" src="{{item.movieImage}}" class="slide-image {{swiperIndex == index ? 'active_img' : ''}}" data-index='{{index}}' bindtap='swipclick'/>
         </swiper-item>
     </block>
 </swiper>

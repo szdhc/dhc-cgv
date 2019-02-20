@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    storeName: 'CGV影城(苏州中心店)',
+    storeName: wx.getStorageSync('localMovieAddress'),
     movieAddress: '江苏省苏州市姑苏区直属镇湖左岸社区北方向',
     movieTel: '0512-69881886',
     currentTab: 0,
@@ -24,47 +24,52 @@ Page({
         name: '3D'
       }, {
         id: 3,
+        name: '4D'
+      }, {
+        id: 4,
         name: 'IMAX'
       }
+      
       //, { id: 3, name: '国语影厅' }, { id: 4, name: '个性影厅' }, { id: 5, name: '123' }, { id: 6, name: '2D' }, { id:7, name: '英文' },
       // {id: 8, name: '超级影厅' }, { id: 9, name: 'VIP' }
     ],
     date: ['今天 01-16', '明天 01-17', '后天 01-18', '周五 01-19', '周六 01-20', '周日 01-21'],
-    movieList: [{
-        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
-        name:'大黄蜂',
-        time:'119分钟',
-        grade:'9.3分',
-        type:'动作/冒险/科幻',
-      },
-      {
-        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=77c8b34af1b44fd990e6e201df49f827&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201403%2F20%2F20140320140243_5MySw.jpeg',
-        name: '海王',
-        time: '119分钟',
-        grade: '9.3分',
-        type: '动作/冒险/科幻',
-      },
-      {
-        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378838&di=e01f784abb225d79416180122bc456e1&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0118cf5837d75ea801219c77f35e67.jpg',
-        name: '印度暴徒',
-        time: '119分钟',
-        grade: '9.3分',
-        type: '动作/冒险/科幻',
-      },
-      {
-        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378837&di=6127169e3cc9a444bf43da0906e9a57b&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01ce8b582439aea84a0e282ba855d9.jpg',
-        name: '情圣2',
-        time: '119分钟',
-        grade: '9.3分',
-        type: '动作/冒险/科幻',
-      }
-    ],
+    movieList: [],
+    // movieList: [{
+    //   url: 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2545472803.jpg',
+    //     name:'流浪地球',
+    //     time:'125分钟',
+    //     grade:'7.9分',
+    //     type:'科幻/灾难',
+    //   },
+    //   {
+    //     url: 'https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2541901817.jpg',
+    //     name: '疯狂的外星人',
+    //     time: '116分钟',
+    //     grade: '6.4分',
+    //     type: '喜剧/科幻',
+    //   },
+    //   {
+    //     url: 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2542973862.jpg',
+    //     name: '飞驰人生',
+    //     time: '98分钟',
+    //     grade: '7分',
+    //     type: '喜剧',
+    //   },
+    //   {
+    //     url: 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2541035591.jpg',
+    //     name: '熊出没·原始时代',
+    //     time: '88分钟',
+    //     grade: '6.5分',
+    //     type: '动画/冒险/喜剧',
+    //   }
+    // ],
 
     showTime: [{ beginTime: '17:10', endTime: '20:20', address: '3号厅', addressDetial: '2DMAX', price:'36.9'},
-      { beginTime: '17:10', endTime: '20:20', address: '3号厅', addressDetial: '2DMAX', price: '36.9' },
-      { beginTime: '17:10', endTime: '20:20', address: '3号厅', addressDetial: '2DMAX', price: '36.9' },
-      { beginTime: '17:10', endTime: '20:20', address: '3号厅', addressDetial: '2DMAX', price: '36.9' },
-      { beginTime: '17:10', endTime: '20:20', address: '3号厅', addressDetial: '2DMAX', price: '36.9' }],
+      { beginTime: '11:10', endTime: '14:20', address: '4号厅', addressDetial: '3DMAX', price: '36.9' },
+      { beginTime: '13:10', endTime: '16:20', address: '2号厅', addressDetial: '4DMAX', price: '41.9' },
+      { beginTime: '15:10', endTime: '18:20', address: '1号厅', addressDetial: 'IMAX', price: '19' },
+      { beginTime: '17:10', endTime: '20:20', address: '3号厅', addressDetial: 'IMAX', price: '20' }],
 
     bannerUrls: [{
       url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
@@ -91,13 +96,15 @@ Page({
    */
   onLoad: function(options) {
     this.data.hall[0].checked = true;
+    this.data.movieList = wx.getStorageSync('hotMovieList');
     this.setData({
-      name: this.data.movieList[0].name,
+      name: this.data.movieList[0].movieName,
       time: this.data.movieList[0].time,
-      grade: this.data.movieList[0].grade,
-      type: this.data.movieList[0].type,
-      imgUrl: this.data.movieList[0].url,
+      grade: this.data.movieList[0].moiveGrade,
+      type: this.data.movieList[0].movieType,
+      imgUrl: this.data.movieList[0].movieImage,
       hall: this.data.hall,
+      movieList: this.data.movieList,
     })
   },
 
@@ -183,11 +190,11 @@ Page({
 
   //点击切换
   clickTab: function(e) {
-    var showTimeR= [{ beginTime: '17:20', endTime: '20:20', address: '3号厅', addressDetial: '2DMAX', price: '36.9' },
-      { beginTime: '17:20', endTime: '20:20', address: '3号厅', addressDetial: '2DMAX', price: '36.9' },
-      { beginTime: '17:20', endTime: '20:20', address: '3号厅', addressDetial: '2DMAX', price: '36.9' },
-      { beginTime: '17:20', endTime: '20:20', address: '3号厅', addressDetial: '2DMAX', price: '36.9' },
-      { beginTime: '17:20', endTime: '20:20', address: '3号厅', addressDetial: '2DMAX', price: '36.9' }];
+    var showTimeR = [{ beginTime: '17:10', endTime: '20:20', address: '3号厅', addressDetial: '2DMAX', price: '36.9' },
+    { beginTime: '11:10', endTime: '14:20', address: '4号厅', addressDetial: '3DMAX', price: '36.9' },
+    { beginTime: '13:10', endTime: '16:20', address: '2号厅', addressDetial: '4DMAX', price: '41.9' },
+    { beginTime: '15:10', endTime: '18:20', address: '1号厅', addressDetial: 'IMAX', price: '19' },
+    { beginTime: '17:10', endTime: '20:20', address: '3号厅', addressDetial: 'IMAX', price: '20' }];
     if (this.data.currentTab === e.currentTarget.dataset.current) {
       return false;
     } else {
@@ -212,11 +219,11 @@ Page({
 swiperChange(e) {
   const that = this;
   that.setData({
-    name: this.data.movieList[e.detail.current].name,
+    name: this.data.movieList[e.detail.current].movieName,
     time: this.data.movieList[e.detail.current].time,
-    grade: this.data.movieList[e.detail.current].grade,
-    type: this.data.movieList[e.detail.current].type,
-    imgUrl: this.data.movieList[e.detail.current].url,
+    grade: this.data.movieList[e.detail.current].moiveGrade,
+    type: this.data.movieList[e.detail.current].movieType,
+    imgUrl: this.data.movieList[e.detail.current].movieImage,
     swiperIndex: e.detail.current,
   })
 },
@@ -225,11 +232,11 @@ swiperChange(e) {
 swipclick: function (e) {
   const that = this;
   that.setData({
-    name: this.data.movieList[e.currentTarget.dataset.index].name,
+    name: this.data.movieList[e.currentTarget.dataset.index].movieName,
     time: this.data.movieList[e.currentTarget.dataset.index].time,
-    grade: this.data.movieList[e.currentTarget.dataset.index].grade,
-    type: this.data.movieList[e.currentTarget.dataset.index].type,
-    imgUrl: this.data.movieList[e.currentTarget.dataset.index].url,
+    grade: this.data.movieList[e.currentTarget.dataset.index].moiveGrade,
+    type: this.data.movieList[e.currentTarget.dataset.index].movieType,
+    imgUrl: this.data.movieList[e.currentTarget.dataset.index].movieImage,
     swiperIndex: e.currentTarget.dataset.index,
     swiperCurrent: e.currentTarget.dataset.index,
   })

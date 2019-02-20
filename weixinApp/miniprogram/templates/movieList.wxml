@@ -27,12 +27,12 @@
     <view class='flex-wrp-cloumn margin-left'>
       <view>
         <text class='medium-font-size moiveGrade'>{{moiveGrade}}</text>
-      </view>
-      <view wx:if="{{movieStatus=='购票'}}">
-        <button class='movieStatus' bindtap='redirct' style=' background:#FF0000;'>{{movieStatus}}</button>
-      </view>
-      <view wx:else>
-        <button class='movieStatus' bindtap='redirct'>{{movieStatus}}</button>
+        <view wx:if="{{movieStatus=='购票'}}">
+          <button class='movieStatus' bindtap='redirct' data-image='{{movieImage}}' style=' background:#FF0000;'>{{movieStatus}}</button>
+        </view>
+        <view wx:else>
+          <button class='movieStatus' bindtap='redirct' data-image='{{movieImage}}'>{{movieStatus}}</button>
+        </view>
       </view>
     </view>
   </view>
@@ -84,33 +84,34 @@
 </template>
 
 <template name='showTimeTemplate'>
-  <view class='flex-wrp-row item'>
+  <view class='flex-wrp-row item film_info'>
     <!--时间-->
-    <view class='flex-wrp-cloumn content'>
-      <view>
+    <view class='flex-wrp-cloumn content film_time_info'>
+      <!-- <view>
         <text class='movieName'>{{beginTime}}</text>
       </view>
       <view>
         <text class='movieShow'>{{endTime}}</text>
+      </view> -->
+      <view class='time'>
+        <view>{{beginTime}}</view>
+        <view>{{endTime}}散场</view>
+      </view>
+      <view>
       </view>
     </view>
     <!--地点-->
-    <view class='flex-wrp-cloumn coloum'>
-      <view>
-        <text class='movieName'>{{address}}</text>
-      </view>
-      <view>
-        <text class='movieShow'>{{addressDetial}}</text>
-      </view>
+    <view class='flex-wrp-cloumn coloum type'>
+      <view class='film_nd'>{{addressDetial}}</view>
+      <view class='room_name'>{{address}}</view>
     </view>
     <!--价格-->
-    <view class='flex-wrp-cloumn coloum'>
-      <view>
-        <text class='movieprice'>{{price}}</text>
-      </view>
+    <view class='flex-wrp-cloumn coloum price'>
+        <view class='movieprice'>¥{{price}}</view>
+        <view class='memberprice'>会员价：¥{{price-5}}</view>
     </view>
     <!--特惠-->
-    <view class='flex-wrp-cloumn coloum'>
+    <view class='flex-wrp-cloumn coloum salbutton'>
       <view>
         <button class='movieStatus salebutton' bindtap='redirctSeat'>特惠</button>
       </view>

@@ -6,7 +6,9 @@
 .margin-left {
   margin-left: 35rpx;
 }
-
+.margin-right{
+  margin-right: 35rpx;
+}
 .content {
   width: 430rpx;
 }
@@ -26,14 +28,21 @@
 .moiveGrade {
   color: burlywood;
   margin-left:20rpx;
+  position:relative;
+  top:4rpx;
+left:-48rpx;
+float: right;
 }
 
 .movieStatus {
   font-size: 22rpx;
   color: #fff;
   background: rgb(224, 166, 94);
-  border-radius: 20rpx;
-  top:50rpx;
+  border-radius: 49rpx;
+  top:32rpx;
+  width:113rpx;
+left:-30rpx;
+
 }
 
 /*使用 button::after{ border: none; } 来去除边框*/
@@ -50,11 +59,14 @@
   font-size: 22rpx;
   color: #fff;
   background: rgb(224, 166, 94);
-  border-radius: 20rpx;
+  border-radius: 50rpx;
+  margin-right:8px;
 }
 
 .salecomment {
-  width: 128rpx;
+ position:relative;
+left:-30rpx;
+top:-10rpx;
 }
 
 .want {
@@ -74,7 +86,7 @@
   height: 35rpx;
 }
 .salebutton {
-  width: 100rpx;
+  width: 113rpx;
   top:20rpx;
 left:-12rpx;
 
@@ -82,7 +94,7 @@ left:-12rpx;
 .divLine{
  background: #E0E3DA;
  width: 94%;
- height: 5rpx;
+ height: 3rpx;
  margin-left:3%;
 }
 .text-want{
@@ -106,6 +118,60 @@ left:-12rpx;
   height: 32rpx;
   padding: 0 6rpx;
 }
+.price{
+    position: absolute;
+ left:400rpx;
+top: 20rpx;
+}
 .movieprice {
-  margin-top: 3rpx;  
+  margin-top: 3rpx;
+      font-size: 35rpx;  
+ font-weight:600;
+}
+.memberprice{
+    font-size: 18rpx;
+    width: 120rpx;
+}
+.film_time_info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 38rpx;
+    height:70rpx;
+}
+
+.film_time_info>view {
+position:absolute;
+ left:28rpx;
+top: 14rpx;
+    display: flex;
+    flex-direction: column;
+    /* background: red; */
+        width: 150rpx;
+}
+
+.time>view:last-child{
+    color: #999;
+    font-size: 22rpx;
+    width: 150rpx;
+}
+.film_info{
+  border-top:2rpx inset rgba(128, 128, 128, 0.397);
+  /* border-bottom:2rpx inset rgba(128, 128, 128, 0.397); */
+}
+.film_nd{
+    font-size: 20rpx;
+}
+.room_name{
+        color: #999;
+    font-size: 19rpx;
+}
+.type{
+  position: absolute;
+ left:93rpx;
+top: 37rpx;
+}
+.salbutton{
+      position: absolute;
+ left:560rpx;
+top: 8rpx;
 }

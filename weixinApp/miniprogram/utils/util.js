@@ -133,45 +133,63 @@ function getLocal (latitude, longitude) {
 }
 //TODO 
  function getMovieAddress(city) {
-  let list = [];
-  let suzhou = [{
-    'id': '0',
-    'movieAddress': 'CGV苏州中心店',
-    'latitude': '39.915405',
-    'longitude': '116.403802'
-  },
-  {
-    'id': '1',
-    'movieAddress': 'CGV昆山广场店',
-    'latitude': '31.200479',
-    'longitude': '121.334421'
-  }
-  ];
-  let shanghai = [{
-    'id': '0',
-    'movieAddress': 'CGV上海广场',
-    'latitude': 1.2,
-    'longitude': 2.2
-  },
-  {
-    'id': '1',
-    'movieAddress': 'CGV外滩店',
-    'latitude': '77.77777',
-    'longitude': '11.11111'
-  },
-  {
-    'id': '2',
-    'movieAddress': 'CGV浦东店',
-    'latitude': '22.1111',
-    'longitude': '65.4321'
-  }
-  ];
-  if (city === '苏州市') {
-    list = suzhou;
-  } else {
-    list = shanghai;
-  };
-
+   let list = [];
+   let suZhou = [{
+     'id': '0',
+     'movieAddress': '苏州中心'
+   },
+   {
+     'id': '1',
+     'movieAddress': '昆山昆城广场'
+   }
+   ];
+   let shangHai = [{
+     'id': '0',
+     'movieAddress': '上海安亭'
+   },
+   {
+     'id': '1',
+     'movieAddress': '上海浦东印象城'
+   },
+   {
+     'id': '2',
+     'movieAddress': '上海七宝'
+   }
+   ];
+   let beiJing = [{
+     'id': '0',
+     'movieAddress': '北京清河'
+   },
+   {
+     'id': '1',
+     'movieAddress': '星星北京颐提港'
+   },
+   {
+     'id': '2',
+     'movieAddress': '星星北京奥体'
+   },
+   {
+     'id': '3',
+     'movieAddress': '北京顺义'
+   }
+   ];
+   let qiTa = [{
+     'id': '0',
+     'movieAddress': city + '中心'
+   }
+   ];
+   if (city === '苏州市') {
+     list = suZhou;
+   }
+   else if (city === '上海市') {
+     list = shangHai;
+   }
+   else if (city === '北京市') {
+     list = beiJing;
+   }
+   else {
+     list = qiTa;
+   };
   var tempDistance = distance(list[0].latitude, list[0].longitude);
   var tempNode = list[0];
 

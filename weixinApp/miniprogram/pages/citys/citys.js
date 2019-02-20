@@ -1,5 +1,5 @@
 
-import { LETTERS, CITY_LIST, HOT_CITY_LIST} from '../../locale/citydata'
+import { LETTERS, CITY_LIST, HOT_CITY_LIST, RECENT_CITY_LIST } from '../../locale/citydata'
 var util = require('../../utils/util.js');
 const app = getApp()
 var scrollNow = 0;
@@ -28,7 +28,7 @@ Page({ /** * 生命周期函数--监听页面加载 */
   },
   handlerMove(e) {
     var _this = this;
-    var currentCityName = e.target.dataset.id;
+    var currentCityName = e.currentTarget.dataset.id;
     var moveY = e.touches[0].clientY;
     var targetM = Math.ceil((moveY - 61) / 22) - 1;
     var cityAZData = _this.data.cityAZ;
@@ -189,6 +189,7 @@ Page({ /** * 生命周期函数--监听页面加载 */
     cityType: 'begin',
     cityResults: null,
     hotCityList: HOT_CITY_LIST,
+    renCityList: RECENT_CITY_LIST,
     nowTarget:'',
     cityAZ: [{
       //cityName: '热门'

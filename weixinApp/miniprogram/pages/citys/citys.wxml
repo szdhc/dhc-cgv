@@ -10,9 +10,19 @@
 </view>
 <view class="city-picker">
   <view class="city-item-A-Z">定位城市</view>
-  <view class="weui-grid" style='margin-left:6%;'>
+  <view class="weui-grid" style='margin-left:6%;margin-bottom:20rpx;'>
     <view class="weui-grid-label" data-city="{{beginCity}}" bindtap="citySelected">{{beginCity}}</view>
   </view>
+
+  <view class="city-item-A-Z">最近访问城市</view>
+  <view class="hot-city" wx:key="initial" style='margin-bottom:10rpx;'>
+    <view wx:for="{{renCityList}}" wx:key="cityCode">
+      <view class="weui-grid" data-code="{{item.cityCode}}" data-city="{{item.city}}" bindtap="chooseCity">
+        <view class="weui-grid-label" data-city="{{item.city}}" bindtap="citySelected">{{item.city}}</view>
+      </view>
+    </view>
+  </view>
+
   <view class="city-item-A-Z">热门城市</view>
   <view class="hot-city" wx:key="initial">
     <view wx:for="{{hotCityList}}" wx:key="cityCode">

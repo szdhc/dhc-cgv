@@ -19,7 +19,11 @@ Page({
     let imglist = [];
     // 开启导航条加载动画 
     wx.showNavigationBarLoading();
-    
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      mask: true
+    }) 
     wx.request({
       url: 'https://douban.uieee.com/v2/movie/subject/' + Id,
       method: "GET",

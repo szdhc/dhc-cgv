@@ -15,8 +15,12 @@ page{
 }
 
 .map{
+
   margin-left: 3%;
   margin-top: 2%;
+  height: 125rpx;
+  padding: 2% 2% 2% 2%;
+    border-right: 2rpx inset rgba(128, 128, 128, 0.397);
 }
 
 .store{
@@ -30,7 +34,7 @@ page{
   margin-left: 5%;
   margin-top: 1%;
   width: 80%;
-  border-right: 2rpx inset rgba(128, 128, 128, 0.397);
+  /* border-right: 2rpx inset rgba(128, 128, 128, 0.397); */
 }
 
 .phone{
@@ -109,7 +113,7 @@ page{
 
 .active{
   color:rgb(245, 113, 26);
-  border-bottom: 2rpx solid rgb(245, 113, 26);
+  /* border-bottom: 2rpx solid rgb(245, 113, 26); */
 }
 
 .show-time{
@@ -117,7 +121,7 @@ width: 100%;
 }
 
 .swiper-block{
-  height: 280rpx;
+  height: 300rpx;
   width: 100%;
   margin-top: 50rpx;
 }
