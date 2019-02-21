@@ -11,7 +11,7 @@
         <!--
             取票码发送到手机栏
         -->         
-        <view class="pay-item pay-height-mid" bindtap="selectMobile">
+        <view class="pay-item pay-height-mid" bindtap="showMobileInput">
             <view class="pay-item-left pay-font-bold">
                 <text>将取票码发送到手机</text>
             </view>
@@ -202,6 +202,19 @@
                 <view class="pay-button-right">
                     <button class="pay-button-btn">立即支付</button>
                 </view>
+            </view>
+        </view>
+
+
+        <!--
+            取票码手机号弹出层效果
+        -->
+        <view class="pay-tel-rule {{isMobileTrue?'isPayTelShow':'isPayTelHide'}}">
+            <view class="pay-tel-content">               
+                <text class="pay-tel-title">修改手机号</text>
+                <input value="{{telnum}}" bindinput="changetel" type="number" class="pay-tel-input" maxlength="11"  placeholder="请输入手机号" placeholder-class="pay-tel-place-holder"/>
+                <button class="pay-tel-btn" bindtap="checkTel">确定</button>
+                <image src='../../../images/pay-cancel.png' class='ruleHide' bindtap='hideMobileInput'></image>
             </view>
         </view>
 

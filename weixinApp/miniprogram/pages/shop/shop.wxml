@@ -69,7 +69,7 @@
             <text class="count">月售{{food.sellCount}}</text>
             <text class="count">好评{{food.rating}}</text>
           </view> -->
-          <view class="price">
+          <view class="good-price">
             <view class="now">促销价:￥{{food.price}}</view>
             <view class="old" wx:if="{{food.oldPrice}}">￥{{food.oldPrice}}</view>
           </view>
@@ -103,7 +103,7 @@
               </view>
               <view class="num" wx:if="{{totalCount> 0}}">{{totalCount}}</view>
             </view>
-            <view class="price">￥{{totalPrice}}</view>
+            <view class="good-price">￥{{totalPrice}}</view>
             <!-- <view class="desc">另需配送费￥{{deliveryPrice}}元</view> -->
           </view>
           <view class="gcontent-right" catchtap="pay">
@@ -120,7 +120,7 @@
           <view class="list-content">
             <view class="shopcart-food" wx:for="{{carArray}}">
               <text class="name">{{item.name}}</text>
-              <view class="price" >
+              <view class="good-price" >
                 <span>￥{{item.price*item.num}}</span> 
               </view>
 

@@ -363,18 +363,18 @@ page {
   margin-right: 12px;
 }
 
-.goods .foods-wrapper .food-list .food-item .gcontent .price {
+.goods .foods-wrapper .food-list .food-item .gcontent .good-price {
   font-weight: 700px;
   line-height: 24px;
 }
 
-.goods .foods-wrapper .food-list .food-item .gcontent .price .now {
+.goods .foods-wrapper .food-list .food-item .gcontent .good-price .now {
   margin-right: 8px;
   font-size: 14px;
   color: rgb(240, 20, 20);
 }
 
-.goods .foods-wrapper .food-list .food-item .gcontent .price .old {
+.goods .foods-wrapper .food-list .food-item .gcontent .good-price .old {
   font-size: 10px;
   color: rgb(147, 153, 159);
   text-decoration: line-through;
@@ -520,7 +520,7 @@ page {
   color: #fff;
 }
 
-.shopCart .gcontent .gcontent-left .price {
+.shopCart .gcontent .gcontent-left .good-price {
   display: inline-block;
   vertical-align: top;
   margin-top: 12px;
@@ -533,7 +533,7 @@ page {
   color: rgba(255, 255, 255, 0.4);
 }
 
-.shopCart .gcontent .gcontent-left .price.highlight {
+.shopCart .gcontent .gcontent-left .good-price.highlight {
   color: #fff;
 }
 
@@ -644,7 +644,7 @@ page {
   color: rgb(7, 17, 27);
 }
 
-.shopCart .shopcart-list .list-content .shopcart-food .price {
+.shopCart .shopcart-list .list-content .shopcart-food .good-price {
   position: absolute;
   right: 90px;
   bottom: 12px;

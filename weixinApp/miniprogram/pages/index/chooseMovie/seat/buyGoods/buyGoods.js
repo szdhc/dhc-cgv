@@ -2,7 +2,6 @@
 Page({
 
   data: {
-    isClose: true,     //判断当前页面是打开还是返回页
     // --------------------------------------------------------------//
     // --------------------goods information----------------------------
 
@@ -473,9 +472,8 @@ Page({
     // url encode
     // let modeEncode = encodeURIComponent(modeStr);
     // console.log(modeStr);
-    this.setData({ isClose: false });
     wx.navigateTo({
-      url: '../shop/goods/goods',
+      url: '../../../../shop/goods/goods',
       //url: '../shop/goods/goods?jsonStr=' + str,
     })
   },
@@ -516,8 +514,6 @@ Page({
     var mark = 'a' + index + 'b' + parentIndex;
     var price = this.data.goods[parentIndex].foods[index].price;
     var num = this.data.goods[parentIndex].foods[index].Count;
-    var name = this.data.goods[parentIndex].foods[index].name;
-    var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
 
     var carArray1 = [];
     if (this.data.carArray != undefined && this.data.carArray != null) {
@@ -560,7 +556,9 @@ Page({
     var price = this.data.goods[parentIndex].foods[index].price;
     var num = this.data.goods[parentIndex].foods[index].Count;
     var name = this.data.goods[parentIndex].foods[index].name;
-    var obj = { price: price, num: num, mark: mark, name: name, index: index, parentIndex: parentIndex };
+    var icon = this.data.goods[parentIndex].foods[index].icon;
+    var description = this.data.goods[parentIndex].foods[index].description;    
+    var obj = { price: price, num: num, mark: mark, name: name,icon: icon,description: description, index: index, parentIndex: parentIndex };
 
     var updateFlg = 0;
     var carArray1 = [];
@@ -645,7 +643,7 @@ Page({
     wx.setStorageSync("jsonCarA", JSON.stringify(this.data.carArray));
 
     wx.navigateTo({
-      url: '../shop/dinnMethod/dinnMethod'
+      url: '../../../../shop/goodspay/goodspay'
     })
   },
   //彈起購物車
@@ -712,19 +710,15 @@ Page({
 * 生命周期函数--监听页面隐藏
 */
   onHide: function () {
-    if (this.data.isClose) {
-      console.log('重新打开')
-    }
   },
 
   onShow: function () {
 
-    console.log("shops-----------------" + this.data.isClose);
 
     // 当页面从详细跳转过来时
-    let pages = getCurrentPages();
-    let prevpage = pages[pages.length - 1];
-    if (!this.data.isClose) {
+    // 当页面从详细跳转过来时
+    let isGoodsJson = wx.getStorageSync("jsongoods");
+    if (isGoodsJson != undefined && isGoodsJson != null && isGoodsJson != '' && JSON.parse(isGoodsJson) == "goodsPage") {
 
       let carArr = wx.getStorageSync("jsonCarA");
       let carA = JSON.parse(carArr);
@@ -739,7 +733,7 @@ Page({
       if (carA != undefined && carA != null && carA.length > 0) {
         for (var i = 0; i < carA.length; i++) {
           this.data.goods[carA[i].parentIndex].foods[carA[i].index].Count = carA[i].num;
-        }
+        } 
       }
 
       this.setData({ goods: this.data.goods });

@@ -42,6 +42,15 @@
 </view>
 <view class="buy">
   <view class="seats-detail">
+    <view class="seat-tips">推荐座位</view>
+    <view class="seat-wrap">
+      <view class="selectcss selectbutton" data-num="1" bindtap='recommondseats'>1位</view>
+      <view class="selectcss selectbutton" data-num="2" bindtap='recommondseats'>2位</view>
+      <view class="selectcss selectbutton" data-num="3" bindtap='recommondseats'>3位</view>
+      <view class="selectcss selectbutton" data-num="4" bindtap='recommondseats'>4位</view>
+    </view>
+  </view>
+  <view class="seats-detail">
     <view class="seat-tips">已选座位</view>
     <view class="seat-wrap">
       <view class="seat-item" wx:for="{{seats}}" wx:key="{{seats}}">
