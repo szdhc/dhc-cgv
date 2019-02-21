@@ -30,7 +30,7 @@
     <text class="headline">{{currCity}}</text> -->
             <import src='../../templates/banner.wxml' />
             <template is='bannerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
-            <view style='height:{{viewHeight}}rpx'>
+            <view style='height:22rpx;padding-bottom:30rpx'>
               <image src='{{sanUrl}}' animation="{{animationPlus}}" class='search_img' bindtap='plus' hidden='{{sanHidden}}'></image>
               <image src="{{adUrl}}" animation="{{animationTranspond}}" class="card_img" bindtap="transpond"></image>
               <image src="{{chaUrl}}" animation="{{animationTranspond}}" class="cha_img" bindtap="chaback" hidden='{{chaHidden}}'></image>
@@ -41,18 +41,22 @@
     <text class="p">3. 查看访问小程序的用户列表</text> -->
 
             <import src='../../templates/movieList.wxml' />
-            <view wx:for="{{hotMovieList}}" wx:key="{{hotMovieList}}">
-              <template is='hotMovieTemplate' data="{{...item}}" />
+            <view   wx:for="{{hotMovieList}}" wx:key="{{hotMovieList}}" animation="{{animationTranspond}}">
+              <template wx:if="{{item.movieStatus=='购票'}}" is='hotMovieTemplate' data="{{...item}}"/>
+              <template wx:else="{{item.movieStatus=='预售'}}"  is='comingMovieTemplate' data="{{...item}}" />
               <view class="more" wx:if="{{index==hotMovieList.length-1}}" hidden="{{moreTab1==1}}" bindtap='clickMore'>
                 加载更多
               </view>
               <view class='loading' wx:if="{{loader}}">
                 <image class='loadingimg' wx:if="{{index==hotMovieList.length-1}}" hidden="{{moreTab1==0}}" src="../../images/loading-bars.svg"></image>
               </view>
+              
             </view>
+            
           </view>
         </scroll-view>
       </swiper-item>
+      
     </view>
     <!--待映-->
     <view hidden="{{currentTab!==1}}">
@@ -61,13 +65,13 @@
           <view class='comingFilm_container'>
             <import src='../../templates/banner.wxml' />
             <template is='bannerTemplate' data='{{indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
-            <view style='height:{{viewHeight}}rpx'>
+            <view style='height:22rpx;padding-bottom:30rpx'>
               <image src='{{sanUrl}}' animation="{{animationPlus}}" class='search_img' bindtap='plus' hidden='{{sanHidden}}'></image>
               <image src="{{adUrl}}" animation="{{animationTranspond}}" class="card_img" bindtap="transpond"></image>
               <image src="{{chaUrl}}" animation="{{animationTranspond}}" class="cha_img" bindtap="chaback" hidden='{{chaHidden}}'></image>
             </view>
             <import src='../../templates/movieList.wxml' />
-            <view wx:for="{{comingMovieList}}" wx:key="{{comingMovieList}}" formType="submit">
+            <view wx:for="{{comingMovieList}}" wx:key="{{comingMovieList}}" formType="submit" animation="{{animationTranspond}}">
               <template is='comingMovieTemplate' data="{{...item}}" />
               <view class="more" wx:if="{{index==comingMovieList.length-1}}" hidden="{{moreTab2==1}}" bindtap='clickMore'>
                 加载更多
