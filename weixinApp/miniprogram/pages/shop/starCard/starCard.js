@@ -84,7 +84,21 @@ Page({
    * 调用手机扫描接口扫描二维码
    */
   showCardScan: function() {
-
+    wx.scanCode({
+      onlyFromCamera:false,
+      scanType: ['qrCode','barCode'],
+      success: (res) => {
+        //扫描结果
+        var result = res.result;
+        this.setData({starNum: result})
+      },
+      fail:function(err) {
+        console.log('fail-----' + err);
+      },
+      complete:function(res) {
+        console.log('complete----' + res);
+      }
+    })
   },
 
 
