@@ -39,12 +39,12 @@
         <view class="gcontent" bindtap="toggleList">
           <view class="gcontent-left">
             <view class="logo-wrapper">
-              <view class="logo highlight">
+              <view class="{{(totalCount>0)? 'logo highlight':'logo'}}">
                 <view class="giconfont icon-gouwuche highlight"></view>
               </view>
               <view class="num" wx:if="{{totalCount> 0}}">{{totalCount}}</view>
             </view>
-            <view class="price">￥{{totalPrice}}</view>
+            <view class="good-price">￥{{totalPrice}}</view>
             <!-- <view class="desc">另需配送费￥{{deliveryPrice}}元</view> -->
           </view>
           <view class="gcontent-right" catchtap="pay">
@@ -61,7 +61,7 @@
           <view class="list-content">
             <view class="shopcart-food" wx:for="{{carArray}}">
               <text class="name">{{item.name}}</text>
-              <view class="price" >
+              <view class="good-price" >
                 <span>￥{{item.price*item.num}}</span> 
               </view>
 
