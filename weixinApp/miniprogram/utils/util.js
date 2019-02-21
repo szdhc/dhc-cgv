@@ -229,10 +229,57 @@ function checkTelNum(telnum) {
   return telnum.length == 11 && (/^[0-9]+$/.test(telnum));
 }
 
+
+/**
+ * 请求服务器变量
+ */
+var requestHandler = {
+  url: '',
+  data: {},
+  method: '',
+  success: function (res) {
+  },
+  fail: function () {
+  },
+  complete: function () {
+  }
+}
+
+/**
+ * 请求服务器时显示加载中
+ * @param {请求服务器变量} requestHandler 
+ */
+function request(requestHandler) {
+  var data = requestHandler.data;
+  var url = requestHandler.url;
+  var method = requestHandler.method;
+  wx.showLoading({
+    title: '加载中',
+  })
+  wx.request({
+    url: url,
+    data: data,
+    method: method,
+    success: function (res) {
+      wx.hideLoading();
+      requestHandler.success(res)
+    },
+    fail: function () {
+      wx.hideLoading();
+      requestHandler.fail();
+    },
+    complete: function () {
+       
+    }
+  })
+}
+
+
 module.exports = {
   MapTOJson: MapTOJson,
   getLocation: getLocation,
-  checkTelNum: checkTelNum
+  checkTelNum: checkTelNum,
+  request:request
 }
 
 

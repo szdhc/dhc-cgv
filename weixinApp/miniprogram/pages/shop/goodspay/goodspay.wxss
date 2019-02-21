@@ -277,6 +277,8 @@ radio .wx-radio-input{
       border: 1rpx solid rgba(145, 140, 140, 0.5);
       padding-left: 10rpx;
       font-size: 30rpx;
+      height: 56rpx;
+      min-height: 56rpx;      
   }
 
   .ruleHide {
@@ -297,6 +299,6 @@ radio .wx-radio-input{
   }
 
   .pay-tel-place-holder {
-      font-size: 30rpx;
+      font-size: 28rpx;
       color: grey;
   }

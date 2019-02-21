@@ -1,2 +1,27 @@
-<!--pages/shop/starCard/starCard.wxml-->
-<text>pages/shop/starCard/starCard.wxml</text>
+<view class="star-board">
+    <view class="star-content">
+        <button class='star-btn' bindtap="showStarInput">
+            <image class='star-btn-Img' src='../../../images/star-add.png'></image>
+            <view>添加星意卡</view>
+        </button> 
+        <image class="star-image" src="../../../images/mine-nodata.png" />
+        <text class="star-text">您还没有星意卡哦~</text>
+    </view>
+
+    <!--
+        添加星意卡弹出层效果
+    -->
+    <view class="pay-tel-rule {{isStarCardTrue?'isPayTelShow':'isPayTelHide'}}">
+        <view class="pay-tel-content" style="height:30%;margin:45% auto;padding-bottom:16rpx;">               
+            <text class="pay-tel-title">添加星意卡</text>
+            <view class="pay-star-scan">
+                <input value="{{starNum}}" bindinput="changeStarNum" class="pay-star-input" placeholder="请输入星意卡号" placeholder-class="pay-tel-place-holder"/>
+                <image src="../../../images/star-scan.png" class="pay-star-image" bindtap="showCardScan" />
+            </view>
+            <input value="{{starPwd}}" type="password" bindinput="changeStarPwd" class="pay-tel-input" placeholder="请输入卡密码" maxlength="6" placeholder-class="pay-tel-place-holder"/>
+            <button class="pay-tel-btn" bindtap="checkStarCard">确定</button>
+            <image src='../../../images/pay-cancel.png' class='ruleHide' bindtap='hideStarInput'></image>
+        </view>
+    </view>    
+
+</view>
