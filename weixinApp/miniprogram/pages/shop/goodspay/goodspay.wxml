@@ -88,7 +88,7 @@
        <!--
             卖品优惠券
         -->         
-        <view class="pay-item pay-height-mid pay-margin">
+        <view class="pay-item pay-height-mid pay-margin" bindtap="showCouponPage">
             <view class="pay-item-left">
                 <text>卖品优惠券</text>
             </view>
@@ -109,7 +109,7 @@
        <!--
             使用会员卡
         -->         
-        <view class="pay-item pay-height-mid">
+        <view class="pay-item pay-height-mid" bindtap="showCardPage">
             <view class="pay-item-left">
                 <text>使用会员卡</text>
             </view>
@@ -130,7 +130,7 @@
        <!--
             使用星意卡
         -->         
-        <view class="pay-item pay-height-mid">
+        <view class="pay-item pay-height-mid" bindtap="showStarCardPage">
             <view class="pay-item-left">
                 <text>使用星意卡</text>
             </view>

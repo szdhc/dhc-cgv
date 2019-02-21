@@ -50,6 +50,10 @@ Page({
     this.setData({telnum:e.detail.value})
   },
 
+  /**
+   * 确认按钮点击时
+   * 判断输入的手机号是否符合格式要求
+   */
   checkTel: function() {
     let telNum = this.data.telnum;
 
@@ -72,6 +76,33 @@ Page({
     })
   }
   },
+
+  /**
+   * 跳转卖品优惠券选择界面
+   */
+  showCouponPage: function() {
+    wx.navigateTo({
+      url: '../../mine/coupon/coupon',
+    })
+  },
+
+  /**
+   * 跳转会员卡选择界面
+   */
+  showCardPage: function() {
+    wx.navigateTo({
+      url: '../../mine/Membership/Membership',
+    })
+  },  
+
+  /**
+   * 跳转星意卡选择界面
+   */
+  showStarCardPage: function() {
+    wx.navigateTo({
+      url: '../../shop/starCard/starCard',
+    })
+  },    
 
   /**
    * 生命周期函数--监听页面加载
