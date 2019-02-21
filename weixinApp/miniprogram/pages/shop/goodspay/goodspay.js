@@ -23,13 +23,54 @@ Page({
 
     havecredit: '5',             //可使用积分
     usecredit: '50',             //满xx积分可用
+
+    isMobileTrue: false,         //手机号码输入弹出层是否显示; false,不显示
+    telnum: '',                  //取票码手机号
   },
 
   /**
-   * 
+   * 打开手机号码输入
    */
-  selectMobile: function() {
-    
+  showMobileInput: function() {
+    this.setData({isMobileTrue: true})
+  },
+
+  /**
+   * 关闭手机号码输入
+   */
+  hideMobileInput: function() {
+    this.setData({isMobileTrue: false})
+  },  
+
+  /**
+   * 实现输入框内容变化同步value值
+   * @param {*} e 
+   */
+  changetel: function(e) {
+    this.setData({telnum:e.detail.value})
+  },
+
+  checkTel: function() {
+    let telNum = this.data.telnum;
+
+    if(telNum == null || telNum.length == 0) {
+      wx.showToast({
+        title:'请输入发送取票码的手机号',
+        icon: 'none',
+        duration:2000
+    })      
+    }else if(util.checkTelNum(telNum)) {
+      this.setData({
+        isMobileTrue: false,
+        mobilenumber: telNum
+      })
+    } else {
+      wx.showToast({
+        title:'手机号码格式不正确',
+        icon: 'none',
+        duration:2000
+    })
+  }
   },
 
   /**

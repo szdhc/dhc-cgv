@@ -219,9 +219,20 @@ function distance (la2, lo2) {
   return s;
 }
 
+/**
+ * 验证输入的手机号码是否符合格式要求;
+ * 符合返回true
+ * 不符合返回false
+ * @param {手机号码} telnum 
+ */
+function checkTelNum(telnum) {
+  return telnum.length == 11 && (/^[0-9]+$/.test(telnum));
+}
+
 module.exports = {
   MapTOJson: MapTOJson,
-  getLocation: getLocation
+  getLocation: getLocation,
+  checkTelNum: checkTelNum
 }
 
 
