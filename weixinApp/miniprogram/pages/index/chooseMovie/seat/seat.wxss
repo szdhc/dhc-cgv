@@ -234,3 +234,18 @@
 .plaseS{
   background-color: #FFD699;
 }
+.selectbutton {
+  width: 150rpx;
+  height:60rpx;
+}
+.selectcss {
+  font-size: 35rpx;
+  color: #fff;
+  background: rgb(224, 166, 94);
+  border-radius: 20rpx;
+  text-align: center;
+  margin-top: 5rpx;
+  padding-top: 10rpx;
+  margin-left: 2%;
+  margin-right: 7%;
+}

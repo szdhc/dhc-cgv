@@ -5,6 +5,7 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+// 是否跳选
 function checkSeats(map){
   for(var i = 0; i < map.length ; i++){
     for(var j = 1; j < map[i].length; j++){
@@ -16,6 +17,75 @@ function checkSeats(map){
     }
   }
   return true;
+}
+
+// 找座算法
+function searchseats(fromrow, torow, num, map){
+  var distanceToMid = 1000
+  var finalReuslt = []
+  for (var i = fromrow; i < torow; i++){
+    // 连坐个数
+    var count = 0
+    var recommond = []
+    // 最后一个座位下标
+    var last = 0
+    // 到中心的距离
+    var rowdistanceToMid = 1000
+    // 每行最佳位置
+    var rowfinalReuslt = []
+    for (var j = 1; j < map[i].length; j++){
+      // 已选
+      if (map[i][j] === 2){
+        count = 0
+        recommond = []
+        last = 0
+        // 可选
+      } else if (map[i][j] === 1){
+        count++
+        // 如果连坐数大于要选的数目，清楚最左边的
+        if(count > num){
+          recommond.shift()
+        }
+        recommond.push(i+"-"+j)
+        last = j
+      }
+
+      if (count >= num){
+        // 计算最右边位置到中心的距离
+        var mid = map[i].length / 2
+        var distance = 0
+        if(last < mid){
+          distance = mid - last
+        }else{
+          distance = last - mid
+        }
+
+        if (rowdistanceToMid > distance + num / 2){
+          rowdistanceToMid = distance + num / 2
+          rowfinalReuslt = recommond
+          // 正好在正中间
+          if (rowdistanceToMid === 0 + num / 2 || rowdistanceToMid === 0.5 + num / 2){
+            return rowfinalReuslt
+          }
+        }else{
+          // 到中心的距离应该是先变小再变大，如果开始变大就说明已经越过中心位置了，所以不用再循环了
+          if (distanceToMid > rowdistanceToMid) {
+            distanceToMid = rowdistanceToMid
+            finalReuslt = rowfinalReuslt
+            break
+          }
+        }
+      }
+    }
+
+    // 每行中心距离比较，取靠中心近的
+    if (distanceToMid > rowdistanceToMid){
+      distanceToMid = rowdistanceToMid
+      finalReuslt = rowfinalReuslt
+    }
+
+  }
+  return finalReuslt
 }
 
 Page({
@@ -41,8 +111,8 @@ Page({
     willChange: false,
     hasSelected: false,
     seatmap: [[1, 0, 2, 2, 2, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1], [1, 0, 2, 2, 2, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
-      [1, 0, 1, 1, 1, 1, 1, 1, 2, 2, 1, 0, 0, 1, 1, 1, 1], [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[1, 0, 1, 1, 1, 2, 2, 2, 2, 1, 1, 0, 0, 1, 1, 1, 1]]
+      [1, 0, 1, 1, 1, 1, 1, 1, 2, 2, 1, 0, 0, 1, 1, 1, 1], [1, 0, 1, 1, 1, 1, 2, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[1, 0, 1, 1, 1, 2, 2, 2, 1, 1, 1, 0, 0, 1, 1, 1, 1]]
   },
 
   /**
@@ -191,6 +261,7 @@ Page({
     }
   },
 
+  // 点击选座
   selectSeat: function (ev) {
     var ver = ev.currentTarget.dataset.ver
     var hor = ev.currentTarget.dataset.hor
@@ -246,6 +317,8 @@ Page({
       map[ver][hor] = 1
     }
   },
+
+  // 点击座位取消选座
   cancelSeat: function (ev) {
     var ver = ev.currentTarget.dataset.ver
     var hor = ev.currentTarget.dataset.hor
@@ -293,6 +366,7 @@ Page({
     })
   },
 
+  // 点击位置信息取消选座
   cancelShop: function(e){
     var seats = []
     var seat = seatsId[e.currentTarget.dataset.id]
@@ -338,6 +412,7 @@ Page({
     })
   },
 
+  // 确认位置信息
   confirmseats: function(){
     var seat = ' '
     for (var i = 0; i < this.data.seats.length; i++){
@@ -354,6 +429,94 @@ Page({
         }
       }
     })
+  },
+
+  // 推荐座位
+  recommondseats: function(e){
+    var num = e.currentTarget.dataset.num
+    var row = this.data.seatmap.length / 2
+    // 后半场
+    var searchbackseat = searchseats(row, this.data.seatmap.length, num, this.data.seatmap)
+    if (searchbackseat.length > 0){
+      seatsId = searchbackseat
+      var map = this.data.seatmap
+      var cStr = ''
+      // 把推荐出来的位置在map里面标出来
+      for (var i = 0; i < seatsId.length; i++){
+        map[seatsId[i].split("-")[0]][seatsId[i].split("-")[1]] = 3
+      }
+      var seats = []
+      var row = 0
+      for (var i = 0; i < map.length; i++) {
+        var total = 0
+        for (var j = 0; j < map[i].length; j++) {
+          total = total + map[i][j]
+        }
+        if (total === 0) {
+          row++
+        }
+        var col = 0
+        for (var j = map[i].length; j >= 0; j--) {
+          if (map[i][j] === 0) {
+            col++
+          }
+          if (map[i][j] === 3) {
+            cStr = formatNumber(i + 1 - row) + '排' + formatNumber(map[i].length - j - col) + '座'
+            seats.push(cStr)
+          }
+        }
+      }
+      // 计算总价
+      var money = seats.length * this.data.shop.price
+      this.setData({
+        money: money.toFixed(1),
+        seatmap: map,
+        seats: seats
+      })
+      return
+    }
+
+    // 前半场
+    var searchfrontseat = searchseats(0, row, num, this.data.seatmap)
+    if (searchfrontseat.length > 0) {
+      seatsId = searchfrontseat
+      var map = this.data.seatmap
+      var cStr = ''
+      // 把推荐出来的位置在map里面标出来
+      for (var i = 0; i < seatsId.length; i++) {
+        map[seatsId[i].split("-")[0]][seatsId[i].split("-")[1]] = 3
+      }
+      // 计算位置
+      var seats = []
+      var row = 0
+      for (var i = 0; i < map.length; i++) {
+        var total = 0
+        for (var j = 0; j < map[i].length; j++) {
+          total = total + map[i][j]
+        }
+        if (total === 0) {
+          row++
+        }
+        var col = 0
+        for (var j = map[i].length; j >= 0; j--) {
+          if (map[i][j] === 0) {
+            col++
+          }
+          if (map[i][j] === 3) {
+            cStr = formatNumber(i + 1 - row) + '排' + formatNumber(map[i].length - j - col) + '座'
+            seats.push(cStr)
+          }
+        }
+      }
+      var money = seats.length * this.data.shop.price
+      this.setData({
+        money: money.toFixed(1),
+        seatmap: map,
+        seats: seats
+      })
+      return
+    }
+
   },
 
 
