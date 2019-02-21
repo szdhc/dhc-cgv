@@ -155,7 +155,7 @@ top: 14rpx;
     width: 150rpx;
 }
 .film_info{
-  border-top:2rpx inset rgba(128, 128, 128, 0.397);
+  border-top:0rpx inset rgba(128, 128, 128, 0.397);
   /* border-bottom:2rpx inset rgba(128, 128, 128, 0.397); */
 }
 .film_nd{

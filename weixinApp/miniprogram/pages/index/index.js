@@ -3,12 +3,11 @@ var qqmapsdk;
 var util = require('../../utils/util.js');
 Page({
   data: {
-    sanHidden:true,
-    chaHidden:false,
-    viewHeight:44,
-    isPopping: false,//是否已经弹出
-    animationPlus: {},//旋转动画
-    animationTranspond: {},//item位移,透明度
+    sanHidden: true,
+    chaHidden: false,
+    isPopping: false, //是否已经弹出
+    animationPlus: {}, //旋转动画
+    animationTranspond: {}, //item位移,透明度
     // openid: '',
     movieAddress: '',
     currProvince: '',
@@ -21,7 +20,6 @@ Page({
     moreTab1: 0,
     moreTab2: 0,
     loader: 0,
-    wantFlag: 0,
     formId: [],
     mylikeList: [],
     start: 0,
@@ -30,53 +28,103 @@ Page({
     comingCount: 0,
     fixedCount1: 7,
     fixedCount2: 7,
-
+    comingMovieList: [{
+      movieImage: 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2544987866.jpg',
+      movieName: '阿丽塔：战斗天使',
+      movieShow: '阿丽塔：战斗天使',
+      movieDirectorStarring: '主演: 罗莎·萨拉查, 克里斯托弗·沃尔兹, 基恩·约翰逊',
+      movieType1: '../../images/4DX.png',
+      movieType2: '../../images/IMAX.png',
+      movieStatus: '预售',
+      id: 1652592,
+      wishCount: 14206,
+      wantFlag: 0,
+      movieOntime: '2019-02-22',
+      url: '../index/filmDetails/filmDetails',
+    }],
+    hotMovieList: [{
+        movieImage: 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2545472803.jpg',
+        movieName: '流浪地球',
+        movieShow: '流浪地球',
+        movieDirectorStarring: '主演:屈楚萧,吴京,李光洁',
+        movieType: '科幻, 灾难',
+        time: '125分钟',
+        movieType1: '../../images/4DX.png',
+        movieType2: '../../images/IMAX.png',
+        moiveGrade: '7.9分',
+        movieStatus: '购票',
+        id: 26266893
+      },
+      {
+        movieImage: 'https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2541901817.jpg',
+        movieName: '疯狂的外星人',
+        movieShow: '疯狂的外星人',
+        movieDirectorStarring: '主演:黄渤,沈腾,汤姆·派福瑞',
+        moiveGrade: '6.4分',
+        movieStatus: '购票'
+      },
+      {
+        movieImage: 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2542973862.jpg',
+        movieName: '飞驰人生',
+        movieShow: '飞驰人生',
+        movieDirectorStarring: '主演:沈腾,黄景瑜,尹正',
+        moiveGrade: '7分',
+        movieStatus: '购票'
+      },
+      {
+        movieImage: 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2541035591.jpg',
+        movieName: '熊出没·原始时代',
+        movieShow: '熊出没·原始时代',
+        movieDirectorStarring: '主演:王宝强,鄂靖文,张全蛋',
+        moiveGrade: '6.5分',
+        movieStatus: '购票'
+      },
+    ],
     // --------------------------------------------------------//
     bannerUrls: [
-    //   url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
-    //   linkUrl: ''
-    // },
-    // {
-    //   url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=77c8b34af1b44fd990e6e201df49f827&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201403%2F20%2F20140320140243_5MySw.jpeg',
-    //   linkUrl: ''
-    // },
-    {
-      url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378838&di=e01f784abb225d79416180122bc456e1&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0118cf5837d75ea801219c77f35e67.jpg',
-      linkUrl: ''
-    },
-    {
-      url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378837&di=6127169e3cc9a444bf43da0906e9a57b&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01ce8b582439aea84a0e282ba855d9.jpg',
-      linkUrl: ''
-    }
+      //   url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=94b4308ff1c464cbe5c939576eacd31b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2F89e207928e4ba2a9877b06ec87c6ab71.jpg',
+      //   linkUrl: ''
+      // },
+      // {
+      //   url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628306053&di=77c8b34af1b44fd990e6e201df49f827&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201403%2F20%2F20140320140243_5MySw.jpeg',
+      //   linkUrl: ''
+      // },
+      {
+        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378838&di=e01f784abb225d79416180122bc456e1&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0118cf5837d75ea801219c77f35e67.jpg',
+        linkUrl: ''
+      },
+      {
+        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547628378837&di=6127169e3cc9a444bf43da0906e9a57b&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01ce8b582439aea84a0e282ba855d9.jpg',
+        linkUrl: ''
+      }
     ],
-    hotMovieList: [],
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
     duration: 1000,
-    changeIndicatorDots: function (e) {
+    changeIndicatorDots: function(e) {
       this.setData({
         indicatorDots: !this.data.indicatorDots
       })
     },
-    changeAutoplay: function (e) {
+    changeAutoplay: function(e) {
       this.setData({
         autoplay: !this.data.autoplay
       })
     },
-    intervalChange: function (e) {
+    intervalChange: function(e) {
       this.setData({
         interval: e.detail.value
       })
     },
-    durationChange: function (e) {
+    durationChange: function(e) {
       this.setData({
         duration: e.detail.value
       })
     },
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     qqmapsdk = new QQMapWX({
       key: 'TIDBZ-4UIEX-2A446-ZS7S5-FLU27-RQFJV'
     });
@@ -88,58 +136,59 @@ Page({
 
     })
     util.getLocation()
-    if(this.data.loader==0){
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading',
-      mask: true
-    }) }
+    if (this.data.loader == 0) {
+      wx.showToast({
+        title: '加载中',
+        icon: 'loading',
+        mask: true
+      })
+    }
     this.hotMovies();
     this.comingMovies();
 
     qqmapsdk.getCityList({
-      success: function (res) {
+      success: function(res) {
         console.log(res);
         console.log('省份数据：', res.result[0]); //打印省份数据
         console.log('城市数据：', res.result[1]); //打印城市数据
         console.log('区县数据：', res.result[2]); //打印区县数据
       },
-      fail: function (error) {
+      fail: function(error) {
         console.error(error);
       },
-      complete: function (res) {
+      complete: function(res) {
         console.log(res);
       }
     });
     // 调用接口
     qqmapsdk.search({
       keyword: 'CVG影城',
-      success: function (res) {
+      success: function(res) {
         console.log('CVG影城:' + res);
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log(res);
       },
-      complete: function (res) {
+      complete: function(res) {
         console.log(res);
       }
     });
   },
 
-  onShow: function () {
-        var that = this
+  onShow: function() {
+    var that = this
 
     var movieAddress1 = wx.getStorageSync("localMovieAddress")
     var currCity1 = wx.getStorageSync('localCityName');
     that.setData({
       movieAddress: movieAddress1,
-      currCity :currCity1
+      currCity: currCity1
     })
 
 
   },
   //选项卡切换
-  navbarTap: function (e) {
+  navbarTap: function(e) {
     this.setData({
       currentTab: e.currentTarget.dataset.idx,
     })
@@ -150,7 +199,7 @@ Page({
 
   },
   //滑动切换tab 
-  bindChange: function (e) {
+  bindChange: function(e) {
     var that = this;
     that.setData( {
       currentTab: e.detail.current,
@@ -162,7 +211,7 @@ Page({
   },
 
   //轮播高度自适应——获取图片高度
-  imgHeight: function (e) {
+  imgHeight: function(e) {
     var winWid = wx.getSystemInfoSync().windowWidth; //获取当前屏幕的宽度
     var imgh = e.detail.height; //图片高度
     var imgw = e.detail.width; //图片宽度
@@ -171,18 +220,18 @@ Page({
       Height: swiperH //设置高度
     })
   },
-  redirct: function (e) {
+  redirct: function(e) {
     wx.navigateTo({
       url: '../index/chooseMovie/chooseMovie',
     })
     wx.setStorageSync('image', e.currentTarget.dataset.image)
-      
+
   },
   //选择影城跳转事件
   jumpcinema() {
     wx.navigateTo({
       //  url: '/pages/jumpcinema/jumpcinema?ct=' + this.data.currCity,
-       url: '/pages/citys/citys?cityType=begin&beginCity=' + this.data.currCity,
+      url: '/pages/citys/citys?cityType=begin&beginCity=' + this.data.currCity,
     })
 
   },
@@ -195,8 +244,7 @@ Page({
         fixedCount1: this.data.hotCount,
       })
       this.hotMovies();
-    }
-    else if (this.data.currentTab == 1) {
+    } else if (this.data.currentTab == 1) {
       this.setData({
         moreTab2: 1,
         loader: 1,
@@ -208,7 +256,15 @@ Page({
   // 点击想看
   clickWant(e) {
     // wantFilms
-    let arrL = this.data.comingMovieList
+    // let arrL = []
+    // if (this.data.currentTab == 0) {
+    //    arrL = this.data.hotMovieList
+    // }
+    // else
+    // {
+    //    arrL = this.data.comingMovieList
+    // }
+    let arrL = this.data.hotMovieList
     for (let i = 0; i < arrL.length; i++) {
       if (arrL[i].id == e.currentTarget.dataset.id) {
         if (arrL[i].wantFlag == 1) {
@@ -221,17 +277,23 @@ Page({
           //   },
           //   success: ((res) => {})
           // })
-          this.setData({
-            wantFlag: 0,
-            comingMovieList: arrL
-          })
           wx.showToast({
             title: '已取消想看',
             icon: 'success',
             duration: 1500
           })
-          arrL[i].wantFlag = this.data.wantFlag
-          arrL[i].wishCount--;
+          this.data.hotMovieList[i].wantFlag = 0;
+          this.data.hotMovieList[i].wishCount--;
+          for (let j = 0; j < this.data.comingMovieList.length; j++) {
+            if (this.data.comingMovieList[j].id == e.currentTarget.dataset.id) {
+              this.data.comingMovieList[j].wantFlag = 0;
+              this.data.comingMovieList[j].wishCount--;
+            }
+          }
+          // this.setData({
+          //   comingMovieList: this.data.comingMovieList,
+          //   hotMovieList: this.data.hotMovieList,
+          // })
         } else {
           // wx.request({
           //   url: this.data.IP + '/users/find',
@@ -255,22 +317,24 @@ Page({
             icon: 'success',
             duration: 1500
           })
-          this.setData({
-            wantFlag: 1,
-            comingMovieList: arrL
-          })
-          arrL[i].wantFlag = this.data.wantFlag
-          arrL[i].wishCount++;
+          this.data.hotMovieList[i].wantFlag = 1;
+          this.data.hotMovieList[i].wishCount++;
+          for (let j = 0; j < this.data.comingMovieList.length; j++) {
+            if (this.data.comingMovieList[j].id == e.currentTarget.dataset.id) {
+              this.data.comingMovieList[j].wantFlag = 1;
+              this.data.comingMovieList[j].wishCount++;
+            }
+          }
         }
         this.setData({
-          comingMovieList: arrL
+          comingMovieList: this.data.comingMovieList,
+          hotMovieList: this.data.hotMovieList,
         })
       }
     }
-    wx.setStorageSync("comingMovieList", this.data.comingMovieList);
-
+    // wx.setStorageSync("comingMovieList", this.data.comingMovieList);
   },
-  formSubmit: function (e) {
+  formSubmit: function(e) {
     let arrL = this.data.comingMovieList
     for (let i = 0; i < arrL.length; i++) {
       if (arrL[i].id == e.currentTarget.dataset.id) {
@@ -309,15 +373,15 @@ Page({
         },
         method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         // header: {}, // 设置请求的 header
-        success: function () {
+        success: function() {
           // success
           console.log()
         },
-        fail: function () {
+        fail: function() {
           // fail
           console.log()
         },
-        complete: function () {
+        complete: function() {
           // complete
         }
       }
@@ -357,17 +421,19 @@ Page({
           movieObj.set('movieDirectorStarring', casts)
           movieObj.set('movieType', data.subjects[i].genres)
           movieObj.set('time', data.subjects[i].durations[0])
+
           if (data.subjects[i].rating.average > 6) {
             movieObj.set('movieType1', '../../images/4DX.png')
             movieObj.set('movieType2', '../../images/IMAX.png')
-          }
-          else {
+          } else {
             movieObj.set('movieType1', '')
             movieObj.set('movieType2', '')
           }
 
           if (data.subjects[i].mainland_pubdate.replace(/-/g, '') >= '20190214') {
             movieObj.set('movieStatus', '预售')
+            movieObj.set('wishCount', data.subjects[i].collect_count)
+            movieObj.set('wantFlag', 0)
           } else {
             movieObj.set('movieStatus', '购票')
             movieObj.set('moiveGrade', data.subjects[i].rating.average + '分')
@@ -430,17 +496,16 @@ Page({
                 }
               }
               movieObj2.set('movieDirectorStarring', casts)
-              movieObj2.set('wishCount', data.subjects[i].collect_count)
               if (data.subjects[i].rating.average > 6) {
                 movieObj2.set('movieType1', '../../images/4DX.png')
                 movieObj2.set('movieType2', '../../images/IMAX.png')
-              }
-              else {
+              } else {
                 movieObj2.set('movieType1', '')
                 movieObj2.set('movieType2', '')
               }
               movieObj2.set('movieStatus', '预售')
               movieObj2.set('id', data.subjects[i].id)
+              movieObj2.set('wishCount', data.subjects[i].collect_count)
               movieObj2.set('wantFlag', 0)
               movieObj2.set('formId', '')
               movieObj2.set('url', '../index/filmDetails/filmDetails')
@@ -458,25 +523,25 @@ Page({
     })
   },
   //点击弹出
-  plus: function () {
+  plus: function() {
     // if (this.data.isPopping) {
-      //缩回动画
-      popp.call(this);
+    //缩回动画
+    popp.call(this);
     //   this.setData({
     //     isPopping: false
     //   })
     // } else {
-      // //弹出动画
-      // takeback.call(this);
-      // this.setData({
-      //   isPopping: true
-      // })
+    // //弹出动画
+    // takeback.call(this);
+    // this.setData({
+    //   isPopping: true
+    // })
 
   },
-  chaback: function () {
+  chaback: function() {
     takeback.call(this);
   },
-  transpond: function () {
+  transpond: function() {
     console.log("transpond")
   },
 })
@@ -493,17 +558,17 @@ function popp() {
     timingFunction: 'ease-out'
   })
   // animationPlus.opacity(0).step();
-   animationTranspond.translate(0, 0).step();
+  animationTranspond.translate(0, 0).step();
   this.setData({
-    viewHeight: 44,
     chaHidden: false,
-    sanHidden:true,
+    sanHidden: true,
     animationPlus: animationPlus.export(),
     animationTranspond: animationTranspond.export(),
   })
 }
+
 function takeback() {
-  
+
   //plus逆时针旋转
   var animationPlus = wx.createAnimation({
     duration: 500,
@@ -513,12 +578,11 @@ function takeback() {
     duration: 500,
     timingFunction: 'ease-out'
   })
-   animationPlus.rotateZ(0).step();
+  animationPlus.rotateZ(0).step();
   animationTranspond.translate(0, -25).step();
   this.setData({
     chaHidden: true,
     sanHidden: false,
-    viewHeight:0,
     animationPlus: animationPlus.export(),
     animationTranspond: animationTranspond.export(),
   })

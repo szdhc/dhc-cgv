@@ -1,5 +1,5 @@
 <template name='hotMovieTemplate'>
-  <view class='flex-wrp-row item'>
+  <view class='flex-wrp-row item' >
     <!--电影图片-->
     <view class='flex-wrp-cloumn'>
       <image class='movieImage' src="{{movieImage}}">
@@ -27,11 +27,8 @@
     <view class='flex-wrp-cloumn margin-left'>
       <view>
         <text class='medium-font-size moiveGrade'>{{moiveGrade}}</text>
-        <view wx:if="{{movieStatus=='购票'}}">
+        <view>
           <button class='movieStatus' bindtap='redirct' data-image='{{movieImage}}' style=' background:#FF0000;'>{{movieStatus}}</button>
-        </view>
-        <view wx:else>
-          <button class='movieStatus' bindtap='redirct' data-image='{{movieImage}}'>{{movieStatus}}</button>
         </view>
       </view>
     </view>
