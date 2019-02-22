@@ -1,4 +1,5 @@
 // pages/mine/mylevdetail/mylevdetail.js
+var app = getApp();
 Page({
 
   /**
@@ -13,10 +14,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.setData({
-      avatarUrl:options.avatarUrl
-    })
+  onLoad: function () {
+    if (Object.keys(app.globalData.userInfo).length != 0) {
+      this.setData({
+        avatarUrl: app.globalData.userInfo.avatarUrl,
+      });
+    }
   },
 
   /**

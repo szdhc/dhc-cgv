@@ -1,4 +1,6 @@
 // pages/userModify/userModify.js
+const app = getApp();
+
 Page({
 
   /**
@@ -32,11 +34,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      avatarUrl: options.avatarUrl,
-      username: options.username,
-      
-    });
+    if (Object.keys(app.globalData.userInfo).length != 0){
+      this.setData({
+        avatarUrl: app.globalData.userInfo.avatarUrl,
+        username: app.globalData.userInfo.nickName,
+      });
+    }
+    
     if (options.sex == '男'){
       this.setData({
         sex: [options.sex,'女']
@@ -152,6 +156,9 @@ Page({
       childindex: e.detail.value
     })
   },
+  /**
+   * 点击确定按钮，保存修改信息
+   */
   modefySubmit(){
     wx.setStorageSync("userSurname", this.data.userSurname);
     wx.setStorageSync("birthday", this.data.birthday)
@@ -162,13 +169,19 @@ Page({
     wx.setStorageSync("region", this.data.region)
     wx.setStorageSync("marryIndex", this.data.marryIndex)
     wx.setStorageSync("childindex", this.data.childindex)
+    
+    app.globalData.userInfo.avatarUrl = app.globalData.headUrl;
+    console.log(app.globalData.userInfo.avatarUrl, app.globalData.headUrl)
     wx.showToast({
       title: '信息已经保存',
       icon: 'success',
       duration: 2000
     });
-    wx.redirectTo({
-      url: '../userInfo/userInfo?avatarUrl=' + this.data.avatarUrl+'&username='+this.data.username,
+    // wx.redirectTo({
+    //   url: '../userInfo/userInfo',
+    // })
+    wx.navigateBack({
+      delta: 1
     })
   },
   bindRegionChange: function (e) {
@@ -272,5 +285,68 @@ Page({
         likeMovie: '未完善'
       })
     }
-  }
+  },
+
+  // 上传图片
+  doUpload: function () {
+    var that = this;
+    wx.chooseImage({
+      count: 1, // 默认9
+      sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var tempFilePaths = res.tempFilePaths;
+        upload(that, tempFilePaths);
+      }
+    })
+  }, 
 })
+
+function upload(page, path) {
+  wx.showToast({
+    icon: "loading",
+    title: "正在上传"
+  }),
+    // wx.cloud.deleteFile({
+    // fileList: [app.globalData.headUrl],
+    //   success: res => {
+    //     // handle success
+    //     console.log('删除的:' + res.fileList)
+    //   },
+    //   fail: err => {
+    //     console.log(err.errCode, err.errMsg)
+    //   }
+    // })
+    wx.cloud.uploadFile({
+      //TODO 没有上传的服务器暂用自带云开发
+    cloudPath: 'image/' + app.globalData.userInfo.nickName + '.png',
+      filePath: path[0],
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode != 200) {
+          wx.showModal({
+            title: '提示',
+            content: '上传失败',
+            showCancel: false
+          })
+          return;
+        }
+        app.globalData.headUrl = path[0]
+        page.setData({  //上传成功修改显示头像
+          avatarUrl: path[0]
+        })
+      },
+      fail: function (e) {
+        console.log(e);
+        wx.showModal({
+          title: '提示',
+          content: '上传失败',
+          showCancel: false
+        })
+      },
+      complete: function () {
+        wx.hideToast();  //隐藏Toast
+      }
+    })
+}

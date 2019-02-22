@@ -1,4 +1,6 @@
 // pages/userInfo/userInfo.js
+const app = getApp();
+
 Page({
 
   /**
@@ -6,6 +8,7 @@ Page({
    */
   data: {
     avatarUrl: '',
+    username: '',
     sex:'男',
     level:'黄金会员'
   },
@@ -14,10 +17,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      avatarUrl: options.avatarUrl,
-      username:options.username
-    });
+    if (Object.keys(app.globalData.userInfo).length != 0){
+      this.setData({
+        avatarUrl: app.globalData.userInfo.avatarUrl,
+        username: app.globalData.userInfo.nickName,
+      });
+    }
   },
 
   /**
@@ -31,7 +36,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (Object.keys(app.globalData.userInfo).length != 0) {
+      this.setData({
+        avatarUrl: app.globalData.userInfo.avatarUrl,
+        username: app.globalData.userInfo.nickName,
+      });
+    }
   },
 
   /**
@@ -71,10 +81,7 @@ Page({
   userInfoModify() {
     
         wx.navigateTo({
-          url: '../userModify/userModify?avatarUrl=' + this.data.avatarUrl +'&username='+this.data.username+'&sex='+this.data.sex,
+          url: '../userModify/userModify',
         })
       }
-      
-   
-  
 })

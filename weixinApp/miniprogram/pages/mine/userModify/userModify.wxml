@@ -2,7 +2,7 @@
 <view class='container'>
   <view class="userinfo">
     <text class='listimage'>头像</text>
-    <button class="userinfo-avatar" style="background-image: url({{avatarUrl}}) "></button>
+    <button class="userinfo-avatar" style="background-image: url({{avatarUrl}})" bindtap='doUpload'></button>
   </view>
   <view class='userinfo'>
     <text class='list'>昵称</text>

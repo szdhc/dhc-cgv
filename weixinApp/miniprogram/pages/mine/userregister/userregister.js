@@ -97,9 +97,13 @@ Page({
     })
   },
 
-
+  /**
+   * 暂用：用户信息（头像姓名等）获取
+   */
   onGetUserInfo: function (e) {
     if (e.detail.userInfo) {
+      //全局userInfo
+      app.globalData.userInfo = e.detail.userInfo;
       wx.reLaunch({
         url: '../../userConsole/userConsole'
       })
