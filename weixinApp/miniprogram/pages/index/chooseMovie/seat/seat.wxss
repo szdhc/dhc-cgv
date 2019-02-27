@@ -95,7 +95,7 @@
 }
 
 .columnN {
-  margin-left: 32rpx;
+  margin-left: 15rpx;
   position: absolute;
   top: 140rpx;
   background-color: #c2c2c2;
@@ -211,7 +211,7 @@
   flex: 1;
 }
 
-.price {
+.totalprice {
   display: flex;
 }
 
@@ -248,4 +248,33 @@
   padding-top: 10rpx;
   margin-left: 2%;
   margin-right: 7%;
+}
+
+.scaleview{
+  opacity:0.75;
+  border: 1rpx #1d0202 solid;
+  width: 230rpx;
+  height: 155rpx;
+  position: absolute;
+  background: #8684846e;
+  z-index: 3;
+}
+.samllmap {
+  top: 10rpx;
+}
+.small-seat-img {
+  margin: 1rpx 1rpx;
+}
+.smallrow {
+  display: flex;
+  height: 15rpx;
+  margin-left:13rpx
+}
+.moveview {
+  opacity:0.75;
+  border: 1rpx #ef4238 solid;
+  height: 123rpx;
+  position: absolute;
+  background: #8684846e;
+  margin-top: 22rpx;
 }

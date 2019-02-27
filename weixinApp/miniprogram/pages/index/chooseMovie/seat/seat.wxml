@@ -22,6 +22,22 @@
   </view>
 </view>
 <view class="wrap">
+
+  <view class="scaleview">
+  <view class="moveview" style="margin-left:{{moveleft}}rpx;width:{{smallwidth}}rpx;"></view>
+    <view class="samllmap">
+    <view class="" wx:for="{{seatmap}}" wx:key="{{seatmap}}" wx:for-item="i" class="smallrow" wx:for-index="ver">
+      <view class="" wx:for="{{i}}" wx:key="{{i}}" wx:for-index="hor">
+        <view wx:if="{{item==0}}" style="width: 10rpx; height: 10rpx" class="small-seat-img"></view>
+        <image src="../../../../images/seat_01.png" wx:if="{{item==1}}" style="width: 10rpx; height: 10rpx" class="small-seat-img" catchtap="selectSeat" data-hor="{{hor}}" data-ver="{{ver}}"></image>
+        <image src="../../../../images/seat_02.png" wx:if="{{item==2}}" style="width: 10rpx; height: 10rpx" class="small-seat-img"></image>
+        <image catchtap="cancelSeat" src="../../../../images/seat_03.png" style="width: 10rpx; height: 10rpx" wx:if="{{item==3}}" class="small-seat-img" data-hor="{{hor}}" data-ver="{{ver}}"></image>
+      </view>
+    </view>
+  </view>
+
+  </view>
+
   <view class="room" style="transform: translateX({{deltaX}}px)">
     <view class="roomL">{{shop.room}}</view>
   </view>
@@ -61,7 +77,7 @@
   </view>
   <view class="confirm" hidden="{{!seats.length}}">
     <view class="total" >
-      <view class="price">
+      <view class="totalprice">
         <view class="price-s">{{money}}</view>
         <view class="price-y">元</view>
       </view>
@@ -71,7 +87,7 @@
   </view>
   <view class="confirm" hidden="{{seats.length}}">
     <view class="total" >
-      <view class="price">
+      <view class="totalprice">
         <view class="price-s">0</view>
         <view class="price-y">元</view>
       </view>

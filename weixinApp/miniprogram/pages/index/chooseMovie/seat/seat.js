@@ -33,7 +33,7 @@ function searchseats(fromrow, torow, num, map){
     var rowdistanceToMid = 1000
     // 每行最佳位置
     var rowfinalReuslt = []
-    for (var j = 1; j < map[i].length; j++){
+    for (var j = 0; j < map[i].length; j++){
       // 已选
       if (map[i][j] === 2){
         count = 0
@@ -88,6 +88,75 @@ function searchseats(fromrow, torow, num, map){
   return finalReuslt
 }
 
+// 找座算法
+function searchfrontseats(fromrow, torow, num, map) {
+  var distanceToMid = 1000
+  var finalReuslt = []
+  for (var i = torow; i >= fromrow; i--) {
+    // 连坐个数
+    var count = 0
+    var recommond = []
+    // 最后一个座位下标
+    var last = 0
+    // 到中心的距离
+    var rowdistanceToMid = 1000
+    // 每行最佳位置
+    var rowfinalReuslt = []
+    for (var j = 0; j < map[i].length; j++) {
+      // 已选
+      if (map[i][j] === 2) {
+        count = 0
+        recommond = []
+        last = 0
+        // 可选
+      } else if (map[i][j] === 1) {
+        count++
+        // 如果连坐数大于要选的数目，清楚最左边的
+        if (count > num) {
+          recommond.shift()
+        }
+        recommond.push(i + "-" + j)
+        last = j
+      }
+
+      if (count >= num) {
+        // 计算最右边位置到中心的距离
+        var mid = map[i].length / 2
+        var distance = 0
+        if (last < mid) {
+          distance = mid - last
+        } else {
+          distance = last - mid
+        }
+
+        if (rowdistanceToMid > distance + num / 2) {
+          rowdistanceToMid = distance + num / 2
+          rowfinalReuslt = recommond
+          // 正好在正中间
+          if (rowdistanceToMid === 0 + num / 2 || rowdistanceToMid === 0.5 + num / 2) {
+            return rowfinalReuslt
+          }
+        } else {
+          // 到中心的距离应该是先变小再变大，如果开始变大就说明已经越过中心位置了，所以不用再循环了
+          if (distanceToMid > rowdistanceToMid) {
+            distanceToMid = rowdistanceToMid
+            finalReuslt = rowfinalReuslt
+            break
+          }
+        }
+      }
+    }
+
+    // 每行中心距离比较，取靠中心近的
+    if (distanceToMid > rowdistanceToMid) {
+      distanceToMid = rowdistanceToMid
+      finalReuslt = rowfinalReuslt
+    }
+
+  }
+  return finalReuslt
+}
+
 Page({
 
   /**
@@ -100,7 +169,7 @@ Page({
     sX:0,
     scaleWidth:36,
     scaleHeight:32,
-    colWidth:36,
+    colWidth:30,
     colHeight: 50,
     olddistance:0,
     scale:1,
@@ -110,6 +179,9 @@ Page({
     seats:[],
     willChange: false,
     hasSelected: false,
+    moveleft:6,
+    smallwidth:175,
+    smallChangeX:0,
     seatmap: [[1, 0, 2, 2, 2, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1], [1, 0, 2, 2, 2, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
       [1, 0, 1, 1, 1, 1, 1, 1, 2, 2, 1, 0, 0, 1, 1, 1, 1], [1, 0, 1, 1, 1, 1, 2, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[1, 0, 1, 1, 1, 2, 2, 2, 1, 1, 1, 0, 0, 1, 1, 1, 1]]
@@ -212,14 +284,31 @@ Page({
       var mY = e.changedTouches[0].clientY
       var deltaX = (mX - this.sX) / 2
       var deltaY = (mY - this.sY) / 2
+      var smallX = (this.sX - mX) / 3.2
+      var smallwidth
+      var smallChangeX = this.data.smallChangeX
+      if(smallX < 0){
+        smallwidth = 200 + smallX
+        smallX = 0
+      } else if (smallX > 56){
+        smallwidth = 175 + (mX - smallChangeX) / 3.2
+        smallX = 56 - (mX - smallChangeX) / 3.2
+      }else{
+        smallwidth = 175
+        smallChangeX = mX
+      }
+
       this.setData({
         deltaX: deltaX,
-        deltaY: deltaY
+        deltaY: deltaY,
+        moveleft: smallX,
+        smallwidth: smallwidth,
+        smallChangeX: smallChangeX,
       })
     }
 
 
-    // 单手指缩放不做任何操作
+    // 双手指缩放操作
     if (e.touches.length == 2) {
       let xMove = e.touches[1].clientX - e.touches[0].clientX
       let yMove = e.touches[1].clientY - e.touches[0].clientY
@@ -477,7 +566,7 @@ Page({
     }
 
     // 前半场
-    var searchfrontseat = searchseats(0, row, num, this.data.seatmap)
+    var searchfrontseat = searchfrontseats(0, row-1, num, this.data.seatmap)
     if (searchfrontseat.length > 0) {
       seatsId = searchfrontseat
       var map = this.data.seatmap
