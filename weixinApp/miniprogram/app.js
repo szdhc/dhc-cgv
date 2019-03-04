@@ -3,6 +3,8 @@ App({
   globalData: {
     userInfo: {},
     headUrl: '',
+    openid: null,
+    sex: ['男', '女'],
   },
 
   onLaunch: function () {
@@ -24,24 +26,38 @@ App({
           wx.getUserInfo({
             success: res => {
               this.globalData.userInfo = res.userInfo;
+              this.wxlogin();
             },
-            complete: res => {
-              wx.cloud.downloadFile({
-                fileID: 'cloud://cvg20190102-80d55e.6376-cvg20190102-80d55e/image/' + this.globalData.userInfo.nickName + '.png',
-                success: res => {
-                  // get temp file path
-                  console.log(res.tempFilePath);
-                  this.globalData.userInfo.avatarUrl = res.tempFilePath;
-                },
-                fail: err => {
-                  // handle error
-                  console.log(errCode, errMsg);
-                }
-              })
-            }
           })
         }
       }
     }) 
-  }
+  },
+
+  //cloud:登录
+  wxlogin: function (callback) {
+    var context = this;
+
+    wx.cloud.callFunction({
+      name: 'userInfo',
+      data: {
+        type: 'addUser',
+        nickName: context.globalData.userInfo.nickName,
+        avatarUrl: context.globalData.userInfo.avatarUrl,
+        userInfo: context.globalData.userInfo
+      },
+      success: res => {
+        context.globalData.userInfo = res.result.data[0]
+        context.globalData.openid = res.result.data[0].openid
+        if (callback) {
+          callback(context.globalData.userInfo);
+        }
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+      }
+    })
+  },
+
+
 })

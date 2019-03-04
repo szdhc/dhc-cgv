@@ -116,4 +116,5 @@
     </view>
   </view>
   <button class='btn-class' bindtap='modefySubmit'>确定</button>
+  <van-dialog id="van-dialog" />
 </view>

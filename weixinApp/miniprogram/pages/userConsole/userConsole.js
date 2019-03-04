@@ -121,24 +121,9 @@ Page({
   //   }
   // },
   Userinfo() {
-
     if (this.data.userInfo.nickName){
-      wx.cloud.callFunction({
-        name: 'login',
-        data: {},
-        success: res => {
-          console.log('[云函数] [login] user openid: ', res.result.openid)
-          app.globalData.openid = res.result.openid
-          wx.navigateTo({
-            url: '../mine/userInfo/userInfo',
-          })
-        },
-        fail: err => {
-          console.error('[云函数] [login] 调用失败', err)
-          wx.navigateTo({
-            url: '../deployFunctions/deployFunctions',
-          })
-        }
+      wx.navigateTo({
+        url: '../mine/userInfo/userInfo',
       })
     }
     else{
@@ -146,7 +131,6 @@ Page({
         url: regurl,
       })
     }
-    
   },
   
   

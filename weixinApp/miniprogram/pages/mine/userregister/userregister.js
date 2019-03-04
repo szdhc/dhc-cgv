@@ -102,10 +102,11 @@ Page({
    */
   onGetUserInfo: function (e) {
     if (e.detail.userInfo) {
-      //全局userInfo
       app.globalData.userInfo = e.detail.userInfo;
-      wx.reLaunch({
-        url: '../../userConsole/userConsole'
+      app.wxlogin(function (res) {
+        wx.reLaunch({
+          url: '../../userConsole/userConsole'
+        })
       })
     }
   },

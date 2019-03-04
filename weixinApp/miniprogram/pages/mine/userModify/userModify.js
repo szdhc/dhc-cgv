@@ -1,4 +1,6 @@
 // pages/userModify/userModify.js
+import Dialog from '../../../bin/dist/dialog/dialog';
+
 const app = getApp();
 
 Page({
@@ -20,14 +22,9 @@ Page({
     childindex:0,
     marryIndex:0,
     region: ['广东省', '广州市', '海珠区'],
-    //hiddenmodalput: true,
-    //hiddenmodalpsdput: true,
     userSurname:'未完善',
     password:'',
-    //hiddenmodalmovieput:true,
     likeMovie:'未完善'
-    //可以通过hidden是否掩藏弹出框的属性，来指定那个弹出框  
-    
   },
 
   /**
@@ -160,28 +157,32 @@ Page({
    * 点击确定按钮，保存修改信息
    */
   modefySubmit(){
-    wx.setStorageSync("userSurname", this.data.userSurname);
-    wx.setStorageSync("birthday", this.data.birthday)
-    wx.setStorageSync("password", this.data.password)
-    wx.setStorageSync("likeMovie", this.data.likeMovie)
-    wx.setStorageSync("cinemaindex", this.data.cinemaindex)
-    wx.setStorageSync("memorial", this.data.memorial)
-    wx.setStorageSync("region", this.data.region)
-    wx.setStorageSync("marryIndex", this.data.marryIndex)
-    wx.setStorageSync("childindex", this.data.childindex)
-    
-    app.globalData.userInfo.avatarUrl = app.globalData.headUrl;
-    console.log(app.globalData.userInfo.avatarUrl, app.globalData.headUrl)
-    wx.showToast({
-      title: '信息已经保存',
-      icon: 'success',
-      duration: 2000
-    });
-    // wx.redirectTo({
-    //   url: '../userInfo/userInfo',
-    // })
-    wx.navigateBack({
-      delta: 1
+    //信息修改云函数
+    wx.cloud.callFunction({
+      name: 'userInfo',
+      data: {
+        type: 'changeUser',
+        avatarUrl: app.globalData.headUrl
+      },
+      success: res => {
+        Dialog.alert({
+          message: '个人信息修改成功！'
+        }).then(() => {
+          app.globalData.userInfo.avatarUrl = app.globalData.headUrl;
+          // on close
+          wx.navigateBack({
+            delta: 1
+          })
+        });
+      },
+      fail: err => {
+        Dialog.alert({
+          message: '个人信息修改失败，请稍后再试！'
+        }).then(() => {
+          // on close
+        });
+        console.error('[云函数]调用失败', err)
+      }
     })
   },
   bindRegionChange: function (e) {
@@ -190,30 +191,6 @@ Page({
       region: e.detail.value
     })
   },
-  //点击按钮弹出指定的hiddenmodalput弹出框  
-  // modalinput: function (e) {
-  //   this.setData({
-  //     hiddenmodalput: !this.data.hiddenmodalput,
-  //   })
-    
-  // },
-  //取消按钮  
-  // cancel: function () {
-  //   this.setData({
-  //     hiddenmodalput: true
-  //   });
-  // },
-  //确认  
-  // confirm: function (e) {
-  //   this.setData({
-  //     hiddenmodalput: true
-  //   })
-  //   wx.showToast({
-  //     title: '提交成功',
-  //     icon: 'success',
-  //     duration: 2000
-  //   })
-  // },
   getUserSurname: function(e){
     this.setData({
       userSurname: e.detail.value
@@ -224,58 +201,11 @@ Page({
       })
     }
   },
-  // modalpsd: function(){
-  //   this.setData({
-  //     hiddenmodalpsdput: !this.data.hiddenmodalpsdput,
-  //   })
-  // },
-  // psdcancel: function () {
-  //   this.setData({
-  //     hiddenmodalpsdput: true
-  //   });
-  // },
-  // //确认  
-  // psdconfirm: function (e) {
-  //   this.setData({
-  //     hiddenmodalpsdput: true
-  //   })
-  //   wx.showToast({
-  //     title: '提交成功',
-  //     icon: 'success',
-  //     duration: 2000
-  //   })
-  // },
   getPassword: function (e) {
     this.setData({
       password: e.detail.value
     })
   },
-
-
-
-
-
-  // modalmovie: function () {
-  //   this.setData({
-  //     hiddenmodalmovieput: !this.data.hiddenmodalmovieput,
-  //   })
-  // },
-  // moviecancel: function () {
-  //   this.setData({
-  //     hiddenmodalmovieput: true
-  //   });
-  // },
-  // //确认  
-  // movieconfirm: function (e) {
-  //   this.setData({
-  //     hiddenmodalmovieput: true
-  //   })
-  //   wx.showToast({
-  //     title: '提交成功',
-  //     icon: 'success',
-  //     duration: 2000
-  //   })
-  // },
   getLikeMovie: function (e) {
     this.setData({
       likeMovie: e.detail.value
@@ -308,16 +238,6 @@ function upload(page, path) {
     icon: "loading",
     title: "正在上传"
   }),
-    // wx.cloud.deleteFile({
-    // fileList: [app.globalData.headUrl],
-    //   success: res => {
-    //     // handle success
-    //     console.log('删除的:' + res.fileList)
-    //   },
-    //   fail: err => {
-    //     console.log(err.errCode, err.errMsg)
-    //   }
-    // })
     wx.cloud.uploadFile({
       //TODO 没有上传的服务器暂用自带云开发
     cloudPath: 'image/' + app.globalData.userInfo.nickName + '.png',
@@ -332,7 +252,7 @@ function upload(page, path) {
           })
           return;
         }
-        app.globalData.headUrl = path[0]
+        app.globalData.headUrl = res.fileID;
         page.setData({  //上传成功修改显示头像
           avatarUrl: path[0]
         })

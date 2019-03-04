@@ -11,7 +11,7 @@
   </view>
   <view class='uploader'>
     <text class='list'>性别</text>
-    <view class='righttest'>{{sex}}</view>
+    <view class='righttest'>{{sex[casIndex]}}</view>
 
   </view>
   <view class='uploader'>

@@ -9,8 +9,9 @@ Page({
   data: {
     avatarUrl: '',
     username: '',
-    sex:'男',
-    level:'黄金会员'
+    sex: null,
+    level:'黄金会员',
+    casIndex: null,
   },
 
   /**
@@ -21,6 +22,8 @@ Page({
       this.setData({
         avatarUrl: app.globalData.userInfo.avatarUrl,
         username: app.globalData.userInfo.nickName,
+        sex: app.globalData.sex,
+        casIndex: app.globalData.userInfo.casIndex
       });
     }
   },
@@ -40,6 +43,8 @@ Page({
       this.setData({
         avatarUrl: app.globalData.userInfo.avatarUrl,
         username: app.globalData.userInfo.nickName,
+        sex: app.globalData.sex,
+        casIndex: app.globalData.userInfo.casIndex
       });
     }
   },
