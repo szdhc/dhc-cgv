@@ -5,10 +5,12 @@ App({
     headUrl: '',
     openid: null,
     sex: ['男', '女'],
+    statusBarHeight: wx.getSystemInfoSync()['statusBarHeight'],
   },
 
   onLaunch: function () {
-    
+
+
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -17,7 +19,15 @@ App({
         traceUser: true,
       })
     }
-
+    //获取手机分辨率
+    wx.getSystemInfo({
+      success: e => {
+        this.globalData.StatusBar = e.statusBarHeight;
+        let custom = wx.getMenuButtonBoundingClientRect();
+        this.globalData.Custom = custom;
+        this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+      }
+    }),
     //获取用户信息
     wx.getSetting({
       success: res => {

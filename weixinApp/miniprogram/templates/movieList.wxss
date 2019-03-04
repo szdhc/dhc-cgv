@@ -6,9 +6,11 @@
 .margin-left {
   margin-left: 35rpx;
 }
-.margin-right{
+
+.margin-right {
   margin-right: 35rpx;
 }
+
 .content {
   width: 430rpx;
 }
@@ -22,16 +24,15 @@
 
 .movieShow {
   color: rgba(68, 63, 63, 0.87);
-
 }
 
 .moiveGrade {
   color: burlywood;
-  margin-left:20rpx;
-  position:relative;
-  top:4rpx;
-left:-48rpx;
-float: right;
+  margin-left: 20rpx;
+  position: relative;
+  top: 4rpx;
+  left: -48rpx;
+  float: right;
 }
 
 .movieStatus {
@@ -39,10 +40,9 @@ float: right;
   color: #fff;
   background: rgb(224, 166, 94);
   border-radius: 49rpx;
-  top:32rpx;
-  width:113rpx;
-left:-30rpx;
-
+  top: 32rpx;
+  width: 113rpx;
+  left: -30rpx;
 }
 
 /*使用 button::after{ border: none; } 来去除边框*/
@@ -51,7 +51,7 @@ left:-30rpx;
   border: none;
 }
 
-.coloum{
+.coloum {
   margin-left: 10%;
 }
 
@@ -60,13 +60,13 @@ left:-30rpx;
   color: #fff;
   background: rgb(224, 166, 94);
   border-radius: 50rpx;
-  margin-right:8px;
+  margin-right: 8px;
 }
 
 .salecomment {
- position:relative;
-left:-30rpx;
-top:-10rpx;
+  position: relative;
+  left: -28rpx;
+  top: 8rpx;
 }
 
 .want {
@@ -81,97 +81,119 @@ top:-10rpx;
 .sale {
   top: 12rpx;
 }
+
 .loveImage {
-  width: 35rpx;
-  height: 35rpx;
+  width: 45rpx;
+  height: 43rpx;
 }
+
 .salebutton {
   width: 113rpx;
-  top:20rpx;
-left:-12rpx;
+  top: 20rpx;
+  left: -12rpx;
+}
 
+.wantFont {
+  font-size: 26rpx;
+  text-align: center;
+  padding-left: 4rpx;
 }
-.divLine{
- background: #E0E3DA;
- width: 94%;
- height: 3rpx;
- margin-left:3%;
+
+.divLine {
+  background: #e0e3da;
+  width: 94%;
+  height: 3rpx;
+  margin-left: 3%;
 }
-.text-want{
+
+.text-want {
   position: relative;
   top: 0rpx;
-  left:-30rpx
+  left: -30rpx;
 }
-.share-img-button{
+
+.share-img-button {
   position: absolute;
-  top: -14rpx;
-  width: 96rpx;
-  height: 96rpx;
+  top: -21rpx;
+  width: 65rpx;
+  height: 65rpx;
   background: none;
-  left:50rpx
+  left: 69rpx;
+  padding: 0rpx;
 }
+
 .share-img-button::after {
   border: none;
 }
+
 .typeImage {
   width: 50rpx;
   height: 32rpx;
   padding: 0 6rpx;
 }
-.price{
-    position: absolute;
- left:400rpx;
-top: 20rpx;
+
+.price {
+  position: absolute;
+  left: 400rpx;
+  top: 20rpx;
 }
+
 .movieprice {
   margin-top: 3rpx;
-      font-size: 35rpx;  
- font-weight:600;
+  font-size: 35rpx;
+  font-weight: 600;
 }
-.memberprice{
-    font-size: 18rpx;
-    width: 120rpx;
+
+.memberprice {
+  font-size: 18rpx;
+  width: 120rpx;
 }
+
 .film_time_info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 38rpx;
-    height:70rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 38rpx;
+  height: 70rpx;
 }
 
 .film_time_info>view {
-position:absolute;
- left:28rpx;
-top: 14rpx;
-    display: flex;
-    flex-direction: column;
-    /* background: red; */
-        width: 150rpx;
+  position: absolute;
+  left: 28rpx;
+  top: 14rpx;
+  display: flex;
+  flex-direction: column;
+  /* background: red; */
+  width: 150rpx;
 }
 
-.time>view:last-child{
-    color: #999;
-    font-size: 22rpx;
-    width: 150rpx;
+.time>view:last-child {
+  color: #999;
+  font-size: 22rpx;
+  width: 150rpx;
 }
-.film_info{
-  border-top:0rpx inset rgba(128, 128, 128, 0.397);
+
+.film_info {
+  border-top: 0rpx inset rgba(128, 128, 128, 0.397);
   /* border-bottom:2rpx inset rgba(128, 128, 128, 0.397); */
 }
-.film_nd{
-    font-size: 20rpx;
+
+.film_nd {
+  font-size: 20rpx;
 }
-.room_name{
-        color: #999;
-    font-size: 19rpx;
+
+.room_name {
+  color: #999;
+  font-size: 19rpx;
 }
-.type{
+
+.type {
   position: absolute;
- left:93rpx;
-top: 37rpx;
+  left: 93rpx;
+  top: 37rpx;
 }
-.salbutton{
-      position: absolute;
- left:560rpx;
-top: 8rpx;
+
+.salbutton {
+  position: absolute;
+  left: 560rpx;
+  top: 8rpx;
 }

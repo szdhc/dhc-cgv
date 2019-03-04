@@ -26,11 +26,27 @@ Page({ /** * 生命周期函数--监听页面加载 */
       })
     }
   },
-  handlerMove(e) {
-    var _this = this;
+  // handlerMove(e) {
+  //   var _this = this;
+  //   var currentCityName = e.currentTarget.dataset.id;
+  //   var moveY = e.touches[0].clientY;
+  //   var targetM = Math.ceil((moveY - 61) / 22) - 1;
+  //   var cityAZData = _this.data.cityAZ;
+  //   cityAZData.forEach(function (item, index) {
+  //     if (index == targetM) {
+  //       _this.setData({
+  //         nowTarget : item.cityName
+  //       })
+  //     }
+  //   })
+  //   _this.actionToScroll(this.data.nowTarget)
+  // },
+  //滑动选择Item
+  tMove(e) {
+        var _this = this;
     var currentCityName = e.currentTarget.dataset.id;
     var moveY = e.touches[0].clientY;
-    var targetM = Math.ceil((moveY - 61) / 22) - 1;
+    var targetM = Math.ceil((moveY - 85) / 22) - 1;
     var cityAZData = _this.data.cityAZ;
     cityAZData.forEach(function (item, index) {
       if (index == targetM) {
@@ -39,15 +55,36 @@ Page({ /** * 生命周期函数--监听页面加载 */
         })
       }
     })
-    _this.actionToScroll(this.data.nowTarget)
+
   },
-  bindAZ: function(e) {
+  getCur: function(e) {
     var currentCityName = e.currentTarget.dataset.id
     var that = this;
-    that.actionToScroll(currentCityName)
+    // that.actionToScroll(currentCityName)
     that.setData({
+      hidden: false,
       nowTarget: currentCityName
     })
+  },
+  setCur(e) {
+    this.setData({
+      hidden: true,
+    })
+  },
+  //触发全部开始选择
+  tStart() {
+    this.setData({
+      hidden: false
+    })
+  },
+
+  //触发结束选择
+  tEnd() {
+    var that = this;
+    that.setData({
+      hidden: true,
+    })
+    that.actionToScroll(this.data.nowTarget)
   },
   actionToScroll(target) {
     var _this = this;
@@ -105,6 +142,8 @@ Page({ /** * 生命周期函数--监听页面加载 */
       url: '/pages/jumpcinema/jumpcinema?ct=' + e.currentTarget.dataset.city,
     })
   },
+
+
 //离开滚动条
   handlerEnd: function (e) {
     this.setData({
@@ -191,8 +230,8 @@ Page({ /** * 生命周期函数--监听页面加载 */
     hotCityList: HOT_CITY_LIST,
     renCityList: RECENT_CITY_LIST,
     nowTarget:'',
+    hidden: true,
     cityAZ: [{
-      //cityName: '热门'
     }, {
       cityName: 'A'
     }, {

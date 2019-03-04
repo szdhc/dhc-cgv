@@ -1,14 +1,15 @@
-<view class="search-box">
-  <input placeholder="中文/拼音/首字母" class='search-input'bindblur="bindBlur" bindinput='bindSarchInput' placeholder-class='search-input-placeholder' /></view>
-        <ul class="ul">
-        <li wx:for="{{completeList}}" wx:key="*this" bindtap="citySearch" data-city="{{item}}"class="li">{{item}}</li>
-      </ul>
-<view class='a-z' catchtouchmove="handlerMove" catchtouchend="handlerEnd">
-  <view wx:for="{{cityAZ}}" wx:key="unique">
-    <view data-id='{{item.cityName}}'bindtap='bindAZ'>{{item.cityName}}</view>
+<view class="search-box" >
+  <input placeholder="中文/拼音/首字母" class='search-input' bindblur="bindBlur" bindinput='bindSarchInput' placeholder-class='search-input-placeholder' />
+</view>
+<ul class="ul">
+  <li wx:for="{{completeList}}" wx:key="*this" bindtap="citySearch" data-city="{{item}}" class="li">{{item}}</li>
+</ul>
+<view class='a-z'>
+  <view wx:for="{{cityAZ}}" wx:key="unique"  bindtouchstart="tStart" bindtouchend="tEnd" catchtouchmove="tMove">
+    <view data-id='{{item.cityName}}' bindtouchstart="getCur" bindtouchend="setCur" >{{item.cityName}} </view>
   </view>
 </view>
-<view class="city-picker">
+<view class="city-picker" >
   <view class="city-item-A-Z">定位城市</view>
   <view class="weui-grid" style='margin-left:6%;margin-bottom:20rpx;'>
     <view class="weui-grid-label" data-city="{{beginCity}}" bindtap="citySelected">{{beginCity}}</view>
@@ -32,14 +33,17 @@
     </view>
   </view>
 </view>
-<view class='city-item-content'>
+<view class='city-item-content' >
   <view wx:for="{{cityResults}}" wx:key="initial">
     <view class="city-item-A-Z" data-initial="{{item.initial}}">{{item.initial}}</view>
     <view class='city-item' wx:for="{{item.cityInfo}}" wx:for-item="ct" wx:key="id" data-code="{{ct.code}}" data-city="{{ct.city}}" data-cityname='{{ct.initial}}' bindtap='citySelected'>{{ct.city}}</view>
   </view>
 </view>
-  <view wx:for="{{cityAZ}}" wx:key="unique">
-    <view class='a-z-style' wx:if="{{item.cityName==nowTarget}}">
-      <view style='color: red' data-id='{{item.cityName}}'>{{nowTarget}}</view>
-    </view>
-    </view>
+<view wx:for="{{cityAZ}}" wx:key="unique">
+  <view wx:if="{{item.cityName==nowTarget}}" hidden="{{hidden}}">
+    <view class="indexToast" data-id='{{item.cityName}}'>{{nowTarget}}</view>
+  </view>
+</view>
+<!-- <view hidden="{{hidden}}" data-id='{{nowTarget}}' class="indexToast">
+  {{nowTarget}}
+</view> -->

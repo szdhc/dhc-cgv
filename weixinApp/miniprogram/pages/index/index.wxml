@@ -1,88 +1,114 @@
 <!--pages/index/index.wxml-->
-<view class="container">
-  <!-- 首页banner -->
-  <view class="guide">
+ <view class="none-board" hidden="{{nonet}}">
+  <view class="none-content">
+    <image class="none-image" src="../../images/mine-nodata.png" />
+    <text class="none-text">请检查网络后刷新</text>
+  </view>
+</view>
 
-    <!-------------------------------------------------------------------------------->
-    <!--导航条-->
-    <view class="navbar">
-      <!-- <view style='line-height:40rpx'>
+
+<view hidden="{{!nonet}}">
+  <view class="container">
+  <view class="custom flex_center" style="padding-top:{{statusBarHeight}}px" bindtap="reachtop">
+  CGV电影
+</view>
+<view class="empty_custom" style="padding-top:{{statusBarHeight}}px"></view>
+    <!-- 首页banner -->
+    <view class="guide">
+
+      <!-------------------------------------------------------------------------------->
+      <!--导航条-->
+      <view class="navbar">
+        <!-- <view style='line-height:40rpx'>
         <text class='address'></text>
         <text class=""></text>
     </view> -->
-      <include src="../../templates/chooseCinema.wxml" />
-      <view class="bar">
+        <include src="../../templates/chooseCinema.wxml" />
+        <view class="bar">
 
-        <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+          <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+        </view>
+
       </view>
-
     </view>
   </view>
-</view>
-<scroll-view scroll-y="true">
-  <swiper current="{{currentTab}}" duration="300" bindchange="bindChange" style="height:600px;padding-top:72rpx;">
-    <!--热映-->
-    <view hidden="{{currentTab!==0}}">
-      <swiper-item>
-        <scroll-view style="height:100%" scroll-y="true">
-          <view class='hotFilm_container'>
-            <!-- <text class="headline">{{currProvince}}</text>
+
+    <swiper current="{{currentTab}}" duration="300" bindchange="bindChange" style="height:{{windowHeight - 102}}px;padding-top:72rpx;">
+      <!--热映-->
+      <view hidden="{{currentTab!==0}}" >
+        <swiper-item>
+          <scroll-view style="height:100%" scroll-y="true" scroll-top="{{scrollTop}}" scroll-with-animation="true" >
+            <view class='hotFilm_container'>
+              <!-- <text class="headline">{{currProvince}}</text>
     <text class="headline">{{currCity}}</text> -->
-            <import src='../../templates/banner.wxml' />
-            <template is='bannerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
-            <view style='height:22rpx;padding-bottom:30rpx'>
-              <image src='{{sanUrl}}' animation="{{animationPlus}}" class='search_img' bindtap='plus' hidden='{{sanHidden}}'></image>
-              <image src="{{adUrl}}" animation="{{animationTranspond}}" class="card_img" bindtap="transpond"></image>
-              <image src="{{chaUrl}}" animation="{{animationTranspond}}" class="cha_img" bindtap="chaback" hidden='{{chaHidden}}'></image>
-            </view>
-            <!-- <text class="p">1. 打开云开发控制台</text>
+              <import src='../../templates/banner.wxml' />
+              <template is='bannerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
+              <view class='san_box' hidden='{{sanHidden}}'>
+                <image src='{{sanUrl}}' animation="{{animationPlus}}" class='san_img' bindtap='plus' ></image>
+                </view>
+                <image src="{{adUrl}}" animation="{{animationTranspond}}" class="ad_img" bindtap="transpond"></image>
+                <view style='width:70rpx;height:52rpx;' bindtap="chaback" hidden='{{chaHidden}}'>
+                  <image src="{{chaUrl}}" class="cha_img"></image>
+                </view>
+
+              <!-- <text class="p">1. 打开云开发控制台</text>
     <image class="image1" src="../../images/console-entrance.png" mode="aspectFit"></image>
     <text class="p">2. 切换到 "用户管理" 标签页</text>
     <text class="p">3. 查看访问小程序的用户列表</text> -->
 
-            <import src='../../templates/movieList.wxml' />
-            <view   wx:for="{{hotMovieList}}" wx:key="{{hotMovieList}}" animation="{{animationTranspond}}">
-              <template wx:if="{{item.movieStatus=='购票'}}" is='hotMovieTemplate' data="{{...item}}"/>
-              <template wx:else="{{item.movieStatus=='预售'}}"  is='comingMovieTemplate' data="{{...item}}" />
-              <view class="more" wx:if="{{index==hotMovieList.length-1}}" hidden="{{moreTab1==1}}" bindtap='clickMore'>
-                加载更多
+              <import src='../../templates/movieList.wxml' />
+              <view wx:for="{{hotMovieList}}" wx:key="{{hotMovieList}}">
+                <template wx:if="{{item.movieStatus=='购票'}}" is='hotMovieTemplate' data="{{...item}}" />
+                <template wx:else="{{item.movieStatus=='预售'}}" is='comingMovieTemplate' data="{{...item}}" />
+                <view class="more" wx:if="{{index==hotMovieList.length-1}}" hidden="{{moreTab1==1}}" bindtap='clickMore'>
+                  加载更多
+                </view>
+                                <view class="more" wx:if="{{index==hotMovieList.length-1&&!loader}}" hidden="{{moreTab1==0}}" bindtap='clickMore'>
+                  没有更多了
+                </view>
+                <view class='loading' wx:if="{{loader}}">
+                  <image class='loadingimg' wx:if="{{index>5 && index==hotMovieList.length-1}}" hidden="{{moreTab1==0}}" src="../../images/loading-bars.svg"></image>
+                </view>
+
               </view>
-              <view class='loading' wx:if="{{loader}}">
-                <image class='loadingimg' wx:if="{{index==hotMovieList.length-1}}" hidden="{{moreTab1==0}}" src="../../images/loading-bars.svg"></image>
-              </view>
-              
+
             </view>
-            
-          </view>
-        </scroll-view>
-      </swiper-item>
-      
-    </view>
-    <!--待映-->
-    <view hidden="{{currentTab!==1}}">
-      <swiper-item>
-        <scroll-view style="height:100%" scroll-y="true">
-          <view class='comingFilm_container'>
-            <import src='../../templates/banner.wxml' />
-            <template is='bannerTemplate' data='{{indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
-            <view style='height:22rpx;padding-bottom:30rpx'>
-              <image src='{{sanUrl}}' animation="{{animationPlus}}" class='search_img' bindtap='plus' hidden='{{sanHidden}}'></image>
-              <image src="{{adUrl}}" animation="{{animationTranspond}}" class="card_img" bindtap="transpond"></image>
-              <image src="{{chaUrl}}" animation="{{animationTranspond}}" class="cha_img" bindtap="chaback" hidden='{{chaHidden}}'></image>
-            </view>
-            <import src='../../templates/movieList.wxml' />
-            <view wx:for="{{comingMovieList}}" wx:key="{{comingMovieList}}" formType="submit" animation="{{animationTranspond}}">
-              <template is='comingMovieTemplate' data="{{...item}}" />
-              <view class="more" wx:if="{{index==comingMovieList.length-1}}" hidden="{{moreTab2==1}}" bindtap='clickMore'>
-                加载更多
+          </scroll-view>
+        </swiper-item>
+      </view>
+
+      <!--待映-->
+      <view hidden="{{currentTab!==1}}">
+        <swiper-item>
+          <scroll-view style="height:100%" scroll-y="true" scroll-top="{{scrollTop}}" scroll-with-animation="true">
+            <view class='comingFilm_container'>
+              <import src='../../templates/banner.wxml' />
+              <template is='bannerTemplate' data='{{indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
+              <!-- <view style='height:{{adHeight}}rpx;'> -->
+                            <view class='san_box' hidden='{{sanHidden}}'>
+                <image src='{{sanUrl}}' animation="{{animationPlus}}" class='san_img' bindtap='plus'></image>
+                </view>
+                <image src="{{adUrl}}" animation="{{animationTranspond}}" class="ad_img" bindtap="transpond"></image>
+                <view style='width:70rpx;height:52rpx;' bindtap="chaback" hidden='{{chaHidden}}'>
+                  <image src="{{chaUrl}}" class="cha_img"></image>
+                <!-- </view> -->
               </view>
-              <view class='loading' wx:if="{{loader}}">
-                <image class='loadingimg' wx:if="{{index==comingMovieList.length-1}}" hidden="{{moreTab2==0}}" src="../../images/loading-bars.svg"></image>
+              <import src='../../templates/movieList.wxml' />
+              <view wx:for="{{comingMovieList}}" wx:key="{{comingMovieList}}" formType="submit" >
+                <template is='soonMovieTemplate' data="{{...item}}" />
+                <view class="more" wx:if="{{index>5 && index==comingMovieList.length-1}}" hidden="{{moreTab2==1}}" bindtap='clickMore'>
+                  加载更多
+                </view>
+                                                <view class="more" wx:if="{{index==comingMovieList.length-1&&!loader}}" hidden="{{moreTab2==0}}" bindtap='clickMore'>
+                  没有更多了
+                </view>
+                <view class='loading' wx:if="{{loader}}">
+                  <image class='loadingimg' wx:if="{{index==comingMovieList.length-1}}" hidden="{{moreTab2==0}}" src="../../images/loading-bars.svg"></image>
+                </view>
               </view>
             </view>
-          </view>
-        </scroll-view>
-      </swiper-item>
-    </view>
-  </swiper>
-</scroll-view>
+          </scroll-view>
+        </swiper-item>
+      </view>
+    </swiper>
+</view>

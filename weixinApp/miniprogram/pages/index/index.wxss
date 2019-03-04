@@ -93,16 +93,16 @@
   padding-left: 480rpx;
 }
 
-.search_img {
+.san_img {
   position: absolute;
-  height: 47rpx;
+  height: 51rpx;
   width: 88rpx;
   top: 216rpx;
   left: 356rpx;
   z-index: 100;
 }
 
-.card_img {
+.ad_img {
   position: absolute;
   height: 51rpx;
   width: 752rpx;
@@ -111,6 +111,12 @@
   /* opacity: 1; */
   z-index:-100;
 }
+
+.san_box{
+width:760rpx;
+height:22rpx;
+}
+
 .cha_img {
   position: absolute;
   height: 22rpx;
@@ -118,6 +124,31 @@
   top: 238rpx;
   left: 18rpx;
   /* opacity: 1; */
-
 }
-
+.none-board {
+background-color:#f8f9fb;
+position:fixed;
+width:100%;
+height:100%;
+}
+.none-content {
+  padding-top:30rpx;
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+.none-image{
+  width:200rpx;
+height:150rpx;
+margin-top:300rpx;
+}
+.none-text{
+  font-size:30rpx;
+color:#918c8cef;
+margin-top:20rpx;
+}
+.scroll-lock {
+ height: 600px;
+ overflow-y: hidden;
+}
