@@ -1,0 +1,33 @@
+/* bin/dist/ad/index.wxss */
+.san_img {
+  position: absolute;
+  height: 51rpx;
+  width: 88rpx;
+  top: 216rpx;
+  left: 356rpx;
+  z-index: 100;
+}
+
+.ad_img {
+  position: absolute;
+  height: 51rpx;
+  width: 752rpx;
+  top: 227rpx;
+  left: -1rpx;
+  /* opacity: 1; */
+  z-index:-100;
+}
+
+.san_box{
+width:760rpx;
+height:22rpx;
+}
+
+.cha_img {
+  position: absolute;
+  height: 22rpx;
+  width: 22rpx;
+  top: 238rpx;
+  left: 18rpx;
+  /* opacity: 1; */
+}

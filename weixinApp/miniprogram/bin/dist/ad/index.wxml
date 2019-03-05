@@ -1,0 +1,8 @@
+<!--bin/dist/ad/index.wxml-->
+            <view class='san_box' hidden='{{sanHidden}}'>
+              <image src='{{sanUrl}}' animation="{{animationPlus}}" class='san_img' bindtap='plus'></image>
+            </view>
+            <image src="{{adUrl}}" animation="{{animationTranspond}}" class="ad_img" bindtap="transpond"></image>
+            <view style='width:70rpx;height:52rpx;' bindtap="chaback" hidden='{{chaHidden}}'>
+              <image src="{{chaUrl}}" class="cha_img"></image>
+            </view>
