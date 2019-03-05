@@ -1,9 +1,11 @@
+/* bin/dist/banner/index.wxss */
 /* 轮播小点点 */
-
 .swiper-box .wx-swiper-dots.wx-swiper-dots-horizontal {
   margin-bottom: 2rpx;
 }
-
+.slide-image {
+  width: 100%;
+}
 .swiper-box .wx-swiper-dot {
   width: 20rpx;
   display: inline-flex;

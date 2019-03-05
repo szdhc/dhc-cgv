@@ -1,8 +1,14 @@
 @import "/templates/movieList.wxss";
-@import "/templates/banner.wxss";
+/* @import "/templates/banner.wxss"; */
 @import "/style/iconfont.wxss";
 @import "/style/common.wxss";
-
+/**app.wxss**/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
 /*隐藏滚动条*/
  
 ::-webkit-scrollbar{

@@ -19,7 +19,7 @@ App({
         traceUser: true,
       })
     }
-    //获取手机分辨率
+    //获取设备信息
     wx.getSystemInfo({
       success: e => {
         this.globalData.StatusBar = e.statusBarHeight;

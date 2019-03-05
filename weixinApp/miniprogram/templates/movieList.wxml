@@ -2,7 +2,7 @@
   <view class='flex-wrp-row item' >
     <!--电影图片-->
     <view class='flex-wrp-cloumn'>
-      <image class='movieImage' src="{{movieImage}}">
+      <image lazy-load='true' class='movieImage' src="{{movieImage}}">
       </image>
     </view>
     <!--电影名，特性，导演，主演-->
