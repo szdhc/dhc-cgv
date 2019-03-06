@@ -11,9 +11,9 @@ Component({
    * 组件的初始数据
    */
   data: {
-    sanUrl: '../../../images/san.png',
-    adUrl: '../../../images/ad.png',
-    chaUrl: '../../../images/cha.png',
+    sanUrl: '../../images/san.png',
+    adUrl: '../../images/ad.png',
+    chaUrl: '../../images/cha.png',
     sanHidden: true,
     chaHidden: false,
     isPopping: false, //是否已经弹出
