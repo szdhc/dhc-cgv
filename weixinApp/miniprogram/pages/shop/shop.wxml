@@ -29,7 +29,6 @@
         <!-- <import src='../../templates/banner.wxml' />
         <template is='bannnerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' />
          -->
-         <banner/>
         <view class="flex-wrp-row bg-pg">
           <view class="flex-wrp-column">
             <text class="light-size">2019年1月16日星期五</text>

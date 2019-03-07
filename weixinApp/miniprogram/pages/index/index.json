@@ -1,6 +1,7 @@
 {
    "navigationStyle": "custom",
     "usingComponents": {
-      "banner": "../../../bin/dist/banner/index"
+      "banner": "../../components/banner/index",
+      "ad": "../../components/ad/index"
     }
 }

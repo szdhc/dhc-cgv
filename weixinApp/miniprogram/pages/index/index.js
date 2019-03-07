@@ -11,11 +11,6 @@ Page({
     state: '',
     message: '',
     adHeight: 50,
-    sanHidden: true,
-    chaHidden: false,
-    isPopping: false, //是否已经弹出
-    animationPlus: {}, //旋转动画
-    animationTranspond: {}, //item位移,透明度
     // openid: '',
     movieAddress: '',
     currProvince: '',
@@ -505,9 +500,6 @@ Page({
           hotCount: data.subjects.length,
           hotMovieList: arr,
           loader: 0,
-          sanUrl: '../../images/san.png',
-          adUrl: '../../images/ad.png',
-          chaUrl: '../../images/cha.png',
         })
         console.log(data)
         console.log(arr)
@@ -576,55 +568,4 @@ Page({
       }
     })
   },
-  //点击弹出
-  plus: function(e) {
-    popp.call(this);
-  },
-  chaback: function() {
-    takeback.call(this);
-  },
-  transpond: function() {
-    console.log("transpond")
-  },
 })
-//弹出动画
-function popp() {
-  var animationPlus = wx.createAnimation({
-    duration: 300,
-    timingFunction: 'ease-out'
-  })
-
-  var animationTranspond = wx.createAnimation({
-    duration: 300,
-    timingFunction: 'ease-out'
-  })
-  // animationPlus.opacity(0).step();
-  animationTranspond.translate(0, 0).step();
-  this.setData({
-    chaHidden: false,
-    sanHidden: true,
-    adHeight: 50,
-    animationPlus: animationPlus.export(),
-    animationTranspond: animationTranspond.export(),
-  })
-}
-
-function takeback() {
-  var animationPlus = wx.createAnimation({
-    duration: 500,
-    timingFunction: 'ease-out'
-  })
-  var animationTranspond = wx.createAnimation({
-    duration: 500,
-    timingFunction: 'ease-out'
-  })
-  animationPlus.rotateZ(0).step();
-  animationTranspond.translate(0, -60).step();
-  this.setData({
-    adHeight: 4,
-    chaHidden: true,
-    sanHidden: false,
-    animationPlus: animationPlus.export(),
-    animationTranspond: animationTranspond.export(),
-  })
-}

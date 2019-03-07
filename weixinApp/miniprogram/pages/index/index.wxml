@@ -47,13 +47,7 @@
             <!-- <import src='../../templates/banner.wxml' />
               <template is='bannerTemplate' data='{{ indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' /> -->
             <banner/>
-            <view class='san_box' hidden='{{sanHidden}}'>
-              <image src='{{sanUrl}}' animation="{{animationPlus}}" class='san_img' bindtap='plus'></image>
-            </view>
-            <image src="{{adUrl}}" animation="{{animationTranspond}}" class="ad_img" bindtap="transpond"></image>
-            <view style='width:70rpx;height:52rpx;' bindtap="chaback" hidden='{{chaHidden}}'>
-              <image src="{{chaUrl}}" class="cha_img"></image>
-            </view>
+            <ad/>
 
             <!-- <text class="p">1. 打开云开发控制台</text>
     <image class="image1" src="../../images/console-entrance.png" mode="aspectFit"></image>
@@ -90,15 +84,7 @@
             <!-- <import src='../../templates/banner.wxml' />
               <template is='bannerTemplate' data='{{indicatorDots,autoplay,interval,duration,bannerUrls,Height}}' /> -->
             <banner/>
-            <!-- <view style='height:{{adHeight}}rpx;'> -->
-            <view class='san_box' hidden='{{sanHidden}}'>
-              <image src='{{sanUrl}}' animation="{{animationPlus}}" class='san_img' bindtap='plus'></image>
-            </view>
-            <image src="{{adUrl}}" animation="{{animationTranspond}}" class="ad_img" bindtap="transpond"></image>
-            <view style='width:70rpx;height:52rpx;' bindtap="chaback" hidden='{{chaHidden}}'>
-              <image src="{{chaUrl}}" class="cha_img"></image>
-              <!-- </view> -->
-            </view>
+            <ad/>
             <import src='../../templates/movieList.wxml' />
             <view wx:for="{{comingMovieList}}" wx:key="{{comingMovieList}}" formType="submit">
               <template is='soonMovieTemplate' data="{{...item}}" />
