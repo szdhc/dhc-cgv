@@ -21,7 +21,7 @@
   <view class='operationBgBox' style='left: {{ -(w + 2) }}px; transform: {{ cssAnimation }}'>
     <text>{{ succeedMsg }}</text>
     <view wx:if='{{!istelnoflg}}' class='operationBox' catchtouchmove='moveFun' catchtouchend='endFun'>
-      <image src='line.png'></image>
+      <image lazy-load='true' src='cloud://cvg20190102-80d55e.6376-cvg20190102-80d55e/line.png'></image>
     </view>
     <view wx:else class='operationBox'>
       <image lazy-load='true' src='cloud://cvg20190102-80d55e.6376-cvg20190102-80d55e/line.png'></image>
