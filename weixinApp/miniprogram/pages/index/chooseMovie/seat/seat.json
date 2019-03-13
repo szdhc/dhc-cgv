@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "选座"
+  "navigationBarTitleText": "选座",
+  "usingComponents": {
+    "chooseSeats": "../../../../components/chooseSeats/index"
+  }
 }
